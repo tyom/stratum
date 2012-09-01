@@ -1,8 +1,9 @@
 @import "bourbon/css3/background"
 @import "bourbon/functions/render-gradients"
 @import "bourbon/functions/linear-gradient"
-@import "toolbox/clearfix"
+@import "clearfix"
 @import "responsive"
+
 
 // Defaults
 // --------
@@ -19,6 +20,10 @@ $grid-col-medium: ($grid-medium  - (($grid-total-columns - 1) * $grid-gutter)) /
 $grid-col-large:  ($grid-large   - (($grid-total-columns - 1) * $grid-gutter) / $grid-total-columns)   !default
 
 $grid-column: $grid-col-medium  !default
+
+$grid-guides-color: red     !default
+$grid-guides: false         !default
+$grid-guides-position: back !default
 
 
 // Functions
@@ -43,6 +48,7 @@ $grid-column: $grid-col-medium  !default
 // ------
 
 =grid-row
+  +clearfix
   width: $grid-medium
   margin:
     left: auto
@@ -57,23 +63,24 @@ $grid-column: $grid-col-medium  !default
     margin-right: 0
 
 =grid-column-width($span: 1)
-  border: 1px solid blue
   width: grid-width($span)
 
 =grid-show-guides
   +grid-guides($grid-column)
 
-=grid-guides($col-width: $grid-column, $block-height: 10, $opacity: .8)
+=grid-guides($col-width: $grid-column, $block-size: 9, $color: $grid-guides-color, $opacity: .8, $position: $grid-guides-position)
   position: relative
   &:before
     content: ""
     position: absolute
     width: 100%
     height: 100%
-    $combined-width: $grid-column + $grid-gutter
-    // $combined-block-height: (($baseline + 1) * $module-size) + $grid-baseline
+    $combined-width:  $grid-column + $grid-gutter
+    $block-height: (($grid-baseline + 1) * $block-size) + $grid-baseline
 
-    // background: -webkit-linear-gradient(transparent $grid-baseline, red $grid-baseline)
-    +background(linear-gradient(transparent $grid-baseline, rgba(white, $opacity/2) $grid-baseline), linear-gradient(left, fade-out(red, $opacity), fade-out(red, $opacity) $grid-column, transparent $grid-column, transparent $combined-width), linear-gradient(fade-out(red, $opacity), fade-out(red, $opacity)))
-    background-size: $combined-width $grid-baseline + 1
+    +background(linear-gradient(transparent $grid-baseline, rgba(white, $opacity/2) $grid-baseline), linear-gradient(left, fade-out($color, $opacity), fade-out($color, $opacity) $col-width, transparent $col-width, transparent $combined-width), linear-gradient(transparent ($block-height - $grid-baseline), fade-out(white, $opacity / 2) $grid-baseline), linear-gradient(fade-out($color, $opacity), fade-out($color, $opacity)))
+    background-size: $combined-width $grid-baseline + 1, $combined-width ($grid-baseline * $block-size), $combined-width ($block-height + 1)
     background-repeat: repeat, repeat
+
+    @if $position == back
+      z-index: -1

@@ -2,6 +2,8 @@
 
 .row
   +grid-row
+  @if $grid-guides
+    +grid-show-guides
 
 .column, .columns
   +grid-column
@@ -18,6 +20,12 @@
   .#{number-to-word($i)}
     +grid-column-width($i)
 
+.flush-right
+  float: right
+.flush-left
+  float: left
+
 .show-grid
   +grid-show-guides
-  +clearfix
+  &.front:before
+    z-index: auto
