@@ -1,0 +1,79 @@
+@import "bourbon/css3/background"
+@import "bourbon/functions/render-gradients"
+@import "bourbon/functions/linear-gradient"
+@import "toolbox/clearfix"
+@import "responsive"
+
+// Defaults
+// --------
+
+// Calculate pixel grid @ http://gridulator.com/
+$grid-medium: 980px         !default
+$grid-large:  1200px        !default
+
+$grid-total-columns: 10     !default
+$grid-gutter: 20px          !default
+$grid-baseline: 20px        !default
+
+$grid-col-medium: ($grid-medium  - (($grid-total-columns - 1) * $grid-gutter)) / $grid-total-columns   !default
+$grid-col-large:  ($grid-large   - (($grid-total-columns - 1) * $grid-gutter) / $grid-total-columns)   !default
+
+$grid-column: $grid-col-medium  !default
+
+
+// Functions
+// ---------
+
+// Override Bourbon's function to add optional second argument of column width (useful for responsive design)
+// Calculate column width: <span columns>, <column width>px
+@function grid-width($n, $width: $grid-column, $gutter: $grid-gutter)
+  @return $n * $width + ($n - 1) * $gutter
+
+// Borrowed from Zurb's Foundation
+@function number-to-word($num)
+  $count: 1
+  @each $word in one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty, twentyone, twentytwo,twentythree,twentyfour
+    @if ($count == $num)
+      @return $word
+    $count: $count + 1
+  @return "invalid"
+
+
+// Mixins
+// ------
+
+=grid-row
+  width: $grid-medium
+  margin:
+    left: auto
+    right: auto
+
+=grid-column($position: normal)
+  margin-right: $grid-gutter
+  float: left
+  min-height: 1px
+  @if $position == last
+    float: right
+    margin-right: 0
+
+=grid-column-width($span: 1)
+  border: 1px solid blue
+  width: grid-width($span)
+
+=grid-show-guides
+  +grid-guides($grid-column)
+
+=grid-guides($col-width: $grid-column, $block-height: 10, $opacity: .8)
+  position: relative
+  &:before
+    content: ""
+    position: absolute
+    width: 100%
+    height: 100%
+    $combined-width: $grid-column + $grid-gutter
+    // $combined-block-height: (($baseline + 1) * $module-size) + $grid-baseline
+
+    // background: -webkit-linear-gradient(transparent $grid-baseline, red $grid-baseline)
+    +background(linear-gradient(transparent $grid-baseline, rgba(white, $opacity/2) $grid-baseline), linear-gradient(left, fade-out(red, $opacity), fade-out(red, $opacity) $grid-column, transparent $grid-column, transparent $combined-width), linear-gradient(fade-out(red, $opacity), fade-out(red, $opacity)))
+    background-size: $combined-width $grid-baseline + 1
+    background-repeat: repeat, repeat

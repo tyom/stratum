@@ -1,0 +1,23 @@
+@import "toolbox/grid"
+
+.row
+  +grid-row
+
+.column, .columns
+  +grid-column
+
+// Last column variations
+[class*="column"] + [class*="column"]:last-child,
+[class*="column"] + [class*="column"].last,
+.row .row [class*="column"] + [class*="column"]:last-child,
+.row .row [class*="column"] + [class*="column"].last
+  +grid-column(last)
+
+// .column classes for outer rows
+@for $i from 1 through $grid-total-columns
+  .#{number-to-word($i)}
+    +grid-column-width($i)
+
+.show-grid
+  +grid-show-guides
+  +clearfix
