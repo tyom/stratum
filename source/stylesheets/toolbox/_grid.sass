@@ -48,12 +48,20 @@ $grid-guides-position: back !default
 // Mixins
 // ------
 
-=grid-row
+=grid-row($type: outer)
   +clearfix
-  width: $grid-medium
-  margin:
-    left: auto
-    right: auto
+  @if $type == outer
+    width: $grid-medium
+    max-width: 100%
+    margin:
+      left: auto
+      right: auto
+  @else
+    width: auto
+    max-width: none
+    margin:
+      left: -($grid-gutter/2)
+      right: -($grid-gutter/2)
 
 =grid-column($position: normal)
   @if $position == last
@@ -62,6 +70,10 @@ $grid-guides-position: back !default
   @else if $position == end
     float: left
     margin-right: 0
+  @else if $position == inner
+    margin:
+      left:  $grid-gutter/2
+      right: $grid-gutter/2
   @else if $position == centered
     float: none
     margin:

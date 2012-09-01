@@ -2,24 +2,37 @@
 
 .row
   +grid-row
-  @if $grid-guides
-    +grid-show-guides
+  // Inner row
+  .row
+    +grid-row(inner)
+
+// Draw guides if $grid-guides is set
+@if $grid-guides
+  .row
+    @extend .show-grid
+    .row:before
+      display: none
 
 .column, .columns
   +grid-column
+  // Centred column
+  &.centered, .row &.centered, .row .row &.centered,
+  &[class*="column"] + [class*="column"].centered
+    +grid-column(centered)
+
+// Columns in the inner row
+.row .row .column, .row .row .columns,
+.row .row [class*="column"] + [class*="column"]:last-child,
+  +grid-column(inner)
 
 // Last column
 [class*="column"] + [class*="column"]:last-child,
 [class*="column"] + [class*="column"].last
-  +grid-column("last")
+  +grid-column(last)
 
 // Ending column (following others)
 [class*="column"] + [class*="column"].end
-  +grid-column("end")
-
-// Centred column
-[class*="column"] + [class*="column"].centered
-  +grid-column("centered")
+  +grid-column(end)
 
 // Column sizes
 @for $i from 1 through $grid-total-columns
