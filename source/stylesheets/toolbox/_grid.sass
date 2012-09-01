@@ -4,6 +4,7 @@
 @import "clearfix"
 @import "responsive"
 
+// Grid inspired by Zurb's Foundation
 
 // Defaults
 // --------
@@ -55,12 +56,24 @@ $grid-guides-position: back !default
     right: auto
 
 =grid-column($position: normal)
-  margin-right: $grid-gutter
-  float: left
-  min-height: 1px
   @if $position == last
     float: right
     margin-right: 0
+  @else if $position == end
+    float: left
+    margin-right: 0
+  @else if $position == centered
+    float: none
+    margin:
+      left: auto
+      right: auto
+  @else
+    min-height: 1px
+    float: left
+    margin-right: $grid-gutter
+
+=grid-offset-by-column($span: 1, $direction: left)
+  margin-#{$direction}: grid-width($span) + $grid-gutter
 
 =grid-column-width($span: 1)
   width: grid-width($span)

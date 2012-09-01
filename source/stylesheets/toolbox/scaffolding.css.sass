@@ -8,23 +8,43 @@
 .column, .columns
   +grid-column
 
-// Last column variations
+// Last column
 [class*="column"] + [class*="column"]:last-child,
-[class*="column"] + [class*="column"].last,
-.row .row [class*="column"] + [class*="column"]:last-child,
-.row .row [class*="column"] + [class*="column"].last
-  +grid-column(last)
+[class*="column"] + [class*="column"].last
+  +grid-column("last")
 
-// .column classes for outer rows
+// Ending column (following others)
+[class*="column"] + [class*="column"].end
+  +grid-column("end")
+
+// Centred column
+[class*="column"] + [class*="column"].centered
+  +grid-column("centered")
+
+// Column sizes
 @for $i from 1 through $grid-total-columns
   .#{number-to-word($i)}
     +grid-column-width($i)
+
+// Offsets:
+// - Left
+@for $i from 1 through $grid-total-columns
+  .#{number-to-word($i)}-from-left
+    +grid-offset-by-column($i, left)
+// - Right (attribute selector to override other modifiers, such as .last)
+@for $i from 1 through $grid-total-columns
+  .#{number-to-word($i)}-from-right[class],
+  .#{number-to-word($i)}-from-right:last-child[class],
+  .#{number-to-word($i)}-from-right.last[class]
+    +grid-offset-by-column($i, right)
 
 .flush-right
   float: right
 .flush-left
   float: left
 
+
+// Grid debugging
 .show-grid
   +grid-show-guides
   &.front:before
