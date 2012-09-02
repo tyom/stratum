@@ -1,15 +1,6 @@
-// Grid inspired by Zurb's Foundation
-
-// @Functions
-//
-// » grid-width($column-span, $column-width, $column-gutter)
-//   return calculated width for requested arguments
-//
-// » number-to-word($number)
-//   return word for requested number
-
-// @ Mixins
-//
+// -----------------------------------------------------------------------------
+// • Mixins
+// -----------------------------------------------------------------------------
 // » =grid-row($type: outer)
 //   Render row
 //    $type: outer       - first outer containing row
@@ -40,48 +31,40 @@
 //    $opacity            - grid opacity
 //    $position:back      - place grid behind page elements
 //    $position:front     - place grid in front of page elements
+// -----------------------------------------------------------------------------
+
+// Grid inspired by Zurb's Foundation
 
 @import "bourbon/css3/background"
 @import "bourbon/functions/render-gradients"
 @import "bourbon/functions/linear-gradient"
+
+@import "functions"
 @import "clearfix"
 @import "responsive"
+
 
 // Grid defaults
 // --------
 
 // Calculate pixel grid @ http://gridulator.com/
-$grid-medium: 980px         !default
-$grid-large:  1200px        !default
+$grid-medium:   980px       !default
+$grid-large:    1200px      !default
+$grid-x-large:  1600px      !default
 
-$grid-total-columns: 10     !default
-$grid-gutter: 20px          !default
-$grid-baseline: 20px        !default
+$grid-total-columns:  12    !default
+$grid-baseline:       20px  !default
+$desired-grid-gutter: 20px  !default
 
-$grid-col-medium: ($grid-medium  - (($grid-total-columns - 1) * $grid-gutter)) / $grid-total-columns   !default
-$grid-col-large:  ($grid-large   - (($grid-total-columns - 1) * $grid-gutter) / $grid-total-columns)   !default
+$grid-col-medium:   calculate-column-width($grid-medium)    !default
+$grid-col-large:    calculate-column-width($grid-large)     !default
+$grid-col-x-large:  calculate-column-width($grid-x-large)   !default
 
 $grid-column: $grid-col-medium  !default
 
 $grid-guides-color: red     !default
 $grid-guides: false         !default
 $grid-guides-position: back !default
-
-
-// Functions
-// ---------
-
-@function grid-width($column-span, $column-width: $grid-column, $column-gutter: $grid-gutter)
-  @return $column-span * $column-width + ($column-span - 1) * $column-gutter
-
-// Borrowed from Zurb's Foundation
-@function number-to-word($number)
-  $count: 1
-  @each $word in one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty, twentyone, twentytwo,twentythree,twentyfour
-    @if ($count == $number)
-      @return $word
-    $count: $count + 1
-  @return "invalid"
 
 
 // Mixins
@@ -91,7 +74,14 @@ $grid-guides-position: back !default
   +clearfix
   @if $type == outer
     width: $grid-medium
+    min-width: $grid-medium
     max-width: 100%
+
+    +large-screen
+      width: $grid-large
+    +x-large-screen
+      width: $grid-x-large
+
     margin:
       left: auto
       right: auto
@@ -99,8 +89,17 @@ $grid-guides-position: back !default
     width: auto
     max-width: none
     margin:
-      left: -($grid-gutter/2)
-      right: -($grid-gutter/2)
+      left:  -(calculate-gutter-width($grid-medium) / 2)
+      right: -(calculate-gutter-width($grid-medium) / 2)
+    +large-screen
+      margin:
+        left:  -(calculate-gutter-width($grid-large) / 2)
+        right: -(calculate-gutter-width($grid-large) / 2)
+    +x-large-screen
+      margin:
+        left:  -(calculate-gutter-width($grid-x-large) / 2)
+        right: -(calculate-gutter-width($grid-x-large) / 2)
+
 
 =grid-column($position: normal)
   @if $position == last
@@ -111,8 +110,16 @@ $grid-guides-position: back !default
     margin-right: 0
   @else if $position == inner
     margin:
-      left:  $grid-gutter/2
-      right: $grid-gutter/2
+      left:  calculate-gutter-width($grid-medium) / 2
+      right: calculate-gutter-width($grid-medium) / 2
+    +large-screen
+      margin:
+        left:  calculate-gutter-width($grid-large) / 2
+        right: calculate-gutter-width($grid-large) / 2
+    +x-large-screen
+      margin:
+        left:  calculate-gutter-width($grid-x-large) / 2
+        right: calculate-gutter-width($grid-x-large) / 2
   @else if $position == centered
     float: none
     margin:
@@ -121,10 +128,21 @@ $grid-guides-position: back !default
   @else
     min-height: 1px
     float: left
-    margin-right: $grid-gutter
+    margin-right: calculate-gutter-width($grid-medium)
+    +large-screen
+      margin-right: calculate-gutter-width($grid-large)
+    +x-large-screen
+      margin-right: calculate-gutter-width($grid-x-large)
+
+=grid-column-width($span: 1)
+  width: column-width($span, $grid-col-medium)
+  +large-screen
+    width: column-width($span, $grid-col-large)
+  +x-large-screen
+    width: column-width($span, $grid-col-x-large)
 
 =grid-offset-by-column($span: 1, $direction: left)
-  margin-#{$direction}: grid-width($span) + $grid-gutter
+  margin-#{$direction}: column-width($span) + calculate-gutter-width($grid-medium)
 
 =grid-column-borders($color: rgba(black, .2))
   .column, .columns
@@ -133,30 +151,36 @@ $grid-guides-position: back !default
     content: ""
     position: absolute
     width: 1px
-    left: -$grid-gutter/2
+    left: -(calculate-gutter-width($grid-medium) / 2) + 1
     top: 0
     bottom: 0
     background: $color
   .column:after, .columns:after
-    right: -$grid-gutter/2
+    right: -(calculate-gutter-width($grid-medium) / 2) + 1
     left: auto
   .column:first-child:before, .columns:first-child:before,
   .column:last-child:after, .columns:last-child:after
     display: none
 
-=grid-show-guides($col-width: $grid-column, $block-size: 9, $color: $grid-guides-color, $opacity: .8, $position: $grid-guides-position)
+// =grid-show-guides($col-width: $grid-column, $block-size: 9, $color: $grid-guides-color, $opacity: .8, $position: $grid-guides-position)
+=grid-show-guides($grid-size: $grid-medium, $block-size: 9, $color: $grid-guides-color, $opacity: .8, $position: $grid-guides-position)
   position: relative
   &:before
+    @if $position == back
+      z-index: -1
+
     content: ""
     position: absolute
     width: 100%
     height: 100%
-    $combined-width:  $grid-column + $grid-gutter
+    $col-width: ceil(calculate-column-width($grid-size))
+    $col-gutter: calculate-gutter-width($grid-size)
+    $combined-width:  $col-width + $col-gutter
     $block-height: (($grid-baseline + 1) * $block-size) + $grid-baseline
 
-    +background(linear-gradient(transparent $grid-baseline, rgba(white, $opacity/2) $grid-baseline), linear-gradient(left, fade-out($color, $opacity), fade-out($color, $opacity) $col-width, transparent $col-width, transparent $combined-width), linear-gradient(transparent ($block-height - $grid-baseline), fade-out(white, $opacity / 2) $grid-baseline), linear-gradient(fade-out($color, $opacity), fade-out($color, $opacity)))
-    background-size: $combined-width $grid-baseline + 1, $combined-width ($grid-baseline * $block-size), $combined-width ($block-height + 1)
-    background-repeat: repeat, repeat
+    @debug $col-width, $col-gutter, $grid-size
 
-    @if $position == back
-      z-index: -1
+    // +background(linear-gradient(transparent $grid-baseline, rgba(white, $opacity/2) $grid-baseline), linear-gradient(left, fade-out($color, $opacity), fade-out($color, $opacity) $col-width, transparent $col-width, transparent $combined-width), linear-gradient(transparent ($block-height - $grid-baseline), fade-out(white, $opacity / 2) $grid-baseline), linear-gradient(fade-out($color, $opacity), fade-out($color, $opacity)))
+    +background(linear-gradient(left, red, red $col-width, transparent $col-width, transparent $combined-width))
+    background-size: $combined-width $grid-baseline + 1, $combined-width ($grid-baseline * $block-size), $combined-width ($block-height + 1)
+    background-size: $combined-width $grid-baseline + 1

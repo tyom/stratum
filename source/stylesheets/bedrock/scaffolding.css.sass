@@ -1,3 +1,24 @@
+// -----------------------------------------------------------------------------
+// • Scaffolding
+// -----------------------------------------------------------------------------
+// .row       - outer columns container (centers within the containing element)
+// .row .row  - inner columns container
+
+// .column-borders    - show borders between columns (set on container containing .column(s))
+// .column, .columns  - use for individual columns. (.one, .two, .three, ... .twenty-four to span columns)
+
+// .column.last       - treat as last column in the row, float right
+// .column.end        - treat as end column, float left as the previous columns
+// .column.centered   - centre column
+
+// .flush-right       - flush element to right
+// .flush-left        - flush element to left
+
+// .<one>-from-left   - offset column by (one, two, three, ... twenty-four) column spans
+
+// .show-grid         - show grid guide (useful for debugging and layout building)
+// -----------------------------------------------------------------------------
+
 @import "bedrock/grid"
 
 // Rows
@@ -42,7 +63,7 @@
 // Column sizes
 @for $i from 1 through $grid-total-columns
   .#{number-to-word($i)}
-    width: grid-width($i)
+    +grid-column-width($i)
 
 // Offsets:
 // - Left
@@ -65,5 +86,9 @@
 // Grid debugging
 .show-grid
   +grid-show-guides
+
+  +large-screen
+    +grid-show-guides($grid-large)
+
   &.front:before
     z-index: auto
