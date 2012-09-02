@@ -1,12 +1,53 @@
+// Grid inspired by Zurb's Foundation
+
+// @Functions
+//
+// » grid-width($column-span, $column-width, $column-gutter)
+//   return calculated width for requested arguments
+//
+// » number-to-word($number)
+//   return word for requested number
+
+// @ Mixins
+//
+// » =grid-row($type: outer)
+//   Render row
+//    $type: outer       - first outer containing row
+//    $type: inner       - inner container rows
+//
+// » =grid-column($position: normal)
+//   Render column
+//    $column: last      - flushed right,
+//    $column: end       - last but follows previous columns
+//    $column: inner     - column in inner row
+//    $column: centered  - centered column
+//
+// » grid-offset-by-column($span: 1, $direction: left)
+//   Offset column by $span columns
+//    $span: <integer>    - span number of columns
+//    $direction: left    - offset from left
+//    $direction: right   - offset from right
+//
+// » =grid-column-borders($color: rgba(black, .2))
+//   Render borders of children columns
+//    $color: value       - border color (#hex or Sass colour function)
+//
+// » =grid-show-guides($col-width: $grid-column, $block-size: 9, $color: $grid-guides-color, $opacity: .8, $position: $grid-guides-position)
+//   Show grid guides on current container
+//    $column-width       - width of columns
+//    $block-size         - height of module blocks
+//    $color              - grid colour (#hex or Sass colour function)
+//    $opacity            - grid opacity
+//    $position:back      - place grid behind page elements
+//    $position:front     - place grid in front of page elements
+
 @import "bourbon/css3/background"
 @import "bourbon/functions/render-gradients"
 @import "bourbon/functions/linear-gradient"
 @import "clearfix"
 @import "responsive"
 
-// Grid inspired by Zurb's Foundation
-
-// Defaults
+// Grid defaults
 // --------
 
 // Calculate pixel grid @ http://gridulator.com/
@@ -30,16 +71,14 @@ $grid-guides-position: back !default
 // Functions
 // ---------
 
-// Override Bourbon's function to add optional second argument of column width (useful for responsive design)
-// Calculate column width: <span columns>, <column width>px
-@function grid-width($n, $width: $grid-column, $gutter: $grid-gutter)
-  @return $n * $width + ($n - 1) * $gutter
+@function grid-width($column-span, $column-width: $grid-column, $column-gutter: $grid-gutter)
+  @return $column-span * $column-width + ($column-span - 1) * $column-gutter
 
 // Borrowed from Zurb's Foundation
-@function number-to-word($num)
+@function number-to-word($number)
   $count: 1
   @each $word in one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty, twentyone, twentytwo,twentythree,twentyfour
-    @if ($count == $num)
+    @if ($count == $number)
       @return $word
     $count: $count + 1
   @return "invalid"
@@ -87,9 +126,6 @@ $grid-guides-position: back !default
 =grid-offset-by-column($span: 1, $direction: left)
   margin-#{$direction}: grid-width($span) + $grid-gutter
 
-=grid-column-width($span: 1)
-  width: grid-width($span)
-
 =grid-column-borders($color: rgba(black, .2))
   .column, .columns
     position: relative
@@ -108,10 +144,7 @@ $grid-guides-position: back !default
   .column:last-child:after, .columns:last-child:after
     display: none
 
-=grid-show-guides
-  +grid-guides($grid-column)
-
-=grid-guides($col-width: $grid-column, $block-size: 9, $color: $grid-guides-color, $opacity: .8, $position: $grid-guides-position)
+=grid-show-guides($col-width: $grid-column, $block-size: 9, $color: $grid-guides-color, $opacity: .8, $position: $grid-guides-position)
   position: relative
   &:before
     content: ""
