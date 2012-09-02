@@ -36,7 +36,10 @@
       display: none
 
 .column-borders
-  +grid-column-borders
+  +grid-column-borders($grid-medium)
+
+  +large-screen
+    +grid-column-borders($grid-large)
 
 // Columns
 .column, .columns
@@ -70,7 +73,7 @@
 @for $i from 1 through $grid-total-columns
   .#{number-to-word($i)}-from-left
     +grid-offset-by-column($i, left)
-// - Right (attribute selector to override other modifiers, such as .last)
+// - Right (attribute selector to override other class modifiers, such as .last)
 @for $i from 1 through $grid-total-columns
   .#{number-to-word($i)}-from-right[class],
   .#{number-to-word($i)}-from-right:last-child[class],
@@ -85,10 +88,10 @@
 
 // Grid debugging
 .show-grid
-  +grid-show-guides
+  &.front:before
+    z-index: auto
+
+  +grid-show-guides($grid-medium)
 
   +large-screen
     +grid-show-guides($grid-large)
-
-  &.front:before
-    z-index: auto

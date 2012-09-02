@@ -1,41 +1,49 @@
 // -----------------------------------------------------------------------------
 // • Functions
 // -----------------------------------------------------------------------------
-// » column-width($column-span, $column-width: $grid-column, $column-gutter: calculate-gutter-width($grid-medium))
-//   return calculated width for requested arguments
-//    $column-span: <integer>    - span number of columns
-//    $column-width              - width of column
+// » grid-column-span-width($column-span, $column-width, $column-gutter)
+//   calculate merged columns with (including gutter)
+//    $column-span: <integer>    - number of columns
+//    $column-width              - with of single column
+//    $column-gutter             - column gutter
 //
-// » calculate-column-width($row-width: $grid-medium, $total-columns: $grid-total-columns, $gutter: calculate-gutter-width($grid-medium))
-//   return column width calculated from container width, number of columns and gutter
+// » grid-single-column-width($grid-width, $total-columns, $gutter)
+//   calculate single column width for given container width and gutter width
 //    $row-width                 - width of columns container
 //    $total-columns: <integer>  - number of total columns
 //    $gutter                    - column gutter width
 //
-// » calculate-gutter-width($row-width: $grid-medium, $around: $desired-grid-gutter)
-//   return column gutter width calculated from grid container and number of columns. Accepts desired approximate gutter width
-//    $row-width                 - total grid container width to calculate gutter from
-//    $grid-gutter               - value in px to base desired gutter width on
+// » grid-column-gutter($grid-width, $desired)
+//   calculate gutter width from total grid width and desired approximate gutter width
+//    $grid-width                - total grid width
+//    $grid-gutter               - desired gutter width (will return closest)
 //
 // » number-to-word($number)
 //   return word for requested number
 //    $number <integer>          - number to convert
 // -----------------------------------------------------------------------------
 
-
-@function column-width($column-span, $column-width: $grid-column, $column-gutter: calculate-gutter-width($grid-medium))
+// $column-span, $column-width, $column-gutter
+@function grid-column-span-width($column-span, $column-width, $column-gutter)
   @return ceil($column-span * $column-width + ($column-span - 1) * $column-gutter)
 
-@function calculate-column-width($row-width: $grid-medium, $total-columns: $grid-total-columns, $gutter: calculate-gutter-width($grid-medium))
-  @return ($row-width - (($total-columns - 1) * $gutter)) / $total-columns
+// $grid-width, $total-columns, $gutter
+@function grid-single-column-width($grid-width, $total-columns, $gutter)
+  @return ($grid-width - (($total-columns - 1) * $gutter)) / $total-columns
 
-@function calculate-gutter-width($row-width: $grid-medium, $around: $desired-grid-gutter)
+// $grid-width, $desired
+@function grid-column-gutter($grid-width, $desired)
   $gutter: 0px
   $column: 1
+  // Find a round gutter width
   @while $column > $gutter
-    $column: calculate-column-width($row-width, $grid-total-columns, $gutter)
+    $column: grid-single-column-width($grid-width, $grid-total-columns, $gutter)
     @if $column % 1 == 0
-      @if $gutter > ($around - 4) and $gutter < ($around + 20)
+      $range-from:  $desired - 6
+      $range-to:    $desired + 20
+      $within-range: $gutter >= $range-from and $gutter <= $range-to
+      // Find gutter within desired range
+      @if $within-range
         @return $gutter
     $gutter: $gutter + 1
 
