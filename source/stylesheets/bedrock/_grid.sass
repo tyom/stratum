@@ -90,6 +90,24 @@ $grid-guides-position: back !default
 =grid-column-width($span: 1)
   width: grid-width($span)
 
+=grid-column-borders($color: rgba(black, .2))
+  .column, .columns
+    position: relative
+  .column:before, .columns:after
+    content: ""
+    position: absolute
+    width: 1px
+    left: -$grid-gutter/2
+    top: 0
+    bottom: 0
+    background: $color
+  .column:after, .columns:after
+    right: -$grid-gutter/2
+    left: auto
+  .column:first-child:before, .columns:first-child:before,
+  .column:last-child:after, .columns:last-child:after
+    display: none
+
 =grid-show-guides
   +grid-guides($grid-column)
 

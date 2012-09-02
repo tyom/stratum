@@ -1,5 +1,6 @@
-@import "toolbox/grid"
+@import "bedrock/grid"
 
+// Rows
 .row
   +grid-row
   // Inner row
@@ -13,6 +14,10 @@
     .row:before
       display: none
 
+.column-borders
+  +grid-column-borders
+
+// Columns
 .column, .columns
   +grid-column
   // Centred column
