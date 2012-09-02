@@ -3,7 +3,7 @@ Bedrock
 
 Framework which helps to start any project quick. Comes with Middleman static site generator.
 
-See (**Examples**).
+See [**Examples**](http://tyom.github.com/bedrock/).
 
 Usage
 -----
