@@ -42,19 +42,21 @@
     +grid-column-borders($grid-large)
 
 
-// Columns in the inner row
-.row .row .column, .row .row .columns,
-.row .row [class*="column"] + [class*="column"]:last-child,
-  +grid-column(inner)
-
 // Columns
 .column, .columns
   +grid-column
-  // Centred column
-  &.centered, .row &.centered, .row .row &.centered,
-  &[class*="column"] + [class*="column"].centered,
-  &[class*="column"] + [class*="column"].centered:last-child
-    +grid-column(centered)
+
+// Columns in the inner row
+.row .row .column, .row .row .columns,
+.row .row [class*="column"] + [class*="column"].last,
+.row .row [class*="column"] + [class*="column"]:last-child,
+  +grid-column(inner)
+
+// Centred column
+[class*="column"] + [class*="column"].centered,
+[class*="column"] + [class*="column"].centered:last-child,
+.row .row [class*="column"] + [class*="column"].centered,
+  +grid-column(centered)
 
 // Last column
 [class*="column"] + [class*="column"]:last-child,
