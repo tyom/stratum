@@ -16,16 +16,16 @@ title: Bedrock Components
       .two.columns 2
 
     .row
-      - (1..12).each do |i|
-        .one.column #{i}
+      - (1..12).each do
+        .one.column 1
 
     .row
       .two.columns 2
       .two.columns 2
-      .six.columns.one-from-right.one-from-left 6
+      .six.columns.one-from-right.one-from-left 6, offset by 1 from left and right
 
     .row
       .two.columns 2
       .three.columns.last 2
-      .two.columns.centered 4
+      .two.columns.centered 4, centred
 
