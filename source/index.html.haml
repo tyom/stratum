@@ -1,21 +1,31 @@
 ---
-title: Bedrock components
+title: Bedrock Components
 ---
 
-.row
+%section.row
   %header
-    %h1 Hello there
+    %h1= data.page.title
 
-  .row.column-borders
-    .one.column
-      %h2 #1
-      %p= lorem.sentence
-    .two.columns
-      %h2 #2
-      %p= lorem.paragraph
-    .five.columns
-      %h2 #3
-      %p= lorem.paragraph
-    .two.columns
-      %h2 #4
-      %p= lorem.paragraph
+  %article
+    %h2 Grid
+
+    .row
+      .one.column 1
+      .two.columns 2
+      .seven.columns 5
+      .two.columns 2
+
+    .row
+      - (1..12).each do |i|
+        .one.column #{i}
+
+    .row
+      .two.columns 2
+      .two.columns 2
+      .six.columns.one-from-right.one-from-left 6
+
+    .row
+      .two.columns 2
+      .three.columns.last 2
+      .two.columns.centered 4
+
