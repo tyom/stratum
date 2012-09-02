@@ -132,14 +132,14 @@ $grid-display-column-sizes: false  !default
 =grid-column-width($span: 1)
   $column-width: grid-column-span-width($span, $grid-column-medium, $grid-gutter-medium)
   width: $column-width
-  &:before
-    position: static !important
-    background: rgba(white, .5) !important
-    width: auto !important
-    padding: 5px
-    margin-bottom: 10px
-    font-size: 12px
-    color: #777
+  // &:before
+    // position: static !important
+    // background: rgba(white, .5) !important
+    // width: auto !important
+    // padding: 5px
+    // margin-bottom: 10px
+    // font-size: 12px
+    // color: #777
 
     @if $grid-display-column-sizes
       display: block !important
@@ -161,20 +161,21 @@ $grid-display-column-sizes: false  !default
     margin-#{$direction}: grid-column-span-width($span, $grid-column, $grid-gutter-large)
 
 
-=grid-column-borders($grid-size, $color: rgba(black, .2))
+=grid-column-borders($grid-size, $color: #bbb)
   .column, .columns
     position: relative
-  .column:before, .columns:after
+  .column:before, .columns:before,
+  .column:after, .columns:after
     content: ""
     position: absolute
     width: 1px
-    left: -(grid-column-gutter($grid-size, $grid-desired-gutter) / 2)
     top: 0
     bottom: 0
     background: $color
+  .column:before, .columns:before
+    left: -(grid-column-gutter($grid-size, $grid-desired-gutter) / 2)
   .column:after, .columns:after
-    right: -(grid-column-gutter($grid-size, $grid-desired-gutter) / 2)
-    left: auto
+    right: -((grid-column-gutter($grid-size, $grid-desired-gutter) / 2) + 1)
   .column:first-child:before, .columns:first-child:before,
   .column:last-child:after, .columns:last-child:after
     display: none
