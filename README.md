@@ -14,7 +14,7 @@ Usage
 
 ### Sass
 
-Bedrock currently requires Bourbon, so make sure it's installed. 
+Bedrock currently requires Bourbon, so make sure it's installed.
 
 `@import "bedrock"` into your Sass stylesheet to get started.
 
@@ -24,7 +24,7 @@ Bedrock uses responsive layouts ad will calculate optimal grids for you based on
 
     $grid-medium:         980px
     $grid-large:          1200px
-    
+
     $grid-total-columns:  12
     $grid-baseline:       20px
     $grid-desired-gutter: 20px
@@ -47,7 +47,7 @@ You can enable the grid guides from settings or by setting the `.show-grid` clas
 Custom colour and opacity can be alse specified in settings. It is also possible to move grid in front of the container (to see throught it). Also done by using the `.show-grid.front` class.
 
     $grid-display-column-sizes: true
-    
+
 This will display column sizes on each coloumn.
 
 ### Scaffolding
@@ -69,6 +69,8 @@ Last column is automatically floated to the right (helps with browser rounding p
 `.flush-right` and `.flush-left` are used to flush elements to corresponding side.
 
 Add `.show-grid` on a container to display grid guides (using the settings above).
+
+Use `.show-column-sizes` on container to display width on each column
 
 ---
 

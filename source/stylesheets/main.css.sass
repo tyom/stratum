@@ -6,12 +6,18 @@ body
 
 header
   margin: 0 0 20px
-  border-bottom: 2px solid #aaa
-  padding: 0 0 $grid-baseline
   h1
     margin: 0
 
+h2
+  font-weight: normal
+  color: #777
+
+.row .row
+  margin-bottom: grid-column-gutter($grid-medium, $grid-desired-gutter)
+
 .column, .columns
-  margin-bottom: 10px
-  h2
-    margin: 0
+  padding: grid-column-gutter($grid-medium, $grid-desired-gutter) / 2
+  background: rgba(#fff, .7)
+  font-size: 13px
+  color: #aaa
