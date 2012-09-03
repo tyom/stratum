@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------
-// • Mixins
+// • Pixel Grid Mixins
 // -----------------------------------------------------------------------------
 // » =grid-row($type: outer)
 //   Render row
@@ -158,9 +158,9 @@ $grid-display-column-sizes: false  !default
     bottom: 0
     background: $color
   .column:before, .columns:before
-    left: -(grid-column-gutter($grid-size, $grid-desired-gutter) / 2)
+    left: -(grid-column-gutter($grid-size, $grid-desired-gutter) / 2 + 2)
   .column:after, .columns:after
-    right: -((grid-column-gutter($grid-size, $grid-desired-gutter) / 2) + 1)
+    right: -(grid-column-gutter($grid-size, $grid-desired-gutter) / 2 + 1)
   .column:first-child:before, .columns:first-child:before,
   .column:last-child:after, .columns:last-child:after
     display: none
@@ -173,8 +173,9 @@ $grid-display-column-sizes: false  !default
     left: 0
     right: 0
     text-align: center
-    padding: 5px 10px
-    background: rgba(white, .5)
+    padding: 9px 10px
+    border-bottom: 1px solid rgba(black, .1)
+    background: rgba(white, .6)
     font-size: 12px
     color: #777
     position: absolute

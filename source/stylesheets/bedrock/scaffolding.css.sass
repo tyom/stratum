@@ -1,8 +1,8 @@
 // -----------------------------------------------------------------------------
 // • Scaffolding
 // -----------------------------------------------------------------------------
-// .row       - outer columns container (centers within the containing element)
-// .row .row  - inner columns container
+// .container       - outer columns container (centers within the containing element)
+// .container .row  - inner columns container
 
 // .column-borders    - show borders between columns (set on container containing .column(s))
 // .column, .columns  - use for individual columns. (.one, .two, .three, ... .twenty-four to span columns)
@@ -22,7 +22,7 @@
 @import "bedrock/grid"
 
 // Rows
-.row
+.container
   +grid-row
   // Inner row
   .row
@@ -30,10 +30,14 @@
 
 // Draw guides if $grid-guides is set
 @if $grid-guides
-  .row
+  .container
     @extend .show-grid
     .row:before
       display: none
+
+@if $grid-display-column-sizes
+  .container
+    @extend .show-column-sizes
 
 .column-borders
   +grid-column-borders($grid-medium)
@@ -47,15 +51,14 @@
   +grid-column
 
 // Columns in the inner row
-.row .row .column, .row .row .columns,
-.row .row [class*="column"] + [class*="column"].last,
-.row .row [class*="column"] + [class*="column"]:last-child,
+.row .column,.row .columns,
+.row [class*="column"] + [class*="column"].last,
+.row [class*="column"] + [class*="column"]:last-child,
   +grid-column(inner)
 
 // Centred column
 [class*="column"] + [class*="column"].centered,
 [class*="column"] + [class*="column"].centered:last-child,
-.row .row [class*="column"] + [class*="column"].centered,
   +grid-column(centered)
 
 // Last column
@@ -77,9 +80,9 @@
 @for $i from 1 through $grid-total-columns
   .#{number-to-word($i)}-from-left[class],
   .#{number-to-word($i)}-from-left:first-child[class],
-  .row .row .#{number-to-word($i)}-from-left[class],
-  .row .row .#{number-to-word($i)}-from-left.end[class],
-  .row .row .#{number-to-word($i)}-from-left:first-child[class]
+  .row .#{number-to-word($i)}-from-left[class],
+  .row .#{number-to-word($i)}-from-left.end[class],
+  .row .#{number-to-word($i)}-from-left:first-child[class]
     +grid-offset-by-column($i, left)
 // - Right (attribute selector to override other class modifiers, such as .last)
 @for $i from 1 through $grid-total-columns
@@ -87,8 +90,8 @@
   .#{number-to-word($i)}-from-right:last-child[class],
   .#{number-to-word($i)}-from-right.last[class],
   .#{number-to-word($i)}-from-right.end[class],
-  .row .row .#{number-to-word($i)}-from-right:last-child[class],
-  .row .row .#{number-to-word($i)}-from-right.last[class]
+  .row .#{number-to-word($i)}-from-right:last-child[class],
+  .row .#{number-to-word($i)}-from-right.last[class]
     +grid-offset-by-column($i, right)
 
 .flush-right
