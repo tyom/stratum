@@ -19,96 +19,123 @@
 // .show-grid         - show grid guide (useful for debugging and layout building)
 // -----------------------------------------------------------------------------
 
-@import "bedrock/grid"
+@import "bedrock/grid";
 
 // Rows
-.container
-  +grid-row
+.container {
+  @include grid-row;
   // Inner row
-  .row
-    +grid-row(inner)
+  .row {
+    @include grid-row(inner);
+  }
+}
 
 // Draw guides if $grid-guides is set
-@if $grid-guides
-  .container
-    @extend .show-grid
-    .row:before
-      display: none
+@if $grid-guides {
+  .container {
+    @extend .show-grid;
 
-@if $grid-display-column-sizes
-  .container
-    @extend .show-column-sizes
+    .row:before {
+      display: none;
+    }
+  }
+}
 
-.column-borders
-  +grid-column-borders($grid-medium)
+@if $grid-display-column-sizes {
+  .container {
+    @extend .show-column-sizes;
+  }
+}
 
-  +large-screen
-    +grid-column-borders($grid-large)
+
+.column-borders {
+  @include grid-column-borders($grid-medium);
+
+  @include large-screen {
+    @include grid-column-borders($grid-large);
+  }
+}
 
 
 // Columns
-.column, .columns
-  +grid-column
+.column, .columns {
+  @include grid-column;
+}
 
 // Columns in the inner row
 .row .column,.row .columns,
 .row [class*="column"] + [class*="column"].last,
-.row [class*="column"] + [class*="column"]:last-child,
-  +grid-column(inner)
+.row [class*="column"] + [class*="column"]:last-child {
+  @include grid-column(inner);
+}
 
 // Centred column
 [class*="column"] + [class*="column"].centered,
-[class*="column"] + [class*="column"].centered:last-child,
-  +grid-column(centered)
+[class*="column"] + [class*="column"].centered:last-child {
+  @include grid-column(centered);
+}
 
 // Last column
 [class*="column"] + [class*="column"]:last-child,
-[class*="column"] + [class*="column"].last
-  +grid-column(last)
+[class*="column"] + [class*="column"].last {
+  @include grid-column(last);
+}
 
 // Ending column (following others)
-[class*="column"] + [class*="column"].end
-  +grid-column(end)
+[class*="column"] + [class*="column"].end {
+  @include grid-column(end);
+}
 
 // Column sizes
-@for $i from 1 through $grid-total-columns
-  .#{number-to-word($i)}
-    +grid-column-width($i)
+@for $i from 1 through $grid-total-columns {
+  .#{number-to-word($i)} {
+    @include grid-column-width($i);
+  }
+}
 
 // Offsets:
 // - Left
-@for $i from 1 through $grid-total-columns
+@for $i from 1 through $grid-total-columns {
   .#{number-to-word($i)}-from-left[class],
   .#{number-to-word($i)}-from-left:first-child[class],
   .row .#{number-to-word($i)}-from-left[class],
   .row .#{number-to-word($i)}-from-left.end[class],
-  .row .#{number-to-word($i)}-from-left:first-child[class]
-    +grid-offset-by-column($i, left)
+  .row .#{number-to-word($i)}-from-left:first-child[class] {
+    @include grid-offset-by-column($i, left);
+  }
+}
 // - Right (attribute selector to override other class modifiers, such as .last)
-@for $i from 1 through $grid-total-columns
+@for $i from 1 through $grid-total-columns {
   .#{number-to-word($i)}-from-right[class],
   .#{number-to-word($i)}-from-right:last-child[class],
   .#{number-to-word($i)}-from-right.last[class],
   .#{number-to-word($i)}-from-right.end[class],
   .row .#{number-to-word($i)}-from-right:last-child[class],
-  .row .#{number-to-word($i)}-from-right.last[class]
-    +grid-offset-by-column($i, right)
+  .row .#{number-to-word($i)}-from-right.last[class] {
+    @include grid-offset-by-column($i, right);
+  }
+}
 
-.flush-right
-  float: right
-.flush-left
-  float: left
+.flush-right {
+  float: right;
+}
+.flush-left {
+  float: left;
+}
 
 
 // Grid debugging
-.show-grid
-  &.front:before
-    z-index: auto
+.show-grid {
+  @include grid-show-guides($grid-medium);
 
-  +grid-show-guides($grid-medium)
+  @include large-screen {
+    @include grid-show-guides($grid-large);
+  }
+  &.front:before {
+    z-index: auto;
+  }
+}
 
-  +large-screen
-    +grid-show-guides($grid-large)
-
-.show-column-sizes
-  +grid-show-column-sizes
+.show-column-sizes {
+  @include grid-show-column-sizes;
+}

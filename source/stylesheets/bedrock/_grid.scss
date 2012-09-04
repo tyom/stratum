@@ -1,0 +1,257 @@
+// -----------------------------------------------------------------------------
+// • Pixel Grid Mixins
+// -----------------------------------------------------------------------------
+// » grid-row($type: outer)
+//   Converts into grid row
+//    $type: outer       - first outer containing row
+//    $type: inner       - inner container rows
+//
+// » grid-column($position: normal)
+//   Converts into grid column (generic for any size)
+//    $column: last      - flushed right,
+//    $column: end       - last but follows previous columns
+//    $column: inner     - column in inner row
+//    $column: centered  - centered column
+//
+// » grid-column-width($span: 1)
+//   Renders column width (specific size)
+// » grid-offset-by-column($span: 1, $direction: left)
+//   Calculates column offset by $span columns
+//    $span: <integer>    - span number of columns
+//    $direction: left    - offset from left
+//    $direction: right   - offset from right
+//
+// » grid-column-borders($color: rgba(black, .2))
+//   Renders borders on descendent columns
+//    $color: value       - border color (#hex or Sass colour function)
+//
+// » grid-show-guides($col-width: $grid-column, $block-size: 9, $color: $grid-guides-color, $opacity: .8, $position: $grid-guides-position)
+//   Renders grid guides
+//    $column-width       - width of columns
+//    $block-size         - height of module blocks
+//    $color              - grid colour (#hex or Sass colour function)
+//    $opacity            - grid opacity
+//    $position:back      - place grid behind page elements
+//    $position:front     - place grid in front of page elements
+// -----------------------------------------------------------------------------
+
+@import "bourbon/css3/background";
+@import "bourbon/functions/render-gradients";
+@import "bourbon/functions/linear-gradient";
+
+@import "functions";
+@import "clearfix";
+@import "responsive";
+
+// Grid defaults
+// --------
+
+// Calculate pixel grid @ http://gridulator.com/
+$grid-medium:         980px   !default;
+$grid-large:          1200px  !default;
+
+$grid-total-columns:  12      !default;
+$grid-baseline:       20px    !default;
+$grid-desired-gutter: 20px    !default;
+
+$grid-gutter-medium:  grid-column-gutter($grid-medium, $grid-desired-gutter);
+$grid-gutter-large:   grid-column-gutter($grid-large, $grid-desired-gutter);
+$grid-half-gutter-m:  $grid-gutter-medium / 2;
+$grid-half-gutter-l:  $grid-gutter-large / 2;
+$grid-column-medium:  grid-single-column-width($grid-medium, $grid-total-columns, $grid-gutter-medium);
+$grid-column-large:   grid-single-column-width($grid-large, $grid-total-columns, $grid-gutter-large);
+
+$grid-column: $grid-column-medium  !default;
+
+$grid-guides:            false     !default;
+$grid-guides-color:      #c84e5b   !default;
+$grid-guides-opacity:    .2        !default;
+$grid-guides-position:   back      !default;
+
+$grid-display-column-sizes: false  !default;
+
+// @debug "gutter medium:" $grid-gutter-large;
+// @debug "column medium:" $grid-column-large;
+
+// Mixins
+// ------
+
+// Converts element into grid row
+@mixin grid-row($type: outer) {
+  $half-gutter: $grid-gutter-medium / 2;
+
+  @include clearfix;
+  @if $type == outer {
+    width: $grid-medium;
+    min-width: $grid-medium;
+    max-width: 100%;
+    @include large-screen {
+      width: $grid-large;
+    }
+    margin: {
+      left: auto;
+      right: auto;
+    }
+  } @else {
+    width: auto;
+    max-width: none;
+    margin: {
+      left:  -$grid-half-gutter-m;
+      right: -$grid-half-gutter-m;
+    }
+    @include large-screen {
+      margin: {
+        left:  -$grid-half-gutter-l;
+        right: -$grid-half-gutter-l;
+      }
+    }
+  }
+}
+
+// Converts into grid column
+// $position - can be normal, last, end, inner or centered
+@mixin grid-column($position: normal) {
+  @if $position == last {
+    float: right;
+    margin-right: 0;
+  } @else if $position == end {
+    float: left;
+    margin-right: 0;
+  } @else if $position == inner {
+    margin: {
+      left:  $grid-half-gutter-m;
+      right: $grid-half-gutter-m;
+    }
+    @include large-screen {
+      margin: {
+        left:  $grid-half-gutter-l;
+        right: $grid-half-gutter-l;
+      }
+    }
+  } @else if $position == centered {
+    float: none;
+    margin: {
+      left: auto;
+      right: auto;
+    }
+  } @else {
+    min-height: 1px;
+    float: left;
+    margin-right: $grid-gutter-medium;
+    @include large-screen {
+      margin-right: $grid-gutter-large;
+    }
+  }
+}
+
+// Calculate single column width multipled by number of columns it spans (indluding gutters)
+@mixin grid-column-width($span: 1) {
+  width: grid-column-span-width($span, $grid-column-medium, $grid-gutter-medium);
+  @include large-screen {
+    width: grid-column-span-width($span, $grid-column-large, $grid-gutter-large);
+  }
+  @if $grid-display-column-sizes {
+    @include grid-show-column-sizes;
+  }
+}
+
+// Calculate offset width based on number of columns it spans (including gutters)
+// $span, $direction
+@mixin grid-offset-by-column($span: 1, $direction: left) {
+  margin-#{$direction}: grid-column-span-width($span, $grid-column-medium, $grid-gutter-medium) + ($grid-gutter-medium * 3 / 2);
+  @include large-screen {
+    margin-#{$direction}: grid-column-span-width($span, $grid-column-large, $grid-gutter-large) + ($grid-gutter-large * 3 / 2);
+  }
+}
+
+// Renders borders between columns (except the first and the last ones)
+// $grid-size, $color
+@mixin grid-column-borders($grid-size, $color: #bbb) {
+  .column, .columns {
+    position: relative;
+  }
+  .column:before, .columns:before,
+  .column:after, .columns:after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    top: 0;
+    bottom: 0;
+    background: $color;
+  }
+  .column:before, .columns:before {
+    left: -(grid-column-gutter($grid-size, $grid-desired-gutter) / 2 + 2);
+  }
+  .column:after, .columns:after {
+    right: -(grid-column-gutter($grid-size, $grid-desired-gutter) / 2 + 1);
+  }
+  .column:first-child:before, .columns:first-child:before,
+  .column:last-child:after, .columns:last-child:after {
+    display: none;
+  }
+}
+
+// Renders a bars on top of columns, each with its column's size pixel value
+@mixin grid-show-column-sizes {
+  .column, .columns {
+    position: relative;
+  }
+  .column:before, .columns:before {
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 9px 10px;
+    border-bottom: 1px solid rgba(black, .1);
+    background: rgba(white, .6);
+    font-size: 12px;
+    color: #777;
+    position: absolute;
+    content: "#{$grid-column-medium}";
+  }
+
+  @include large-screen {
+    .column:before {
+      display: block !important;
+      content: "#{$grid-column-large}";
+    }
+  }
+
+}
+
+// Draws grid guides
+// $grid-size, $block-size,$color, $opacity, $position
+@mixin grid-show-guides($grid-size: $grid-medium, $block-size: 9, $color: $grid-guides-color, $opacity: $grid-guides-opacity, $position: $grid-guides-position) {
+
+  $column-gutter: grid-column-gutter($grid-size, $grid-desired-gutter);
+  $column-width:  grid-single-column-width($grid-size, $grid-total-columns, $column-gutter);
+  $combined-width:  $column-width + $column-gutter;
+  $block-height: (($grid-baseline + 1) * $block-size) + $grid-baseline;
+
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    @include background(
+     // Baseline
+        linear-gradient(transparent $grid-baseline, rgba(white, $opacity) $grid-baseline),
+     // Columns
+        linear-gradient(left, rgba($color, $opacity), rgba($color, $opacity) $column-width, transparent $column-width, transparent $combined-width),
+     // Blocks
+        linear-gradient(transparent ($block-height - $grid-baseline), rgba(white, $opacity / 1.2) $grid-baseline),
+     // Base colour
+        linear-gradient(rgba($color, $opacity), rgba($color, $opacity)));
+    background-size: $combined-width $grid-baseline + 1, $combined-width ($grid-baseline * $block-size), $combined-width ($block-height + 1);
+
+    // Grid placement (back by default)
+    @if $position == front {
+      z-index: 999;
+    } @else {
+      z-index: -1;
+    }
+  }
+}
