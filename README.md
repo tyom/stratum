@@ -44,12 +44,7 @@ There are also the following settings available to control grid guide (useful to
     $grid-guides-opacity:    .8     !default
     $grid-guides-position:   back   !default
 
-You can enable the grid guides from settings or by setting the `.show-grid` class on the container you wish to attach the guides to.
-Custom colour and opacity can be alse specified in settings. It is also possible to move grid in front of the container (to see throught it). Also done by using the `.show-grid.front` class.
-
-    $grid-display-column-sizes: true
-
-This will display column sizes on each coloumn.
+You can enable the grid guides from settings or by setting the `.show-grid` class on the container you wish to attach the guides to. Custom colour and opacity can be alse specified in settings.
 
 ### Scaffolding
 
