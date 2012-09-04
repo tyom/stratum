@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+// © 2012 Tyom Semonov <mail@tyom.net>
+// Some ideas are borrowed from Zurb's Foundation
+
+// -----------------------------------------------------------------------------
+// Bedrock settings
+// -----------------------------------------------------------------------------
+//
+// Grid
+//
+// $grid-guides:               true
+// $grid-guides-color:         #c84e5b
+// $grid-guides-opacity:       .2
+// $grid-guides-position:      front
+// $grid-total-columns:        8
+// $grid-desired-gutter:       30px
+// $grid-baseline:             30px
+// $grid-display-column-sizes: true
+// -----------------------------------------------------------------------------
+
+@import "bedrock/normalize";
+@import "bedrock/scaffolding";
+@import "bedrock/addons";
+@import "bedrock/forms";
