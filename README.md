@@ -53,14 +53,13 @@ This will display column sizes on each coloumn.
 
 ### Scaffolding
 
-To quickly build a multicolumn layout use `.row` to identify columns containers. The first instance of `row` will set grid-width and center it on the page.
-The descendant `.row`s will expand to full width and contain `.column` elements.
+To quickly build a multicolumn layout use `.container` to identify columns containers. The first instance of `row` will set grid-width and center it on the page. The descendant `.row`s will expand to full width and contain `.column` elements.
 
 `.row.column-borders` to render gutter borders dividing columns.
 
 `.column` or `.columns` is used to identify columns. Use span modifier for appropriate sizes:
 
-`.one.column`, `.two.column`, `.three.columns`, <...> `.twenty-four.columns` will set spanned widht to the corresponding column.
+`.one.column`, `.two.column`, `.three.columns`, ... `.twenty-four.columns` will set spanned widht to the corresponding column.
 
 Last column is automatically floated to the right (helps with browser rounding problems).
 `.two.columns.last` is used to force column to be the last one (useful when used together with `.column.centered`.

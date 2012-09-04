@@ -1,0 +1,141 @@
+// -----------------------------------------------------------------------------
+// • Scaffolding
+// -----------------------------------------------------------------------------
+// .container       - outer columns container (centers within the containing element)
+// .container .row  - inner columns container
+
+// .column-borders    - show borders between columns (set on container containing .column(s))
+// .column, .columns  - use for individual columns. (.one, .two, .three, ... .twenty-four to span columns)
+
+// .column.last       - treat as last column in the row, float right
+// .column.end        - treat as end column, float left as the previous columns
+// .column.centered   - centre column
+
+// .flush-right       - flush element to right
+// .flush-left        - flush element to left
+
+// .<one>-from-left   - offset column by (one, two, three, ... twenty-four) column spans
+
+// .show-grid         - show grid guide (useful for debugging and layout building)
+// -----------------------------------------------------------------------------
+
+@import "bedrock/grid";
+
+// Rows
+.container {
+  @include grid-row;
+  // Inner row
+  .row {
+    @include grid-row(inner);
+  }
+}
+
+// Draw guides if $grid-guides is set
+@if $grid-guides {
+  .container {
+    @extend .show-grid;
+
+    .row:before {
+      display: none;
+    }
+  }
+}
+
+@if $grid-display-column-sizes {
+  .container {
+    @extend .show-column-sizes;
+  }
+}
+
+
+.column-borders {
+  @include grid-column-borders($grid-medium);
+
+  @include large-screen {
+    @include grid-column-borders($grid-large);
+  }
+}
+
+
+// Columns
+.column, .columns {
+  @include grid-column;
+}
+
+// Columns in the inner row
+.row .column,.row .columns,
+.row [class*="column"] + [class*="column"].last,
+.row [class*="column"] + [class*="column"]:last-child {
+  @include grid-column(inner);
+}
+
+// Centred column
+[class*="column"] + [class*="column"].centered,
+[class*="column"] + [class*="column"].centered:last-child {
+  @include grid-column(centered);
+}
+
+// Last column
+[class*="column"] + [class*="column"]:last-child,
+[class*="column"] + [class*="column"].last {
+  @include grid-column(last);
+}
+
+// Ending column (following others)
+[class*="column"] + [class*="column"].end {
+  @include grid-column(end);
+}
+
+// Column sizes
+@for $i from 1 through $grid-total-columns {
+  .#{number-to-word($i)} {
+    @include grid-column-width($i);
+  }
+}
+
+// Offsets:
+// - Left
+@for $i from 1 through $grid-total-columns {
+  .#{number-to-word($i)}-from-left[class],
+  .#{number-to-word($i)}-from-left:first-child[class],
+  .row .#{number-to-word($i)}-from-left[class],
+  .row .#{number-to-word($i)}-from-left.end[class],
+  .row .#{number-to-word($i)}-from-left:first-child[class] {
+    @include grid-offset-by-column($i, left);
+  }
+}
+// - Right (attribute selector to override other class modifiers, such as .last)
+@for $i from 1 through $grid-total-columns {
+  .#{number-to-word($i)}-from-right[class],
+  .#{number-to-word($i)}-from-right:last-child[class],
+  .#{number-to-word($i)}-from-right.last[class],
+  .#{number-to-word($i)}-from-right.end[class],
+  .row .#{number-to-word($i)}-from-right:last-child[class],
+  .row .#{number-to-word($i)}-from-right.last[class] {
+    @include grid-offset-by-column($i, right);
+  }
+}
+
+.flush-right {
+  float: right;
+}
+.flush-left {
+  float: left;
+}
+
+
+// Grid debugging
+.show-grid {
+  @include grid-show-guides($grid-medium);
+
+  @include large-screen {
+    @include grid-show-guides($grid-large);
+  }
+  &.front:before {
+    z-index: auto;
+  }
+}
+
+.show-column-sizes {
+  @include grid-show-column-sizes;
+}
