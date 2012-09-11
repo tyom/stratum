@@ -21,33 +21,29 @@
 
 @import "bedrock/grid";
 
+$number-words: one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,
+              thirteen,fourteen,fifteen,sixteen,seventeen,eighteen,nineteen,
+              twenty,twentyone,twentytwo,twentythree,twentyfour;
+
 // Rows
 .container {
-  @include grid-row;
-  // Inner row
+  @include grid-container;
   .row {
-    @include grid-row(inner);
+    @include grid-row;
   }
 }
 
-// Draw guides if $grid-guides is set
+// Show grid on .container if enabled
 @if $grid-guides {
   .container {
     @extend .show-grid;
-
     .row:before {
       display: none;
     }
   }
 }
 
-@if $grid-display-column-sizes {
-  .container {
-    @extend .show-column-sizes;
-  }
-}
-
-
+// Borders
 .column-borders {
   @include grid-column-borders($grid-medium);
 
@@ -58,69 +54,56 @@
 
 
 // Columns
-.column, .columns {
+.col {
   @include grid-column;
 }
 
-// Columns in the inner row
-.row .column,.row .columns,
-.row [class*="column"] + [class*="column"].last,
-.row [class*="column"] + [class*="column"]:last-child {
-  @include grid-column(inner);
-}
-
 // Centred column
-[class*="column"] + [class*="column"].centered,
-[class*="column"] + [class*="column"].centered:last-child {
+.col.centered, .col.centered:last-child {
   @include grid-column(centered);
 }
 
 // Last column
-[class*="column"] + [class*="column"]:last-child,
-[class*="column"] + [class*="column"].last {
+.col:last-child, .col.last {
   @include grid-column(last);
 }
 
-// Ending column (following others)
-[class*="column"] + [class*="column"].end {
+// Ending column (follows others)
+.col.end {
   @include grid-column(end);
 }
 
+// Columns in the inner row
+.row .col {
+  @include grid-column-margins(inner);
+}
+
 // Column sizes
-@for $i from 1 through $grid-total-columns {
-  .#{number-to-word($i)} {
-    @include grid-column-width($i);
+@for $i from 1 through length($number-words) {
+  .#{nth($number-words, $i)} {
+    @include grid-column-width($i, $grid-type, 0);
+  }
+  .row .#{nth($number-words, $i)} {
+    @include grid-column-width($i, $grid-type);
   }
 }
+
 
 // Offsets:
 // - Left
 @for $i from 1 through $grid-total-columns {
-  .#{number-to-word($i)}-from-left[class],
-  .#{number-to-word($i)}-from-left:first-child[class],
-  .row .#{number-to-word($i)}-from-left[class],
-  .row .#{number-to-word($i)}-from-left.end[class],
-  .row .#{number-to-word($i)}-from-left:first-child[class] {
+  .row .col.#{nth($number-words, $i)}-from-left,
+  .row .col.#{nth($number-words, $i)}-from-left.end {
     @include grid-offset-by-column($i, left);
   }
 }
 // - Right (attribute selector to override other class modifiers, such as .last)
 @for $i from 1 through $grid-total-columns {
-  .#{number-to-word($i)}-from-right[class],
-  .#{number-to-word($i)}-from-right:last-child[class],
-  .#{number-to-word($i)}-from-right.last[class],
-  .#{number-to-word($i)}-from-right.end[class],
-  .row .#{number-to-word($i)}-from-right:last-child[class],
-  .row .#{number-to-word($i)}-from-right.last[class] {
+  .row .col.#{nth($number-words, $i)}-from-right,
+  .row .col.#{nth($number-words, $i)}-from-right.end,
+  .row .col.#{nth($number-words, $i)}-from-right.last {
     @include grid-offset-by-column($i, right);
   }
-}
-
-.flush-right {
-  float: right;
-}
-.flush-left {
-  float: left;
 }
 
 
@@ -134,8 +117,4 @@
   &.front:before {
     z-index: auto;
   }
-}
-
-.show-column-sizes {
-  @include grid-show-column-sizes;
 }
