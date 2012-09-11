@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------
-// • Pixel Grid Mixins
+// • Bedrock Grid Mixins                            Tyom Semonov <mail@tyom.net>
 // -----------------------------------------------------------------------------
 // » grid-row($type: outer)
 //   Converts into grid row
@@ -26,10 +26,6 @@
 //    $color: value       - border color (#hex or Sass colour function)
 //
 // -----------------------------------------------------------------------------
-
-@import "bourbon/css3/background";
-@import "bourbon/functions/render-gradients";
-@import "bourbon/functions/linear-gradient";
 
 @import "functions";
 @import "clearfix";

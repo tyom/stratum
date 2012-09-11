@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------
-// • Pixel Grid Mixins
+// • Pixel Grid Guides Mixins  (Tyom Semonov <mail@tyom.net>)
 // -----------------------------------------------------------------------------
 // » grid-show-guides($col-width: $grid-column, $block-size: 9, $color: $grid-guides-color, $opacity: .8, $position: $grid-guides-position)
 //   Renders grid guides
@@ -10,6 +10,10 @@
 //    $position:back      - place grid behind page elements
 //    $position:front     - place grid in front of page elements
 // -----------------------------------------------------------------------------
+
+@import "bourbon/css3/background";
+@import "bourbon/functions/render-gradients";
+@import "bourbon/functions/linear-gradient";
 
 // Draws grid guides
 // $grid-size, $block-size,$color, $opacity, $position
