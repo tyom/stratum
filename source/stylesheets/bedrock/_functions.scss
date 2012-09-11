@@ -24,7 +24,8 @@
 // -----------------------------------------------------------------------------
 
 // $column-span, $column-width, $column-gutter
-@function grid-column-span-width($column-span, $column-width, $column-gutter) {
+// $container-margin is a multiplier. Set to 0 to exclude gutters from calculation
+@function grid-column-span-width($column-span, $column-width, $column-gutter, $container-margin: 1) {
   @return ceil($column-span * $column-width + ($column-span - 1) * $column-gutter);
 }
 
@@ -54,17 +55,6 @@
   }
 }
 
-// Borrowed from Zurb's Foundation
-// https://github.com/zurb/foundation/blob/master/scss/foundation/functions/_convert-number-to-word.scss
-@function number-to-word($number) {
-  $count:1;
-  @each $word in one,two,three,four,five,six,seven,eight,nine,ten,eleven,
-    twelve,thirteen,fourteen,fifteen,sixteen,seventeen,eighteen,nineteen,
-    twenty,twentyone,twentytwo,twentythree,twentyfour{
-    @if ($count == $number) {
-      @return $word;
-    }
-    $count: $count + 1;
-  }
-  @return "invalid";
+@function grid-calculate-percentage($width, $grid-width: ($grid-medium + $grid-gutter-medium)) {
+  @return percentage($width / $grid-width);
 }

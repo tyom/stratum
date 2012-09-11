@@ -1,0 +1,60 @@
+// -----------------------------------------------------------------------------
+// • Pixel Grid Mixins
+// -----------------------------------------------------------------------------
+// » grid-show-guides($col-width: $grid-column, $block-size: 9, $color: $grid-guides-color, $opacity: .8, $position: $grid-guides-position)
+//   Renders grid guides
+//    $column-width       - width of columns
+//    $block-size         - height of module blocks
+//    $color              - grid colour (#hex or Sass colour function)
+//    $opacity            - grid opacity
+//    $position:back      - place grid behind page elements
+//    $position:front     - place grid in front of page elements
+// -----------------------------------------------------------------------------
+
+// Draws grid guides
+// $grid-size, $block-size,$color, $opacity, $position
+@mixin grid-show-guides($grid-size: $grid-medium, $block-size: 9, $color: $grid-guides-color, $opacity: $grid-guides-opacity, $position: $grid-guides-position) {
+
+  $column-gutter: grid-column-gutter($grid-size, $grid-desired-gutter);
+  $column-width:  grid-single-column-width($grid-size, $grid-total-columns, $column-gutter);
+
+  @if $grid-type == flexible {
+    $column-gutter: grid-calculate-percentage($column-gutter);
+    $column-width:  grid-calculate-percentage($column-width);
+  }
+
+  $combined-width:  $column-width + $column-gutter;
+  $block-height: (($grid-baseline + 1) * $block-size) + $grid-baseline;
+
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    @include background(
+     // Baseline
+        linear-gradient(transparent $grid-baseline, rgba(white, $opacity) $grid-baseline),
+     // Columns
+        linear-gradient(left, rgba($color, $opacity), rgba($color, $opacity) $column-width, transparent $column-width, transparent $combined-width),
+     // Blocks
+        linear-gradient(transparent ($block-height - $grid-baseline), rgba(white, $opacity / 1.2) $grid-baseline),
+     // Base colour
+        linear-gradient(rgba($color, $opacity), rgba($color, $opacity))
+    );
+    background-size: $combined-width $grid-baseline + 1, $combined-width ($grid-baseline * $block-size), $combined-width ($block-height + 1);
+
+    // Grid placement (back by default)
+    @if $position == front {
+      z-index: 999;
+    } @else {
+      z-index: -1;
+    }
+
+    @if $grid-type == flexible {
+      display: none;
+    }
+  }
+}
