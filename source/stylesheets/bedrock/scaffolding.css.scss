@@ -45,10 +45,10 @@ $number-words: one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,
 
 // Borders
 .column-borders {
-  @include grid-column-borders($grid-medium);
+  @include grid-column-borders($grid-gutter-medium);
 
   @include large-screen {
-    @include grid-column-borders($grid-large);
+    @include grid-column-borders($grid-gutter-large);
   }
 }
 
@@ -85,6 +85,9 @@ $number-words: one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,
   }
   .row .#{nth($number-words, $i)} {
     @include grid-column-width($i, $grid-type);
+  }
+  .flexible .#{nth($number-words, $i)} {
+    @include grid-column-width($i, flexible);
   }
 }
 

@@ -175,27 +175,27 @@ $grid-guides-position:   back      !default;
 
 // Renders borders between columns (except the first and the last ones)
 // $grid-size, $color
-@mixin grid-column-borders($grid-size, $color: #bbb) {
-  .column, .columns {
+@mixin grid-column-borders($column-gutter, $color: #ccc, $style: solid, $size: 1px) {
+  .col {
     position: relative;
   }
-  .column:before, .columns:before,
-  .column:after, .columns:after {
+  .col:before, .col:after {
     content: "";
     position: absolute;
     width: 1px;
     top: 0;
     bottom: 0;
-    background: $color;
+    border: 0 $style $color;
   }
-  .column:before, .columns:before {
-    left: -(grid-column-gutter($grid-size, $grid-desired-gutter) / 2 + 2);
+  .col:before {
+    border-left-width: $size;
+    left: -$column-gutter/2 - $size/2 - 1;
   }
-  .column:after, .columns:after {
-    right: -(grid-column-gutter($grid-size, $grid-desired-gutter) / 2 + 1);
+  .col:after {
+    border-right-width: $size;
+    right: -$column-gutter/2 - $size/2 - 1;
   }
-  .column:first-child:before, .columns:first-child:before,
-  .column:last-child:after, .columns:last-child:after {
+  .col:first-child:before, .col:last-child:after {
     display: none;
   }
 }

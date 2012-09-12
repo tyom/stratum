@@ -7,32 +7,44 @@ title: Bedrock Toolset
   %header
     %h1.container= data.page.title
 
-  .container.sec1
-    .one.col 1
-    .two.col 2
-    .seven.col 5
-    .two.col 2
-
-  .container.sec2
-    .twelve.col 12
-
   .container
     %article#scaffolding
-      %h2 Grid
+      %h2 Grids
 
-      .row
-        .one.col 1
-        .one.col 1
+      %h3 Flexible grid
 
-      .row
+      %h4 With no margins
+      .container.sec1
         .one.col 1
         .two.col 2
         .seven.col 5
         .two.col 2
 
+      %h4 With margins
+      .container.sec2
+        .row.flexible
+          .two.col 2
+          .six.col 6
+          .four.col 4
+
+
+      %h3 Pixel grid
+      %h4 <code>.column-borders</code> is applied.
+
+      .row.column-borders
+        .two.col= lorem.word
+        .two.col= lorem.words 20
+        .six.col
+          %figure= image_tag(lorem.image('450x200'), :text => 'hello')
+          %p= lorem.paragraph
+        .two.col
+          - 3.times do
+            = lorem.sentence
+
       .row
         - (1..12).each do
-          .one.col 1
+          .one.col
+            %h4 1
 
       .row
         .two.col 2
@@ -43,3 +55,9 @@ title: Bedrock Toolset
         .two.col 2
         .three.col.last 2
         .two.col.centered 4, centred
+
+      .row
+        .one.col
+          %h4 1
+        .one.col
+          %h4 1
