@@ -122,6 +122,9 @@ $grid-guides-position:   back      !default;
   @if $variation == centered {
     margin-left:  auto;
     margin-right: auto;
+  } @else if $variation == flexible {
+    margin-left:  grid-calculate-percentage($grid-half-gutter-m);
+    margin-right: grid-calculate-percentage($grid-half-gutter-m);
   } @else {
     @if $variation == inner {
       @if $grid-type == flexible {

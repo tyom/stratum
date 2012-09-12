@@ -77,6 +77,9 @@ $number-words: one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,
 .row .col {
   @include grid-column-margins(inner);
 }
+.flexible .col {
+  @include grid-column-margins(flexible);
+}
 
 // Column sizes
 @for $i from 1 through length($number-words) {
@@ -86,6 +89,7 @@ $number-words: one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,
   .row .#{nth($number-words, $i)} {
     @include grid-column-width($i, $grid-type);
   }
+  // Ad hoc flexinble grid
   .flexible .#{nth($number-words, $i)} {
     @include grid-column-width($i, flexible);
   }
