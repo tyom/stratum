@@ -31,6 +31,10 @@ $number-words: one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,
   .row {
     @include grid-row;
   }
+  &.flexible {
+    min-width: 0;
+    width: 100%;
+  }
 }
 
 // Show grid on .container if enabled
@@ -49,6 +53,12 @@ $number-words: one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,
 
   @include large-screen {
     @include grid-column-borders($grid-gutter-large);
+  }
+
+  .no-borders {
+    :before, :after {
+      border: 0;
+    }
   }
 }
 
@@ -80,18 +90,25 @@ $number-words: one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,
 .flexible .col {
   @include grid-column-margins(flexible);
 }
+.collapse .col, .container > .col {
+  @include grid-column-margins(flexible, 0);
+}
 
 // Column sizes
 @for $i from 1 through length($number-words) {
   .#{nth($number-words, $i)} {
-    @include grid-column-width($i, $grid-type, 0);
+    @if $grid-type == pixel {
+      @include grid-column-width($i);
+    } @else {
+      @include grid-column-width-flexi($i);
+    }
   }
-  .row .#{nth($number-words, $i)} {
-    @include grid-column-width($i, $grid-type);
-  }
-  // Ad hoc flexinble grid
+  // Ad hoc flexible grid
   .flexible .#{nth($number-words, $i)} {
-    @include grid-column-width($i, flexible);
+    @include grid-column-width-flexi($i, false);
+  }
+  .flexible.collapse .#{nth($number-words, $i)}, .container > .#{nth($number-words, $i)} {
+    @include grid-column-width-flexi($i, true);
   }
 }
 
@@ -112,7 +129,6 @@ $number-words: one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,
     @include grid-offset-by-column($i, right);
   }
 }
-
 
 // Grid debugging
 .show-grid {

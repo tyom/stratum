@@ -25,7 +25,7 @@
 
 // $column-span, $column-width, $column-gutter
 // $container-margin is a multiplier. Set to 0 to exclude gutters from calculation
-@function grid-column-span-width($column-span, $column-width, $column-gutter, $container-margin: 1) {
+@function grid-column-span-width($column-span, $column-width, $column-gutter) {
   @return ceil($column-span * $column-width + ($column-span - 1) * $column-gutter);
 }
 
