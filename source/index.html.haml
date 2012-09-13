@@ -17,8 +17,8 @@ title: Bedrock Toolset
       .container.sec1
         .one.col 1
         .two.col 2
-        .seven.col 5
-        .two.col 2
+        .six.col 6
+        .three.col 3
 
       %h4 With margins
       .container.sec2
@@ -32,10 +32,19 @@ title: Bedrock Toolset
       %h4 <code>.column-borders</code> is applied.
 
       .row.column-borders
-        .two.col= lorem.word
+        .two.col
+          .container.flexible.no-borders.collapse
+            .six.col
+              %h4 50%
+            .six.col
+              %h4 50%
+            .six.col
+              %h4 50%
+            .six.col
+              %h4 50%
         .two.col= lorem.words 20
         .six.col
-          %figure= image_tag(lorem.image('450x200'), :text => 'hello')
+          %figure= image_tag lorem.image('450x200'), :text => 'hello', :width => "100%"
           %p= lorem.paragraph
         .two.col
           - 3.times do
@@ -54,7 +63,7 @@ title: Bedrock Toolset
       .row
         .two.col 2
         .three.col.last 2
-        .two.col.centered 4, centred
+        .five.col.centered 3, centred
 
       .row
         .one.col
