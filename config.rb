@@ -64,3 +64,12 @@ configure :build do
   # Or use a different image path
   # set :http_path, "/Content/images/"
 end
+
+
+# Site deployment
+activate :deploy do |deploy|
+  deploy.method = :rsync
+  deploy.user = "username"
+  deploy.host = "website.com"
+  deploy.path = "full/path/to/directory"
+end
