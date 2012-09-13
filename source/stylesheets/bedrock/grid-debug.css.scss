@@ -62,3 +62,25 @@
     }
   }
 }
+
+Grid debugging
+.show-grid {
+  @include grid-show-guides($grid-medium);
+
+  @include large-screen {
+    @include grid-show-guides($grid-large);
+  }
+  &.front:before {
+    z-index: auto;
+  }
+}
+
+// Show grid on .container if enabled
+@if $grid-guides {
+  .container {
+    @extend .show-grid;
+    .row:before {
+      display: none;
+    }
+  }
+}

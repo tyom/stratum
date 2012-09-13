@@ -22,8 +22,8 @@
 @import "bedrock/grid";
 
 $number-words: one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,
-              thirteen,fourteen,fifteen,sixteen,seventeen,eighteen,nineteen,
-              twenty,twentyone,twentytwo,twentythree,twentyfour;
+               thirteen,fourteen,fifteen,sixteen,seventeen,eighteen,nineteen,
+               twenty,twentyone,twentytwo,twentythree,twentyfour;
 
 // Rows
 .container {
@@ -34,36 +34,6 @@ $number-words: one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,
   .flexible, .flexible .row {
     min-width: 0;
     @include grid-row(flexible);
-  }
-}
-
-// Show grid on .container if enabled
-@if $grid-guides {
-  .container {
-    @extend .show-grid;
-    .row:before {
-      display: none;
-    }
-  }
-}
-
-// Borders
-.column-borders {
-  @include grid-column-borders($grid-gutter-medium);
-
-  @include large-screen {
-    @include grid-column-borders($grid-gutter-large);
-  }
-
-  .no-borders {
-    margin: {
-      left: 0;
-      right: 0;
-    };
-
-    :before, :after {
-      border: 0;
-    }
   }
 }
 
@@ -135,14 +105,23 @@ $number-words: one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,
   }
 }
 
-// Grid debugging
-.show-grid {
-  @include grid-show-guides($grid-medium);
+// Borders
+.column-borders {
+  @include grid-column-borders($grid-gutter-medium);
 
   @include large-screen {
-    @include grid-show-guides($grid-large);
+    @include grid-column-borders($grid-gutter-large);
   }
-  &.front:before {
-    z-index: auto;
+
+  .no-borders {
+    margin: {
+      left: 0;
+      right: 0;
+    };
+
+    :before, :after {
+      border: 0;
+    }
   }
 }
+

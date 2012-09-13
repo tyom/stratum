@@ -3,7 +3,17 @@ Bedrock
 
 Framework which helps to start any project quick. Comes with [Middleman](http://middlemanapp.com/) static site generator.
 
-See [**Examples**](http://tyom.github.com/bedrock/).
+It's intended to quickly get you started on prototyping websites with basic toolkit such as highly configurable grids with visual feedback,
+[support](https://github.com/rtomayko/tilt) for most popular templating engines and processors (Haml, Sass, ERB, Markdown, Coffeescript etc.)
+and quick deploy to remote servers through `middleman deploy` extension. And of course many other great features that come with above mentioned
+tools.
+
+The Grid System means to provide easy-to-use scuffolding during irratic prototyping, taking away the worry to think about implementation of
+layout and concentrate on UI. LiveReload that comes preinstalled keeps you focused and reduces context switching. Every time you save file you're
+working on the appropriate files get automatically compiled and browser refreshes only the required parts, giving you instant feetback while your
+hands are on the keyboard.
+
+See some [**examples of the grid**](http://tyom.github.com/bedrock/).
 
 Usage
 -----
@@ -15,7 +25,9 @@ Usage
 
 ### Sass
 
-Bedrock currently requires Bourbon, so make sure it's installed.
+Bedrock currently requires Bourbon for grid guides (`grid-debug.scss`). You don't need to install it as it comes preinstalled with this toolkit.
+However consider installing it locally if you want to update it separately. You also don't need Bourbon if you don't intend to use grid guides
+(although I find them incredibely useful).
 
 `@import "bedrock"` into your Sass stylesheet to get started.
 
