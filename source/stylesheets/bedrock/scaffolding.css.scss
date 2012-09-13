@@ -31,9 +31,9 @@ $number-words: one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,
   .row {
     @include grid-row;
   }
-  &.flexible {
+  .flexible, .flexible .row {
     min-width: 0;
-    width: 100%;
+    @include grid-row(flexible);
   }
 }
 
@@ -56,6 +56,11 @@ $number-words: one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,
   }
 
   .no-borders {
+    margin: {
+      left: 0;
+      right: 0;
+    };
+
     :before, :after {
       border: 0;
     }

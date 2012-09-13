@@ -81,22 +81,9 @@ $grid-guides-position:   back      !default;
 }
 
 // Converts element into grid row
-@mixin grid-row {
+@mixin grid-row($variant: inner) {
   @include clearfix;
-  width: auto;
-  max-width: none;
-  margin: {
-    left:  -$grid-half-gutter-m;
-    right: -$grid-half-gutter-m;
-  }
-  @include large-screen {
-    margin: {
-      left:  -$grid-half-gutter-l;
-      right: -$grid-half-gutter-l;
-    }
-  }
-  // Inverse margins
-  @include grid-column-margins(inner, -1);
+  @include grid-column-margins($variant, -1);
 }
 
 // Converts into grid column
