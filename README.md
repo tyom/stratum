@@ -18,6 +18,19 @@ See some [**examples of the grid**](http://tyom.github.com/bedrock/).
 Usage
 -----
 
+**To get started**
+
+First you need to install Middleman: `gem install middleman`.
+
+Then get the latest Bedrock toolkit.
+
+    git clone https://github.com/tyom/bedrock.git ~/.middleman/bedrock
+
+This will clone the latest version to your Middleman's templates directory. To initialize a new project:
+
+    middleman init project_name -T bedrock
+
+
 ### Server
 
 `bundle install` to install all required gems
