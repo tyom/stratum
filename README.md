@@ -1,7 +1,7 @@
 Bedrock
 =======
 
-Framework which helps to start any project quick. Comes with Middleman static site generator.
+Framework which helps to start any project quick. Comes with [Middleman](http://middlemanapp.com/) static site generator.
 
 See [**Examples**](http://tyom.github.com/bedrock/).
 
