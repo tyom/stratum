@@ -115,51 +115,50 @@ $grid-guides-position:   back      !default;
   @include grid-column-margins($variation);
 }
 
-@mixin grid-column-margins($variation, $sign: 1) {
-  $margin-left: 0;
-  $margin-right: 0;
+// Apply column margins
+@mixin grid-column-margins($variation, $modifier: 1) {
+  @if $variation != collapse {
+    @if $variation == centered {
+      margin-left:  auto;
+      margin-right: auto;
+    } @else if $variation == flexible {
+      margin-left:  grid-calculate-percentage($grid-half-gutter-m * $modifier);
+      margin-right: grid-calculate-percentage($grid-half-gutter-m * $modifier);
+    } @else {
+      @if $variation == inner {
+        @if $grid-type == flexible {
+          margin-left:  grid-calculate-percentage($grid-half-gutter-m * $modifier);
+          margin-right: grid-calculate-percentage($grid-half-gutter-m * $modifier);
+        } @else {
+          margin-left:  $grid-half-gutter-m * $modifier;
+          margin-right: $grid-half-gutter-m * $modifier;
 
-  @if $variation == centered {
-    margin-left:  auto;
-    margin-right: auto;
-  } @else if $variation == flexible {
-    margin-left:  grid-calculate-percentage($grid-half-gutter-m);
-    margin-right: grid-calculate-percentage($grid-half-gutter-m);
-  } @else {
-    @if $variation == inner {
-      @if $grid-type == flexible {
-        margin-left:  grid-calculate-percentage($grid-half-gutter-m);
-        margin-right: grid-calculate-percentage($grid-half-gutter-m);
-      } @else {
-        margin-left:  $grid-half-gutter-m * $sign;
-        margin-right: $grid-half-gutter-m * $sign;
-
-        @include large-screen {
-          margin-left:  $grid-half-gutter-l * $sign;
-          margin-right: $grid-half-gutter-l * $sign;
+          @include large-screen {
+            margin-left:  $grid-half-gutter-l * $modifier;
+            margin-right: $grid-half-gutter-l * $modifier;
+          }
         }
       }
     }
   }
 }
 
-// Calculate single column width multipled by number of columns it spans (indluding gutters)
-@mixin grid-column-width($span: 1, $grid-type: $grid-type, $container-margin: 1) {
-  // Flex
-  @if $grid-type == flexible {
-    // Calculate width in percentages from total grid width and gutter (based on medium),
-    // offset by provided gutter width
-    width: grid-calculate-percentage(grid-column-span-width($span, $grid-column-medium, $grid-gutter-medium));
-  // Pixel
-  } @else {
-    @if $container-margin == 0 {
-      width: grid-calculate-percentage(grid-column-span-width($span, $grid-column-medium + $grid-gutter-medium, $container-margin));
-    } @else {
-      width: grid-column-span-width($span, $grid-column-medium, $grid-gutter-medium);
-      @include large-screen {
-        width: grid-column-span-width($span, $grid-column-large, $grid-gutter-large);
-      }
+// Calculate single column width (in pixels) multipled by number of columns it spans (indluding gutters)
+@mixin grid-column-width($span: 1) {
+    width: grid-column-span-width($span, $grid-column-medium, $grid-gutter-medium);
+    @include large-screen {
+      width: grid-column-span-width($span, $grid-column-large, $grid-gutter-large);
     }
+}
+
+// Calculate single column width in percent
+@mixin grid-column-width-flexi($span: 1, $collapse-margins: false) {
+  // Calculate width in percentages from the total grid width and gutter (based on medium),
+  // offset by provided gutter width
+  @if $collapse-margins {
+    width: grid-calculate-percentage(grid-column-span-width($span, $grid-column-medium + $grid-gutter-medium, 0));
+  } @else {
+    width: grid-calculate-percentage(grid-column-span-width($span, $grid-column-medium, $grid-gutter-medium));
   }
 }
 
