@@ -18,7 +18,7 @@ See some [**examples of the grid**](http://tyom.github.com/bedrock/).
 Usage
 -----
 
-**To get started**
+### Get started
 
 First you need to install Middleman: `gem install middleman`.
 
@@ -33,8 +33,9 @@ This will clone the latest version to your Middleman's templates directory. To i
 
 ### Server
 
-`bundle install` to install all required gems
-`middleman` to run dev server on `localhost:4567`
+`bundle install` to install all required gems.
+
+`middleman` to run dev server on http://localhost:4567.
 
 ### Sass
 
