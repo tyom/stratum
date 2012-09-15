@@ -17,7 +17,7 @@
 
 // Draws grid guides
 // $grid-size, $block-size,$color, $opacity, $position
-@mixin grid-show-guides($grid-size: $grid-medium, $block-size: 9, $color: $grid-guides-color, $opacity: $grid-guides-opacity, $position: $grid-guides-position) {
+@mixin grid-show-guides($grid-size: $grid-medium, $block-size: 9, $color: $grid-guides-color, $opacity: $grid-guides-opacity, $position: $grid-guides-position, $grid-type: pixel) {
 
   $column-gutter: grid-column-gutter($grid-size, $grid-desired-gutter);
   $column-width:  grid-single-column-width($grid-size, $grid-total-columns, $column-gutter);
@@ -39,26 +39,33 @@
     height: 100%;
 
     @include background(
-     // Baseline
+     // Baseline (v-rhythm)
         linear-gradient(transparent $grid-baseline, rgba(white, $opacity) $grid-baseline),
      // Columns
-        linear-gradient(left, rgba($color, $opacity), rgba($color, $opacity) $column-width, transparent $column-width, transparent $combined-width),
+        linear-gradient(left, rgba($color, $opacity),
+                              rgba($color, $opacity) $column-width,
+                              transparent $column-width,
+                              transparent $combined-width
+                              ),
      // Blocks
         linear-gradient(transparent ($block-height - $grid-baseline), rgba(white, $opacity / 1.2) $grid-baseline),
      // Base colour
         linear-gradient(rgba($color, $opacity), rgba($color, $opacity))
     );
-    background-size: $combined-width $grid-baseline + 1, $combined-width ($grid-baseline * $block-size), $combined-width ($block-height + 1);
+    background-size: $combined-width $grid-baseline + 1,  // v-rhythm
+                     $combined-width 10px,                // column
+                     $combined-width ($block-height + 1); // block
+
+    @if $grid-type == flexible {
+      // Offset column by half gutter
+      background-position: 0 0, -($column-gutter/4) 0, 0 0;
+    }
 
     // Grid placement (back by default)
     @if $position == front {
       z-index: 999;
     } @else {
       z-index: -1;
-    }
-
-    @if $grid-type == flexible {
-      display: none;
     }
   }
 }
@@ -69,6 +76,9 @@
 
   @include large-screen {
     @include grid-show-guides($grid-large);
+  }
+  &.flexible {
+    @include grid-show-guides($grid-type: flexible);
   }
   &.front:before {
     z-index: auto;
