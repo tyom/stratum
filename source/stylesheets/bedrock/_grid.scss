@@ -149,14 +149,47 @@ $grid-guides-position:   back      !default;
 }
 
 // Calculate offset width based on number of columns it spans (including gutters)
-// $span, $direction
-@mixin grid-offset-by-column($span: 1, $direction: left) {
-  margin-#{$direction}: grid-column-span-width($span, $grid-column-medium, $grid-gutter-medium) + ($grid-gutter-medium * 3 / 2);
-  @include large-screen {
-    margin-#{$direction}: grid-column-span-width($span, $grid-column-large, $grid-gutter-large) + ($grid-gutter-large * 3 / 2);
+// $span <number>, $direction: <left/right>, $type <positive/negative>
+@mixin grid-offset-by-column($span: 1, $direction: left, $type: positive) {
+  $offset: 0;
+
+  @if $type == positive {
+    // normal offset
+    $offset: grid-column-span-width($span, $grid-column-medium, $grid-gutter-medium) + ($grid-gutter-medium * 3 / 2);
+  } @else {
+    // negative offset
+    // left
+    @if $direction == left {
+      $offset: -(grid-column-span-width($span, $grid-column-medium, $grid-gutter-medium) + ($grid-gutter-medium));
+    // right
+    } @else {
+      $offset: -(grid-column-span-width($span, $grid-column-medium, $grid-gutter-medium) + ($grid-gutter-medium / 2));
+      // $multiplier: if($span % 2 == 0, $span, $span);
+      margin-left: abs($offset) + $grid-gutter-medium * 3 / 2;
+    }
   }
+  margin-#{$direction}: $offset;
+
+  @include large-screen {
+    @if $type == positive {
+      // normal offset
+      $offset: grid-column-span-width($span, $grid-column-large, $grid-gutter-large) + ($grid-gutter-large * 3 / 2);
+    } @else {
+      // negative offset
+      // left
+      @if $direction == left {
+        $offset: -(grid-column-span-width($span, $grid-column-large, $grid-gutter-large) + ($grid-gutter-large * $span));
+      // right
+      } @else {
+        $offset: -(grid-column-span-width($span, $grid-column-large, $grid-gutter-large) + ($grid-gutter-large / 2));
+        margin-left: abs($offset) + ($grid-gutter-large * 2) + ($grid-gutter-large / 2);
+      }
+    }
+    margin-#{$direction}: $offset;
+  }
+
   @if $grid-type == flexible {
-    margin-#{$direction}: grid-calculate-percentage(grid-column-span-width($span, $grid-column-medium, $grid-gutter-medium) + ($grid-gutter-medium * 3 / 2));
+    $offset: grid-calculate-percentage(grid-column-span-width($span, $grid-column-medium, $grid-gutter-medium) + ($grid-gutter-medium * 3 / 2));
   }
 }
 

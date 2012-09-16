@@ -25,12 +25,13 @@ $number-words: one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,
                thirteen,fourteen,fifteen,sixteen,seventeen,eighteen,nineteen,
                twenty,twentyone,twentytwo,twentythree,twentyfour;
 
-// Rows
+// = Rows
 .container {
   @include grid-container;
   .row {
     @include grid-row;
   }
+  // Flexible rows
   .flexible, .flexible .row {
     min-width: 0;
     @include grid-row(flexible);
@@ -38,38 +39,37 @@ $number-words: one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,
 }
 
 
-// Columns
+// = Columns
 .col {
   @include grid-column;
 }
-
 // Centred column
 .col.centered, .col.centered:last-child {
   @include grid-column(centered);
 }
-
 // Last column
 .col + .col:last-child, .col.last {
   @include grid-column(last);
 }
-
 // Ending column (follows others)
 .col + .col.end {
   @include grid-column(end);
 }
-
 // Columns in the inner row
 .row .col {
   @include grid-column-margins(inner);
 }
+// Flexible columns
 .flexible .col {
   @include grid-column-margins(flexible);
 }
+// Flexible columns with no margins
 .collapse .col, .container > .col {
   @include grid-column-margins(flexible, 0);
 }
 
-// Column sizes
+
+// = Column sizes
 @for $i from 1 through length($number-words) {
   .#{nth($number-words, $i)} {
     @if $grid-type == pixel {
@@ -88,22 +88,31 @@ $number-words: one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,
 }
 
 
-// Offsets:
-// - Left
+// = Offsets:
 @for $i from 1 through $grid-total-columns {
+  // From left
   .row .col.#{nth($number-words, $i)}-from-left,
   .row .col.#{nth($number-words, $i)}-from-left.end {
     @include grid-offset-by-column($i, left);
   }
-}
-// - Right (attribute selector to override other class modifiers, such as .last)
-@for $i from 1 through $grid-total-columns {
+  // To left
+  .row .col.#{nth($number-words, $i)}-to-left,
+  .row .col.#{nth($number-words, $i)}-to-left.end {
+    @include grid-offset-by-column($i, left, negative);
+  }
+  // From right
   .row .col.#{nth($number-words, $i)}-from-right,
   .row .col.#{nth($number-words, $i)}-from-right.end,
   .row .col.#{nth($number-words, $i)}-from-right.last {
     @include grid-offset-by-column($i, right);
   }
+  // To right
+  .row .col.#{nth($number-words, $i)}-to-right,
+  .row .col.#{nth($number-words, $i)}-to-right.end {
+    @include grid-offset-by-column($i, right, negative);
+  }
 }
+
 
 // Borders
 .column-borders {
@@ -112,13 +121,12 @@ $number-words: one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,
   @include large-screen {
     @include grid-column-borders($grid-gutter-large);
   }
-
+  // Remove borders within row with borders
   .no-borders {
     margin: {
       left: 0;
       right: 0;
     };
-
     :before, :after {
       border: 0;
     }
