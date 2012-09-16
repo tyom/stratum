@@ -1,0 +1,7 @@
+-
+  uri: "."
+  label: Layout
+-
+  uri: forms
+  label: Forms
+  disabled: true

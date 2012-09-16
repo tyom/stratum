@@ -1,0 +1,8 @@
+%nav
+  %ul
+    - nav.each do |link|
+      %li{ class: link.disabled? ? "disabled" : data.page.uri == link.uri ? "active" : "" }
+        - if link.disabled?
+          %a= link.label
+        - else
+          %a{ href: link.uri }= link.label

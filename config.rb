@@ -1,3 +1,5 @@
+activate :livereload
+
 ###
 # Page options, layouts, aliases and proxies
 ###
@@ -27,14 +29,18 @@ page "/*", :layout => "base"
 # Automatic image dimensions on image_tag helper
 activate :automatic_image_sizes
 
-# Methods defined in the helpers block are available in templates
-# helpers do
-#   def some_helper
-#     "Helping"
-#   end
-# end
+# Navigation
+require 'map'
+helpers do
+  def nav(*args)
+    if args.empty?
+      @nav || data.nav.map{|hash| Map.for(hash)}
+    else
+      @nav = args.flatten.compact.map{|hash| Map.for(hash)}
+    end
+  end
+end
 
-activate :livereload
 
 set :css_dir, 'stylesheets'
 set :js_dir, 'javascripts'
