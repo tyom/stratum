@@ -99,6 +99,9 @@ $number-words: one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,
   .row .col.#{nth($number-words, $i)}-to-left,
   .row .col.#{nth($number-words, $i)}-to-left.end {
     @include grid-offset-by-column($i, left, negative);
+    &:first-child {
+      @include grid-offset-by-column($i, left, negative, $first: true);
+    }
   }
   // From right
   .row .col.#{nth($number-words, $i)}-from-right,

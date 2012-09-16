@@ -148,9 +148,10 @@ $grid-guides-position:   back      !default;
   }
 }
 
+
 // Calculate offset width based on number of columns it spans (including gutters)
 // $span <number>, $direction: <left/right>, $type <positive/negative>
-@mixin grid-offset-by-column($span: 1, $direction: left, $type: positive) {
+@mixin grid-offset-by-column($span: 1, $direction: left, $type: positive, $first: false) {
   $offset: 0;
 
   @if $type == positive {
@@ -161,10 +162,12 @@ $grid-guides-position:   back      !default;
     // left
     @if $direction == left {
       $offset: -(grid-column-span-width($span, $grid-column-medium, $grid-gutter-medium) + ($grid-gutter-medium));
+      @if $first {
+        $offset: $offset + $grid-gutter-medium / 2;
+      }
     // right
     } @else {
       $offset: -(grid-column-span-width($span, $grid-column-medium, $grid-gutter-medium) + ($grid-gutter-medium / 2));
-      // $multiplier: if($span % 2 == 0, $span, $span);
       margin-left: abs($offset) + $grid-gutter-medium * 3 / 2;
     }
   }
@@ -179,6 +182,9 @@ $grid-guides-position:   back      !default;
       // left
       @if $direction == left {
         $offset: -(grid-column-span-width($span, $grid-column-large, $grid-gutter-large) + ($grid-gutter-large * $span));
+        @if $first {
+          $offset: $offset + $grid-gutter-large / 2;
+        }
       // right
       } @else {
         $offset: -(grid-column-span-width($span, $grid-column-large, $grid-gutter-large) + ($grid-gutter-large / 2));
