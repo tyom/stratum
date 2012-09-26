@@ -1,6 +1,6 @@
 source :rubygems
 
-gem "middleman", "3.0.2" # 3.0.4 breaks websockets in livereload
+gem "middleman", "~>3.0.5"
 gem "sass"
 gem "bourbon"
 gem "em-websocket", "0.3.8"
