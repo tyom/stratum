@@ -24,25 +24,13 @@ page "/*", :layout => "base"
 # Helpers
 ###
 
-# Automatic image dimensions on image_tag helper
-activate :automatic_image_sizes
-
-# Navigation
-require 'map'
-helpers do
-  def nav(*args)
-    if args.empty?
-      @nav || data.nav.map{|hash| Map.for(hash)}
-    else
-      @nav = args.flatten.compact.map{|hash| Map.for(hash)}
-    end
-  end
-end
-
-
 set :css_dir, 'stylesheets'
 set :js_dir, 'javascripts'
 set :images_dir, 'images'
+
+# Automatic image dimensions on image_tag helper
+activate :automatic_image_sizesend
+activate :directory_indexes
 
 configure :development do
   activate :livereload
