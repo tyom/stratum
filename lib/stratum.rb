@@ -4,38 +4,38 @@ require 'fileutils'
 require 'thor'
 require 'pry'
 
-module Bedrock
+module Stratum
 	class Generator < Thor
 		map ['-v', '--version'] => :version
 
-		desc 'install', 'Install Bedrock into current directory'
+		desc 'install', 'Install Stratum into current directory'
 		method_options :path => :string
 		def install
 			copy_files
-			puts "Bedrock installed to #{install_path}"
+			puts "Stratum installed to #{install_path}"
 		end
 
-		desc 'version', 'Show Bedrock version'
+		desc 'version', 'Show Stratum version'
 		def version
-			say "Bedrock #{Bedrock::VERSION}"
+			say "Stratum #{Stratum::VERSION}"
 		end
 
 		private
 
 		def install_path
 			@install_path ||= if options[:path]
-				Pathname.new(File.join(options[:path], 'bedrock'))
+				Pathname.new(File.join(options[:path], 'stratum'))
 			else
-				Pathname.new('bedrock')
+				Pathname.new('stratum')
 			end
 		end
 
 		def copy_files
 			FileUtils.mkdir_p(install_path)
-			FileUtils.cp_r(bedrock_stylesheets, install_path)
+			FileUtils.cp_r(stratum_stylesheets, install_path)
 		end
 
-		def bedrock_stylesheets
+		def stratum_stylesheets
 			current_dir = File.dirname(File.dirname(__FILE__))
 			stylesheets = File.join(current_dir, "assets", "stylesheets")
 

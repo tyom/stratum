@@ -4,7 +4,7 @@
 // Inspired by Zurb's Foundation & Gridulator.
 
 // -----------------------------------------------------------------------------
-// Bedrock settings
+// Stratum settings
 // -----------------------------------------------------------------------------
 //
 // Grid
@@ -21,6 +21,6 @@ $grid-desired-gutter:       20px;
 // $grid-type:                 flexible;
 // -----------------------------------------------------------------------------
 
-@import "bedrock/normalize";
-@import "bedrock/scaffolding";
-@import "bedrock/grid-debug";
+@import "stratum/normalize";
+@import "stratum/scaffolding";
+@import "stratum/grid-debug";

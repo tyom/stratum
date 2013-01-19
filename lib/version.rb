@@ -1,3 +1,3 @@
-module Bedrock
+module Stratum
 	VERSION = "0.1.0"
 end
