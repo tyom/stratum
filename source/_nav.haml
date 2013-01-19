@@ -1,9 +1,0 @@
-%nav
-  %ul
-    - data.nav.each do |section|
-      - strip_url = current_page.url[/^\/(\w+|-)/, 1]
-      - current_page = (strip_url == section.directory || !section.directory? && page_bare.empty?)
-      - class_name = section.disabled? ? "disabled" : current_page ? "active" : ""
-
-      %li{ class: class_name }
-        = link_to section.name, "/#{section.directory}"
