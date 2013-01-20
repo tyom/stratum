@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'stratum'
-  s.version     = '0.1.0'
+  s.version     = '0.1.1'
   s.date        = '2013-01-19'
   s.summary     = "A structural layer for your SASS"
   s.description = "Stratum is a collection of SASS mixins and utilities for your web development needs."
