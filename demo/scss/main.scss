@@ -1,5 +1,7 @@
 @import "stratum";
 
+@include box-model-border-edge;
+
 body {
   background: #ddd;
 }
@@ -7,6 +9,7 @@ body {
 .l-container {
   .l-col {
     height: 300px;
-    background: red;
+    background: rgba(red, .2);
+    border: 1px solid red;
   }
 }

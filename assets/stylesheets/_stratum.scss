@@ -21,6 +21,12 @@ $grid-desired-gutter:       20px;
 // $grid-type:                 flexible;
 // -----------------------------------------------------------------------------
 
+@import "utils/vendor-prefix";
+
+@import "css3/box-sizing";
+
+@import "misc/box-model";
+
 @import "layout/grid";
 @import "layout/scaffolding";
 // @import "layout/grid-debug";
