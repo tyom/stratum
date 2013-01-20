@@ -1,0 +1,12 @@
+@import "stratum";
+
+body {
+  background: #ddd;
+}
+
+.l-container {
+  .l-col {
+    height: 300px;
+    background: red;
+  }
+}

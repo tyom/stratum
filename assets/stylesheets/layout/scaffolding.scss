@@ -1,38 +1,13 @@
-// -----------------------------------------------------------------------------
-// • Scaffolding                                    Tyom Semonov <mail@tyom.net>
-// -----------------------------------------------------------------------------
-// .container       - outer columns container (centers within the containing element)
-// .container .row  - inner columns container
-
-// .column-borders    - show borders between columns (set on container containing .column(s))
-// .column, .columns  - use for individual columns. (.one, .two, .three, ... .twenty-four to span columns)
-
-// .column.last       - treat as last column in the row, float right
-// .column.end        - treat as end column, float left as the previous columns
-// .column.centered   - centre column
-
-// .flush-right       - flush element to right
-// .flush-left        - flush element to left
-
-// .<one>-from-left   - offset column by (one, two, three, ... twenty-four) column spans
-
-// .show-grid         - show grid guide (useful for debugging and layout building)
-// -----------------------------------------------------------------------------
-
-@import "stratum/grid";
-
-$number-words: one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,
-               thirteen,fourteen,fifteen,sixteen,seventeen,eighteen,nineteen,
-               twenty,twentyone,twentytwo,twentythree,twentyfour;
+@import "grid";
 
 // = Rows
-.container {
+.l-container {
   @include grid-container;
-  .row {
+  .l-row {
     @include grid-row;
   }
   // Flexible rows
-  .flexible, .flexible .row {
+  .m-flexible, .m-flexible .l-row {
     min-width: 0;
     @include grid-row(flexible);
   }
@@ -40,38 +15,38 @@ $number-words: one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,
 
 
 // = Columns
-.col {
+.l-col {
   @include grid-column;
 }
 // Centred column
-.col.centered, .col.centered:last-child {
+.l-col.m-centered, .l-col.centered:last-child {
   @include grid-column(centered);
 }
 // Last column
-.col + .col:last-child, .col.last {
+.l-col + .l-col:last-child, .l-col.m-last {
   @include grid-column(last);
 }
 // Ending column (follows others)
-.col + .col.end {
+.l-col + .l-col.m-end {
   @include grid-column(end);
 }
 // Columns in the inner row
-.row .col {
+.l-row .m-col {
   @include grid-column-margins(inner);
 }
 // Flexible columns
-.flexible .col {
+.m-flexible .l-col {
   @include grid-column-margins(flexible);
 }
 // Flexible columns with no margins
-.collapse .col, .container > .col {
+.m-collapse .l-col, .l-container > .l-col {
   @include grid-column-margins(flexible, 0);
 }
 
 
 // = Column sizes
-@for $i from 1 through length($number-words) {
-  .#{nth($number-words, $i)} {
+@for $i from 1 through $grid-total-columns {
+  .m-#{$i} {
     @if $grid-type == pixel {
       @include grid-column-width($i);
     } @else {
@@ -79,10 +54,11 @@ $number-words: one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,
     }
   }
   // Ad hoc flexible grid
-  .flexible .#{nth($number-words, $i)} {
+  .l-flexible .m-#{$i} {
     @include grid-column-width-flexi($i, false);
   }
-  .flexible.collapse .#{nth($number-words, $i)}, .container > .#{nth($number-words, $i)} {
+  .m-flexible.m-collapse .m-#{$i},
+  .l-container > .m-#{$i} {
     @include grid-column-width-flexi($i, true);
   }
 }
@@ -91,41 +67,41 @@ $number-words: one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,
 // = Offsets:
 @for $i from 1 through $grid-total-columns {
   // From left
-  .row .col.#{nth($number-words, $i)}-from-left,
-  .row .col.#{nth($number-words, $i)}-from-left.end {
+  .l-row .l-col.m-#{$i}-from-left,
+  .l-row .l-col.m-#{$i}-from-left.m-end {
     @include grid-offset-by-column($i, left);
   }
   // To left
-  .row .col.#{nth($number-words, $i)}-to-left,
-  .row .col.#{nth($number-words, $i)}-to-left.end {
+  .l-row .l-col.m-#{$i}-to-left,
+  .l-row .l-col.m-#{$i}-to-left.m-end {
     @include grid-offset-by-column($i, left, negative);
     &:first-child {
       @include grid-offset-by-column($i, left, negative, $first: true);
     }
   }
   // From right
-  .row .col.#{nth($number-words, $i)}-from-right,
-  .row .col.#{nth($number-words, $i)}-from-right.end,
-  .row .col.#{nth($number-words, $i)}-from-right.last {
+  .l-row .l-col.m-#{$i}-from-right,
+  .l-row .l-col.m-#{$i}-from-right.m-end,
+  .l-row .l-col.m-#{$i}-from-right.m-last {
     @include grid-offset-by-column($i, right);
   }
   // To right
-  .row .col.#{nth($number-words, $i)}-to-right,
-  .row .col.#{nth($number-words, $i)}-to-right.end {
+  .l-row .l-col.m-#{$i}-to-right,
+  .l-row .l-col.m-#{$i}-to-right.m-end {
     @include grid-offset-by-column($i, right, negative);
   }
 }
 
 
 // Borders
-.column-borders {
+.m-column-borders {
   @include grid-column-borders($grid-gutter-medium);
 
   @include large-screen {
     @include grid-column-borders($grid-gutter-large);
   }
   // Remove borders within row with borders
-  .no-borders {
+  .m-no-borders {
     margin: {
       left: 0;
       right: 0;

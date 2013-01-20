@@ -11,10 +11,6 @@
 //    $position:front     - place grid in front of page elements
 // -----------------------------------------------------------------------------
 
-@import "bourbon/css3/background";
-@import "bourbon/functions/render-gradients";
-@import "bourbon/functions/linear-gradient";
-
 // Draws grid guides
 // $grid-size, $block-size,$color, $opacity, $position
 @mixin grid-show-guides($grid-size: $grid-medium, $block-size: 9, $color: $grid-guides-color, $opacity: $grid-guides-opacity, $position: $grid-guides-position, $grid-type: pixel) {

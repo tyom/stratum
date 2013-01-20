@@ -21,6 +21,6 @@ $grid-desired-gutter:       20px;
 // $grid-type:                 flexible;
 // -----------------------------------------------------------------------------
 
-@import "stratum/normalize";
-@import "stratum/scaffolding";
-@import "stratum/grid-debug";
+@import "layout/grid";
+@import "layout/scaffolding";
+// @import "layout/grid-debug";

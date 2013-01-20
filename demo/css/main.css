@@ -1,0 +1,981 @@
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\000034}}
+.l-container {
+  width: 980px;
+  min-width: 980px;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/misc\/_clearfix\.scss}line{font-family:\000032}}
+  .l-container:after {
+    content: " ";
+    display: table;
+    clear: both; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\000034}}
+    .l-container {
+      width: 1200px; } }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\000036}}
+  .l-container .l-row {
+    margin-left: -8px;
+    margin-right: -8px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/misc\/_clearfix\.scss}line{font-family:\000032}}
+    .l-container .l-row:after {
+      content: " ";
+      display: table;
+      clear: both; }
+    @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\000036}}
+      .l-container .l-row {
+        margin-left: -12px;
+        margin-right: -12px; } }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000310}}
+  .l-container .m-flexible, .l-container .m-flexible .l-row {
+    min-width: 0;
+    margin-left: -0.80321%;
+    margin-right: -0.80321%; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/misc\/_clearfix\.scss}line{font-family:\000032}}
+    .l-container .m-flexible:after, .l-container .m-flexible .l-row:after {
+      content: " ";
+      display: table;
+      clear: both; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000318}}
+.l-col {
+  min-height: 1px;
+  float: left; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000322}}
+.l-col.m-centered, .l-col.centered:last-child {
+  float: none;
+  margin-left: auto;
+  margin-right: auto; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000326}}
+.l-col + .l-col:last-child, .l-col.m-last {
+  float: right; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000330}}
+.l-col + .l-col.m-end {
+  float: left; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000334}}
+.l-row .m-col {
+  margin-left: 8px;
+  margin-right: 8px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000334}}
+    .l-row .m-col {
+      margin-left: 12px;
+      margin-right: 12px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000338}}
+.m-flexible .l-col {
+  margin-left: 0.80321%;
+  margin-right: 0.80321%; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000342}}
+.m-collapse .l-col, .l-container > .l-col {
+  margin-left: 0%;
+  margin-right: 0%; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000349}}
+.m-1 {
+  width: 67px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000349}}
+    .m-1 {
+      width: 78px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000357}}
+.l-flexible .m-1 {
+  width: 6.72691%; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000361}}
+.m-flexible.m-collapse .m-1,
+.l-container > .m-1 {
+  width: 8.33333%; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000349}}
+.m-2 {
+  width: 150px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000349}}
+    .m-2 {
+      width: 180px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000357}}
+.l-flexible .m-2 {
+  width: 15.06024%; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000361}}
+.m-flexible.m-collapse .m-2,
+.l-container > .m-2 {
+  width: 16.66667%; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000349}}
+.m-3 {
+  width: 233px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000349}}
+    .m-3 {
+      width: 282px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000357}}
+.l-flexible .m-3 {
+  width: 23.39357%; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000361}}
+.m-flexible.m-collapse .m-3,
+.l-container > .m-3 {
+  width: 25%; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000349}}
+.m-4 {
+  width: 316px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000349}}
+    .m-4 {
+      width: 384px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000357}}
+.l-flexible .m-4 {
+  width: 31.72691%; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000361}}
+.m-flexible.m-collapse .m-4,
+.l-container > .m-4 {
+  width: 33.33333%; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000349}}
+.m-5 {
+  width: 399px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000349}}
+    .m-5 {
+      width: 486px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000357}}
+.l-flexible .m-5 {
+  width: 40.06024%; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000361}}
+.m-flexible.m-collapse .m-5,
+.l-container > .m-5 {
+  width: 41.66667%; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000349}}
+.m-6 {
+  width: 482px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000349}}
+    .m-6 {
+      width: 588px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000357}}
+.l-flexible .m-6 {
+  width: 48.39357%; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000361}}
+.m-flexible.m-collapse .m-6,
+.l-container > .m-6 {
+  width: 50%; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000349}}
+.m-7 {
+  width: 565px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000349}}
+    .m-7 {
+      width: 690px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000357}}
+.l-flexible .m-7 {
+  width: 56.72691%; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000361}}
+.m-flexible.m-collapse .m-7,
+.l-container > .m-7 {
+  width: 58.33333%; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000349}}
+.m-8 {
+  width: 648px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000349}}
+    .m-8 {
+      width: 792px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000357}}
+.l-flexible .m-8 {
+  width: 65.06024%; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000361}}
+.m-flexible.m-collapse .m-8,
+.l-container > .m-8 {
+  width: 66.66667%; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000349}}
+.m-9 {
+  width: 731px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000349}}
+    .m-9 {
+      width: 894px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000357}}
+.l-flexible .m-9 {
+  width: 73.39357%; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000361}}
+.m-flexible.m-collapse .m-9,
+.l-container > .m-9 {
+  width: 75%; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000349}}
+.m-10 {
+  width: 814px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000349}}
+    .m-10 {
+      width: 996px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000357}}
+.l-flexible .m-10 {
+  width: 81.72691%; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000361}}
+.m-flexible.m-collapse .m-10,
+.l-container > .m-10 {
+  width: 83.33333%; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000349}}
+.m-11 {
+  width: 897px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000349}}
+    .m-11 {
+      width: 1098px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000357}}
+.l-flexible .m-11 {
+  width: 90.06024%; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000361}}
+.m-flexible.m-collapse .m-11,
+.l-container > .m-11 {
+  width: 91.66667%; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000349}}
+.m-12 {
+  width: 980px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000349}}
+    .m-12 {
+      width: 1200px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000357}}
+.l-flexible .m-12 {
+  width: 98.39357%; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000361}}
+.m-flexible.m-collapse .m-12,
+.l-container > .m-12 {
+  width: 100%; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000371}}
+.l-row .l-col.m-1-from-left,
+.l-row .l-col.m-1-from-left.m-end {
+  margin-left: 91px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000371}}
+    .l-row .l-col.m-1-from-left,
+    .l-row .l-col.m-1-from-left.m-end {
+      margin-left: 114px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000376}}
+.l-row .l-col.m-1-to-left,
+.l-row .l-col.m-1-to-left.m-end {
+  margin-left: -83px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000376}}
+    .l-row .l-col.m-1-to-left,
+    .l-row .l-col.m-1-to-left.m-end {
+      margin-left: -102px; } }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000378}}
+  .l-row .l-col.m-1-to-left:first-child,
+  .l-row .l-col.m-1-to-left.m-end:first-child {
+    margin-left: -75px; }
+    @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000378}}
+      .l-row .l-col.m-1-to-left:first-child,
+      .l-row .l-col.m-1-to-left.m-end:first-child {
+        margin-left: -90px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000385}}
+.l-row .l-col.m-1-from-right,
+.l-row .l-col.m-1-from-right.m-end,
+.l-row .l-col.m-1-from-right.m-last {
+  margin-right: 91px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000385}}
+    .l-row .l-col.m-1-from-right,
+    .l-row .l-col.m-1-from-right.m-end,
+    .l-row .l-col.m-1-from-right.m-last {
+      margin-right: 114px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000390}}
+.l-row .l-col.m-1-to-right,
+.l-row .l-col.m-1-to-right.m-end {
+  margin-left: 99px;
+  margin-right: -75px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000390}}
+    .l-row .l-col.m-1-to-right,
+    .l-row .l-col.m-1-to-right.m-end {
+      margin-left: 150px;
+      margin-right: -90px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000371}}
+.l-row .l-col.m-2-from-left,
+.l-row .l-col.m-2-from-left.m-end {
+  margin-left: 174px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000371}}
+    .l-row .l-col.m-2-from-left,
+    .l-row .l-col.m-2-from-left.m-end {
+      margin-left: 216px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000376}}
+.l-row .l-col.m-2-to-left,
+.l-row .l-col.m-2-to-left.m-end {
+  margin-left: -166px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000376}}
+    .l-row .l-col.m-2-to-left,
+    .l-row .l-col.m-2-to-left.m-end {
+      margin-left: -228px; } }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000378}}
+  .l-row .l-col.m-2-to-left:first-child,
+  .l-row .l-col.m-2-to-left.m-end:first-child {
+    margin-left: -158px; }
+    @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000378}}
+      .l-row .l-col.m-2-to-left:first-child,
+      .l-row .l-col.m-2-to-left.m-end:first-child {
+        margin-left: -216px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000385}}
+.l-row .l-col.m-2-from-right,
+.l-row .l-col.m-2-from-right.m-end,
+.l-row .l-col.m-2-from-right.m-last {
+  margin-right: 174px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000385}}
+    .l-row .l-col.m-2-from-right,
+    .l-row .l-col.m-2-from-right.m-end,
+    .l-row .l-col.m-2-from-right.m-last {
+      margin-right: 216px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000390}}
+.l-row .l-col.m-2-to-right,
+.l-row .l-col.m-2-to-right.m-end {
+  margin-left: 182px;
+  margin-right: -158px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000390}}
+    .l-row .l-col.m-2-to-right,
+    .l-row .l-col.m-2-to-right.m-end {
+      margin-left: 252px;
+      margin-right: -192px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000371}}
+.l-row .l-col.m-3-from-left,
+.l-row .l-col.m-3-from-left.m-end {
+  margin-left: 257px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000371}}
+    .l-row .l-col.m-3-from-left,
+    .l-row .l-col.m-3-from-left.m-end {
+      margin-left: 318px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000376}}
+.l-row .l-col.m-3-to-left,
+.l-row .l-col.m-3-to-left.m-end {
+  margin-left: -249px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000376}}
+    .l-row .l-col.m-3-to-left,
+    .l-row .l-col.m-3-to-left.m-end {
+      margin-left: -354px; } }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000378}}
+  .l-row .l-col.m-3-to-left:first-child,
+  .l-row .l-col.m-3-to-left.m-end:first-child {
+    margin-left: -241px; }
+    @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000378}}
+      .l-row .l-col.m-3-to-left:first-child,
+      .l-row .l-col.m-3-to-left.m-end:first-child {
+        margin-left: -342px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000385}}
+.l-row .l-col.m-3-from-right,
+.l-row .l-col.m-3-from-right.m-end,
+.l-row .l-col.m-3-from-right.m-last {
+  margin-right: 257px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000385}}
+    .l-row .l-col.m-3-from-right,
+    .l-row .l-col.m-3-from-right.m-end,
+    .l-row .l-col.m-3-from-right.m-last {
+      margin-right: 318px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000390}}
+.l-row .l-col.m-3-to-right,
+.l-row .l-col.m-3-to-right.m-end {
+  margin-left: 265px;
+  margin-right: -241px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000390}}
+    .l-row .l-col.m-3-to-right,
+    .l-row .l-col.m-3-to-right.m-end {
+      margin-left: 354px;
+      margin-right: -294px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000371}}
+.l-row .l-col.m-4-from-left,
+.l-row .l-col.m-4-from-left.m-end {
+  margin-left: 340px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000371}}
+    .l-row .l-col.m-4-from-left,
+    .l-row .l-col.m-4-from-left.m-end {
+      margin-left: 420px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000376}}
+.l-row .l-col.m-4-to-left,
+.l-row .l-col.m-4-to-left.m-end {
+  margin-left: -332px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000376}}
+    .l-row .l-col.m-4-to-left,
+    .l-row .l-col.m-4-to-left.m-end {
+      margin-left: -480px; } }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000378}}
+  .l-row .l-col.m-4-to-left:first-child,
+  .l-row .l-col.m-4-to-left.m-end:first-child {
+    margin-left: -324px; }
+    @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000378}}
+      .l-row .l-col.m-4-to-left:first-child,
+      .l-row .l-col.m-4-to-left.m-end:first-child {
+        margin-left: -468px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000385}}
+.l-row .l-col.m-4-from-right,
+.l-row .l-col.m-4-from-right.m-end,
+.l-row .l-col.m-4-from-right.m-last {
+  margin-right: 340px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000385}}
+    .l-row .l-col.m-4-from-right,
+    .l-row .l-col.m-4-from-right.m-end,
+    .l-row .l-col.m-4-from-right.m-last {
+      margin-right: 420px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000390}}
+.l-row .l-col.m-4-to-right,
+.l-row .l-col.m-4-to-right.m-end {
+  margin-left: 348px;
+  margin-right: -324px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000390}}
+    .l-row .l-col.m-4-to-right,
+    .l-row .l-col.m-4-to-right.m-end {
+      margin-left: 456px;
+      margin-right: -396px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000371}}
+.l-row .l-col.m-5-from-left,
+.l-row .l-col.m-5-from-left.m-end {
+  margin-left: 423px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000371}}
+    .l-row .l-col.m-5-from-left,
+    .l-row .l-col.m-5-from-left.m-end {
+      margin-left: 522px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000376}}
+.l-row .l-col.m-5-to-left,
+.l-row .l-col.m-5-to-left.m-end {
+  margin-left: -415px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000376}}
+    .l-row .l-col.m-5-to-left,
+    .l-row .l-col.m-5-to-left.m-end {
+      margin-left: -606px; } }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000378}}
+  .l-row .l-col.m-5-to-left:first-child,
+  .l-row .l-col.m-5-to-left.m-end:first-child {
+    margin-left: -407px; }
+    @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000378}}
+      .l-row .l-col.m-5-to-left:first-child,
+      .l-row .l-col.m-5-to-left.m-end:first-child {
+        margin-left: -594px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000385}}
+.l-row .l-col.m-5-from-right,
+.l-row .l-col.m-5-from-right.m-end,
+.l-row .l-col.m-5-from-right.m-last {
+  margin-right: 423px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000385}}
+    .l-row .l-col.m-5-from-right,
+    .l-row .l-col.m-5-from-right.m-end,
+    .l-row .l-col.m-5-from-right.m-last {
+      margin-right: 522px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000390}}
+.l-row .l-col.m-5-to-right,
+.l-row .l-col.m-5-to-right.m-end {
+  margin-left: 431px;
+  margin-right: -407px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000390}}
+    .l-row .l-col.m-5-to-right,
+    .l-row .l-col.m-5-to-right.m-end {
+      margin-left: 558px;
+      margin-right: -498px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000371}}
+.l-row .l-col.m-6-from-left,
+.l-row .l-col.m-6-from-left.m-end {
+  margin-left: 506px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000371}}
+    .l-row .l-col.m-6-from-left,
+    .l-row .l-col.m-6-from-left.m-end {
+      margin-left: 624px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000376}}
+.l-row .l-col.m-6-to-left,
+.l-row .l-col.m-6-to-left.m-end {
+  margin-left: -498px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000376}}
+    .l-row .l-col.m-6-to-left,
+    .l-row .l-col.m-6-to-left.m-end {
+      margin-left: -732px; } }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000378}}
+  .l-row .l-col.m-6-to-left:first-child,
+  .l-row .l-col.m-6-to-left.m-end:first-child {
+    margin-left: -490px; }
+    @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000378}}
+      .l-row .l-col.m-6-to-left:first-child,
+      .l-row .l-col.m-6-to-left.m-end:first-child {
+        margin-left: -720px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000385}}
+.l-row .l-col.m-6-from-right,
+.l-row .l-col.m-6-from-right.m-end,
+.l-row .l-col.m-6-from-right.m-last {
+  margin-right: 506px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000385}}
+    .l-row .l-col.m-6-from-right,
+    .l-row .l-col.m-6-from-right.m-end,
+    .l-row .l-col.m-6-from-right.m-last {
+      margin-right: 624px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000390}}
+.l-row .l-col.m-6-to-right,
+.l-row .l-col.m-6-to-right.m-end {
+  margin-left: 514px;
+  margin-right: -490px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000390}}
+    .l-row .l-col.m-6-to-right,
+    .l-row .l-col.m-6-to-right.m-end {
+      margin-left: 660px;
+      margin-right: -600px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000371}}
+.l-row .l-col.m-7-from-left,
+.l-row .l-col.m-7-from-left.m-end {
+  margin-left: 589px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000371}}
+    .l-row .l-col.m-7-from-left,
+    .l-row .l-col.m-7-from-left.m-end {
+      margin-left: 726px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000376}}
+.l-row .l-col.m-7-to-left,
+.l-row .l-col.m-7-to-left.m-end {
+  margin-left: -581px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000376}}
+    .l-row .l-col.m-7-to-left,
+    .l-row .l-col.m-7-to-left.m-end {
+      margin-left: -858px; } }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000378}}
+  .l-row .l-col.m-7-to-left:first-child,
+  .l-row .l-col.m-7-to-left.m-end:first-child {
+    margin-left: -573px; }
+    @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000378}}
+      .l-row .l-col.m-7-to-left:first-child,
+      .l-row .l-col.m-7-to-left.m-end:first-child {
+        margin-left: -846px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000385}}
+.l-row .l-col.m-7-from-right,
+.l-row .l-col.m-7-from-right.m-end,
+.l-row .l-col.m-7-from-right.m-last {
+  margin-right: 589px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000385}}
+    .l-row .l-col.m-7-from-right,
+    .l-row .l-col.m-7-from-right.m-end,
+    .l-row .l-col.m-7-from-right.m-last {
+      margin-right: 726px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000390}}
+.l-row .l-col.m-7-to-right,
+.l-row .l-col.m-7-to-right.m-end {
+  margin-left: 597px;
+  margin-right: -573px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000390}}
+    .l-row .l-col.m-7-to-right,
+    .l-row .l-col.m-7-to-right.m-end {
+      margin-left: 762px;
+      margin-right: -702px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000371}}
+.l-row .l-col.m-8-from-left,
+.l-row .l-col.m-8-from-left.m-end {
+  margin-left: 672px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000371}}
+    .l-row .l-col.m-8-from-left,
+    .l-row .l-col.m-8-from-left.m-end {
+      margin-left: 828px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000376}}
+.l-row .l-col.m-8-to-left,
+.l-row .l-col.m-8-to-left.m-end {
+  margin-left: -664px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000376}}
+    .l-row .l-col.m-8-to-left,
+    .l-row .l-col.m-8-to-left.m-end {
+      margin-left: -984px; } }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000378}}
+  .l-row .l-col.m-8-to-left:first-child,
+  .l-row .l-col.m-8-to-left.m-end:first-child {
+    margin-left: -656px; }
+    @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000378}}
+      .l-row .l-col.m-8-to-left:first-child,
+      .l-row .l-col.m-8-to-left.m-end:first-child {
+        margin-left: -972px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000385}}
+.l-row .l-col.m-8-from-right,
+.l-row .l-col.m-8-from-right.m-end,
+.l-row .l-col.m-8-from-right.m-last {
+  margin-right: 672px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000385}}
+    .l-row .l-col.m-8-from-right,
+    .l-row .l-col.m-8-from-right.m-end,
+    .l-row .l-col.m-8-from-right.m-last {
+      margin-right: 828px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000390}}
+.l-row .l-col.m-8-to-right,
+.l-row .l-col.m-8-to-right.m-end {
+  margin-left: 680px;
+  margin-right: -656px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000390}}
+    .l-row .l-col.m-8-to-right,
+    .l-row .l-col.m-8-to-right.m-end {
+      margin-left: 864px;
+      margin-right: -804px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000371}}
+.l-row .l-col.m-9-from-left,
+.l-row .l-col.m-9-from-left.m-end {
+  margin-left: 755px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000371}}
+    .l-row .l-col.m-9-from-left,
+    .l-row .l-col.m-9-from-left.m-end {
+      margin-left: 930px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000376}}
+.l-row .l-col.m-9-to-left,
+.l-row .l-col.m-9-to-left.m-end {
+  margin-left: -747px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000376}}
+    .l-row .l-col.m-9-to-left,
+    .l-row .l-col.m-9-to-left.m-end {
+      margin-left: -1110px; } }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000378}}
+  .l-row .l-col.m-9-to-left:first-child,
+  .l-row .l-col.m-9-to-left.m-end:first-child {
+    margin-left: -739px; }
+    @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000378}}
+      .l-row .l-col.m-9-to-left:first-child,
+      .l-row .l-col.m-9-to-left.m-end:first-child {
+        margin-left: -1098px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000385}}
+.l-row .l-col.m-9-from-right,
+.l-row .l-col.m-9-from-right.m-end,
+.l-row .l-col.m-9-from-right.m-last {
+  margin-right: 755px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000385}}
+    .l-row .l-col.m-9-from-right,
+    .l-row .l-col.m-9-from-right.m-end,
+    .l-row .l-col.m-9-from-right.m-last {
+      margin-right: 930px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000390}}
+.l-row .l-col.m-9-to-right,
+.l-row .l-col.m-9-to-right.m-end {
+  margin-left: 763px;
+  margin-right: -739px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000390}}
+    .l-row .l-col.m-9-to-right,
+    .l-row .l-col.m-9-to-right.m-end {
+      margin-left: 966px;
+      margin-right: -906px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000371}}
+.l-row .l-col.m-10-from-left,
+.l-row .l-col.m-10-from-left.m-end {
+  margin-left: 838px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000371}}
+    .l-row .l-col.m-10-from-left,
+    .l-row .l-col.m-10-from-left.m-end {
+      margin-left: 1032px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000376}}
+.l-row .l-col.m-10-to-left,
+.l-row .l-col.m-10-to-left.m-end {
+  margin-left: -830px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000376}}
+    .l-row .l-col.m-10-to-left,
+    .l-row .l-col.m-10-to-left.m-end {
+      margin-left: -1236px; } }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000378}}
+  .l-row .l-col.m-10-to-left:first-child,
+  .l-row .l-col.m-10-to-left.m-end:first-child {
+    margin-left: -822px; }
+    @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000378}}
+      .l-row .l-col.m-10-to-left:first-child,
+      .l-row .l-col.m-10-to-left.m-end:first-child {
+        margin-left: -1224px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000385}}
+.l-row .l-col.m-10-from-right,
+.l-row .l-col.m-10-from-right.m-end,
+.l-row .l-col.m-10-from-right.m-last {
+  margin-right: 838px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000385}}
+    .l-row .l-col.m-10-from-right,
+    .l-row .l-col.m-10-from-right.m-end,
+    .l-row .l-col.m-10-from-right.m-last {
+      margin-right: 1032px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000390}}
+.l-row .l-col.m-10-to-right,
+.l-row .l-col.m-10-to-right.m-end {
+  margin-left: 846px;
+  margin-right: -822px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000390}}
+    .l-row .l-col.m-10-to-right,
+    .l-row .l-col.m-10-to-right.m-end {
+      margin-left: 1068px;
+      margin-right: -1008px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000371}}
+.l-row .l-col.m-11-from-left,
+.l-row .l-col.m-11-from-left.m-end {
+  margin-left: 921px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000371}}
+    .l-row .l-col.m-11-from-left,
+    .l-row .l-col.m-11-from-left.m-end {
+      margin-left: 1134px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000376}}
+.l-row .l-col.m-11-to-left,
+.l-row .l-col.m-11-to-left.m-end {
+  margin-left: -913px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000376}}
+    .l-row .l-col.m-11-to-left,
+    .l-row .l-col.m-11-to-left.m-end {
+      margin-left: -1362px; } }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000378}}
+  .l-row .l-col.m-11-to-left:first-child,
+  .l-row .l-col.m-11-to-left.m-end:first-child {
+    margin-left: -905px; }
+    @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000378}}
+      .l-row .l-col.m-11-to-left:first-child,
+      .l-row .l-col.m-11-to-left.m-end:first-child {
+        margin-left: -1350px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000385}}
+.l-row .l-col.m-11-from-right,
+.l-row .l-col.m-11-from-right.m-end,
+.l-row .l-col.m-11-from-right.m-last {
+  margin-right: 921px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000385}}
+    .l-row .l-col.m-11-from-right,
+    .l-row .l-col.m-11-from-right.m-end,
+    .l-row .l-col.m-11-from-right.m-last {
+      margin-right: 1134px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000390}}
+.l-row .l-col.m-11-to-right,
+.l-row .l-col.m-11-to-right.m-end {
+  margin-left: 929px;
+  margin-right: -905px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000390}}
+    .l-row .l-col.m-11-to-right,
+    .l-row .l-col.m-11-to-right.m-end {
+      margin-left: 1170px;
+      margin-right: -1110px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000371}}
+.l-row .l-col.m-12-from-left,
+.l-row .l-col.m-12-from-left.m-end {
+  margin-left: 1004px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000371}}
+    .l-row .l-col.m-12-from-left,
+    .l-row .l-col.m-12-from-left.m-end {
+      margin-left: 1236px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000376}}
+.l-row .l-col.m-12-to-left,
+.l-row .l-col.m-12-to-left.m-end {
+  margin-left: -996px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000376}}
+    .l-row .l-col.m-12-to-left,
+    .l-row .l-col.m-12-to-left.m-end {
+      margin-left: -1488px; } }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000378}}
+  .l-row .l-col.m-12-to-left:first-child,
+  .l-row .l-col.m-12-to-left.m-end:first-child {
+    margin-left: -988px; }
+    @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000378}}
+      .l-row .l-col.m-12-to-left:first-child,
+      .l-row .l-col.m-12-to-left.m-end:first-child {
+        margin-left: -1476px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000385}}
+.l-row .l-col.m-12-from-right,
+.l-row .l-col.m-12-from-right.m-end,
+.l-row .l-col.m-12-from-right.m-last {
+  margin-right: 1004px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000385}}
+    .l-row .l-col.m-12-from-right,
+    .l-row .l-col.m-12-from-right.m-end,
+    .l-row .l-col.m-12-from-right.m-last {
+      margin-right: 1236px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000390}}
+.l-row .l-col.m-12-to-right,
+.l-row .l-col.m-12-to-right.m-end {
+  margin-left: 1012px;
+  margin-right: -988px; }
+  @media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\0000390}}
+    .l-row .l-col.m-12-to-right,
+    .l-row .l-col.m-12-to-right.m-end {
+      margin-left: 1272px;
+      margin-right: -1212px; } }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/_grid\.scss}line{font-family:\00003206}}
+.m-column-borders .col {
+  position: relative; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/_grid\.scss}line{font-family:\00003209}}
+.m-column-borders .col:before, .m-column-borders .col:after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  top: 0;
+  bottom: 0;
+  border: 0 solid #cccccc; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/_grid\.scss}line{font-family:\00003217}}
+.m-column-borders .col:before {
+  border-left-width: 1px;
+  left: -9.5px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/_grid\.scss}line{font-family:\00003221}}
+.m-column-borders .col:after {
+  border-right-width: 1px;
+  right: -9.5px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/_grid\.scss}line{font-family:\00003225}}
+.m-column-borders .col:first-child:before, .m-column-borders .col:last-child:after {
+  display: none; }
+@media only screen and (min-width: 1300px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/_grid\.scss}line{font-family:\00003206}}
+  .m-column-borders .col {
+    position: relative; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/_grid\.scss}line{font-family:\00003209}}
+  .m-column-borders .col:before, .m-column-borders .col:after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    top: 0;
+    bottom: 0;
+    border: 0 solid #cccccc; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/_grid\.scss}line{font-family:\00003217}}
+  .m-column-borders .col:before {
+    border-left-width: 1px;
+    left: -13.5px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/_grid\.scss}line{font-family:\00003221}}
+  .m-column-borders .col:after {
+    border-right-width: 1px;
+    right: -13.5px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/_grid\.scss}line{font-family:\00003225}}
+  .m-column-borders .col:first-child:before, .m-column-borders .col:last-child:after {
+    display: none; } }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\00003104}}
+.m-column-borders .m-no-borders {
+  margin-left: 0;
+  margin-right: 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/assets\/stylesheets\/layout\/scaffolding\.scss}line{font-family:\00003109}}
+  .m-column-borders .m-no-borders :before, .m-column-borders .m-no-borders :after {
+    border: 0; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/demo\/scss\/main\.scss}line{font-family:\000033}}
+body {
+  background: #ddd; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/tyom\/Projects\/stratum\/demo\/scss\/main\.scss}line{font-family:\000038}}
+.l-container .l-col {
+  height: 300px;
+  background: red; }
