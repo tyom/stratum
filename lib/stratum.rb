@@ -2,7 +2,6 @@ require_relative 'version.rb'
 require 'pathname'
 require 'fileutils'
 require 'thor'
-require 'pry'
 
 module Stratum
 	class Generator < Thor
