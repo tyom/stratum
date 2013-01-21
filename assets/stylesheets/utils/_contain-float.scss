@@ -1,4 +1,4 @@
-@mixin clearfix {
+@mixin contain-float {
   &:after {
     content: " ";
     display: table;

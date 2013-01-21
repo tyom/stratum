@@ -15,18 +15,17 @@
 // $grid-guides-color:         blue;
 // $grid-guides-opacity:       .1;
 // $grid-guides-position:      front;
-$grid-total-columns:        12;
+$grid-total-columns:        10;
 $grid-desired-gutter:       20px;
 // $grid-baseline:             30px;
 // $grid-type:                 flexible;
 // -----------------------------------------------------------------------------
 
 @import "utils/vendor-prefix";
+@import "utils/contain-float";
 
 @import "css3/box-sizing";
 
-@import "misc/box-model";
 
+// @import "layout/responsive";
 @import "layout/grid";
-@import "layout/scaffolding";
-// @import "layout/grid-debug";

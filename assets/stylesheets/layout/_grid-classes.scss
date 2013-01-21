@@ -1,68 +1,57 @@
-@import "grid";
-
-// = Rows
-.l-container {
+%l-container {
   @include grid-container;
-  .l-row {
+  @include box-sizing(content-box);
+
+  %l-row {
     @include grid-row;
   }
-  // Flexible rows
-  .m-flexible, .m-flexible .l-row {
-    min-width: 0;
+
+  // Override global grid type
+  &%l-flexible-grid > %l-row {
     @include grid-row(flexible);
   }
+  &%l-pixel-grid > %l-row {
+    @include grid-row(pixel);
+  }
 }
 
-
-// = Columns
-.l-col {
+// Columns
+%l-col {
   @include grid-column;
 }
-// Centred column
-.l-col.m-centered, .l-col.centered:last-child {
-  @include grid-column(centered);
-}
-// Last column
-.l-col + .l-col:last-child, .l-col.m-last {
-  @include grid-column(last);
-}
-// Ending column (follows others)
-.l-col + .l-col.m-end {
-  @include grid-column(end);
-}
-// Columns in the inner row
-.l-row .l-col {
-  @include grid-column-margins(inner);
-}
-// Flexible columns
-.m-flexible .l-col {
-  @include grid-column-margins(flexible);
-}
-// Flexible columns with no margins
-.m-collapse .l-col, .l-container > .l-col {
-  @include grid-column-margins(flexible, 0);
+
+// Columns margins (only within rows)
+%l-row %l-col {
+  @include grid-column-margins;
 }
 
-
-// = Column sizes
+// Column sizes
 @for $i from 1 through $grid-total-columns {
-  .m-#{$i} {
-    @if $grid-type == pixel {
-      @include grid-column-width($i);
-    } @else {
-      @include grid-column-width-flexi($i);
+  $v-double-gutter: $grid-gutter-medium * 2;
+
+  %l-col-#{$i} {
+    @include grid-column-width($i, $grid-type, $v-double-gutter);
+
+    %l-pixel-grid %l-row & {
+      @include grid-column-width($i, pixel);
+      @include grid-column-margins(pixel);
+    }
+    %l-flexible-grid %l-row & {
+      @include grid-column-width($i, flexible);
+      @include grid-column-margins(flexible);
     }
   }
-  // Ad hoc flexible grid
-  .l-flexible .m-#{$i} {
-    @include grid-column-width-flexi($i, false);
-  }
-  .m-flexible.m-collapse .m-#{$i},
-  .l-container > .m-#{$i} {
-    @include grid-column-width-flexi($i, true);
-  }
 }
 
+// Float last column to right if `%l-last-col-right`
+// is extended on either immediate container or a column
+%l-col + %l-col:last-child {
+  &%l-last-col-right,
+  %l-last-col-right%l-container > &,
+  %l-last-col-right%l-container > %l-row & {
+    float: right;
+  }
+}
 
 // // = Offsets:
 // @for $i from 1 through $grid-total-columns {

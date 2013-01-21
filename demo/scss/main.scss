@@ -1,15 +1,49 @@
 @import "stratum";
 
-@include box-model-border-edge;
+body {
+  font: 12px/1.36 Helvetica, Arial, sans-serif;
+  color: #444;
+}
+
+* {
+  @include box-sizing(border-box);
+}
 
 body {
   background: #ddd;
+  padding: 50px;
+  margin: 0;
 }
 
-.l-container {
-  .l-col {
+.container {
+  @extend %l-container;
+  @extend %l-last-col-right;
+
+  &.flexible {
+    @extend %l-flexible-grid;
+  }
+
+  &.pixel {
+    @extend %l-pixel-grid;
+  }
+
+  .row {
+    @extend %l-row;
+    margin-bottom: 30px;
+  }
+
+  .two, .four {
+    @extend %l-col;
     height: 300px;
-    background: rgba(red, .2);
-    border: 1px solid red;
+    background: rgba(blue, .2);
+    padding: 20px;
+  }
+
+  .two {
+    @extend %l-col-2;
+  }
+
+  .four {
+    @extend %l-col-4;
   }
 }
