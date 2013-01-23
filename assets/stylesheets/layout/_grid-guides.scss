@@ -2,7 +2,7 @@
 @mixin grid-render-guides($grid-size: $grid-medium, $block-size: 8, $color: $grid-guides-color, $opacity: $grid-guides-opacity, $position: $grid-guides-position, $grid-type: pixel) {
 
   $column-gutter: grid-column-gutter($grid-size, $grid-desired-gutter);
-  $column-width:  grid-single-column-width($grid-size, $grid-total-columns, $column-gutter);
+  $column-width:  grid-column-width($grid-size, $grid-total-columns, $column-gutter);
 
   $combined-width:  $column-width + $column-gutter;
   $block-height: (($grid-baseline + 1) * $block-size) + $grid-baseline;

@@ -1,6 +1,7 @@
 // # Scaffolding stylesheet
 // Exports `l-` prefixed classes useful for prototyping layouts
 
+// Grid container & rows
 .l-container {
   @extend %l-container;
   @extend %l-last-col-right;
@@ -20,26 +21,27 @@
   .l-col {
     @extend %l-col;
   }
+}
 
-  @for $i from 1 through $grid-total-columns {
-    .l-col {
-      &.m-#{$i} {
-        @extend %l-col-#{$i};
-      }
+// Grid columns
+@for $i from 1 through $grid-total-columns {
+  .l-col {
+    &.m-#{$i} {
+      @extend %l-col-#{$i};
+    }
 
-      &.m-from-left-#{$i} {
-        @extend %l-col-from-left-#{$i};
-      }
-      &.m-to-left-#{$i} {
-        @extend %l-col-to-left-#{$i};
-      }
+    &.m-from-left-#{$i} {
+      @extend %l-col-from-left-#{$i};
+    }
+    &.m-to-left-#{$i} {
+      @extend %l-col-to-left-#{$i};
+    }
 
-      &.m-from-right-#{$i} {
-        @extend %l-col-from-right-#{$i};
-      }
-      &.m-to-right-#{$i} {
-        @extend %l-col-to-right-#{$i};
-      }
+    &.m-from-right-#{$i} {
+      @extend %l-col-from-right-#{$i};
+    }
+    &.m-to-right-#{$i} {
+      @extend %l-col-to-right-#{$i};
     }
   }
 }

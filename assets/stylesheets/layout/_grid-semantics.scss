@@ -3,6 +3,10 @@
   @include grid-container;
   @include box-sizing(content-box);
 
+  %l-container {
+    @include grid-container(100%);
+  }
+
   %l-row {
     @include grid-row;
   }
@@ -35,15 +39,15 @@
 
     // No margins (without row)
     %l-container > & {
-      $v-double-gutter: $grid-gutter-medium * 2;
+      $v-double-gutter: $grid-gutter * 2;
       @include grid-column-width($i, $grid-type, $v-double-gutter);
     }
 
-    %l-grid-pixel > %l-row & {
+    %l-grid-pixel > %l-row > & {
       @include grid-column-width($i, pixel);
       @include grid-column-margins(pixel);
     }
-    %l-grid-fluid > %l-row & {
+    %l-grid-fluid > %l-row > & {
       @include grid-column-width($i, fluid);
       @include grid-column-margins(fluid);
     }

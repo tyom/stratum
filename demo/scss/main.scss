@@ -2,7 +2,7 @@
 
 @import "layout/scaffolding";
 
-@include GRID-GUIDES;
+// @include GRID-GUIDES;
 
 body {
   font: 12px/1.36 Helvetica, Arial, sans-serif;
@@ -15,13 +15,34 @@ body {
   margin: 0;
 }
 
-.l-container {
-  .l-row {
-    margin-bottom: $grid-gutter-medium;
+@for $i from 1 through 5 {
+  h#{$i} {
+    margin: 0 0 10px;
   }
+}
+
+.l-container {
+  margin-bottom: $grid-gutter * 2;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .l-row {
+    margin-bottom: $grid-gutter;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
   .l-col {
-    height: $grid-baseline * 10;
+    min-height: $grid-baseline * 10;
     background: rgba(blue, .2);
     padding: $grid-baseline;
+
+    .l-col {
+      height: 100%;
+    }
   }
 }
