@@ -1,0 +1,58 @@
+// Draws grid guides
+@mixin grid-render-guides($grid-size: $grid-medium, $block-size: 8, $color: $grid-guides-color, $opacity: $grid-guides-opacity, $position: $grid-guides-position, $grid-type: pixel) {
+
+  $column-gutter: grid-column-gutter($grid-size, $grid-desired-gutter);
+  $column-width:  grid-single-column-width($grid-size, $grid-total-columns, $column-gutter);
+
+  $combined-width:  $column-width + $column-gutter;
+  $block-height: (($grid-baseline + 1) * $block-size) + $grid-baseline;
+
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background:
+      // Baseline (v-rhythm)
+      -webkit-linear-gradient(transparent $grid-baseline, rgba(white, $opacity) $grid-baseline),
+      // Columns
+      -webkit-linear-gradient(left, rgba($color, $opacity),
+                              rgba($color, $opacity) $column-width,
+                              transparent $column-width,
+                              transparent $combined-width),
+      // Blocks
+      -webkit-linear-gradient(transparent ($block-height - $grid-baseline), rgba(white, $opacity / 1.2) $grid-baseline),
+      // Base colour
+      -webkit-linear-gradient(rgba($color, $opacity), rgba($color, $opacity));
+      background-size: $combined-width $grid-baseline + 1,  // v-rhythm
+                     $combined-width 10px,                // column
+                     $combined-width ($block-height + 1); // block
+
+    @if $grid-type == fluid {
+      // Offset column by half gutter
+      background-position: 0 0, -($column-gutter/4) 0, 0 0;
+    }
+
+    // Grid placement (back by default)
+    @if $position == front {
+      z-index: 999;
+    } @else {
+      z-index: -1;
+    }
+  }
+}
+
+// Currently only global for all grids
+@mixin GRID-GUIDES {
+  %l-container > %l-row {
+    @include grid-render-guides($grid-medium);
+    &::before {
+      margin: 0 $grid-half-gutter-m;
+    }
+  }
+}

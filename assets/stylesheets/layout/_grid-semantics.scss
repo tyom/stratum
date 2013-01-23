@@ -1,0 +1,109 @@
+// # Grid container
+%l-container {
+  @include grid-container;
+  @include box-sizing(content-box);
+
+  %l-row {
+    @include grid-row;
+  }
+
+  // Container spefic grid types
+  &%l-grid-fluid > %l-row {
+    @include grid-row(fluid);
+  }
+  &%l-grid-pixel > %l-row {
+    @include grid-row(pixel);
+  }
+}
+
+
+// # Columns
+%l-col {
+  @include grid-column;
+}
+
+
+// # Column specific
+@for $i from 1 through $grid-total-columns {
+
+  // ## Spans
+
+  %l-col-#{$i} {
+    %l-row & {
+      @include grid-column-width($i, $grid-type);
+    }
+
+    // No margins (without row)
+    %l-container > & {
+      $v-double-gutter: $grid-gutter-medium * 2;
+      @include grid-column-width($i, $grid-type, $v-double-gutter);
+    }
+
+    %l-grid-pixel > %l-row & {
+      @include grid-column-width($i, pixel);
+      @include grid-column-margins(pixel);
+    }
+    %l-grid-fluid > %l-row & {
+      @include grid-column-width($i, fluid);
+      @include grid-column-margins(fluid);
+    }
+  }
+}
+
+
+// # Column margins
+// Only applied when descendants of rows
+%l-row %l-col {
+  @include grid-column-margins;
+}
+
+
+// # Column Offsets
+// TODO simplify?
+// Order: it's important to have these block following column spans above,
+// otherwise specificity won't work
+%l-container {
+  @for $i from 1 through $grid-total-columns {
+    // Match specificity of grid container variations
+    &,
+    &%l-grid-pixel,
+    &%l-grid-fluid {
+      > %l-row %l-col {
+
+        // From left
+        &%l-col-from-left-#{$i} {
+          @include grid-offset-by-column($i, left);
+        }
+
+        // To left
+        &%l-col-to-left-#{$i} {
+          @include grid-offset-by-column($i, left, negative);
+          &:first-child {
+            @include grid-offset-by-column($i, left, negative, $first: true);
+          }
+        }
+
+        // From right
+        &%l-col-from-right-#{$i} {
+          @include grid-offset-by-column($i, right);
+        }
+
+        // To right
+        &%l-col-to-right-#{$i} {
+          @include grid-offset-by-column($i, right, negative);
+        }
+      }
+    }
+  }
+}
+
+
+// Float last column to right if `%l-last-col-right`
+// Can be used to extend either columns or grid container
+%l-col + %l-col:last-child {
+  &%l-last-col-right,
+  %l-last-col-right%l-container > &,
+  %l-last-col-right%l-container > %l-row & {
+    float: right;
+  }
+}

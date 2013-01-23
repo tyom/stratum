@@ -1,12 +1,12 @@
 @import "stratum";
 
+@import "layout/scaffolding";
+
+@include GRID-GUIDES;
+
 body {
   font: 12px/1.36 Helvetica, Arial, sans-serif;
   color: #444;
-}
-
-* {
-  @include box-sizing(border-box);
 }
 
 body {
@@ -15,35 +15,13 @@ body {
   margin: 0;
 }
 
-.container {
-  @extend %l-container;
-  @extend %l-last-col-right;
-
-  &.flexible {
-    @extend %l-flexible-grid;
+.l-container {
+  .l-row {
+    margin-bottom: $grid-gutter-medium;
   }
-
-  &.pixel {
-    @extend %l-pixel-grid;
-  }
-
-  .row {
-    @extend %l-row;
-    margin-bottom: 30px;
-  }
-
-  .two, .four {
-    @extend %l-col;
-    height: 300px;
+  .l-col {
+    height: $grid-baseline * 10;
     background: rgba(blue, .2);
-    padding: 20px;
-  }
-
-  .two {
-    @extend %l-col-2;
-  }
-
-  .four {
-    @extend %l-col-4;
+    padding: $grid-baseline;
   }
 }

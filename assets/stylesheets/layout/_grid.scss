@@ -8,7 +8,7 @@ $grid-responsive:       false       !default;
 $grid-medium:           980px       !default;
 $grid-large:            1200px      !default;
 
-$grid-type:             flexible    !default;
+$grid-type:             fluid       !default;
 $grid-total-columns:    12          !default;
 $grid-baseline:         20px        !default;
 $grid-desired-gutter:   20px        !default;
@@ -20,4 +20,5 @@ $grid-guides-opacity:   .2          !default;
 $grid-guides-position:  back        !default;
 
 @import "grid-mixins";
-@import "grid-classes";
+@import "grid-semantics";
+@import "grid-guides";

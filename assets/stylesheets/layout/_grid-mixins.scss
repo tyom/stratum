@@ -1,4 +1,4 @@
-@import "../utils/contain-float";
+@import "../utils/group";
 @import "grid-functions";
 
 // Grid initialisation
@@ -18,33 +18,26 @@ $grid-column: $grid-column-medium   !default;
 
 // Grid container to set grid bounds
 @mixin grid-container($width: $grid-medium) {
-  @include contain-float;
+  @include group;
 
   width: $width;
   margin: {
     left: auto;
     right: auto;
   }
-
-  // @if $grid-type != flexible {
-  //   @if($grid-responsive) {
-  //     @include large-screen {
-  //       width: $grid-large;
-  //     }
-  //   }
-  // }
 }
 
 // Grid row
-// $type: <pixel|flexible>
+// $type: <pixel|fluid>
 @mixin grid-row($type: $grid-type) {
-  @include contain-float;
+  @include group;
   @include grid-column-margins($type, -1);
 }
 
 // Converts into grid column
 // $variation - can be normal, last, end, inner or centered
 @mixin grid-column($type: $grid-type) {
+  @include box-sizing(border-box);
   min-height: 1px;
   float: left;
 }
@@ -55,7 +48,7 @@ $grid-column: $grid-column-medium   !default;
 @mixin grid-column-margins($type: $grid-type, $modifier: 1) {
   $v-gutter:   auto;
 
-  @if($type == flexible) {
+  @if($type == fluid) {
     $v-gutter: grid-calculate-percentage($grid-half-gutter-m * $modifier);
   } @else if ($type == pixel) {
     $v-gutter: $grid-half-gutter-m * $modifier;
@@ -63,33 +56,6 @@ $grid-column: $grid-column-medium   !default;
 
   margin-left:  $v-gutter;
   margin-right: $v-gutter;
-
-  // @if $variation != collapse {
-  //   @if $variation == centered {
-  //     margin-left:  auto;
-  //     margin-right: auto;
-  //   } @else if $variation == flexible {
-  //     margin-left:  grid-calculate-percentage($grid-half-gutter-m * $modifier);
-  //     margin-right: grid-calculate-percentage($grid-half-gutter-m * $modifier);
-  //   } @else {
-  //     @if $variation == inner {
-  //       @if $grid-type == flexible {
-  //         margin-left:  grid-calculate-percentage($grid-half-gutter-m * $modifier);
-  //         margin-right: grid-calculate-percentage($grid-half-gutter-m * $modifier);
-  //       } @else {
-  //         margin-left:  $grid-half-gutter-m * $modifier;
-  //         margin-right: $grid-half-gutter-m * $modifier;
-
-  //         @if($grid-responsive) {
-  //           @include large-screen {
-  //             margin-left:  $grid-half-gutter-l * $modifier;
-  //             margin-right: $grid-half-gutter-l * $modifier;
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
 }
 
 // Calculate single column width (in pixels) multipled by number of columns it spans (indluding gutters)
@@ -98,105 +64,36 @@ $grid-column: $grid-column-medium   !default;
 
   @if($type == pixel) {
     $v-col-width: grid-column-span-width($span, $grid-column-medium, $gutter);
-  } @else if($type == flexible) {
+  } @else if($type == fluid) {
     $v-col-width: grid-calculate-percentage(grid-column-span-width($span, $grid-column-medium, $gutter));
   }
 
   width: $v-col-width;
-
-  // @if($grid-responsive) {
-  //   @include large-screen {
-  //     width: grid-column-span-width($span, $grid-column-large, $grid-gutter-large);
-  //   }
-  // }
 }
 
-// // Calculate single column width in percent
-// @mixin grid-column-width-flexi($span: 1, $collapse-margins: false) {
-//   // Calculate width in percentages from the total grid width and gutter (based on medium),
-//   // offset by provided gutter width
-//   @if $collapse-margins {
-//     width: grid-calculate-percentage(grid-column-span-width($span, $grid-column-medium + $grid-gutter-medium, 0));
-//   } @else {
-//     width: grid-calculate-percentage(grid-column-span-width($span, $grid-column-medium, $grid-gutter-medium));
-//   }
-// }
 
+// TODO simplify
+// Calculate offset width based on number of columns it spans (including gutters)
+@mixin grid-offset-by-column($span: 1, $direction: left, $type: positive, $first: false) {
+  $v-offset: 0;
 
-// // Calculate offset width based on number of columns it spans (including gutters)
-// // $span <number>, $direction: <left/right>, $type <positive/negative>
-// @mixin grid-offset-by-column($span: 1, $direction: left, $type: positive, $first: false) {
-//   $offset: 0;
+  @if $type == positive {
+    // normal offset
+    $v-offset: grid-column-span-width($span, $grid-column-medium, $grid-gutter-medium) + ($grid-gutter-medium * 3 / 2);
+  } @else {
+    // negative offset
+    // left
+    @if $direction == left {
+      $v-offset: -(grid-column-span-width($span, $grid-column-medium, $grid-gutter-medium) + ($grid-gutter-medium));
+      @if $first {
+        $v-offset: $v-offset + $grid-gutter-medium / 2;
+      }
+    // right
+    } @else {
+      $v-offset: -(grid-column-span-width($span, $grid-column-medium, $grid-gutter-medium) + ($grid-gutter-medium / 2));
+      margin-left: abs($v-offset) + $grid-gutter-medium * 3 / 2;
+    }
+  }
 
-//   @if $type == positive {
-//     // normal offset
-//     $offset: grid-column-span-width($span, $grid-column-medium, $grid-gutter-medium) + ($grid-gutter-medium * 3 / 2);
-//   } @else {
-//     // negative offset
-//     // left
-//     @if $direction == left {
-//       $offset: -(grid-column-span-width($span, $grid-column-medium, $grid-gutter-medium) + ($grid-gutter-medium));
-//       @if $first {
-//         $offset: $offset + $grid-gutter-medium / 2;
-//       }
-//     // right
-//     } @else {
-//       $offset: -(grid-column-span-width($span, $grid-column-medium, $grid-gutter-medium) + ($grid-gutter-medium / 2));
-//       margin-left: abs($offset) + $grid-gutter-medium * 3 / 2;
-//     }
-//   }
-//   margin-#{$direction}: $offset;
-
-//   @include large-screen {
-//     @if $type == positive {
-//       // normal offset
-//       $offset: grid-column-span-width($span, $grid-column-large, $grid-gutter-large) + ($grid-gutter-large * 3 / 2);
-//     } @else {
-//       // negative offset
-//       // left
-//       @if $direction == left {
-//         $offset: -(grid-column-span-width($span, $grid-column-large, $grid-gutter-large) + ($grid-gutter-large * $span));
-//         @if $first {
-//           $offset: $offset + $grid-gutter-large / 2;
-//         }
-//       // right
-//       } @else {
-//         $offset: -(grid-column-span-width($span, $grid-column-large, $grid-gutter-large) + ($grid-gutter-large / 2));
-//         margin-left: abs($offset) + ($grid-gutter-large * 2) + ($grid-gutter-large / 2);
-//       }
-//     }
-//     margin-#{$direction}: $offset;
-//   }
-
-//   @if $grid-type == flexible {
-//     $offset: grid-calculate-percentage(grid-column-span-width($span, $grid-column-medium, $grid-gutter-medium) + ($grid-gutter-medium * 3 / 2));
-//   }
-// }
-
-
-// // Renders borders between columns (except the first and the last ones)
-// // $grid-size, $color
-// @mixin grid-column-borders($column-gutter, $color: #ccc, $style: solid, $size: 1px) {
-//   .col {
-//     position: relative;
-//   }
-//   .col:before, .col:after {
-//     content: "";
-//     position: absolute;
-//     width: 1px;
-//     top: 0;
-//     bottom: 0;
-//     border: 0 $style $color;
-//   }
-//   .col:before {
-//     border-left-width: $size;
-//     left: -$column-gutter/2 - $size/2 - 1;
-//   }
-//   .col:after {
-//     border-right-width: $size;
-//     right: -$column-gutter/2 - $size/2 - 1;
-//   }
-//   .col:first-child:before, .col:last-child:after {
-//     display: none;
-//   }
-// }
+  margin-#{$direction}: $v-offset;
+}

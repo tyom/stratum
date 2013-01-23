@@ -18,11 +18,11 @@
 $grid-total-columns:        10;
 $grid-desired-gutter:       20px;
 // $grid-baseline:             30px;
-// $grid-type:                 flexible;
+// $grid-type:                 fluid;
 // -----------------------------------------------------------------------------
 
 @import "utils/vendor-prefix";
-@import "utils/contain-float";
+@import "utils/group";
 
 @import "css3/box-sizing";
 

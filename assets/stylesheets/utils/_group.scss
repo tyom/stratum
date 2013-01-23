@@ -1,4 +1,6 @@
-@mixin contain-float {
+// Group floats
+// The good ol' clearfix, yo
+@mixin group {
   &:after {
     content: " ";
     display: table;

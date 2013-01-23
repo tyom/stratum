@@ -9,33 +9,51 @@
         <script src="js/livereload.js?host=localhost"></script>
     </head>
     <body>
-        <div class="container pixel">
+        <div class="l-container m-pixel">
             <h1>Pixel grid</h1>
-            <div class="row">
-                <div class="two"></div>
-                <div class="two"></div>
-                <div class="two"></div>
-                <div class="two"></div>
-                <div class="two"></div>
+            <div class="l-row">
+                <div class="l-col m-2">
+                    Spans 2
+                </div>
+                <div class="l-col m-2">
+                    Spans 2
+                </div>
+                <div class="l-col m-2">
+                    Spans 2
+                </div>
+                <div class="l-col m-2">
+                    Spans 2
+                </div>
+                <div class="l-col m-2">
+                    Spans 2
+                </div>
+            </div>
+            <div class="l-row">
+                <div class="l-col m-4 m-from-left-3">
+                    Offset by 3 from left
+                </div>
+                <div class="l-col m-3">
+                    Spans 3
+                </div>
             </div>
         </div>
 
-        <div class="container flexible">
-            <h1>Flexible grid</h1>
-            <div class="row">
-                <div class="two"></div>
-                <div class="four"></div>
-                <div class="four"></div>
+        <div class="l-container m-fluid">
+            <h1>Fluid grid</h1>
+            <div class="l-row">
+                <div class="l-col m-2"></div>
+                <div class="l-col m-4"></div>
+                <div class="l-col m-4"></div>
             </div>
         </div>
 
-        <div class="container">
+        <div class="l-container m-rowless">
             <h1>Grid with no `row`</h1>
-            <div class="two"></div>
-            <div class="two"></div>
-            <div class="two"></div>
-            <div class="two"></div>
-            <div class="two"></div>
+            <div class="l-col m-2"></div>
+            <div class="l-col m-2"></div>
+            <div class="l-col m-2"></div>
+            <div class="l-col m-2"></div>
+            <div class="l-col m-2"></div>
         </div>
     </body>
 </html>
