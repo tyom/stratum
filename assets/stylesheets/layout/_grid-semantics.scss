@@ -1,33 +1,80 @@
-// # Grid container
+// Semantic grid components
+// ========================
+
+// These class placeholders can be used to convert any element into
+// grid component. To use extend element with appropriate placeholder.
+// It will automatically take care of the parent and descending components
+// as long as the correct grid components are used.
+
+// The structure of the grid is as follows:
+
+// %l-container           –  A grid is always contained in one of these
+//                           They use global grid settings and can be overriden with:
+//    %l-grid-pixel       –  Force pixel grid
+//    %l-grid-fluid       –  Force fluid grid
+//    %l-marginless       –  Collapse column margins (gutters)
+//
+// %l-row                 –  Grid consists of a number of rows
+//                           They are required for correct column margins, but can be omitted,
+//                           in which case the grid with no `%l-row` becomes marginless
+//
+// %l-col                 –  Column, the unit of the grid
+//    %l-col-<$i>         –  Column size (e.g. `%l-col-4` spans four single columns, including three gutters)
+//
+// l-col-from-left-<$i>   –  Offset column by <column size> from left
+// l-col-to-left-<$i>     –  Offset column by <column size> to left (negative margin)
+// l-col-from-right-<$i>  –  Offset column by <column size> from right
+// l-col-to-right-<$i>    –  Offset column by <column size> to right (negative margin)
+//
+// %l-last-col-right      –  This settings forces last column to float to right, which helps to eliminate
+//                           pixel gap caused by rounding in fluid grids and ensures first and last column
+//                           occupy full width of grid container.
+//                           Can be applied on grid container of columns directly.
+
+
+// # Individual grid components
+
+// Grid container
 %l-container {
   @include grid-container;
   @include box-sizing(content-box);
 
+  // Defines inner grid container (nested grid)
   %l-container {
     @include grid-container(100%);
   }
 
+  // Defines grid row
   %l-row {
     @include grid-row;
   }
 
-  // Container spefic grid types
+  // Defines grid row of forced fluid grid
   &%l-grid-fluid > %l-row {
     @include grid-row(fluid);
   }
+  // Defines grid row of forced pixel grid
   &%l-grid-pixel > %l-row {
     @include grid-row(pixel);
+  }
+
+  // Defines row of marginless grid
+  &%l-marginless > %l-row {
+    margin: {
+      left: 0;
+      right: 0;
+    }
   }
 }
 
 
-// # Columns
+// Defines columns
 %l-col {
   @include grid-column;
 }
 
 
-// # Column specific
+// Defines column sizes
 @for $i from 1 through $grid-total-columns {
 
   // ## Spans
@@ -59,14 +106,15 @@
 }
 
 
-// # Column margins
-// Only applied when descendants of rows
+// Defines column margins
+// Only applied to descendants of rows
 %l-row %l-col {
   @include grid-column-margins;
 }
 
 
-// # Column Offsets
+// Defines column offsets
+
 // TODO simplify?
 // Order: it's important to have these block following column spans above,
 // otherwise specificity won't work
