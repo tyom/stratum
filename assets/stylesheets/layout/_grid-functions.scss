@@ -1,13 +1,3 @@
-// # Calcuate the width of a single column
-@function grid-column-width($grid-width, $total-columns, $gutter) {
-  @return ($grid-width - (($total-columns - 1) * $gutter)) / $total-columns;
-}
-
-// # Calculate the total width of number of columns including gutters
-@function grid-columns-width($column-span, $column-width, $column-gutter) {
-  @return ceil($column-span * $column-width + ($column-span - 1) * $column-gutter);
-}
-
 // # Calculate column gutter from desired value
 
 // This function will find the nearest round number that
@@ -32,6 +22,16 @@
 
     $v-gutter: $v-gutter + 1;
   }
+}
+
+// # Calcuate the width of a single column
+@function grid-column-width($grid-width, $total-columns, $gutter) {
+  @return ($grid-width - (($total-columns - 1) * $gutter)) / $total-columns;
+}
+
+// # Calculate the total width of number of columns including gutters
+@function grid-columns-width($column-span, $column-width, $column-gutter) {
+  @return ceil($column-span * $column-width + ($column-span - 1) * $column-gutter);
 }
 
 // # Convert percentage of width relative to the total width
