@@ -35,12 +35,16 @@
   %l-col-#{$i} {
     %l-row & {
       @include grid-column-width($i, $grid-type);
+
+      %l-marginless > & {
+        @include grid-column-width($i, marginless);
+        @include grid-column-margins(fluid, 0);
+      }
     }
 
-    // No margins (without row)
+    // Marginless (container without row)
     %l-container > & {
-      $v-double-gutter: $grid-gutter * 2;
-      @include grid-column-width($i, $grid-type, $v-double-gutter);
+      @include grid-column-width($i, marginless);
     }
 
     %l-grid-pixel > %l-row > & {

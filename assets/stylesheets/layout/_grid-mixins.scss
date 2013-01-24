@@ -39,8 +39,8 @@ $grid-column:         grid-column-width($grid-size, $grid-total-columns, $grid-g
 }
 
 // Column margins
-// $modifier: 1   - normal column margins
-// $modifier: -1  - negative row margins
+// $modifier: 1   - normal (column) margins
+// $modifier: -1  - negative (row) margins
 @mixin grid-column-margins($type: $grid-type, $modifier: 1) {
   $v-gutter:   auto;
 
@@ -62,6 +62,8 @@ $grid-column:         grid-column-width($grid-size, $grid-total-columns, $grid-g
     $v-col-width: grid-columns-width($span, $grid-column, $gutter);
   } @else if($type == fluid) {
     $v-col-width: grid-percentage(grid-columns-width($span, $grid-column, $gutter));
+  } @else if($type == marginless) {
+    $v-col-width: grid-percentage(grid-columns-width($span, $grid-column + $gutter, 0));
   }
 
   width: $v-col-width;

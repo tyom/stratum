@@ -21,6 +21,10 @@
   .l-col {
     @extend %l-col;
   }
+
+  &.m-marginless {
+    @extend %l-marginless;
+  }
 }
 
 // Grid columns
