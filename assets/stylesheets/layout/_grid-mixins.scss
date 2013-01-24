@@ -14,7 +14,8 @@ $grid-column:         grid-column-width($grid-size, $grid-total-columns, $grid-g
 // Grid container to set grid bounds
 @mixin grid-container($width: $grid-size) {
   @include group;
-
+  min-width: $width;
+  max-width: 100%;
   width: $width;
   margin: {
     left: auto;

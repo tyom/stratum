@@ -34,6 +34,10 @@ body {
     &:last-child {
       margin-bottom: 0;
     }
+
+    .l-row {
+      margin-bottom: 1.6%;
+    }
   }
 
   .l-col {
@@ -42,7 +46,7 @@ body {
     padding: $grid-baseline;
 
     .l-col {
-      height: 100%;
+      min-height: $grid-baseline * 5;
     }
   }
 }
