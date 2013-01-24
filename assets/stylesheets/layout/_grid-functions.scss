@@ -2,13 +2,16 @@
 
 // This function will find the nearest round number that
 // fits well with number of columns and total width specified
-@function grid-column-gutter($grid-width, $desired) {
+
+// All parameters are optional (use grid defaults)
+
+@function grid-column-gutter($grid-size: $grid-size, $desired: $grid-desired-gutter) {
   $v-gutter: 0px;
   $column: 1;
 
   // Find a round gutter width
   @while $column > $v-gutter {
-    $column: grid-column-width($grid-width, $grid-total-columns, $v-gutter);
+    $column: grid-column-width($grid-size, $grid-total-columns, $v-gutter);
 
     @if $column % 1 == 0 {
       $range-from:  $desired - 6;
@@ -25,16 +28,27 @@
 }
 
 // # Calcuate the width of a single column
-@function grid-column-width($grid-width, $total-columns, $gutter) {
-  @return ($grid-width - (($total-columns - 1) * $gutter)) / $total-columns;
+// All parameters are optional (use grid defaults)
+@function grid-column-width($grid-size: $grid-size, $total-columns: $grid-total-columns, $gutter: auto) {
+  @if $gutter == auto {
+    $gutter: grid-column-gutter($grid-size, $grid-desired-gutter);
+  }
+  @return ($grid-size - (($total-columns - 1) * $gutter)) / $total-columns;
 }
 
 // # Calculate the total width of number of columns including gutters
-@function grid-columns-width($column-span, $column-width, $column-gutter) {
-  @return ceil($column-span * $column-width + ($column-span - 1) * $column-gutter);
+// `$column-width` & `$gutter` are optional (use grid defaults)
+@function grid-columns-width($column-span, $column-width: auto, $gutter: auto) {
+  @if $column-width == auto {
+    $column-width: grid-column-width();
+  }
+  @if $gutter == auto {
+    $gutter: grid-column-gutter($grid-size, $grid-desired-gutter);
+  }
+  @return ceil($column-span * $column-width + ($column-span - 1) * $gutter);
 }
 
 // # Convert percentage of width relative to the total width
-@function grid-percentage($width, $grid-width: ($grid-size + $grid-gutter)) {
-  @return percentage($width / $grid-width);
+@function grid-percentage($width, $grid-size: ($grid-size + $grid-gutter)) {
+  @return percentage($width / $grid-size);
 }

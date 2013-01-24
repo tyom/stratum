@@ -3,9 +3,9 @@
 
 // Grid initialisation
 // -------------------
-$grid-gutter:         grid-column-gutter($grid-size, $grid-desired-gutter);
+$grid-gutter:         grid-column-gutter();
 $grid-half-gutter:    $grid-gutter / 2;
-$grid-column:         grid-column-width($grid-size, $grid-total-columns, $grid-gutter);
+$grid-column:         grid-column-width();
 
 
 // Mixins
@@ -59,9 +59,9 @@ $grid-column:         grid-column-width($grid-size, $grid-total-columns, $grid-g
   $v-col-width: auto;
 
   @if($type == pixel) {
-    $v-col-width: grid-columns-width($span, $grid-column, $gutter);
+    $v-col-width: grid-columns-width($span);
   } @else if($type == fluid) {
-    $v-col-width: grid-percentage(grid-columns-width($span, $grid-column, $gutter));
+    $v-col-width: grid-percentage(grid-columns-width($span));
   } @else if($type == marginless) {
     $v-col-width: grid-percentage(grid-columns-width($span, $grid-column + $gutter, 0));
   }
@@ -77,18 +77,18 @@ $grid-column:         grid-column-width($grid-size, $grid-total-columns, $grid-g
 
   @if $type == positive {
     // normal offset
-    $v-offset: grid-columns-width($span, $grid-column, $grid-gutter) + ($grid-gutter * 3 / 2);
+    $v-offset: grid-columns-width($span) + ($grid-gutter * 3 / 2);
   } @else {
     // negative offset
     // left
     @if $direction == left {
-      $v-offset: -(grid-columns-width($span, $grid-column, $grid-gutter) + ($grid-gutter));
+      $v-offset: -(grid-columns-width($span) + ($grid-gutter));
       @if $first {
         $v-offset: $v-offset + $grid-half-gutter;
       }
     // right
     } @else {
-      $v-offset: -(grid-columns-width($span, $grid-column, $grid-gutter) + ($grid-gutter / 2));
+      $v-offset: -(grid-columns-width($span) + ($grid-gutter / 2));
       margin-left: abs($v-offset) + $grid-gutter * 3 / 2;
     }
   }
