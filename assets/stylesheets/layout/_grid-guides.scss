@@ -1,5 +1,5 @@
 // Draws grid guides
-@mixin grid-render-guides($grid-size: $grid-medium, $block-size: 8, $color: $grid-guides-color, $opacity: $grid-guides-opacity, $position: $grid-guides-position, $grid-type: pixel) {
+@mixin grid-render-guides($grid-size: $grid-size, $block-size: 8, $color: $grid-guides-color, $opacity: $grid-guides-opacity, $position: $grid-guides-position, $grid-type: pixel) {
 
   $column-gutter: grid-column-gutter();
   $column-width:  grid-column-width();
@@ -50,9 +50,9 @@
 // Currently only global for all grids
 @mixin GRID-GUIDES {
   %l-container > %l-row {
-    @include grid-render-guides($grid-medium);
+    @include grid-render-guides($grid-size);
     &::before {
-      margin: 0 $grid-half-gutter-m;
+      margin: 0 $grid-half-gutter;
     }
   }
 }
