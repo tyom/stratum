@@ -29,7 +29,9 @@
 // %l-last-col-right      –  This settings forces last column to float to right, which helps to eliminate
 //                           pixel gap caused by rounding in fluid grids and ensures first and last column
 //                           occupy full width of grid container.
-//                           Can be applied on grid container of columns directly.
+//                           Applied to grid container (@extend).
+
+// For examples of usage of these components see `scaffolding.scss` file.
 
 
 // # Individual grid components
@@ -41,7 +43,8 @@
 
   // Defines inner grid container (nested grid)
   %l-container {
-    @include grid-container(100%);
+    min-width: 0;
+    width: 100%;
   }
 
   // Defines grid row
@@ -75,9 +78,8 @@
 
 
 // Float last column to right if `%l-last-col-right` extended
-// Can be used to extend either columns or grid container
+// Applied to `%l-container`
 %l-col + %l-col:last-child {
-  &%l-last-col-right,
   %l-last-col-right%l-container > &,
   %l-last-col-right%l-container > %l-row & {
     float: right;
