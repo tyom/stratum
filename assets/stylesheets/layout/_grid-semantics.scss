@@ -74,6 +74,17 @@
 }
 
 
+// Float last column to right if `%l-last-col-right` extended
+// Can be used to extend either columns or grid container
+%l-col + %l-col:last-child {
+  &%l-last-col-right,
+  %l-last-col-right%l-container > &,
+  %l-last-col-right%l-container > %l-row & {
+    float: right;
+  }
+}
+
+
 // Defines column sizes
 @for $i from 1 through $grid-total-columns {
 
@@ -113,53 +124,103 @@
 }
 
 
+// TODO Improve
 // Defines column offsets
-
-// TODO simplify?
-// Order: it's important to have these block following column spans above,
-// otherwise specificity won't work
 %l-container {
   @for $i from 1 through $grid-total-columns {
-    // Match specificity of grid container variations
-    &,
-    &%l-grid-pixel,
-    &%l-grid-fluid {
-      > %l-row %l-col {
 
-        // From left
-        &%l-col-from-left-#{$i} {
-          @include grid-offset-by-column($i, left);
-        }
+    // ## Grid with margins
+    // Default grid offsets
+    & > %l-row %l-col {
+      // From left
+      &%l-col-from-left-#{$i} {
+        @include grid-offset-by-column($i, left, positive, $grid-type);
+      }
 
-        // To left
-        &%l-col-to-left-#{$i} {
-          @include grid-offset-by-column($i, left, negative);
-          &:first-child {
-            @include grid-offset-by-column($i, left, negative, $first: true);
-          }
-        }
+      // To left
+      &%l-col-to-left-#{$i} {
+        @include grid-offset-by-column($i, left, negative, $grid-type);
+      }
 
-        // From right
-        &%l-col-from-right-#{$i} {
-          @include grid-offset-by-column($i, right);
-        }
+      // From right
+      &%l-col-from-right-#{$i} {
+        @include grid-offset-by-column($i, right, positive, $grid-type);
+      }
 
-        // To right
-        &%l-col-to-right-#{$i} {
-          @include grid-offset-by-column($i, right, negative);
-        }
+      // To right
+      &%l-col-to-right-#{$i} {
+        @include grid-offset-by-column($i, right, negative, $grid-type);
       }
     }
-  }
-}
 
+    // Pixel grid offsets
+    &%l-grid-pixel > %l-row %l-col {
+      // From left
+      &%l-col-from-left-#{$i} {
+        @include grid-offset-by-column($i, left, positive, pixel);
+      }
 
-// Float last column to right if `%l-last-col-right`
-// Can be used to extend either columns or grid container
-%l-col + %l-col:last-child {
-  &%l-last-col-right,
-  %l-last-col-right%l-container > &,
-  %l-last-col-right%l-container > %l-row & {
-    float: right;
+      // To left
+      &%l-col-to-left-#{$i} {
+        @include grid-offset-by-column($i, left, negative, pixel);
+      }
+
+      // From right
+      &%l-col-from-right-#{$i} {
+        @include grid-offset-by-column($i, right, positive, pixel);
+      }
+
+      // To right
+      &%l-col-to-right-#{$i} {
+        @include grid-offset-by-column($i, right, negative, pixel);
+      }
+    }
+
+    // Fluid grid offsets
+    &%l-grid-fluid > %l-row %l-col {
+      // From left
+      &%l-col-from-left-#{$i} {
+        @include grid-offset-by-column($i, left, positive, fluid);
+      }
+
+      // To left
+      &%l-col-to-left-#{$i} {
+        @include grid-offset-by-column($i, left, negative, fluid);
+      }
+
+      // From right
+      &%l-col-from-right-#{$i} {
+        @include grid-offset-by-column($i, right, positive, fluid);
+      }
+
+      // To right
+      &%l-col-to-right-#{$i} {
+        @include grid-offset-by-column($i, right, negative, fluid);
+      }
+    }
+
+    // ## Marginless grid
+    & > %l-col,
+    &%l-marginless %l-col {
+      // From left
+      &%l-col-from-left-#{$i} {
+        @include grid-offset-by-column($i, left, positive, marginless);
+      }
+
+      // To left
+      &%l-col-to-left-#{$i} {
+        @include grid-offset-by-column($i, left, negative, marginless);
+      }
+
+      // From right
+      &%l-col-from-right-#{$i} {
+        @include grid-offset-by-column($i, right, positive, marginless);
+      }
+
+      // To right
+      &%l-col-to-right-#{$i} {
+        @include grid-offset-by-column($i, right, negative, marginless);
+      }
+    }
   }
 }

@@ -70,28 +70,30 @@ $grid-column:         grid-column-width();
 }
 
 
-// TODO simplify
 // Calculate offset width based on number of columns it spans (including gutters)
-@mixin grid-offset-by-column($span: 1, $direction: left, $type: positive, $first: false) {
-  $v-offset: 0;
+@mixin grid-offset-by-column($span: 1, $direction: left, $flow: positive, $grid-type: $grid-type) {
+  $v-offset: 0px;
+  $v-gutter: $grid-gutter;
 
-  @if $type == positive {
-    // normal offset
-    $v-offset: grid-columns-width($span) + ($grid-gutter * 3 / 2);
-  } @else {
-    // negative offset
-    // left
-    @if $direction == left {
-      $v-offset: -(grid-columns-width($span) + ($grid-gutter));
-      @if $first {
-        $v-offset: $v-offset + $grid-half-gutter;
-      }
-    // right
-    } @else {
-      $v-offset: -(grid-columns-width($span) + ($grid-gutter / 2));
-      margin-left: abs($v-offset) + $grid-gutter * 3 / 2;
-    }
+  // Grid with rows (outer margins)
+  @if $grid-type != marginless {
+    $v-gutter: $v-gutter * 1.5; // half gutter from row offset
   }
 
-  margin-#{$direction}: $v-offset;
+  // Pixel grid
+  @if $grid-type == pixel {
+    $v-offset: grid-columns-width($span);
+  }
+  // Fluid grid
+  @if $grid-type == fluid or $grid-type == marginless {
+    $v-gutter: grid-percentage($v-gutter);
+    $v-offset: grid-percentage(grid-columns-width($span));
+  }
+
+  // Negative offset
+  @if $flow == negative {
+    $v-offset: -$v-offset + $v-gutter;
+  }
+
+  margin-#{$direction}: $v-offset + $v-gutter;
 }
