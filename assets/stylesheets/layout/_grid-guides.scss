@@ -1,19 +1,39 @@
 // Grid debugging tools: Guides
 // ============================================================================
 
+// Guides rely on `::before` pseudo element so the will only work on elements
+// that don't already use it (e.g. not `group(true)`)
+
 // Draws grid guides
-@mixin grid-render-guides($grid-size: $grid-size, $block-size: 8, $color: $grid-guides-color, $opacity: $grid-guides-opacity, $position: $grid-guides-position, $grid-type: pixel) {
+@mixin grid-render-guides($grid-size: $grid-size, $grid-type: $grid-type) {
 
-  $column-gutter: grid-column-gutter();
-  $column-width:  grid-column-width();
+  $v-block-size: 8;
 
-  $combined-width:  $column-width + $column-gutter;
-  $block-height: (($grid-baseline + 1) * $block-size) + $grid-baseline;
+  // Pixel grid default values
+  $v-column-gutter: grid-column-gutter();
+  $v-column-width:  grid-column-width();
+  $v-column-relative-width: grid-column-gutter() + grid-column-width();
+
+  @if $grid-type == fluid {
+    // Calculate gutter to column ratio
+    $v-gutter-ratio: $v-column-gutter / ($v-column-width + $v-column-gutter);
+    // Calculate column to grid width ratio
+    // not entirely sure where $v-column-gutter/3 magic number comes from, but it's necessary to make it work
+    $v-column-ratio: ($v-column-width + $v-column-gutter) / ($grid-size - $v-column-gutter / 3);
+
+    // Reset column size with percentages
+    $v-column-gutter: percentage($v-gutter-ratio);
+    $v-column-width: 100 - percentage($v-gutter-ratio);
+    $v-column-relative-width: percentage($v-column-ratio);
+  }
+
+  $v-column-gutter:  $v-column-width + $v-column-gutter;
+  $v-block-height: (($grid-baseline + 1) * $v-block-size) + $grid-baseline;
 
   position: relative;
 
   &:before {
-    content: "";
+    content: " ";
     position: absolute;
     top: 0;
     left: 0;
@@ -22,27 +42,31 @@
 
     background:
       // Baseline (v-rhythm)
-      -webkit-linear-gradient(transparent $grid-baseline, rgba(white, $opacity) $grid-baseline),
+      -webkit-linear-gradient(
+        transparent $grid-baseline,
+        rgba(white, $grid-guides-opacity) $grid-baseline),
       // Columns
-      -webkit-linear-gradient(left, rgba($color, $opacity),
-                              rgba($color, $opacity) $column-width,
-                              transparent $column-width,
-                              transparent $combined-width),
+      -webkit-linear-gradient(left,
+        rgba($grid-guides-color, $grid-guides-opacity),
+        rgba($grid-guides-color, $grid-guides-opacity) $v-column-width,
+        transparent $v-column-width,
+        transparent $v-column-gutter),
       // Blocks
-      -webkit-linear-gradient(transparent ($block-height - $grid-baseline), rgba(white, $opacity / 1.2) $grid-baseline),
+      -webkit-linear-gradient(
+        transparent ($v-block-height - $grid-baseline),
+        rgba(white, $grid-guides-opacity / 1.2) $grid-baseline),
       // Base colour
-      -webkit-linear-gradient(rgba($color, $opacity), rgba($color, $opacity));
-      background-size: $combined-width $grid-baseline + 1,  // v-rhythm
-                     $combined-width 10px,                // column
-                     $combined-width ($block-height + 1); // block
+      -webkit-linear-gradient(
+        rgba($grid-guides-color, $grid-guides-opacity),
+        rgba($grid-guides-color, $grid-guides-opacity));
 
-    @if $grid-type == fluid {
-      // Offset column by half gutter
-      background-position: 0 0, -($column-gutter/4) 0, 0 0;
-    }
+    background-size:
+      $v-column-gutter $grid-baseline + 1,     // v-rhythm
+      $v-column-relative-width 10px,           // column
+      $v-column-gutter ($v-block-height + 1);  // block
 
     // Grid placement (back by default)
-    @if $position == front {
+    @if $grid-guides-position == front {
       z-index: 999;
     } @else {
       z-index: -1;
