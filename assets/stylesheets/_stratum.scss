@@ -9,14 +9,13 @@
 //
 // Grid
 //
-// $grid-guides:               true;
-// $grid-guides-color:         blue;
+$grid-guides-color:         #8aa8c0;
 // $grid-guides-opacity:       .1;
 // $grid-guides-position:      front;
+$grid-type:                 pixel;
 $grid-total-columns:        12;
 $grid-desired-gutter:       20px;
 // $grid-baseline:             30px;
-$grid-type:                 fluid;
 // -----------------------------------------------------------------------------
 
 @import "utils/vendor-prefix";
