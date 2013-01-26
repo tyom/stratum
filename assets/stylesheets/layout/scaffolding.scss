@@ -6,7 +6,7 @@
   @extend %l-container;
   @extend %l-last-col-right;
 
-  > .l-row {
+  .l-row {
     @extend %l-row;
   }
 
@@ -20,6 +20,10 @@
 
   .l-col {
     @extend %l-col;
+
+    &.m-centered {
+      @extend %l-col-center;
+    }
   }
 
   &.m-marginless {
@@ -46,6 +50,15 @@
     }
     &.m-to-right-#{$i} {
       @extend %l-col-to-right-#{$i};
+    }
+  }
+}
+
+// Grid column subdivisions
+.l-col {
+  @each $word in full, half, quarter, eighth, sixteenth {
+    &.m-#{$word} {
+      @extend %l-col-#{$word};
     }
   }
 }

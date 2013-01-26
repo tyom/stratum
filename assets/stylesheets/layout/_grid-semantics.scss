@@ -20,6 +20,12 @@
 //
 // %l-col                 –  Column, the unit of the grid
 //    %l-col-<$i>         –  Column size (e.g. `%l-col-4` spans four single columns, including three gutters)
+//    %l-col-full         –  100% width
+//    %l-col-half         –  50% width
+//    %l-col-quarter      –  25% width
+//    %l-col-eighth       –  12.5% width
+//    %l-col-sixteenth    –  6.25% width
+//    %l-col-center       -  Center column
 //
 // l-col-from-left-<$i>   –  Offset column by <column size> from left
 // l-col-to-left-<$i>     –  Offset column by <column size> to left (negative margin)
@@ -69,7 +75,7 @@
   }
 
   // Defines row of marginless grid
-  &%l-marginless > %l-row {
+  &%l-marginless %l-row {
     margin: {
       left: 0;
       right: 0;
@@ -81,6 +87,12 @@
 // Defines columns
 %l-col {
   @include grid-column;
+}
+
+%l-col-center {
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
@@ -127,6 +139,23 @@
       @include grid-column-margins(fluid);
     }
   }
+}
+
+// Fluid grid subdivisions
+%l-col-full {
+  width: 100%;
+}
+%l-col-half {
+  width: 50%;
+}
+%l-col-quarter {
+  width: 25%;
+}
+%l-col-eighth {
+  width: 12.5%;
+}
+%l-col-sixteenth {
+  width: 6.25%;
 }
 
 
