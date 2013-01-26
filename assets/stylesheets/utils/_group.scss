@@ -1,9 +1,21 @@
-// Group floats
-// The good ol' clearfix, yo
-@mixin group {
-  &:after {
+// Group floats (clearfix)
+// ============================================================================
+
+// `$prevent-margin-collapse` adds `::before` pseudo element
+// which prevents margins from collapsing (much like `overflow: hidden`)
+
+@mixin group($prevent-margin-collapse: false) {
+  %clearfix {
     content: " ";
     display: table;
+  }
+  @if $prevent-margin-collapse {
+    &::before {
+      @extend %clearfix;
+    }
+  }
+  &::after {
+    @extend %clearfix;
     clear: both;
   }
 }

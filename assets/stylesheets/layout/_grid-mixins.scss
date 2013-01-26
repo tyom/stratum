@@ -1,4 +1,3 @@
-@import "../utils/group";
 @import "grid-functions";
 
 // Grid initialisation
@@ -13,7 +12,6 @@ $grid-column:         grid-column-width();
 
 // Grid container to set grid bounds
 @mixin grid-container($width: $grid-size) {
-  @include group;
   min-width: $width;
   max-width: 100%;
   width: $width;
@@ -26,7 +24,6 @@ $grid-column:         grid-column-width();
 // Grid row
 // $type: <pixel|fluid>
 @mixin grid-row($type: $grid-type) {
-  @include group;
   @include grid-column-margins($type, -1);
 }
 

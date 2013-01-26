@@ -40,6 +40,7 @@
 %l-container {
   @include grid-container;
   @include box-sizing(content-box);
+  @include group;
 
   // Defines inner grid container (nested grid)
   %l-container {
@@ -50,6 +51,7 @@
   // Defines grid row
   %l-row {
     @include grid-row;
+    @include group;
   }
 
   // Defines grid row of forced fluid grid
