@@ -55,12 +55,17 @@
   }
 
   // Defines grid row of forced fluid grid
-  &%l-grid-fluid > %l-row {
+  &%l-grid-fluid > %l-row, {
     @include grid-row(fluid);
   }
   // Defines grid row of forced pixel grid
   &%l-grid-pixel > %l-row {
     @include grid-row(pixel);
+  }
+
+  // Always set nested grids to fluid
+  &%l-container %l-container > %l-row, {
+    @include grid-row(fluid);
   }
 
   // Defines row of marginless grid
@@ -109,11 +114,15 @@
       @include grid-column-width($i, marginless);
     }
 
+    // Force pixel grid
     %l-grid-pixel > %l-row > & {
       @include grid-column-width($i, pixel);
       @include grid-column-margins(pixel);
     }
-    %l-grid-fluid > %l-row > & {
+    // Force fluid grid
+    %l-grid-fluid > %l-row > &,
+    // Always set nested grid to fluid
+    %l-container %l-container > %l-row > & {
       @include grid-column-width($i, fluid);
       @include grid-column-margins(fluid);
     }
