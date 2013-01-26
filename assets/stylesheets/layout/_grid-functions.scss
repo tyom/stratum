@@ -22,9 +22,9 @@
         @return $v-gutter;
       }
     }
-
     $v-gutter: $v-gutter + 1;
   }
+  @warn "Couldn't find suitable gutter close to your desired value. Try a different one.";
 }
 
 // # Calcuate the width of a single column
