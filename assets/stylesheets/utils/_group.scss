@@ -5,17 +5,15 @@
 // which prevents margins from collapsing (much like `overflow: hidden`)
 
 @mixin group($prevent-margin-collapse: false) {
-  %clearfix {
-    content: " ";
-    display: table;
-  }
   @if $prevent-margin-collapse {
     &::before {
-      @extend %clearfix;
+      content: " ";
+      display: table;
     }
   }
   &::after {
-    @extend %clearfix;
+    content: " ";
+    display: table;
     clear: both;
   }
 }
