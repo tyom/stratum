@@ -1,22 +1,12 @@
-@charset "utf-8";
-
-// © 2012 Tyom Semonov <mail@tyom.net>
-// Inspired by Zurb's Foundation & Gridulator.
-
-// -----------------------------------------------------------------------------
-// Stratum settings
-// -----------------------------------------------------------------------------
-//
-// Grid
-//
+// Grid settings
 $grid-guides-color:         #8aa8c0;
-// $grid-guides-opacity:       .1;
-// $grid-guides-position:      front;
-$grid-type:                 pixel;
+$grid-guides-opacity:       .1;
+$grid-guides-position:      front;
+$grid-type:                 fluid;
+$grid-size:                 980px;
 $grid-total-columns:        12;
 $grid-desired-gutter:       20px;
-// $grid-baseline:             30px;
-// -----------------------------------------------------------------------------
+$grid-baseline:             18px;
 
 @import "utils/vendor-prefix";
 @import "utils/group";
