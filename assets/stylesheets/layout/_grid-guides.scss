@@ -1,3 +1,6 @@
+// Grid debugging tools: Guides
+// ============================================================================
+
 // Draws grid guides
 @mixin grid-render-guides($grid-size: $grid-size, $block-size: 8, $color: $grid-guides-color, $opacity: $grid-guides-opacity, $position: $grid-guides-position, $grid-type: pixel) {
 

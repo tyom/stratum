@@ -22,7 +22,12 @@ $grid-desired-gutter:       20px;
 @import "utils/vendor-prefix";
 @import "utils/group";
 
+// CSS3 mixins
 @import "css3/box-sizing";
 
-// @import "layout/responsive";
+// Layout
 @import "layout/grid";
+// @import "layout/responsive";
+
+// Forms
+@import "forms/input-placeholder";
