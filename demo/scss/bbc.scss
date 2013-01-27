@@ -58,7 +58,7 @@ body {
     }
 
     > header .l-col {
-      @include block(green, $height: 75px, $padding: $grid-gutter/2);
+      @include block(green, $height: 75px);
     }
 
     > .dashboard {
