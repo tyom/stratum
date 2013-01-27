@@ -1,6 +1,6 @@
 guard 'sass',
 	:load_paths => ['../assets/stylesheets'],
-  :debug_info => true,
+  # :debug_info => true,
   :input => 'scss',
   :output => 'css'
 
