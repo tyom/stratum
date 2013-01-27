@@ -1,0 +1,3 @@
+server: true
+auto:   true
+exclude: Gemfile, Gemfile.lock, Guardfile, vendor
