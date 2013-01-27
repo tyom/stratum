@@ -1,46 +1,57 @@
 @import "stratum";
-@import "layout/scaffolding";
-
-@include GRID-GUIDES;
 
 body {
   font: 12px/1.36 Helvetica, Arial, sans-serif;
   color: #444;
   background: #eee;
-  padding: 50px;
   margin: 0;
+  padding: 0;
 }
 
-h3 {
-  margin: 0 0 10px;
+h1, h2 {
+  margin: ($grid-baseline * 2) 0 $grid-baseline;
 }
 
-.l-container {
-  margin-bottom: $grid-gutter * 2;
+h2 {
+  border-top: 1px solid rgba(black, .2);
+  padding-top: $grid-baseline;
+  margin-top: $grid-baseline;
 
-  &:last-child {
-    margin-bottom: 0;
+  &:first-child {
+    border: none;
+  }
+}
+
+#masthead {
+  background: #444;
+  font-size: 13px;
+
+  ul {
+    @extend %l-container;
+    @include group;
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
   }
 
-  .l-row {
-    margin-bottom: $grid-gutter;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-
-    .l-row {
-      margin-bottom: 1.6%;
-    }
+  li {
+    float: left;
   }
 
-  .l-col {
-    min-height: $grid-baseline * 10;
-    background: rgba(#999, .6);
-    padding: $grid-baseline;
+  a {
+    color: #ddd;
+    float: left;
+    padding: 8px 10px;
+    text-decoration: none;
+  }
 
-    .l-col {
-      min-height: $grid-baseline * 5;
-    }
+  .active a,
+  a:hover {
+    background: #363636;
+    color: white;
+  }
+
+  .active a {
+    background: #222;
   }
 }

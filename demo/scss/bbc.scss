@@ -1,16 +1,19 @@
 // Grid settings
-$grid-guides-color:         #8aa8c0   !default;
-$grid-guides-opacity:       .2        !default;
+$grid-guides-color:         #8aa8c0;
+$grid-guides-opacity:       .2;
 
-$grid-type:                 pixel     !default;
-$grid-size:                 976px     !default;
-$grid-total-columns:        8         !default;
-$grid-desired-gutter:       20px      !default;
+$grid-type:                 pixel;
+$grid-size:                 976px;
+$grid-total-columns:        8;
+$grid-desired-gutter:       20px;
+$grid-baseline:             19px;
 
 @import "stratum";
 @import "layout/scaffolding";
 
-// @include GRID-GUIDES;
+@import "mock-block";
+
+@include GRID-GUIDES;
 
 body {
   font: 12px/1.36 Helvetica, Arial, sans-serif;
@@ -24,7 +27,6 @@ body {
 
 .reference {
   position: absolute;
-  top: 0;
   left: 0;
   right: 0;
   opacity: .3;
@@ -36,124 +38,53 @@ body {
   }
 }
 
-// Mock block
-
-%block {
-  -webkit-transition: 400ms;
-}
-
-@mixin block($color: #333, $padding: 0) {
-  @extend %block;
-  background-color: rgba($color, .4);
-  position: relative;
-
-  span {
-    color: #777;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    height: 30px;
-    line-height: 30px;
-    width: 80px;
-    margin: -15px 0 0 -40px;
-    text-align: center;
-    background: white;
-    z-index: 2;
-    opacity: 0;
-    -webkit-transition: 300ms;
-    -webkit-border-radius: 20px;
-  }
-
-  &::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    content: "";
-    background: rgba(white, .25);
-    margin: $padding;
-  }
-
-  &.l-col::after {
-    opacity: 0;
-    -webkit-transition: 300ms ease;
-    -webkit-transition-delay: 300ms;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    right: 50%;
-    border-top: 1px solid white;
-    content: "";
-  }
-
-  &:hover {
-    background-color: rgba($color, .7);
-
-    span {
-      opacity: 1;
-    }
-
-    &::after {
-      opacity: 1;
-      left: 0;
-      right: 0;
-    }
-  }
-}
-
 // Layout
 
-.top-banner {
-  @include block;
-  height: 96px;
-}
+#page {
+  .top-banner {
+    @include block($height: 96px);
+  }
 
-.nav {
-  @include block(blue);
-  height: 39px;
-}
+  .nav {
+    @include block(blue, $height: 39px);
+  }
 
-.hero {
-  > header {
-    margin: 10px 0;
+  .hero {
+    > header {
+      margin: 10px 0;
 
-    .l-col {
-      @include block(green, $padding: $grid-gutter/2);
-      height: 75px;
+      .l-col {
+        @include block(green, $height: 75px, $padding: $grid-gutter/2);
+      }
+    }
+
+    > .dashboard {
+      margin-top: 10px;
+      margin-bottom: 10px;
+
+      .p-item {
+        @include block(purple, $height: 217px, $padding: 7px);
+        margin: 0;
+      }
+
+      .m-right .p-item {
+        height: 434px;
+      }
+    }
+
+    > nav {
+      @include block($height: 63px);
+      margin-top: 10px;
+      margin-bottom: 10px;
     }
   }
 
-  > .dashboard {
+  .content .l-col {
+    @include block(#baaf32, $height: 511px, $padding: $grid-gutter/2);
+  }
+
+  .footer {
+    @include block(#444, $height: 105px, $padding: $grid-gutter/2);
     margin-top: 10px;
-    margin-bottom: 10px;
-
-    .p-item {
-      @include block(purple, $padding: 7px);
-      height: 217px;
-      margin: 0;
-    }
-
-    .m-right .p-item {
-      height: 434px;
-    }
   }
-
-  > nav {
-    @include block;
-    height: 63px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-}
-
-.content .l-col {
-  @include block(#baaf32, $padding: $grid-gutter/2);
-  height: 511px;
-}
-
-.footer {
-  @include block(#444, $grid-gutter/2);
-  height: 105px;
-  margin-top: 10px;
 }
