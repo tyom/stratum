@@ -11,9 +11,8 @@
   background-color: rgba($color, .4);
   position: relative;
   height: $height;
-  -webkit-transition: border-color 600ms ease, background 500ms ease;
+  -webkit-transition: box-shadow 600ms ease, background 500ms ease;
   -webkit-transition-delay: 600ms 0;
-  border: 0 solid transparent;
 
   span {
     color: white;
@@ -58,8 +57,7 @@
 
   &:hover {
     background-color: rgba($color, .7);
-    border-width: 0 1px;
-    border-color: $v-guides-color;
+    box-shadow: inset -1px 0 $v-guides-color, inset 1px 0 $v-guides-color;
 
     span {
       opacity: 1;

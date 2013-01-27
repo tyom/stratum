@@ -10,5 +10,5 @@ $grid-type: fluid;
 
 
 .l-container .l-col {
-  @include block($height: 160px, $padding: 10px);
+  @include block($height: 160px, $padding: $grid-gutter/2);
 }
