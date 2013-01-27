@@ -38,7 +38,7 @@
 
 // # Calculate the total width of number of columns including gutters
 // `$column-width` & `$gutter` are optional (use grid defaults)
-@function grid-columns-width($column-span, $column-width: auto, $gutter: auto, $type: $grid-type) {
+@function grid-columns-width($column-span, $column-width: auto, $gutter: auto, $type: $grid-type, $has-row: true) {
   @if $column-width == auto {
     $column-width: grid-column-width();
   }
@@ -47,7 +47,16 @@
   } @else if $gutter == 0 {
     // Adjust gutter width to exclude two half gutters on each side of grid container
     // TODO simplify this bit and make it more obvious what's going on here (why pixel and fluid affect gutterless column behaviour)
-    $v-gutter-width-adjusted: ($grid-gutter * ($grid-total-columns - if($grid-type == pixel, 1, 0))) / $grid-total-columns;
+    // 1 is required to remove 1 gutter width from total width due to "rowed" columns adding extra gutter width
+    // FIXME This modifiers logic should be reviewed soon. Need to extract the ratios somewhere globally and apply them
+    // where they are needed (e.g. grid guides)
+    // It only affects m-pixel/m-fluid container modifiers of "rowless" grids
+    // e.g. .m-gutterless.m-pixel (on global fluid grid)
+    $v-mod: if($grid-type == pixel, 0, 1);
+    @if $has-row {
+      $v-mod: if($grid-type == pixel, 1, 0);
+    }
+    $v-gutter-width-adjusted: ($grid-gutter * ($grid-total-columns - $v-mod)) / $grid-total-columns;
     $column-width: $column-width + $v-gutter-width-adjusted;
   }
 

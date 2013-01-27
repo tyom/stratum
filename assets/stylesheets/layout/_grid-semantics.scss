@@ -111,14 +111,6 @@
   %l-col-#{$i} {
     @include grid-column-width($i, $grid-type);
 
-    // %l-grid-pixel & {
-    //   @include grid-column-width($i, pixel);
-    // }
-
-    // %l-grid-fluid & {
-    //   @include grid-column-width($i, fluid);
-    // }
-
     // Force pixel grid
     %l-grid-pixel & {
       @include grid-column-width($i, pixel);
@@ -130,21 +122,23 @@
       @include grid-column-margins(fluid);
     }
 
-    %l-gutterless & {
+    // Force gutterless grid
+    %l-gutterless &,
+    // Apply gutterless grid on columns without rows
+    %l-container > & {
       @include grid-column-width($i, $grid-type, 0);
       @include grid-column-margins(0);
     }
-    %l-gutterless%l-grid-pixel & {
-      @include grid-column-width($i, pixel, 0);
-    }
-    %l-gutterless%l-grid-fluid & {
-      @include grid-column-width($i, fluid, 0);
-    }
 
-    // // gutterless (container without row)
-    // %l-container > & {
-    //   @include grid-column-width($i, gutterless);
-    // }
+    // Force gutterless when row is absent
+    %l-grid-pixel > & {
+      @include grid-column-width($i, pixel, 0, false);
+      @include grid-column-margins(0);
+    }
+    %l-grid-fluid > & {
+      @include grid-column-width($i, fluid, 0, false);
+      @include grid-column-margins(0);
+    }
   }
 }
 
@@ -266,7 +260,6 @@
     }
 
     // ## gutterless grid
-    // & > %l-col,
     %l-gutterless %l-col {
       // From left
       &%l-col-from-left-#{$i} {

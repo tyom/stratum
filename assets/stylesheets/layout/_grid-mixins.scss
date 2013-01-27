@@ -54,8 +54,8 @@ $grid-column:         grid-column-width();
 }
 
 // Calculate single column width (in pixels) multipled by number of columns it spans (indluding gutters)
-@mixin grid-column-width($span: 1, $type: $grid-type, $gutter: $grid-gutter) {
-  width: grid-columns-width($span, $grid-column, $gutter, $type);
+@mixin grid-column-width($span: 1, $type: $grid-type, $gutter: $grid-gutter, $has-row: true) {
+  width: grid-columns-width($span, $grid-column, $gutter, $type, $has-row);
 }
 
 
