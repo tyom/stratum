@@ -50,18 +50,18 @@ body {
   }
 
   .hero {
-    > header {
-      margin: 10px 0;
+    > header,
+    > dashboard,
+    > nav {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
 
-      .l-col {
-        @include block(green, $height: 75px, $padding: $grid-gutter/2);
-      }
+    > header .l-col {
+      @include block(green, $height: 75px, $padding: $grid-gutter/2);
     }
 
     > .dashboard {
-      margin-top: 10px;
-      margin-bottom: 10px;
-
       .p-item {
         @include block(purple, $height: 217px, $padding: 7px);
         margin: 0;
@@ -74,8 +74,6 @@ body {
 
     > nav {
       @include block($height: 63px);
-      margin-top: 10px;
-      margin-bottom: 10px;
     }
   }
 
