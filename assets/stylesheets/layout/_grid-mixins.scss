@@ -61,15 +61,8 @@ $grid-column:         grid-column-width();
 
 // Calculate offset width based on number of columns it spans (including gutters)
 @mixin grid-offset-by-column($span: 1, $direction: left, $flow: positive, $grid-type: $grid-type) {
-  $v-offset: 0px;
-  $v-gutter: $grid-gutter;
-
-  // Grid with rows (outer margins)
-  @if $grid-type != gutterless {
-    $v-gutter: $v-gutter * 1.5; // half gutter from row offset
-  }
-
   $v-offset: grid-columns-width($span, $type: $grid-type);
+  $v-gutter: $grid-gutter;
 
   // Fluid grid
   @if $grid-type == fluid {
@@ -78,8 +71,9 @@ $grid-column:         grid-column-width();
 
   // Negative offset
   @if $flow == negative {
-    $v-offset: -$v-offset + $v-gutter;
+    // @debug $v-offset, $v-gutter, $v-gutter / 2;
+    margin-#{$direction}: -$v-offset - ($v-gutter / 2);
+  } @else {
+    margin-#{$direction}: $v-offset + ($v-gutter * 1.5);
   }
-
-  margin-#{$direction}: $v-offset + $v-gutter;
 }
