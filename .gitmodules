@@ -2,3 +2,6 @@
 	path = demo/vendor/livereload-js
 	url = git@github.com:tyom/livereload-js.git
     dirty = ignore
+[submodule "tests"]
+	path = tests
+	url = https://github.com/tyom/stratum
