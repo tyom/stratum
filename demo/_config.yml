@@ -1,0 +1,4 @@
+server: true
+auto:   true
+exclude: Gemfile, Gemfile.lock, Guardfile, node_modules, test, scss
+include: css

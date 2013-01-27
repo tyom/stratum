@@ -1,0 +1,26 @@
+// Grid defaults settings
+// ----------------------
+
+// Set these settings in `stratum.scss` unless imported directly as `layout/grid`
+
+$grid-responsive:       false       !default;
+
+$grid-size:             980px       !default;
+
+$grid-type:             fluid       !default;
+$grid-total-columns:    12          !default;
+$grid-baseline:         20px        !default;
+$grid-desired-gutter:   20px        !default;
+
+// Debug settings
+$grid-guides:           true        !default;
+$grid-guides-color:     #c84e5b     !default;
+$grid-guides-opacity:   .2          !default;
+$grid-guides-position:  back        !default;
+
+
+@import "grid-functions";
+
+@import "grid-mixins";
+@import "grid-semantics";
+@import "grid-guides";

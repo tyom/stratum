@@ -1,0 +1,76 @@
+// Scaffolding stylesheet
+// ============================================================================
+// Exports `l-` prefixed classes useful for prototyping layouts
+
+
+// Grid container & rows
+.l-container {
+  @extend %l-container;
+  @extend %l-last-col-right;
+
+  .l-row {
+    @extend %l-row;
+  }
+  .l-col {
+    @extend %l-col;
+  }
+
+  // # Modifiers
+
+  // Grid types
+  .l-row.m-gutterless {
+    @extend %l-gutterless;
+  }
+  &.m-pixel {
+    @extend %l-grid-pixel;
+  }
+  &.m-fluid {
+    @extend %l-grid-fluid;
+  }
+
+  // Grid guides
+  &.m-show-guides {
+    @include show-grid-guides;
+
+    &.m-front {
+      @include show-grid-guides(front);
+    }
+  }
+}
+
+// Span-based column modifiers
+@for $i from 1 through $grid-total-columns {
+  .l-col {
+    &.m-#{$i} {
+      @extend %l-col-#{$i};
+    }
+
+    &.m-from-left-#{$i} {
+      @extend %l-col-from-left-#{$i};
+    }
+    &.m-to-left-#{$i} {
+      @extend %l-col-to-left-#{$i};
+    }
+
+    &.m-from-right-#{$i} {
+      @extend %l-col-from-right-#{$i};
+    }
+    &.m-to-right-#{$i} {
+      @extend %l-col-to-right-#{$i};
+    }
+  }
+}
+
+// Generic column modifiers
+.l-col {
+  // Centre column
+  &.m-centered {
+    @extend %l-col-center;
+  }
+  // Grid column subdivisions
+  @each $word in full, half, quarter, eighth, sixteenth {
+    &.m-#{$word} {
+      @extend %l-col-#{$word};
+    }
+  }
+}

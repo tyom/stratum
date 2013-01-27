@@ -1,3 +1,4 @@
-[submodule "build"]
-	path = build
-	url = git@github.com:tyom/bedrock.git
+[submodule "demo/vendor/livereload-js"]
+	path = demo/vendor/livereload-js
+	url = git@github.com:tyom/livereload-js.git
+    dirty = ignore

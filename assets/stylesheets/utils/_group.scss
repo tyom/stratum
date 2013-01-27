@@ -1,0 +1,19 @@
+// Group floats (clearfix)
+// ============================================================================
+
+// `$prevent-margin-collapse` adds `::before` pseudo element
+// which prevents margins from collapsing (much like `overflow: hidden`)
+
+@mixin group($prevent-margin-collapse: false) {
+  @if $prevent-margin-collapse {
+    &::before {
+      content: " ";
+      display: table;
+    }
+  }
+  &::after {
+    content: " ";
+    display: table;
+    clear: both;
+  }
+}
