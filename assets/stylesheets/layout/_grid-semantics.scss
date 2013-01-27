@@ -12,11 +12,11 @@
 //                           They use global grid settings and can be overriden with:
 //    %l-grid-pixel       –  Force pixel grid
 //    %l-grid-fluid       –  Force fluid grid
-//    %l-marginless       –  Collapse column margins (gutters)
+//    %l-gutterless       –  Collapse column margins (gutters)
 //
 // %l-row                 –  Grid consists of a number of rows
 //                           They are required for correct column margins, but can be omitted,
-//                           in which case the grid with no `%l-row` becomes marginless
+//                           in which case the grid with no `%l-row` becomes gutterless
 //
 // %l-col                 –  Column, the unit of the grid
 //    %l-col-<$i>         –  Column size (e.g. `%l-col-4` spans four single columns, including three gutters)
@@ -74,8 +74,8 @@
     @include grid-row(fluid);
   }
 
-  // Defines row of marginless grid
-  %l-marginless {
+  // Defines row of gutterless grid
+  %l-gutterless {
     &, %l-row {
       margin: {
         left: 0;
@@ -90,7 +90,7 @@
 %l-col {
   @include grid-column;
 
-  %l-marginless & {
+  %l-gutterless & {
     margin-left: 0;
     margin-right: 0;
   }
@@ -123,13 +123,13 @@
       @include grid-column-width($i, $grid-type);
     }
 
-    %l-marginless & {
-      @include grid-column-width($i, marginless);
+    %l-gutterless & {
+      @include grid-column-width($i, gutterless);
     }
 
-    // // Marginless (container without row)
+    // // gutterless (container without row)
     // %l-container > & {
-    //   @include grid-column-width($i, marginless);
+    //   @include grid-column-width($i, gutterless);
     // }
 
     // Force pixel grid
@@ -247,27 +247,27 @@
       }
     }
 
-    // ## Marginless grid
+    // ## gutterless grid
     // & > %l-col,
-    %l-marginless %l-col {
+    %l-gutterless %l-col {
       // From left
       &%l-col-from-left-#{$i} {
-        @include grid-offset-by-column($i, left, positive, marginless);
+        @include grid-offset-by-column($i, left, positive, gutterless);
       }
 
       // To left
       &%l-col-to-left-#{$i} {
-        @include grid-offset-by-column($i, left, negative, marginless);
+        @include grid-offset-by-column($i, left, negative, gutterless);
       }
 
       // From right
       &%l-col-from-right-#{$i} {
-        @include grid-offset-by-column($i, right, positive, marginless);
+        @include grid-offset-by-column($i, right, positive, gutterless);
       }
 
       // To right
       &%l-col-to-right-#{$i} {
-        @include grid-offset-by-column($i, right, negative, marginless);
+        @include grid-offset-by-column($i, right, negative, gutterless);
       }
     }
   }

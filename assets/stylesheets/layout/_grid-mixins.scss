@@ -59,7 +59,7 @@ $grid-column:         grid-column-width();
     $v-col-width: grid-columns-width($span);
   } @else if($type == fluid) {
     $v-col-width: grid-percentage(grid-columns-width($span));
-  } @else if($type == marginless) {
+  } @else if($type == gutterless) {
     $v-col-width: grid-percentage(grid-columns-width($span, $grid-column + $gutter, 0));
   }
 
@@ -73,7 +73,7 @@ $grid-column:         grid-column-width();
   $v-gutter: $grid-gutter;
 
   // Grid with rows (outer margins)
-  @if $grid-type != marginless {
+  @if $grid-type != gutterless {
     $v-gutter: $v-gutter * 1.5; // half gutter from row offset
   }
 
@@ -82,7 +82,7 @@ $grid-column:         grid-column-width();
     $v-offset: grid-columns-width($span);
   }
   // Fluid grid
-  @if $grid-type == fluid or $grid-type == marginless {
+  @if $grid-type == fluid or $grid-type == gutterless {
     $v-gutter: grid-percentage($v-gutter);
     $v-offset: grid-percentage(grid-columns-width($span));
   }

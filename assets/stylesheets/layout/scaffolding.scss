@@ -9,8 +9,8 @@
   .l-row {
     @extend %l-row;
 
-    &.m-marginless {
-      @extend %l-marginless;
+    &.m-gutterless {
+      @extend %l-gutterless;
     }
   }
 
