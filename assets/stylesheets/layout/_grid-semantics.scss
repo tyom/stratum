@@ -75,10 +75,12 @@
   }
 
   // Defines row of marginless grid
-  &%l-marginless %l-row {
-    margin: {
-      left: 0;
-      right: 0;
+  %l-marginless {
+    &, %l-row {
+      margin: {
+        left: 0;
+        right: 0;
+      }
     }
   }
 }
@@ -87,6 +89,11 @@
 // Defines columns
 %l-col {
   @include grid-column;
+
+  %l-marginless & {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 %l-col-center {
@@ -114,17 +121,16 @@
   %l-col-#{$i} {
     %l-row & {
       @include grid-column-width($i, $grid-type);
-
-      %l-marginless > & {
-        @include grid-column-width($i, marginless);
-        @include grid-column-margins(fluid, 0);
-      }
     }
 
-    // Marginless (container without row)
-    %l-container > & {
+    %l-marginless & {
       @include grid-column-width($i, marginless);
     }
+
+    // // Marginless (container without row)
+    // %l-container > & {
+    //   @include grid-column-width($i, marginless);
+    // }
 
     // Force pixel grid
     %l-grid-pixel > %l-row > & {
@@ -242,8 +248,8 @@
     }
 
     // ## Marginless grid
-    & > %l-col,
-    &%l-marginless %l-col {
+    // & > %l-col,
+    %l-marginless %l-col {
       // From left
       &%l-col-from-left-#{$i} {
         @include grid-offset-by-column($i, left, positive, marginless);

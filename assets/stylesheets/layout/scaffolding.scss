@@ -8,6 +8,10 @@
 
   .l-row {
     @extend %l-row;
+
+    &.m-marginless {
+      @extend %l-marginless;
+    }
   }
 
   &.m-pixel {
@@ -24,10 +28,6 @@
     &.m-centered {
       @extend %l-col-center;
     }
-  }
-
-  &.m-marginless {
-    @extend %l-marginless;
   }
 
   &.m-show-guides {
