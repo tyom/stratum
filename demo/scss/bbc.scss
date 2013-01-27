@@ -1,0 +1,87 @@
+// Grid settings
+$grid-guides-color:         #8aa8c0;
+$grid-guides-opacity:       .2;
+
+$grid-type:                 pixel;
+$grid-size:                 976px;
+$grid-total-columns:        8;
+$grid-desired-gutter:       20px;
+$grid-baseline:             19px;
+
+@import "stratum";
+@import "layout/scaffolding";
+
+@import "mock-block";
+
+// @include GRID-GUIDES;
+
+body {
+  font: 12px/1.36 Helvetica, Arial, sans-serif;
+  color: #444;
+  background: #eaeaea;
+  padding: 0;
+  margin: 0;
+}
+
+// Reference
+
+.reference {
+  position: absolute;
+  left: 0;
+  right: 0;
+  opacity: .35;
+  z-index: -1;
+
+  img {
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+// Layout
+
+#page {
+  .top-banner {
+    @include block($height: 96px);
+  }
+
+  .nav {
+    @include block(blue, $height: 39px);
+  }
+
+  .hero {
+    > header,
+    > dashboard,
+    > nav {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    > header .l-col {
+      @include block(green, $height: 75px);
+    }
+
+    > .dashboard {
+      .p-item {
+        @include block(purple, $height: 217px, $padding: 7px);
+      }
+
+      .m-right .p-item {
+        height: 434px;
+      }
+    }
+
+    > nav {
+      @include block($height: 63px);
+    }
+  }
+
+  .content .l-col {
+    @include block(#baaf32, $height: 511px, $padding: $grid-gutter/2);
+  }
+
+  .footer {
+    @include block(#444, $height: 105px, $padding: $grid-gutter/2);
+    margin-top: 10px;
+  }
+}

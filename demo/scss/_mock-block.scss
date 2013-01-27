@@ -1,0 +1,72 @@
+// Mock block
+
+%block {
+  -webkit-transition: 400ms;
+}
+
+@mixin block($color: #333, $height: 100px, $padding: 0) {
+  $v-guides-color: desaturate(darken($color, 10), 40);
+
+  @extend %block;
+  background-color: rgba($color, .4);
+  position: relative;
+  height: $height;
+  -webkit-transition: box-shadow 600ms ease, background 500ms ease;
+  -webkit-transition-delay: 600ms 0;
+
+  span {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 30px;
+    line-height: 30px;
+    width: 80px;
+    margin: -15px 0 0 -40px;
+    text-align: center;
+    background: $v-guides-color;
+    z-index: 2;
+    opacity: 0;
+    cursor: default;
+    -webkit-transition: 300ms;
+    -webkit-border-radius: 20px;
+  }
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    background: rgba(white, .25);
+    margin: $padding;
+  }
+
+  &.l-col::after {
+    opacity: 0;
+    -webkit-transition: 300ms ease;
+    -webkit-transition-delay: 300ms;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: 50%;
+    border-top: 1px solid $v-guides-color;
+    content: "";
+  }
+
+  &:hover {
+    background-color: rgba($color, .7);
+    box-shadow: inset -1px 0 $v-guides-color, inset 1px 0 $v-guides-color;
+
+    span {
+      opacity: 1;
+    }
+
+    &::after {
+      opacity: 1;
+      left: 0;
+      right: 0;
+    }
+  }
+}

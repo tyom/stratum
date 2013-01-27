@@ -1,0 +1,14 @@
+$grid-type: fluid;
+
+
+@import "stratum";
+@import "layout/scaffolding";
+
+@import "mock-block";
+
+@include GRID-GUIDES;
+
+
+.l-container .l-col {
+  @include block($height: 120px, $padding: $grid-gutter/2);
+}

@@ -1,0 +1,93 @@
+// Grid debugging tools: Guides
+// ============================================================================
+
+// Guides rely on `::before` pseudo element so the will only work on elements
+// that don't already use it (e.g. not `group(true)`)
+
+// Draws grid guides
+@mixin grid-render-guides($grid-size: $grid-size, $grid-type: $grid-type) {
+
+  $v-block-size: 8;
+
+  // Pixel grid default values
+  $v-column-gutter: grid-column-gutter();
+  $v-column-width:  grid-column-width();
+  $v-column-relative-width: grid-column-gutter() + grid-column-width();
+
+  @if $grid-type == fluid {
+    // Calculate gutter to column ratio
+    $v-gutter-ratio: $v-column-gutter / ($v-column-width + $v-column-gutter);
+    // Calculate column to grid width ratio
+    // not entirely sure where $v-column-gutter/3 magic number comes from, but it's necessary to make it work
+    $v-column-ratio: ($v-column-width + $v-column-gutter) / ($grid-size - $v-column-gutter / 3);
+
+    // Reset column size with percentages
+    $v-column-gutter: percentage($v-gutter-ratio);
+    $v-column-width: 100 - percentage($v-gutter-ratio);
+    $v-column-relative-width: percentage($v-column-ratio);
+  }
+
+  $v-column-gutter:  $v-column-width + $v-column-gutter;
+  $v-block-height: (($grid-baseline + 1) * $v-block-size) + $grid-baseline;
+
+  position: relative;
+
+  &:before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background:
+      // Baseline (v-rhythm)
+      -webkit-linear-gradient(
+        transparent $grid-baseline,
+        rgba(white, $grid-guides-opacity) $grid-baseline),
+      // Columns
+      -webkit-linear-gradient(left,
+        rgba($grid-guides-color, $grid-guides-opacity),
+        rgba($grid-guides-color, $grid-guides-opacity) $v-column-width,
+        transparent $v-column-width,
+        transparent $v-column-gutter),
+      // Blocks
+      -webkit-linear-gradient(
+        transparent ($v-block-height - $grid-baseline),
+        rgba(white, $grid-guides-opacity / 1.2) $grid-baseline),
+      // Base colour
+      -webkit-linear-gradient(
+        rgba($grid-guides-color, $grid-guides-opacity),
+        rgba($grid-guides-color, $grid-guides-opacity));
+
+    background-size:
+      $v-column-gutter $grid-baseline + 1,     // v-rhythm
+      $v-column-relative-width 10px,           // column
+      $v-column-gutter ($v-block-height + 1);  // block
+  }
+}
+
+// Show grid guides on all grid containers
+@mixin GRID-GUIDES($position: back) {
+  %l-container {
+    @include show-grid-guides($position);
+  }
+}
+
+// Show grid guide on element
+@mixin show-grid-guides($position: back) {
+  @include grid-render-guides($grid-size);
+
+  &::before {
+    // Grid placement (back by default)
+    @if $position == front {
+      z-index: 999;
+    } @else {
+      z-index: -1;
+    }
+  }
+
+  %l-container::before {
+    content: none;
+  }
+}
