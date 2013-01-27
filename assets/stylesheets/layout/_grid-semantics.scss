@@ -96,13 +96,6 @@
   }
 }
 
-%l-col-center {
-  float: none;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-
 // Float last column to right if `%l-last-col-right` extended
 // Applied to `%l-container`
 %l-col + %l-col:last-child {
@@ -113,39 +106,48 @@
 }
 
 
-// Defines column sizes
+// Column spans
 @for $i from 1 through $grid-total-columns {
-
-  // ## Spans
-
   %l-col-#{$i} {
-    %l-row & {
-      @include grid-column-width($i, $grid-type);
+    @include grid-column-width($i, $grid-type);
+
+    // %l-grid-pixel & {
+    //   @include grid-column-width($i, pixel);
+    // }
+
+    // %l-grid-fluid & {
+    //   @include grid-column-width($i, fluid);
+    // }
+
+    // Force pixel grid
+    %l-grid-pixel & {
+      @include grid-column-width($i, pixel);
+      @include grid-column-margins(pixel);
+    }
+    // Force fluid grid
+    %l-grid-fluid & {
+      @include grid-column-width($i, fluid);
+      @include grid-column-margins(fluid);
     }
 
     %l-gutterless & {
-      @include grid-column-width($i, gutterless);
+      @include grid-column-width($i, $grid-type, 0);
+      @include grid-column-margins(0);
+    }
+    %l-gutterless%l-grid-pixel & {
+      @include grid-column-width($i, pixel, 0);
+    }
+    %l-gutterless%l-grid-fluid & {
+      @include grid-column-width($i, fluid, 0);
     }
 
     // // gutterless (container without row)
     // %l-container > & {
     //   @include grid-column-width($i, gutterless);
     // }
-
-    // Force pixel grid
-    %l-grid-pixel > %l-row > & {
-      @include grid-column-width($i, pixel);
-      @include grid-column-margins(pixel);
-    }
-    // Force fluid grid
-    %l-grid-fluid > %l-row > &,
-    // Always set nested grid to fluid
-    %l-container %l-container > %l-row > & {
-      @include grid-column-width($i, fluid);
-      @include grid-column-margins(fluid);
-    }
   }
 }
+
 
 // Fluid grid subdivisions
 %l-col-full {
@@ -153,6 +155,9 @@
 }
 %l-col-half {
   width: 50%;
+}
+%l-col-third {
+  width: 33.33333%;
 }
 %l-col-quarter {
   width: 25%;
@@ -165,6 +170,19 @@
 }
 
 
+// Centre column
+%l-col-center {
+  %l-container &,
+  %l-grid-pixel &,
+  %l-grid-fluid &,
+  %l-gutterless & {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+
 // Defines column margins
 // Only applied to descendants of rows
 %l-row %l-col {
@@ -173,7 +191,7 @@
 
 
 // TODO Improve
-// Defines column offsets
+// Column offsets
 %l-container {
   @for $i from 1 through $grid-total-columns {
 

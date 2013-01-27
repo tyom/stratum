@@ -1,5 +1,7 @@
-// # Scaffolding stylesheet
+// Scaffolding stylesheet
+// ============================================================================
 // Exports `l-` prefixed classes useful for prototyping layouts
+
 
 // Grid container & rows
 .l-container {
@@ -8,28 +10,25 @@
 
   .l-row {
     @extend %l-row;
-
-    &.m-gutterless {
-      @extend %l-gutterless;
-    }
+  }
+  .l-col {
+    @extend %l-col;
   }
 
+  // # Modifiers
+
+  // Grid types
+  .l-row.m-gutterless {
+    @extend %l-gutterless;
+  }
   &.m-pixel {
     @extend %l-grid-pixel;
   }
-
   &.m-fluid {
     @extend %l-grid-fluid;
   }
 
-  .l-col {
-    @extend %l-col;
-
-    &.m-centered {
-      @extend %l-col-center;
-    }
-  }
-
+  // Grid guides
   &.m-show-guides {
     @include show-grid-guides;
 
@@ -39,7 +38,7 @@
   }
 }
 
-// Grid columns
+// Span-based column modifiers
 @for $i from 1 through $grid-total-columns {
   .l-col {
     &.m-#{$i} {
@@ -62,8 +61,13 @@
   }
 }
 
-// Grid column subdivisions
+// Generic column modifiers
 .l-col {
+  // Centre column
+  &.m-centered {
+    @extend %l-col-center;
+  }
+  // Grid column subdivisions
   @each $word in full, half, quarter, eighth, sixteenth {
     &.m-#{$word} {
       @extend %l-col-#{$word};
