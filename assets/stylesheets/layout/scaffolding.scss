@@ -29,6 +29,14 @@
   &.m-marginless {
     @extend %l-marginless;
   }
+
+  &.m-show-guides {
+    @include show-grid-guides;
+
+    &.m-front {
+      @include show-grid-guides(front);
+    }
+  }
 }
 
 // Grid columns

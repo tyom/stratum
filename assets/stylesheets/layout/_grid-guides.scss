@@ -64,22 +64,30 @@
       $v-column-gutter $grid-baseline + 1,     // v-rhythm
       $v-column-relative-width 10px,           // column
       $v-column-gutter ($v-block-height + 1);  // block
+  }
+}
 
+// Show grid guides on all grid containers
+@mixin GRID-GUIDES($position: back) {
+  %l-container {
+    @include show-grid-guides($position);
+  }
+}
+
+// Show grid guide on element
+@mixin show-grid-guides($position: back) {
+  @include grid-render-guides($grid-size);
+
+  &::before {
     // Grid placement (back by default)
-    @if $grid-guides-position == front {
+    @if $position == front {
       z-index: 999;
     } @else {
       z-index: -1;
     }
   }
-}
 
-// Currently only global for all grids
-@mixin GRID-GUIDES {
-  %l-container > %l-row {
-    @include grid-render-guides($grid-size);
-    &::before {
-      margin: 0 $grid-half-gutter;
-    }
+  %l-container::before {
+    content: none;
   }
 }
