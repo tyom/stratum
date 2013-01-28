@@ -122,6 +122,14 @@
       @include grid-column-margins(fluid);
     }
 
+    // Forced grid type and gutterless
+    %l-grid-pixel %l-gutterless & {
+      @include grid-column-width($i, pixel, 0);
+    }
+    %l-grid-fluid %l-gutterless & {
+      @include grid-column-width($i, fluid, 0, false);
+    }
+
     // Force gutterless grid
     %l-gutterless &,
     // Apply gutterless grid on columns without rows
@@ -256,29 +264,6 @@
       // To right
       &%l-col-to-right-#{$i} {
         @include grid-offset-by-column($i, right, negative, fluid);
-      }
-    }
-
-    // ## gutterless grid
-    %l-gutterless %l-col {
-      // From left
-      &%l-col-from-left-#{$i} {
-        @include grid-offset-by-column($i, left, positive, gutterless);
-      }
-
-      // To left
-      &%l-col-to-left-#{$i} {
-        @include grid-offset-by-column($i, left, negative, gutterless);
-      }
-
-      // From right
-      &%l-col-from-right-#{$i} {
-        @include grid-offset-by-column($i, right, positive, gutterless);
-      }
-
-      // To right
-      &%l-col-to-right-#{$i} {
-        @include grid-offset-by-column($i, right, negative, gutterless);
       }
     }
   }
