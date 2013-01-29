@@ -68,7 +68,7 @@
     @extend %l-col-center;
   }
   // Grid column subdivisions
-  @each $word in full, half, quarter, eighth, sixteenth {
+  @each $word in full, half, third, quarter, eighth, sixteenth {
     &.m-#{$word} {
       @extend %l-col-#{$word};
     }
