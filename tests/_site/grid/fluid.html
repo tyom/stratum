@@ -9,7 +9,7 @@
         
             <link rel="stylesheet" href="/stratum/css/fluid-grid.css">
         
-        <!-- <script src="/stratum/vendor/livereload-js/dist/livereload.js?host=localhost"></script> -->
+        <script src="/stratum/vendor/livereload-js/dist/livereload.js?host=localhost"></script>
     </head>
     <body>
         
@@ -82,7 +82,7 @@
     </div>
 
     <div class="l-container m-pixel">
-        <h2>.m-gutterless.m-pixel</h2>
+        <h2>No row (.m-gutterless) .m-pixel</h2>
         <div class="l-col m-6">
             <span>6 columns</span>
         </div>
@@ -91,6 +91,26 @@
         </div>
         <div class="l-col m-3">
             <span>3 columns</span>
+        </div>
+
+        <div class="l-row">
+            <div class="l-col m-12">
+                <div class="l-container m-nested m-size-6">
+                    <span>12 columns</span>
+                    <h2>Nested grid</h2>
+                    <div class="l-row">
+                        <div class="l-col m-2">
+                            <span>2 columns</span>
+                        </div>
+                        <div class="l-col m-2">
+                            <span>2 columns</span>
+                        </div>
+                        <div class="l-col m-2">
+                            <span>2 columns</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

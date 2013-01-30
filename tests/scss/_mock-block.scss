@@ -10,7 +10,7 @@
   @extend %block;
   background-color: rgba($color, .4);
   position: relative;
-  height: $height;
+  min-height: $height;
   -webkit-transition: box-shadow 600ms ease, background 500ms ease;
   -webkit-transition-delay: 600ms 0;
 

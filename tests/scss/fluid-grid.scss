@@ -5,7 +5,7 @@ $grid-type: fluid;
 
 @import "mock-block";
 
-@include GRID-GUIDES;
+// @include GRID-GUIDES;
 
 
 .l-container {
@@ -19,4 +19,24 @@ $grid-type: fluid;
 }
 .l-container .l-col {
   @include block($height: 120px, $padding: $grid-gutter/2);
+
+  &.m-12 {
+    @include block(#777, $height: 150px);
+  }
+}
+
+
+.l-container.m-nested {
+
+  h2 {
+    margin: 10px;
+  }
+
+  .l-col {
+    @include block(#ba5232, $height: 150px, $padding: $grid-gutter/2);
+
+    &:hover {
+      z-index: 10;
+    }
+  }
 }

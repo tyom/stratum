@@ -41,6 +41,8 @@ body {
 // Layout
 
 #page {
+  padding: 0;
+
   .top-banner {
     @include block($height: 96px);
   }

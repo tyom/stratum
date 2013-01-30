@@ -1,5 +1,5 @@
 *gem
 *swp
 .sass-cache
-tests/vendor
+vendor/
 stratum/

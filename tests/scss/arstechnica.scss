@@ -41,6 +41,8 @@ body {
 // Layout
 
 #page {
+  padding: 0;
+
   .masthead {
     @include block($height: 125px);
   }

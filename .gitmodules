@@ -1,7 +1,3 @@
 [submodule "tests/vendor/livereload-js"]
 	path = tests/vendor/livereload-js
 	url = git@github.com:tyom/livereload-js.git
-    dirty = ignore
-[submodule "tests/vendor"]
-	path = tests/vendor
-	url = git@github.com:tyom/livereload-js.git

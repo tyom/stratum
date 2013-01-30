@@ -17,9 +17,15 @@ h2 {
   padding-top: $grid-baseline;
   margin-top: $grid-baseline;
 
-  &:first-child {
+  &:first-child,
+  .l-col & {
     border: none;
+    padding: 0;
   }
+}
+
+#page {
+  padding: 20px 0;
 }
 
 #masthead {

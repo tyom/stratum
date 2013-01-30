@@ -1,19 +1,17 @@
 #masthead ul {
-  min-width: 980px;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
   max-width: 100%;
   width: 980px;
   margin-left: auto;
-  margin-right: auto;
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box; }
+  margin-right: auto; }
   #masthead ul::after {
     content: " ";
     display: table;
     clear: both; }
   #masthead ul ul {
-    min-width: 0;
-    width: 100%; }
+    width: auto; }
 body {
   font: 12px/1.36 Helvetica, Arial, sans-serif;
   color: #444;
@@ -28,8 +26,12 @@ h2 {
   border-top: 1px solid rgba(0, 0, 0, 0.2);
   padding-top: 18px;
   margin-top: 18px; }
-  h2:first-child {
-    border: none; }
+  h2:first-child, .l-col h2 {
+    border: none;
+    padding: 0; }
+
+#page {
+  padding: 20px 0; }
 
 #masthead {
   background: #444;
