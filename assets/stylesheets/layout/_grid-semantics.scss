@@ -1,10 +1,14 @@
 // Semantic grid components
 // ========================
 
-// These class placeholders can be used to convert any element into
+// These placeholder selectors can be used to convert any element into
 // grid component. To use extend element with appropriate placeholder.
 // It will automatically take care of the parent and descending components
 // as long as the correct grid components are used.
+
+// You should think about this file as mapping between your styles and
+// grid mixins and functions that calculate your individual grid elements
+// from parameters you provide. It doesn't contain any values.
 
 // The structure of the grid is as follows:
 
@@ -20,11 +24,12 @@
 //
 // %l-col                 –  Column, the unit of the grid
 //    %l-col-<$i>         –  Column size (e.g. `%l-col-4` spans four single columns, including three gutters)
-//    %l-col-full         –  100% width
-//    %l-col-half         –  50% width
-//    %l-col-quarter      –  25% width
-//    %l-col-eighth       –  12.5% width
-//    %l-col-sixteenth    –  6.25% width
+//    %l-col-full         –  = 100% container width
+//    %l-col-half         –  = 50%
+//    %l-col-third        –  = 33.33%
+//    %l-col-quarter      –  = 25%
+//    %l-col-eighth       –  = 12.5%
+//    %l-col-sixteenth    –  = 6.25%
 //    %l-col-center       -  Center column
 //
 // l-col-from-left-<$i>   –  Offset column by <column size> from left
@@ -45,19 +50,15 @@
 // Grid container
 %l-container {
   @include grid-container;
-  @include box-sizing(content-box);
-  @include group;
 
   // Defines inner grid container (nested grid)
   %l-container {
-    min-width: 0;
-    width: 100%;
+    width: auto;
   }
 
   // Defines grid row
   %l-row {
     @include grid-row;
-    @include group;
   }
 
   // Defines grid row of forced fluid grid
@@ -95,6 +96,7 @@
     margin-right: 0;
   }
 }
+
 
 // Float last column to right if `%l-last-col-right` extended
 // Applied to `%l-container`
@@ -151,24 +153,13 @@
 }
 
 
-// Fluid grid subdivisions
-%l-col-full {
-  width: 100%;
-}
-%l-col-half {
-  width: 50%;
-}
-%l-col-third {
-  width: 33.33333%;
-}
-%l-col-quarter {
-  width: 25%;
-}
-%l-col-eighth {
-  width: 12.5%;
-}
-%l-col-sixteenth {
-  width: 6.25%;
+// Grid subdivisions (fluid)
+$grid-subdivisions: full, half, third, quarter, eighth, sixteenth;
+
+@each $s in $grid-subdivisions {
+  %l-col-#{$s} {
+    @include grid-subdivide($s);
+  }
 }
 
 

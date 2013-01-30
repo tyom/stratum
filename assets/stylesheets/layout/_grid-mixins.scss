@@ -12,7 +12,8 @@ $grid-column:         grid-column-width();
 
 // Grid container to set grid bounds
 @mixin grid-container($width: $grid-size) {
-  min-width: $width;
+  @include box-sizing(content-box);
+  @include group;
   max-width: 100%;
   width: $width;
   margin: {
@@ -24,6 +25,7 @@ $grid-column:         grid-column-width();
 // Grid row
 // $type: <pixel|fluid>
 @mixin grid-row($type: $grid-type) {
+  @include group;
   @include grid-column-margins($type, -1);
 }
 
@@ -75,5 +77,25 @@ $grid-column:         grid-column-width();
     margin-#{$direction}: -$v-offset - ($v-gutter / 2);
   } @else {
     margin-#{$direction}: $v-offset + ($v-gutter * 1.5);
+  }
+}
+
+
+@mixin grid-subdivide($amount) {
+  $v-available:
+    full      100%,
+    half      50%,
+    third     33.3333%,
+    quarter   25%,
+    eighth    12.5%,
+    sixteenth 6.25%;
+
+  @each $n in $v-available {
+    $v-keyword: nth($n, 1);
+    $v-percent: nth($n, 2);
+
+    @if $amount == $v-keyword or $amount == $v-percent {
+      width: $v-percent;
+    }
   }
 }
