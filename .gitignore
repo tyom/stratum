@@ -3,4 +3,5 @@
 .sass-cache
 vendor/
 css/
+_site/
 stratum/
