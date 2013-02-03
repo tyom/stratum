@@ -5,7 +5,7 @@ $grid-type: fluid;
 
 @import "mock-block";
 
-// @include GRID-GUIDES;
+@include GRID-GUIDES;
 
 
 .l-container {

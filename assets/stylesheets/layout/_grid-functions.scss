@@ -32,38 +32,28 @@
 @function grid-column-width($grid-size: $grid-size, $total-columns: $grid-total-columns, $gutter: auto) {
   @if $gutter == auto {
     $gutter: grid-column-gutter($grid-size, $grid-desired-gutter);
+  } @else {
+    $gutter: $gutter;
   }
   @return ($grid-size - (($total-columns - 1) * $gutter)) / $total-columns;
 }
 
 // # Calculate the total width of number of columns including gutters
 // `$column-width` & `$gutter` are optional (use grid defaults)
-@function grid-columns-width($column-span, $column-width: auto, $gutter: auto, $type: $grid-type, $has-row: true) {
-  @if $column-width == auto {
-    $column-width: grid-column-width();
-  }
-  @if $gutter == auto {
-    $gutter: grid-column-gutter($grid-size, $grid-desired-gutter);
-  } @else if $gutter == 0 {
-    // Adjust gutter width to exclude two half gutters on each side of grid container
-    // TODO simplify this bit and make it more obvious what's going on here (why pixel and fluid affect gutterless column behaviour)
-    // 1 is required to remove 1 gutter width from total width due to "rowed" columns adding extra gutter width
-    // FIXME This modifiers logic should be reviewed soon. Need to extract the ratios somewhere globally and apply them
-    // where they are needed (e.g. grid guides)
-    // It only affects m-pixel/m-fluid container modifiers of "rowless" grids
-    // e.g. .m-gutterless.m-pixel (on global fluid grid)
-    $v-mod: if($grid-type == pixel, 0, 1);
-    @if $has-row {
-      $v-mod: if($grid-type == pixel, 1, 0);
-    }
-    $v-gutter-width-adjusted: ($grid-gutter * ($grid-total-columns - $v-mod)) / $grid-total-columns;
-    $column-width: $column-width + $v-gutter-width-adjusted;
+@function grid-columns-width($column-span, $column-width: auto, $gutter: auto, $type: $grid-type) {
+  $v-gutter: grid-column-gutter($grid-size, $grid-desired-gutter);
+
+  @if $gutter == 0 {
+    $v-gutter: 0;
+    $column-width: ceil(grid-column-width($gutter: 0) * $column-span);
+  } @else {
+    $column-width: ceil($column-span * grid-column-width() + (($column-span - 1) * $v-gutter));
   }
 
-  $column-width: ceil($column-span * $column-width + ($column-span - 1) * $gutter);
+  $v-grid-size: $grid-size + $v-gutter;
 
   @if $type == fluid {
-    $column-width: grid-percentage($column-width);
+    $column-width: grid-percentage($column-width, $v-grid-size);
   }
 
   @return $column-width;

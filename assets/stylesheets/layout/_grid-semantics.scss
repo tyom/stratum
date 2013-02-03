@@ -124,29 +124,22 @@
       @include grid-column-margins(fluid);
     }
 
-    // Forced grid type and gutterless
-    %l-grid-pixel %l-gutterless & {
-      @include grid-column-width($i, pixel, 0);
-    }
-    %l-grid-fluid %l-gutterless & {
-      @include grid-column-width($i, fluid, 0, false);
-    }
-
     // Force gutterless grid
     %l-gutterless &,
     // Apply gutterless grid on columns without rows
     %l-container > & {
-      @include grid-column-width($i, $grid-type, 0);
+      @include grid-column-width($i, $grid-type, $gutter: 0);
       @include grid-column-margins(0);
     }
 
-    // Force gutterless when row is absent
-    %l-grid-pixel > & {
-      @include grid-column-width($i, pixel, 0, false);
+    %l-grid-pixel > &,
+    %l-grid-pixel %l-gutterless & {
+      @include grid-column-width($i, pixel, $gutter: 0);
       @include grid-column-margins(0);
     }
-    %l-grid-fluid > & {
-      @include grid-column-width($i, fluid, 0, false);
+    %l-grid-fluid > &,
+    %l-grid-fluid %l-gutterless & {
+      @include grid-column-width($i, fluid, $gutter: 0);
       @include grid-column-margins(0);
     }
   }
