@@ -1,14 +1,11 @@
 // Mock block
 
-%block {
-  -webkit-transition: 400ms;
-}
-
 @mixin block($color: #333, $height: 100px, $padding: 0) {
   $v-guides-color: desaturate(darken($color, 10), 40);
 
-  @extend %block;
+  -webkit-transition: 400ms;
   background-color: rgba($color, .4);
+  text-align: center;
   position: relative;
   min-height: $height;
   -webkit-transition: box-shadow 600ms ease, background 500ms ease;
@@ -19,18 +16,20 @@
     left: 0;
     right: 0;
     top: 50%;
-    color: white;
+    color: rgba(white, .8);
     height: 30px;
     line-height: 30px;
     margin: -15px auto 0;
-    max-width: 120px;
+    max-width: 210px;
     text-align: center;
     background: $v-guides-color;
     z-index: 2;
     opacity: 0;
     cursor: default;
+    font-size: 10px;
     -webkit-transition: 300ms;
     -webkit-border-radius: 20px;
+    text-transform: uppercase;
   }
 
   &::before {

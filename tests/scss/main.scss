@@ -20,7 +20,6 @@ h2 {
   &:first-child,
   .l-col & {
     border: none;
-    padding: 0;
   }
 }
 
@@ -61,4 +60,9 @@ h2 {
   .active a {
     background: #222;
   }
+}
+
+code {
+  color: #ba5232;
+  font-weight: normal;
 }
