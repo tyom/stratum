@@ -56,14 +56,14 @@ body {
   }
 
   .hero {
-    > header,
-    > dashboard,
+    > .head,
+    > .dashboard,
     > nav {
       margin-top: 10px;
       margin-bottom: 10px;
     }
 
-    > header .l-col {
+    > .head .l-col {
       @include block(green, $height: 75px);
     }
 

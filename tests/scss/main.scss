@@ -12,14 +12,21 @@ h1, h2 {
   margin: ($grid-baseline * 2) 0 $grid-baseline;
 }
 
-h2 {
-  border-top: 1px solid rgba(black, .2);
-  padding-top: $grid-baseline;
-  margin-top: $grid-baseline;
+.l-container {
+  > h2,
+  > header {
+    border-top: 1px solid rgba(black, .2);
+    padding-top: $grid-baseline;
+    margin-top: $grid-baseline;
 
-  &:first-child,
-  .l-col & {
-    border: none;
+    h2 {
+      margin-top: 0;
+    }
+
+    &:first-child,
+    .l-col & {
+      border: none;
+    }
   }
 }
 
@@ -62,7 +69,22 @@ h2 {
   }
 }
 
-code {
-  color: #ba5232;
-  font-weight: normal;
+header {
+  font-size: 1.5em;
+  color: #777;
+
+  h2 {
+    display: inline-block;
+    font-size: 1em;
+    color: #333;
+  }
+
+  code {
+    border-radius: 4px;
+    margin: 0 5px;
+    padding: 3px;
+    background: rgba(#eee, .5);
+    color: #ba5232;
+    font-size: .9em;
+  }
 }

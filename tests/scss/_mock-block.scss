@@ -5,10 +5,9 @@
 
   -webkit-transition: 400ms;
   background-color: rgba($color, .4);
-  text-align: center;
   position: relative;
   min-height: $height;
-  -webkit-transition: box-shadow 600ms ease, background 500ms ease;
+  -webkit-transition: box-shadow 800ms ease, background 500ms ease;
   -webkit-transition-delay: 600ms 0;
 
   span {
@@ -18,10 +17,10 @@
     top: 50%;
     color: rgba(white, .8);
     height: 30px;
+    text-align: center;
     line-height: 30px;
     margin: -15px auto 0;
     max-width: 210px;
-    text-align: center;
     background: $v-guides-color;
     z-index: 2;
     opacity: 0;
@@ -57,7 +56,7 @@
 
   &:hover {
     background-color: rgba($color, .7);
-    box-shadow: inset -1px 0 $v-guides-color, inset 1px 0 $v-guides-color;
+    box-shadow: inset 0 0 0px 1px $v-guides-color, 0 1px 5px rgba(black, .3);
 
     span {
       opacity: 1;
