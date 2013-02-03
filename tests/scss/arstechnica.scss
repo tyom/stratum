@@ -56,12 +56,13 @@ body {
     min-width: 0;
     width: auto;
 
-    > header {
+    > .head {
       @include block($height: 58px);
       margin: 15px 0;
     }
 
-    .l-col {
+    .content,
+    .sidebar {
       @include block(#baaf32, $height: 2438px);
     }
 
@@ -69,7 +70,7 @@ body {
       @include grid-container(640px);
     }
 
-    .p-title {
+    > .p-title {
       @include block($height: 85px);
       margin-bottom: 10px
     }
@@ -85,8 +86,19 @@ body {
       @include block($height: 1265px);
     }
 
-    aside {
+    .sidebar {
       width: 300px;
+    }
+
+    .related {
+      .l-col.p-title {
+        @include block(purple, $height: 33px);
+        margin: 95px 0 0;
+      }
+      .l-col {
+        @include block(green, $height: 255px);
+        margin: 0 0 10px;
+      }
     }
   }
 
