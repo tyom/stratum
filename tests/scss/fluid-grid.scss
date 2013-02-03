@@ -10,7 +10,7 @@ $grid-type: fluid;
 
 .l-container {
   width: 80%;
-  min-width: 800px;
+  min-width: 0;
 
   &.m-pixel {
     width: $grid-size;
@@ -27,9 +27,11 @@ $grid-type: fluid;
 
 
 .l-container.m-nested {
+  position: relative;
+  @include group(true);
 
   h2 {
-    margin: 10px;
+    margin: 20px $grid-gutter 10px;
   }
 
   .l-col {
