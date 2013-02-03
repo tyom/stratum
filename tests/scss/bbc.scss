@@ -49,6 +49,10 @@ body {
 
   .nav {
     @include block(blue, $height: 39px);
+
+    .l-container .l-col {
+      @include block(navy, $height: 39px);
+    }
   }
 
   .hero {
