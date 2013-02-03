@@ -27,6 +27,7 @@ $grid-column:         grid-column-width();
 @mixin grid-row($type: $grid-type) {
   @include group;
   @include grid-column-margins($type, -1);
+  clear: both;
 }
 
 // Converts into grid column
