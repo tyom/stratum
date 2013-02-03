@@ -24,12 +24,7 @@
 //
 // %l-col                 –  Column, the unit of the grid
 //    %l-col-<$i>         –  Column size (e.g. `%l-col-4` spans four single columns, including three gutters)
-//    %l-col-full         –  = 100% container width
-//    %l-col-half         –  = 50%
-//    %l-col-third        –  = 33.33%
-//    %l-col-quarter      –  = 25%
-//    %l-col-eighth       –  = 12.5%
-//    %l-col-sixteenth    –  = 6.25%
+//    %l-col-<n>-of-<n>   -  Fractional column size of parent total (e.g. 2-of-8 is 2/8 and equals 25%)
 //    %l-col-center       -  Center column
 //
 // l-col-from-left-<$i>   –  Offset column by <column size> from left
@@ -145,13 +140,12 @@
   }
 }
 
-
-// Grid subdivisions (fluid)
-$grid-subdivisions: full, half, third, quarter, eighth, sixteenth;
-
-@each $s in $grid-subdivisions {
-  %l-col-#{$s} {
-    @include grid-subdivide($s);
+// Column spans for custom grids
+@for $i from 1 through $grid-total-columns {
+  @for $n from 1 through $grid-total-columns {
+    %l-col-#{$i}-of-#{$n} {
+      @include grid-column-width($i, fluid, $gutter: 0, $total-columns: $n);
+    }
   }
 }
 
@@ -180,7 +174,6 @@ $grid-subdivisions: full, half, third, quarter, eighth, sixteenth;
 // Column offsets
 %l-container {
   @for $i from 1 through $grid-total-columns {
-
     // ## Grid with margins
     // Default grid offsets
     & > %l-row %l-col {

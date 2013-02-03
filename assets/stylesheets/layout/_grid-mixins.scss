@@ -57,10 +57,9 @@ $grid-column:         grid-column-width();
 }
 
 // Calculate single column width (in pixels) multipled by number of columns it spans (indluding gutters)
-@mixin grid-column-width($span: 1, $type: $grid-type, $gutter: $grid-gutter) {
-  width: grid-columns-width($span, $grid-column, $gutter, $type);
+@mixin grid-column-width($span: 1, $type: $grid-type, $gutter: $grid-gutter, $total-columns: $grid-total-columns) {
+  width: grid-columns-width($span, $grid-column, $gutter, $type, $total-columns);
 }
-
 
 // Calculate offset width based on number of columns it spans (including gutters)
 @mixin grid-offset-by-column($span: 1, $direction: left, $flow: positive, $grid-type: $grid-type) {
@@ -77,25 +76,5 @@ $grid-column:         grid-column-width();
     margin-#{$direction}: -$v-offset - ($v-gutter / 2);
   } @else {
     margin-#{$direction}: $v-offset + ($v-gutter * 1.5);
-  }
-}
-
-
-@mixin grid-subdivide($amount) {
-  $v-available:
-    full      100%,
-    half      50%,
-    third     33.3333%,
-    quarter   25%,
-    eighth    12.5%,
-    sixteenth 6.25%;
-
-  @each $n in $v-available {
-    $v-keyword: nth($n, 1);
-    $v-percent: nth($n, 2);
-
-    @if $amount == $v-keyword or $amount == $v-percent {
-      width: $v-percent;
-    }
   }
 }

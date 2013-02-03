@@ -40,14 +40,14 @@
 
 // # Calculate the total width of number of columns including gutters
 // `$column-width` & `$gutter` are optional (use grid defaults)
-@function grid-columns-width($column-span, $column-width: auto, $gutter: auto, $type: $grid-type) {
+@function grid-columns-width($column-span, $column-width: auto, $gutter: auto, $type: $grid-type, $total-columns: $grid-total-columns) {
   $v-gutter: grid-column-gutter($grid-size, $grid-desired-gutter);
 
   @if $gutter == 0 {
     $v-gutter: 0;
-    $column-width: ceil(grid-column-width($gutter: 0) * $column-span);
+    $column-width: grid-column-width($total-columns: $total-columns, $gutter: 0) * $column-span;
   } @else {
-    $column-width: ceil($column-span * grid-column-width() + (($column-span - 1) * $v-gutter));
+    $column-width: ceil($column-span * grid-column-width($total-columns: $total-columns) + (($column-span - 1) * $v-gutter));
   }
 
   $v-grid-size: $grid-size + $v-gutter;

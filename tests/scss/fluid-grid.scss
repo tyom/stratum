@@ -26,7 +26,7 @@ $grid-type: fluid;
 }
 
 
-.l-container.m-nested {
+.l-container .l-container {
   position: relative;
   @include group(true);
 
