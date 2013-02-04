@@ -12,7 +12,8 @@ $grid-column:         grid-column-width();
 
 // Grid container to set grid bounds
 @mixin grid-container($width: $grid-size) {
-  min-width: $width;
+  @include box-sizing(content-box);
+  @include group;
   max-width: 100%;
   width: $width;
   margin: {
@@ -24,7 +25,9 @@ $grid-column:         grid-column-width();
 // Grid row
 // $type: <pixel|fluid>
 @mixin grid-row($type: $grid-type) {
+  @include group;
   @include grid-column-margins($type, -1);
+  clear: both;
 }
 
 // Converts into grid column
@@ -54,10 +57,9 @@ $grid-column:         grid-column-width();
 }
 
 // Calculate single column width (in pixels) multipled by number of columns it spans (indluding gutters)
-@mixin grid-column-width($span: 1, $type: $grid-type, $gutter: $grid-gutter, $has-row: true) {
-  width: grid-columns-width($span, $grid-column, $gutter, $type, $has-row);
+@mixin grid-column-width($span: 1, $type: $grid-type, $gutter: $grid-gutter, $total-columns: $grid-total-columns) {
+  width: grid-columns-width($span, $grid-column, $gutter, $type, $total-columns);
 }
-
 
 // Calculate offset width based on number of columns it spans (including gutters)
 @mixin grid-offset-by-column($span: 1, $direction: left, $flow: positive, $grid-type: $grid-type) {
@@ -71,7 +73,6 @@ $grid-column:         grid-column-width();
 
   // Negative offset
   @if $flow == negative {
-    // @debug $v-offset, $v-gutter, $v-gutter / 2;
     margin-#{$direction}: -$v-offset - ($v-gutter / 2);
   } @else {
     margin-#{$direction}: $v-offset + ($v-gutter * 1.5);

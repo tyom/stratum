@@ -1,0 +1,111 @@
+// Grid settings
+$grid-guides-color:         #8aa8c0;
+$grid-guides-opacity:       .2;
+
+$grid-type:                 pixel;
+$grid-size:                 1020px;
+$grid-total-columns:        8;
+$grid-desired-gutter:       40px;
+$grid-baseline:             19px;
+
+@import "stratum";
+@import "layout/scaffolding";
+
+@import "mock-block";
+
+// @include GRID-GUIDES;
+
+body {
+  font: 12px/1.36 Helvetica, Arial, sans-serif;
+  color: #444;
+  background: #eaeaea;
+  padding: 0;
+  margin: 0;
+}
+
+// Reference
+
+.reference {
+  position: absolute;
+  left: 0;
+  right: 0;
+  opacity: .35;
+  z-index: -1;
+
+  img {
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+// Layout
+
+#page {
+  padding: 0;
+
+  .masthead {
+    @include block($height: 125px);
+  }
+
+  > nav {
+    @include block(blue, $height: 30px);
+  }
+
+  > .content {
+    padding: 0 19px;
+    min-width: 0;
+    width: auto;
+
+    > .head {
+      @include block($height: 58px);
+      margin: 15px 0;
+    }
+
+    .content,
+    .sidebar {
+      @include block(#baaf32, $height: 2438px);
+    }
+
+    .l-container {
+      @include grid-container(640px);
+    }
+
+    > .p-title {
+      @include block($height: 85px);
+      margin-bottom: 10px
+    }
+    .p-meta {
+      @include block($height: 35px);
+      margin-bottom: 15px
+    }
+    .p-image {
+      @include block($height: 415px);
+      margin-bottom: 15px
+    }
+    .p-text {
+      @include block($height: 1265px);
+    }
+
+    .sidebar {
+      width: 300px;
+    }
+
+    .related {
+      .l-col.p-title {
+        @include block(purple, $height: 33px);
+        margin: 95px 0 0;
+      }
+      .l-col {
+        @include block(green, $height: 255px);
+        margin: 0 0 10px;
+      }
+    }
+  }
+
+  .mastfoot {
+    background: rgba(#222, .2);
+    .l-col {
+      @include block(#444, $height: 337px);
+    }
+  }
+}
