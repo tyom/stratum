@@ -61,16 +61,23 @@
   }
 }
 
-// Generic column modifiers
-.l-col {
-  // Centre column
-  &.m-centered {
-    @extend %l-col-center;
-  }
-  // Grid column subdivisions
-  @each $word in full, half, quarter, eighth, sixteenth {
-    &.m-#{$word} {
-      @extend %l-col-#{$word};
+// fractional column modifiers
+@for $total from 1 through $grid-total-columns {
+  .l-col {
+    &.m-1-of-#{$total} {
+      @extend %l-col-1-of-#{$total};
+    }
+    @for $col from 1 through $total {
+      &.m-#{$col}-of-#{$total} {
+        @if $total > $col {
+          @extend %l-col-#{$col}-of-#{$total};
+        }
+      }
     }
   }
+}
+
+// Centre column
+.l-col.m-centered {
+  @extend %l-col-center;
 }
