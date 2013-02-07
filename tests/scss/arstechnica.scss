@@ -61,7 +61,6 @@ body {
       margin: 15px 0;
     }
 
-    .content,
     .sidebar {
       @include block(#baaf32, $height: 2438px);
     }
@@ -70,20 +69,9 @@ body {
       @include grid-container(640px);
     }
 
-    > .p-title {
-      @include block($height: 85px);
+    .p-article {
+      @include block(#baaf32, $height: 1773px);
       margin-bottom: 10px
-    }
-    .p-meta {
-      @include block($height: 35px);
-      margin-bottom: 15px
-    }
-    .p-image {
-      @include block($height: 415px);
-      margin-bottom: 15px
-    }
-    .p-text {
-      @include block($height: 1265px);
     }
 
     .sidebar {
@@ -96,13 +84,13 @@ body {
         margin: 10px 0;
       }
       .item {
-        @include block(purple, $height: 255px);
+        @include block(purple, $height: 245px);
       }
       .l-col.p-title {
-        margin: 95px 0 0;
+        margin: 57px 0 0;
 
         .item {
-          min-height: 30px;
+          min-height: 33px;
         }
       }
     }
@@ -111,7 +99,7 @@ body {
   .mastfoot {
     background: rgba(#222, .2);
     .l-col {
-      @include block(#444, $height: 337px);
+      @include block(#777, $height: 337px, $padding: 20px);
     }
   }
 }
