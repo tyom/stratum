@@ -91,13 +91,19 @@ body {
     }
 
     .related {
-      .l-col.p-title {
-        @include block(purple, $height: 33px);
-        margin: 95px 0 0;
-      }
       .l-col {
-        @include block(green, $height: 255px);
-        margin: 0 0 10px;
+        padding: 0 10px;
+        margin: 10px 0;
+      }
+      .item {
+        @include block(purple, $height: 255px);
+      }
+      .l-col.p-title {
+        margin: 95px 0 0;
+
+        .item {
+          min-height: 30px;
+        }
       }
     }
   }

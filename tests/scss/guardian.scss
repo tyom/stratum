@@ -1,0 +1,219 @@
+// Grid settings
+$grid-guides-color:         #8aa8c0;
+$grid-guides-opacity:       .2;
+
+$grid-type:                 pixel;
+$grid-size:                 940px;
+$grid-total-columns:        12;
+$grid-desired-gutter:       20px;
+$grid-baseline:             15px;
+
+@import "stratum";
+@import "layout/scaffolding";
+
+@import "mock-block";
+
+// @include GRID-GUIDES;
+
+body {
+  font: 12px/1.36 Helvetica, Arial, sans-serif;
+  color: #444;
+  background: white;
+  padding: 0;
+  margin: 0;
+}
+
+// Reference
+
+.reference {
+  position: absolute;
+  left: -1px;
+  right: 0;
+  opacity: .35;
+  z-index: -1;
+
+  img {
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+// Layout
+
+#page {
+  padding: 0;
+
+  .top-bar {
+    @include block(green, 30px);
+    margin-bottom: 35px;
+  }
+
+  .header .p-info,
+  .ticker {
+    @include block(#aaa, 20px);
+    margin: 5px 0;
+  }
+
+  .header {
+    .p-logo,
+    .p-weather {
+      @include block(blue, 70px);
+    }
+  }
+
+  .nav {
+    .p-main,
+    .p-sub {
+      @include block(#660e1a, 24px);
+    }
+    .p-main {
+      margin: 7px 0 6px;
+    }
+  }
+
+  .content {
+    margin-top: 25px;
+
+    .left {
+      .item {
+        @include block(#c9b480);
+        margin-bottom: 25px;
+      }
+      .m-1 {
+        min-height: 2940px;
+      }
+      .m-2 {
+        min-height: 1592px;
+      }
+      .m-3 {
+        min-height: 507px;
+      }
+    }
+
+    .main {
+      .item {
+        @include block(#bb77b1);
+        margin-bottom: 11px;
+      }
+      .m-feat {
+        min-height: 341px;
+        margin-bottom: 31px;
+      }
+
+      .l-row {
+        .m-2 {
+          .m-1 {
+            min-height: 182px;
+          }
+          .m-2 {
+            min-height: 218px;
+          }
+          .m-3 {
+            min-height: 182px;
+          }
+          .m-4 {
+            min-height: 272px;
+          }
+          .m-5 {
+            min-height: 216px;
+            margin-top: 51px;
+          }
+        }
+
+        .m-4 {
+          .item {
+            margin-bottom: 30px;
+          }
+          .m-1 {
+            min-height: 776px;
+          }
+          .m-2 {
+            min-height: 183px;
+          }
+          .m-3 {
+            min-height: 1098px;
+          }
+          .m-4 {
+            min-height: 603px;
+          }
+          .m-5 {
+            min-height: 719px;
+          }
+          .m-6 {
+            min-height: 321px;
+          }
+          .m-7 {
+            min-height: 378px;
+          }
+          .m-8 {
+            min-height: 375px;
+          }
+        }
+      }
+    }
+
+    .right {
+      .item {
+        @include block(#769cbb);
+        margin-bottom: 10px;
+      }
+      .m-1 {
+        min-height: 172px;
+      }
+      .m-2 {
+        min-height: 435px;
+      }
+      .m-3 {
+        min-height: 262px;
+      }
+      .m-4 {
+        min-height: 230px;
+      }
+      .m-5 {
+        min-height: 390px;
+      }
+      .m-6 {
+        min-height: 306px;
+      }
+      .m-7 {
+        min-height: 62px;
+      }
+      .m-8 {
+        min-height: 129px;
+      }
+      .m-9 {
+        min-height: 608px;
+      }
+      .m-10 {
+        min-height: 191px;
+      }
+      .m-11 {
+        min-height: 153px;
+      }
+      .m-12 {
+        min-height: 158px;
+      }
+      .m-13 {
+        min-height: 140px;
+      }
+    }
+  }
+
+  .shop,
+  .simple-news {
+    margin: 13px 0 20px;
+
+    header {
+      @include block(#49bb99, 50px);
+      margin-bottom: 10px;
+    }
+    .l-col {
+      @include block(#76bba6, 162px);
+    }
+  }
+
+  .mastfoot {
+    @include block($height: 52px);
+    margin-top: 25px;
+  }
+}
