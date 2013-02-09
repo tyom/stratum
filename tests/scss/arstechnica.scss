@@ -62,7 +62,8 @@ body {
     }
 
     .sidebar {
-      @include block(#baaf32, $height: 2438px);
+      @include block(#baaf32, $height: 2418px);
+      margin-bottom: 20px;
     }
 
     .l-container {
@@ -99,7 +100,7 @@ body {
   .mastfoot {
     background: rgba(#222, .2);
     .l-col {
-      @include block(#777, $height: 337px, $padding: 20px);
+      @include block(#777, $height: 223px, $padding: 20px);
     }
   }
 }
