@@ -1,0 +1,31 @@
+// Vendor prefixes:
+// - Firefox: 4-15
+// - Chrome 1-25
+// - Safari 3.2+
+// - Opera 10.50-12.00
+
+// No prefixes
+// - Chrome 26+
+// - Opera 12.15+
+// - IE 10+
+// - Firefox 16+
+
+@mixin transition($value...) {
+  @include vendor-prefix(transition, $value, webkit moz o spec);
+}
+
+@mixin transition-property($value...) {
+  @include vendor-prefix(transition-property, $value, webkit moz o spec);
+}
+
+@mixin transition-duration($value...) {
+  @include vendor-prefix(transition-duration, $value, webkit moz o spec);
+}
+
+@mixin transition-timing-function($value...) {
+  @include vendor-prefix(transition-timing-function, $value, webkit moz o spec);
+}
+
+@mixin transition-delay($value...) {
+  @include vendor-prefix(transition-delay, $value, webkit moz o spec);
+}

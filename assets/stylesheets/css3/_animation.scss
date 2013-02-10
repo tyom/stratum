@@ -1,0 +1,46 @@
+// Vendor prefixes:
+// - Firefox: 5-15
+// - Chrome
+// - Safari 5+
+
+// No prefixes
+// - IE 10+
+// - Firefox 16+
+// - Opera 12+
+
+@mixin animation($value...) {
+  @include vendor-prefix(animation, $value, webkit moz spec);
+}
+
+@mixin animation-name($value...) {
+  @include vendor-prefix(animation-name, $value, webkit moz spec);
+}
+
+@mixin animation-duration($value...) {
+  @include vendor-prefix(animation-duration, $value, webkit moz spec);
+}
+
+@mixin animation-timing-function($value...) {
+  @include vendor-prefix(animation-timing-function, $value, webkit moz spec);
+}
+
+@mixin animation-delay($value...) {
+  @include vendor-prefix(animation-delay, $value, webkit moz spec);
+}
+
+@mixin animation-iteration-count($value...) {
+  @include vendor-prefix(animation-iteration-count, $value, webkit moz spec);
+}
+
+@mixin animation-direction($value...) {
+  @include vendor-prefix(animation-direction, $value, webkit moz spec);
+}
+
+@mixin animation-fill-mode($value...) {
+  @include vendor-prefix(animation-fill-mode, $value, webkit moz spec);
+}
+
+@mixin animation-play-state($value...) {
+  @include vendor-prefix(animation-play-state, $value, webkit moz spec);
+}
+
