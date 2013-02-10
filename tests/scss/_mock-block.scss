@@ -4,11 +4,10 @@
   $v-guides-color: desaturate(darken($color, 10), 40);
 
   -webkit-transition: 400ms;
-  background-color: rgba($color, .4);
+  background-color: rgba($color, .3);
   position: relative;
   min-height: $height;
-  -webkit-transition: box-shadow 800ms ease, background 500ms ease;
-  -webkit-transition-delay: 600ms 0;
+  -webkit-transition: box-shadow 800ms, background 500ms;
   overflow: hidden;
 
   > span {
@@ -52,7 +51,7 @@
 
   &:hover {
     background-color: rgba($color, .5);
-    box-shadow: inset 0 0 0px 1px $v-guides-color, 0 1px 5px rgba(black, .3);
+    box-shadow: inset 0 0 0px 1px $v-guides-color, 0 1px 8px rgba(black, .3);
 
     > span {
       opacity: 1;
