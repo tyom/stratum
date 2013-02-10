@@ -17,43 +17,43 @@
 }
 
 // <IDENT> | `none` e.g. fade, -special, anim_02
-@mixin animation-name($value...) {
-  @include vendor-prefix(animation-name, $value, webkit moz spec);
+@mixin animation-name($ident...) {
+  @include vendor-prefix(animation-name, $ident, webkit moz spec);
 }
 
 // <time> e.g. 200ms, 4s
-@mixin animation-duration($value...) {
-  @include vendor-prefix(animation-duration, $value, webkit moz spec);
+@mixin animation-duration($time...) {
+  @include vendor-prefix(animation-duration, $time, webkit moz spec);
 }
 
 // <timing-function> e.g. ease, ease-in, ease-in-out, linear, cubic-bezier(0.1, 0.7, 1.0, 0.1), step-start, step-stop, steps(3, start), steps(3, end)
-@mixin animation-timing-function($value...) {
-  @include vendor-prefix(animation-timing-function, $value, webkit moz spec);
+@mixin animation-timing-function($timing-function...) {
+  @include vendor-prefix(animation-timing-function, $timing-function, webkit moz spec);
 }
 
 // <time> e.g. 100ms, 5s
-@mixin animation-delay($value...) {
-  @include vendor-prefix(animation-delay, $value, webkit moz spec);
+@mixin animation-delay($time...) {
+  @include vendor-prefix(animation-delay, $time, webkit moz spec);
 }
 
 // <number> | `infinite`
-@mixin animation-iteration-count($value...) {
-  @include vendor-prefix(animation-iteration-count, $value, webkit moz spec);
+@mixin animation-iteration-count($number...) {
+  @include vendor-prefix(animation-iteration-count, $number, webkit moz spec);
 }
 
 // `normal` | `reverse` | `alternate` | `alternate-reverse`
-@mixin animation-direction($value...) {
-  @include vendor-prefix(animation-direction, $value, webkit moz spec);
+@mixin animation-direction($direction...) {
+  @include vendor-prefix(animation-direction, $direction, webkit moz spec);
 }
 
 // `none` | `forwards` | `backwards` | `both`
-@mixin animation-fill-mode($value...) {
-  @include vendor-prefix(animation-fill-mode, $value, webkit moz spec);
+@mixin animation-fill-mode($mode...) {
+  @include vendor-prefix(animation-fill-mode, $mode, webkit moz spec);
 }
 
 // `running` | `paused`
-@mixin animation-play-state($value...) {
-  @include vendor-prefix(animation-play-state, $value, webkit moz spec);
+@mixin animation-play-state($state...) {
+  @include vendor-prefix(animation-play-state, $state, webkit moz spec);
 }
 
 // keyframes
@@ -73,17 +73,18 @@
 // - Firefox 16+
 // - Opera 12.1+
 
-@mixin keyframes($name) {
-  @-webkit-keyframes #{$name} {
+// `from` (0%), `to` (100%), <percentage>
+@mixin keyframes($ident) {
+  @-webkit-keyframes #{$ident} {
     @content;
   }
-  @-moz-keyframes #{$name} {
+  @-moz-keyframes #{$ident} {
     @content;
   }
-  @-o-keyframes #{$name} {
+  @-o-keyframes #{$ident} {
     @content;
   }
-  @keyframes #{$name} {
+  @keyframes #{$ident} {
     @content;
   }
 }
