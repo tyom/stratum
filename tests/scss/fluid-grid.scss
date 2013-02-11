@@ -27,7 +27,6 @@ $grid-type: fluid;
 
 
 .l-container .l-container {
-  position: relative;
   @include group(true);
 
   h2 {
@@ -36,6 +35,13 @@ $grid-type: fluid;
 
   .l-col {
     @include block(#ba5232, $height: 150px, $padding: $grid-gutter/2);
+  }
+}
+
+.l-container .l-container,
+.l-row .l-row {
+  .l-col {
+    position: relative;
 
     &:hover {
       z-index: 10;

@@ -1,0 +1,90 @@
+// animation
+// ---------
+
+// Vendor prefixes:
+// - Firefox: 5-15
+// - Chrome
+// - Safari 5+
+
+// No prefixes
+// - IE 10+
+// - Firefox 16+
+// - Opera 12+
+
+// Shorthand
+@mixin animation($value...) {
+  @include vendor-prefix(animation, $value, webkit moz spec);
+}
+
+// <IDENT> | `none` e.g. fade, -special, anim_02
+@mixin animation-name($ident...) {
+  @include vendor-prefix(animation-name, $ident, webkit moz spec);
+}
+
+// <time> e.g. 200ms, 4s
+@mixin animation-duration($time...) {
+  @include vendor-prefix(animation-duration, $time, webkit moz spec);
+}
+
+// <timing-function> e.g. ease, ease-in, ease-in-out, linear, cubic-bezier(0.1, 0.7, 1.0, 0.1), step-start, step-stop, steps(3, start), steps(3, end)
+@mixin animation-timing-function($timing-function...) {
+  @include vendor-prefix(animation-timing-function, $timing-function, webkit moz spec);
+}
+
+// <time> e.g. 100ms, 5s
+@mixin animation-delay($time...) {
+  @include vendor-prefix(animation-delay, $time, webkit moz spec);
+}
+
+// <number> | `infinite`
+@mixin animation-iteration-count($number...) {
+  @include vendor-prefix(animation-iteration-count, $number, webkit moz spec);
+}
+
+// `normal` | `reverse` | `alternate` | `alternate-reverse`
+@mixin animation-direction($direction...) {
+  @include vendor-prefix(animation-direction, $direction, webkit moz spec);
+}
+
+// `none` | `forwards` | `backwards` | `both`
+@mixin animation-fill-mode($mode...) {
+  @include vendor-prefix(animation-fill-mode, $mode, webkit moz spec);
+}
+
+// `running` | `paused`
+@mixin animation-play-state($state...) {
+  @include vendor-prefix(animation-play-state, $state, webkit moz spec);
+}
+
+// keyframes
+// ---------
+
+// Vendor prefixes:
+// - Firefox: 5-16
+// - Chrome
+// - Opera 12
+// - Safari 4+
+// - Android 2.1+
+// - Blackberry 7+
+// - iOS 3.2+
+
+// No prefixes
+// - IE 10+
+// - Firefox 16+
+// - Opera 12.1+
+
+// `from` (0%), `to` (100%), <percentage>
+@mixin keyframes($ident) {
+  @-webkit-keyframes #{$ident} {
+    @content;
+  }
+  @-moz-keyframes #{$ident} {
+    @content;
+  }
+  @-o-keyframes #{$ident} {
+    @content;
+  }
+  @keyframes #{$ident} {
+    @content;
+  }
+}

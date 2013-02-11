@@ -1,0 +1,47 @@
+// transform
+// ---------
+
+// Vendor prefixes:
+// - Firefox: 3.5-15
+// - Chrome
+// - Safari 3.1+
+// - IE 9
+// - Opera 10.50-12.00
+
+// No prefixes
+// - IE 10+
+// - Firefox 16+
+// - Opera 12.50+
+
+@mixin transform($value...) {
+  @include vendor-prefix(transform, $value, webkit moz ms o spec);
+}
+
+@mixin transform-origin($value...) {
+  @include vendor-prefix(transform-origin, $value, webkit moz ms o spec);
+}
+
+// Not supported in Opera
+// Pass optional $origin parameter to set perspective origin
+@mixin perspective($length, $origin...) {
+  @include vendor-prefix(perspective, $length, webkit moz ms spec);
+
+  @if $origin {
+    @include perspective-origin($origin);
+  }
+}
+
+// Not supported in Opera
+@mixin perspective-origin($position...) {
+  @include vendor-prefix(perspective-origin, $position, webkit moz ms spec);
+}
+
+// Not supported in Opera
+@mixin backface-visibility($visibility) {
+  @include vendor-prefix(backface-visibility, $visibility, webkit moz ms spec);
+}
+
+// Not supported in Opera & IE
+@mixin transform-style($style) {
+  @include vendor-prefix(transform-style, $style, webkit moz spec);
+}
