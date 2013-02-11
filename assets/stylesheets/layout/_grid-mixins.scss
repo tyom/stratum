@@ -14,7 +14,6 @@ $grid-column:         grid-column-width();
 @mixin grid-container($width: $grid-size) {
   @include box-sizing(content-box);
   @include group;
-  max-width: 100%;
   width: $width;
   margin: {
     left: auto;

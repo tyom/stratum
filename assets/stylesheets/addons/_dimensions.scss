@@ -1,0 +1,14 @@
+// Dimensions helpers
+// ------------------
+
+// Box element
+// <width>, <height>
+// If one parameter is specified, make square
+@mixin box($length...) {
+  @if length($length) < 3 {
+    width: nth($length, 1);
+    height: nth($length, length($length));
+  } @else {
+    @warn "box mixin only takes 1 or 2 arguments"
+  }
+}

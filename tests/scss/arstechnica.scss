@@ -61,29 +61,18 @@ body {
       margin: 15px 0;
     }
 
-    .content,
     .sidebar {
-      @include block(#baaf32, $height: 2438px);
+      @include block(#baaf32, $height: 2418px);
+      margin-bottom: 20px;
     }
 
     .l-container {
       @include grid-container(640px);
     }
 
-    > .p-title {
-      @include block($height: 85px);
+    .p-article {
+      @include block(#baaf32, $height: 1773px);
       margin-bottom: 10px
-    }
-    .p-meta {
-      @include block($height: 35px);
-      margin-bottom: 15px
-    }
-    .p-image {
-      @include block($height: 415px);
-      margin-bottom: 15px
-    }
-    .p-text {
-      @include block($height: 1265px);
     }
 
     .sidebar {
@@ -91,13 +80,19 @@ body {
     }
 
     .related {
-      .l-col.p-title {
-        @include block(purple, $height: 33px);
-        margin: 95px 0 0;
-      }
       .l-col {
-        @include block(green, $height: 255px);
-        margin: 0 0 10px;
+        padding: 0 10px;
+        margin: 10px 0;
+      }
+      .item {
+        @include block(purple, $height: 245px);
+      }
+      .l-col.p-title {
+        margin: 57px 0 0;
+
+        .item {
+          min-height: 33px;
+        }
       }
     }
   }
@@ -105,7 +100,7 @@ body {
   .mastfoot {
     background: rgba(#222, .2);
     .l-col {
-      @include block(#444, $height: 337px);
+      @include block(#777, $height: 223px, $padding: 20px);
     }
   }
 }

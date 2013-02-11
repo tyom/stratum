@@ -109,7 +109,8 @@
     @include grid-column-width($i, $grid-type);
 
     // Force pixel grid
-    %l-grid-pixel & {
+    %l-grid-pixel > &,
+    %l-grid-pixel > %l-row > & {
       @include grid-column-width($i, pixel);
       @include grid-column-margins(pixel);
     }
@@ -136,6 +137,25 @@
     %l-grid-fluid %l-gutterless & {
       @include grid-column-width($i, fluid, $gutter: 0);
       @include grid-column-margins(0);
+    }
+
+    // TODO (fix inconsistent gutters betweeen pixel and fluid grids)
+    // Nested rows (for fluid grids)
+    // Since percentage value takes into account its parent container
+    // we need to adjust total column count to get the correct calculations
+    %l-grid-fluid & {
+      @for $n from 1 through $grid-total-columns {
+        %l-row %l-col-#{$n} {
+          @include grid-column-width($n, fluid, $total-columns: $i);
+        }
+      }
+    }
+    @if $grid-type == fluid {
+      @for $n from 1 through $grid-total-columns {
+        %l-row %l-col-#{$n} {
+          @include grid-column-width($n, fluid, $total-columns: $i);
+        }
+      }
     }
   }
 }
@@ -170,7 +190,6 @@
 }
 
 
-// TODO Improve
 // Column offsets
 %l-container {
   @for $i from 1 through $grid-total-columns {

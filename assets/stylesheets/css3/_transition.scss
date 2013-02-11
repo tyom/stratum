@@ -1,0 +1,40 @@
+// transition
+// ----------
+
+// Vendor prefixes:
+// - Firefox: 4-15
+// - Chrome 1-25
+// - Safari 3.2+
+// - Opera 10.50-12.00
+
+// No prefixes
+// - Chrome 26+
+// - Opera 12.15+
+// - IE 10+
+// - Firefox 16+
+
+// Shorthand
+@mixin transition($value...) {
+  @include vendor-prefix(transition, $value, webkit moz o spec);
+}
+
+// <IDENT> | `none` | `all`  e.g. margin, background-color, opacity
+@mixin transition-property($value...) {
+  @include vendor-prefix(transition-property, $value, webkit moz o spec);
+}
+
+// <time> e.g. 200ms, 4s
+@mixin transition-duration($time...) {
+  @include vendor-prefix(transition-duration, $time, webkit moz o spec);
+}
+
+// <timing-function> e.g. ease, ease-in, ease-in-out, linear, cubic-bezier(0.1, 0.7, 1.0, 0.1), step-start, step-stop, steps(3, start), steps(3, end)
+// http://dev.w3.org/csswg/css3-transitions/#transition-timing-function-property
+@mixin transition-timing-function($timing-function...) {
+  @include vendor-prefix(transition-timing-function, $timing-function, webkit moz o spec);
+}
+
+// <time> e.g. 100ms, 5s
+@mixin transition-delay($time...) {
+  @include vendor-prefix(transition-delay, $time, webkit moz o spec);
+}
