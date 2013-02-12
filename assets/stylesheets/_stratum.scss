@@ -8,10 +8,10 @@ $grid-total-columns:        12        !default;
 $grid-desired-gutter:       20px      !default;
 $grid-baseline:             18px      !default;
 
-@import "addons/vendor-prefix";
-@import "addons/group";
-@import "addons/position";
-@import "addons/dimensions";
+@import "helpers/vendor-prefix";
+@import "helpers/group";
+@import "helpers/position";
+@import "helpers/dimensions";
 
 // CSS3 mixins
 @import "css3/animation";
