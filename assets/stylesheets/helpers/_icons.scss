@@ -1,0 +1,177 @@
+// Icon helpers
+// ------------
+// Adds inline icon to an element
+
+// Icons are mapped to default fallback list defined in `icon-map`
+
+@import "icon-map";
+
+// Default global icons can be easily overriden by importing a new map
+// and assigning it to default `$stratum-icons` variable:
+
+// e.g.
+// ```
+// @import "font-awesome";
+// $stratum-icons: $icons-font-awesome;
+// ```
+
+// Alternatively, font icons can be provided inline for each icon
+// e.g.
+// ```
+// @include icon(music, $source: $icons-font-awesome);
+// ```
+
+// Placeholder for shared classes
+%-icon-inline {
+  line-height: 1;
+  display: inline-block;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+}
+%-icon-only {
+  display: inline-block;
+  text-indent: -100%;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+// Function to map icon name to character/image
+@function -icon-map($name, $source) {
+  @each $icon in $source {
+    @if length($icon) < 2 {
+      @warn "Icon value is missing for '#{$icon}'";
+      @return null;
+    }
+
+    $v-name:  nth($icon, 1);
+    $v-value: nth($icon, 2);
+
+    @if $v-name == $name {
+      @return $v-value;
+    }
+  }
+  @warn "Icon '#{$name}' not found";
+  @return "";
+}
+
+// Function to get font family from font map file
+// (If font family is included as the last pair in the list)
+// Expects the following format:
+// ```
+// $font-icon:
+//   ...
+//   -font        FontAwesome;
+// ```
+
+@function -icon-font($source) {
+  $v-font-family: null;
+
+  @if length($source) > 1 {
+    $v-last-pair: nth($source, length($source));
+
+    @if length($v-last-pair) == 2 and nth($v-last-pair, 1) == "-font" {
+      $v-font-family: nth($v-last-pair, 2);
+    } @else {
+      @warn "No font speficied";
+    }
+  }
+
+  @return $v-font-family;
+}
+
+// Icon properties mixin
+// Returns inline icon styles and sets optional dimensions
+@mixin -icon-render($size, $el, $font-family, $hide-text) {
+  @extend %-icon-inline;
+
+  font-size: $size;
+  font-family: $font-family;
+
+  @if not $hide-text {
+    @if $el == after {
+      margin-left: .4em;
+    } @else {
+      margin-right: .4em;
+    }
+  }
+
+  // Vertically align if custom icon size specified
+  @if $size != inherit and not unitless($size) {
+    @include box($size);
+  }
+}
+
+// Include icon
+// Main icon mixin
+
+// Usage:
+// ```
+// @include icon(music, $source: $icons-font-awesome) {
+//   color: #444;
+//   text-shadow: 0 1px 2px #aaa;
+// }
+// ```
+// Properties inside braces are optional
+
+@mixin icon($name, $size: inherit, $el: before, $source: $stratum-icons, $hide-text: false) {
+  $v-font-family: -icon-font($source);
+
+  @if $hide-text {
+    @extend %-icon-only;
+  }
+
+  @if $el == before or $el == after {
+    // Pseudo element
+    &::#{$el} {
+      @include -icon-render($size, $el, $v-font-family, $hide-text);
+      content: quote(-icon-map($name, $source));
+
+      @if $hide-text {
+        text-indent: 0;
+        float: left;
+      }
+
+      @content;
+    }
+  } @else {
+    // HTML element
+    > #{$el} {
+      @include -icon-render($size, $el, $v-font-family, $hide-text);
+      font-style: normal;
+
+      &::before {
+        content: quote(-icon-map($name, $source));
+      }
+
+      @if $hide-text {
+        text-indent: 0;
+        float: left;
+      }
+
+      @content;
+    }
+  }
+}
+
+// Hide text and include icon only
+@mixin icon-only($name, $size: inherit, $el: before, $source: $stratum-icons) {
+  @include icon($name, $size, $el, $source, $hide-text: true) {
+    @content;
+  }
+}
+
+// Mixin to adjust existing icon
+// @include icon-edit {
+//   color: #444;
+//   text-shadow: 0 1px 2px #aaa;
+// }
+// ```
+
+// `before` | `after` | `<el>` (direct descendant <element>)
+@mixin icon-edit($el: before) {
+  @if $el == before or $el == after {
+    &::#{$el} { @content }
+  } @else {
+    > #{$el} { @content }
+  }
+}

@@ -10,6 +10,7 @@ $grid-baseline:             18px      !default;
 
 @import "helpers/vendor-prefix";
 @import "helpers/group";
+@import "helpers/icons";
 @import "helpers/position";
 @import "helpers/dimensions";
 
@@ -26,3 +27,6 @@ $grid-baseline:             18px      !default;
 
 // Forms
 @import "forms/input-placeholder";
+
+// Icons
+$stratum-icons:             $stratum-dingbats !default;
