@@ -3,15 +3,14 @@
 @mixin block($color: #333, $height: 100px, $padding: 0) {
   $v-guides-color: desaturate(darken($color, 10), 40);
 
-  -webkit-transition: 400ms;
+  @include transition(box-shadow 600ms, background 500ms);
   background-color: rgba($color, .3);
   position: relative;
   min-height: $height;
-  -webkit-transition: box-shadow 800ms, background 500ms;
   overflow: hidden;
 
   > span {
-    -webkit-transition: 300ms;
+    @include transition(300ms);
     position: absolute;
     left: 0;
     right: 0;
@@ -27,12 +26,13 @@
 
     &::before,
     &::after {
-      -webkit-transition: 600ms;
+      @include transition(600ms);
+      @include box(1px);
       background: $v-guides-color;
       content: "";
       position: absolute;
+      margin-top: -1px;
       top: 50%;
-      height: 1px;
     }
     &::before {
       margin-left: -2%;
@@ -51,7 +51,7 @@
 
   &:hover {
     background-color: rgba($color, .5);
-    box-shadow: inset 0 0 0px 1px $v-guides-color, 0 1px 8px rgba(black, .3);
+    box-shadow: inset 0 0 0 1px $v-guides-color, 0 0 8px rgba(black, .3);
 
     > span {
       opacity: 1;
