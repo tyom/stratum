@@ -45,6 +45,7 @@
 
   @if $gutter == 0 {
     $v-gutter: 0;
+    // Do not round because round values are optimised for grid with gutters
     $column-width: grid-column-width($total-columns: $total-columns, $gutter: 0) * $column-span;
   } @else {
     $column-width: ceil($column-span * grid-column-width($total-columns: $total-columns) + (($column-span - 1) * $v-gutter));

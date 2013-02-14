@@ -18,9 +18,8 @@ $grid-guides-color:     #c84e5b     !default;
 $grid-guides-opacity:   .2          !default;
 $grid-guides-position:  back        !default;
 
+@import "grid/functions";
+@import "grid/mixins";
+@import "grid/guides";
 
-@import "grid-functions";
-
-@import "grid-mixins";
-@import "grid-semantics";
-@import "grid-guides";
+@import "grid/semantics";

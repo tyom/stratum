@@ -5,7 +5,7 @@
 // <width>, <height>
 // If one parameter is specified, make square
 @mixin box($args...) {
-  @if $args == center {
+  @if nth($args, 1) == center {
     margin-left: auto;
     margin-right: auto;
   } @else if length($args) < 3 {

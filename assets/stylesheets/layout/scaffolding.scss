@@ -1,83 +1,136 @@
 // Scaffolding stylesheet
-// ============================================================================
+// ----------------------
+
 // Exports `l-` prefixed classes useful for prototyping layouts
 
+
+// Create variables
+$grid-nested-grids: null !default;
+$grid-offsets:      null !default;
+$grid-overrides:    null !default;
+$grid-subdivisions: null !default;
+
+$grid-scaffolding-debug:  true  !default;
+
+// DEBUG
+
+// Helper to warn of disabled features
+%-feature-warning {
+  position: relative !important;
+
+  &::before {
+    @include position(absolute, fill);
+    display: block !important;
+    margin: 0 !important;
+    text-shadow: 0 -1px 0 rgba(white, .4) !important;
+    background: rgba(red, .8) !important;
+    padding-top: 20px !important;
+    font-size: 20px !important;
+    text-align: center !important;
+    color: black !important;
+    z-index: 10 !important;
+  }
+}
+@mixin feature-warning($text) {
+  @extend %-feature-warning;
+
+  &::before {
+    content: $text !important;
+  }
+}
+
+// SCAFFOLDING
 
 // Grid container & rows
 .l-container {
   @extend %l-container;
   @extend %l-last-col-right;
 
-  .l-row {
-    @extend %l-row;
-  }
-  .l-col {
-    @extend %l-col;
-  }
-
-  // # Modifiers
-
-  // Grid types
-  .l-row.m-gutterless {
-    @extend %l-gutterless;
-  }
-  &.m-pixel {
-    @extend %l-grid-pixel;
-  }
-  &.m-fluid {
-    @extend %l-grid-fluid;
-  }
-
-  // Grid guides
-  &.m-show-guides {
-    @include show-grid-guides;
-
-    &.m-front {
-      @include show-grid-guides(front);
-    }
-  }
+  .l-row { @extend %l-row }
+  .l-col { @extend %l-col }
 }
+
+
+// Gutterless row
+.l-row.m-gutterless {
+  @extend %l-gutterless;
+}
+
 
 // Span-based column modifiers
 @for $i from 1 through $grid-total-columns {
-  .l-col {
-    &.m-#{$i} {
-      @extend %l-col-#{$i};
-    }
+  // Columns
+  .m-#{$i} {
+    @extend %l-col-#{$i};
+  }
 
-    &.m-from-left-#{$i} {
-      @extend %l-col-from-left-#{$i};
+  @if $grid-offsets {
+    .m-push-#{$i} {
+      @extend %l-col-push-#{$i};
     }
-    &.m-to-left-#{$i} {
-      @extend %l-col-to-left-#{$i};
+    .m-pull-#{$i} {
+      @extend %l-col-pull-#{$i};
     }
-
-    &.m-from-right-#{$i} {
-      @extend %l-col-from-right-#{$i};
-    }
-    &.m-to-right-#{$i} {
-      @extend %l-col-to-right-#{$i};
+  } @else if $grid-scaffolding-debug {
+    .m-push-#{$i},
+    .m-pull-#{$i} {
+      @include feature-warning("`$grid-offsets` is not enabled");
     }
   }
 }
 
-// fractional column modifiers
-@for $total from 1 through $grid-total-columns {
-  .l-col {
-    &.m-1-of-#{$total} {
-      @extend %l-col-1-of-#{$total};
+
+// - Optional
+// Grid type overrides
+.l-container {
+  @if $grid-overrides {
+    &.m-pixel {
+      @extend %l-grid-pixel;
     }
-    @for $col from 1 through $total {
-      &.m-#{$col}-of-#{$total} {
-        @if $total > $col {
-          @extend %l-col-#{$col}-of-#{$total};
+    &.m-fluid {
+      @extend %l-grid-fluid;
+    }
+  } @else if $grid-scaffolding-debug {
+    &.m-pixel,
+    &.m-fluid {
+      @include feature-warning("`$grid-overrides` is not enabled");
+    }
+  }
+}
+
+
+// - Optional
+// Column subdivisions
+@if $grid-subdivisions {
+  @for $total from 1 through $grid-total-columns {
+    .l-col {
+      &.m-1-of-#{$total} {
+        @extend %l-col-1-of-#{$total};
+      }
+      @for $col from 1 through $total {
+        &.m-#{$col}-of-#{$total} {
+          @if $total > $col {
+            @extend %l-col-#{$col}-of-#{$total};
+          }
         }
       }
     }
   }
 }
 
-// Centre column
-.l-col.m-centered {
-  @extend %l-col-center;
+
+@if $grid-scaffolding-debug and not $grid-nested-grids {
+  .l-col > .l-container {
+    @include feature-warning("`$grid-nested-grids` is not enabled");
+  }
+}
+
+
+// Grid guides
+.m-show-guides {
+  @include show-grid-guides;
+  // Bring guides to front
+  &.m-front {
+    @include show-grid-guides(front);
+  }
 }

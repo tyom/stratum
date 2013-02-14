@@ -1,4 +1,4 @@
-@import "grid-functions";
+@import "functions";
 
 // Grid initialisation
 // -------------------
@@ -12,8 +12,8 @@ $grid-column:         grid-column-width();
 
 // Grid container to set grid bounds
 @mixin grid-container($width: $grid-size) {
+  @extend %-clearfix;
   @include box-sizing(content-box);
-  @include group;
   width: $width;
   margin: {
     left: auto;
@@ -21,47 +21,49 @@ $grid-column:         grid-column-width();
   }
 }
 
+
 // Grid row
-// $type: <pixel|fluid>
+// $type: pixel | fluid
 @mixin grid-row($type: $grid-type) {
-  @include group;
-  @include grid-column-margins($type, -1);
+  @extend %-clearfix;
+  @include grid-gutters($type, row);
   clear: both;
 }
 
-// Converts into grid column
-// $variation - can be normal, last, end, inner or centered
-@mixin grid-column($type: $grid-type) {
+
+// Make grid column
+@mixin grid-column {
   @include box-sizing(border-box);
   min-height: 1px;
   float: left;
 }
 
-// Column margins
-// $modifier: 1   - normal (column) margins
-// $modifier: -1  - negative (row) margins
-@mixin grid-column-margins($type: $grid-type, $modifier: 1) {
+
+// Grid gutters
+// $element: column | row
+@mixin grid-gutters($type: $grid-type, $element: column) {
   $v-gutter: 0;
+  $v-modifier: if($element == column, 1, -1);
 
   @if $type == fluid {
-    $v-gutter: grid-percentage($grid-half-gutter * $modifier);
+    $v-gutter: grid-percentage($grid-half-gutter * $v-modifier);
   } @else if $type == pixel {
-    $v-gutter: $grid-half-gutter * $modifier;
-  } @else if $type == center {
-    $v-gutter: auto;
+    $v-gutter: $grid-half-gutter * $v-modifier;
   }
 
   margin-left:  $v-gutter;
   margin-right: $v-gutter;
 }
 
+
 // Calculate single column width (in pixels) multipled by number of columns it spans (indluding gutters)
 @mixin grid-column-width($span: 1, $type: $grid-type, $gutter: $grid-gutter, $total-columns: $grid-total-columns) {
   width: grid-columns-width($span, $grid-column, $gutter, $type, $total-columns);
 }
 
-// Calculate offset width based on number of columns it spans (including gutters)
-@mixin grid-offset-by-column($span: 1, $direction: left, $flow: positive, $grid-type: $grid-type) {
+
+// Offset column
+@mixin grid-column-offset($direction, $span: 1, $grid-type: $grid-type) {
   $v-offset: grid-columns-width($span, $type: $grid-type);
   $v-gutter: $grid-gutter;
 
@@ -70,10 +72,12 @@ $grid-column:         grid-column-width();
     $v-gutter: grid-percentage($v-gutter);
   }
 
-  // Negative offset
-  @if $flow == negative {
-    margin-#{$direction}: -$v-offset - ($v-gutter / 2);
-  } @else {
-    margin-#{$direction}: $v-offset + ($v-gutter * 1.5);
-  }
+  #{$direction}: -($v-offset + $v-gutter);
+}
+
+
+// INTERNAL
+// Clearfix
+%-clearfix {
+  @include group;
 }
