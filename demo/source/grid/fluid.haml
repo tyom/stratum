@@ -1,0 +1,57 @@
+---
+title:  Fluid Grid Examples
+css:    fluid-grid
+---
+
+= partial 'nav'
+
+#page
+  .l-container
+    = partial 'shared'
+
+  .l-container
+    %article
+      %header
+        %h2 Nested row
+      .l-row
+        .l-col.m-3
+          %span l-col m-3
+        .l-col.m-6
+          %span l-col m-3
+          .l-row
+            .l-col.m-3
+              %span l-col m-3
+            .l-col.m-3
+              %span l-col m-3
+            .l-col.m-3
+              %span l-col m-3
+            .l-col.m-3
+              %span l-col m-3
+        .l-col.m-3
+          %span l-col m-3
+  .l-container.m-pixel
+    %article
+      %header
+        %h2 Forced pixel grid
+        %code .l-container.m-pixel
+        with no row
+      .l-col.m-6
+        %span .l-col-m-6
+      .l-col.m-3
+        %span .l-col-m-6
+      .l-col.m-3
+        %span .l-col-m-6
+      .l-row.m-gutterless
+        .l-col.m-9
+          %span .l-col-m-9
+          .l-container
+            %h2 Nested grid: 6 columns in a 9 column cell
+            .l-row
+              .l-col.m-2-of-6
+                %span .l-col-m-2-of-6
+              .l-col.m-2-of-6
+                %span .l-col-m-2-of-6
+              .l-col.m-2-of-6
+                %span .l-col-m-2-of-6
+        .l-col.m-3
+          %span .l-col-m-3

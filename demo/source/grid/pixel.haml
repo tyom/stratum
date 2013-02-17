@@ -1,0 +1,23 @@
+---
+title:  Pixel Grid Examples
+css:    pixel-grid
+---
+
+= partial 'nav'
+
+#page
+  .l-container
+    = partial 'shared'
+
+  .l-container.m-fluid
+    %article
+      %header
+        %h2 No row (gutterless), forced-fluid
+        %code .m-fluid
+
+      .l-col.m-6
+        %span 6 columns
+      .l-col.m-3
+        %span 3 columns
+      .l-col.m-3
+        %span 3 columns

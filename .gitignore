@@ -1,7 +1,5 @@
 *gem
 *swp
 .sass-cache
-vendor/
-css/
-_site/
 stratum/
+demo/build

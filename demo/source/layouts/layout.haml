@@ -1,0 +1,13 @@
+!!! 5
+%html(ng-app)
+  %head
+    %meta(charset = "utf-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=edge,chrome=1")
+    %title= data.page.title
+    = stylesheet_link_tag "main"
+    = stylesheet_link_tag data.page.css
+
+  %body(class="#{data.page.type ? 'trace' : nil}")
+    = yield
+
+    = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.1/angular.min.js"
