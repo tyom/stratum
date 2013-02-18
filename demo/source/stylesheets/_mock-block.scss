@@ -3,13 +3,13 @@
 @mixin block($color: #333, $height: 100px, $padding: 0) {
   $v-guides-color: desaturate(darken($color, 10), 40);
 
-  @include transition(box-shadow 300ms, background 500ms, left 300ms, right 300ms);
+  @include transition(box-shadow 300ms, background 500ms);
   background-color: rgba($color, .3);
   position: relative;
   min-height: $height;
 
   > span {
-    @include transition(300ms);
+    @include transition(200ms);
     @include position(absolute, 50% 0px none);
     color: rgba(black, .6);
     text-align: center;

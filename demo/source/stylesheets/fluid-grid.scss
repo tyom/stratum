@@ -4,7 +4,15 @@ $grid-type: fluid;
 @import "layout/scaffolding";
 @import "mock-block";
 
-@include GRID-GUIDES;
+// @include GRID-GUIDES;
+
+
+#page {
+  .l-row,
+  .l-col {
+    @include transition(260ms);
+  }
+}
 
 
 .l-container {
