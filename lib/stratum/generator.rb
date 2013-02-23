@@ -66,7 +66,7 @@ module Stratum
 
     def assets_stylesheets
       current_dir = File.dirname(File.dirname(__FILE__))
-      stylesheets = File.join(current_dir, "assets", "stylesheets")
+      stylesheets = File.join(current_dir, "..", "assets", "stylesheets")
 
       Dir["#{stylesheets}/*"]
     end
