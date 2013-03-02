@@ -21,27 +21,27 @@
 // Draws grid guides
 @mixin grid-render-guides($grid-size: $grid-size, $grid-type: $grid-type, $column-gutter: grid-column-gutter()) {
 
-  $v-block-size: 8;
+  $-block-size: 8;
 
   // Pixel grid default values
-  $v-column-width:  grid-column-width($gutter: $column-gutter);
-  $v-column-combined-width: $column-gutter + $v-column-width;
+  $-column-width:  grid-column-width($gutter: $column-gutter);
+  $-column-combined-width: $column-gutter + $-column-width;
 
   @if $grid-type == fluid {
     // Calculate gutter to column ratio
-    $v-gutter-ratio: $column-gutter / ($v-column-width + $column-gutter);
+    $-gutter-ratio: $column-gutter / ($-column-width + $column-gutter);
     // Calculate column to grid width ratio
     // not entirely sure where $column-gutter/3 magic number comes from, but it's necessary to make it work
-    $v-column-ratio: ($v-column-width + $column-gutter) / ($grid-size - $column-gutter / 3);
+    $-column-ratio: ($-column-width + $column-gutter) / ($grid-size - $column-gutter / 3);
 
     // Reset column size with percentages
-    $column-gutter: percentage($v-gutter-ratio);
-    $v-column-width: 100 - percentage($v-gutter-ratio);
-    $v-column-combined-width: percentage($v-column-ratio);
+    $column-gutter: percentage($-gutter-ratio);
+    $-column-width: 100 - percentage($-gutter-ratio);
+    $-column-combined-width: percentage($-column-ratio);
   }
 
-  $column-gutter:  $v-column-width + $column-gutter;
-  $v-block-height: (($grid-baseline + 1) * $v-block-size) + $grid-baseline;
+  $column-gutter:  $-column-width + $column-gutter;
+  $-block-height: (($grid-baseline + 1) * $-block-size) + $grid-baseline;
 
   position: relative;
 
@@ -61,12 +61,12 @@
       // Columns
       -webkit-linear-gradient(left,
         rgba($grid-guides-color, $grid-guides-opacity),
-        rgba($grid-guides-color, $grid-guides-opacity) $v-column-width,
-        transparent $v-column-width,
+        rgba($grid-guides-color, $grid-guides-opacity) $-column-width,
+        transparent $-column-width,
         transparent $column-gutter),
       // Blocks
       -webkit-linear-gradient(
-        transparent ($v-block-height - $grid-baseline),
+        transparent ($-block-height - $grid-baseline),
         rgba(white, $grid-guides-opacity / 1.2) $grid-baseline),
       // Base colour
       -webkit-linear-gradient(
@@ -75,8 +75,8 @@
 
     background-size:
       $column-gutter $grid-baseline + 1,     // v-rhythm
-      $v-column-combined-width 10px,           // column
-      $column-gutter ($v-block-height + 1);  // block
+      $-column-combined-width 10px,           // column
+      $column-gutter ($-block-height + 1);  // block
   }
 }
 
@@ -95,12 +95,12 @@
 
   &::before {
     &%l-row {
-      $v-offset: grid-column-gutter()/2;
+      $-offset: grid-column-gutter()/2;
 
       @if $grid-type == fluid {
-        $v-offset: grid-percentage($v-offset);
+        $-offset: grid-percentage($-offset);
       }
-      margin: 0 $v-offset;
+      margin: 0 $-offset;
     }
     &%l-gutterless {
       margin: 0;

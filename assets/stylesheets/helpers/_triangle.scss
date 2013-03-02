@@ -2,61 +2,61 @@
 // ----------------------
 
 @mixin triangle($position: top, $color: black, $size: 16px) {
-  $v-dimensions: null;
-  $v-colors: null;
-  $v-height: nth($size, 1);
-  $v-left: $v-height / 1.5;
-  $v-right: $v-height / 1.5;
+  $-dimensions: null;
+  $-colors: null;
+  $-height: nth($size, 1);
+  $-left: $-height / 1.5;
+  $-right: $-height / 1.5;
 
   // sides width specified
   @if length($size) == 2 {
-    $v-left: nth($size, 2);
-    $v-right: nth($size, 2);
+    $-left: nth($size, 2);
+    $-right: nth($size, 2);
   // individual side widths specified
   } @else if length($size) == 3 {
-    $v-left: nth($size, 2);
-    $v-right: nth($size, 3);
+    $-left: nth($size, 2);
+    $-right: nth($size, 3);
   }
 
   @if $position == top {
-    $v-dimensions: 0 $v-right $v-height $v-left;
-    $v-colors: transparent transparent $color;
+    $-dimensions: 0 $-right $-height $-left;
+    $-colors: transparent transparent $color;
   }
   @if $position == top-right {
-    $v-dimensions: 0 $v-height $v-height 0;
-    $v-colors: transparent $color transparent transparent;
+    $-dimensions: 0 $-height $-height 0;
+    $-colors: transparent $color transparent transparent;
   }
   @if $position == right {
-    $v-dimensions: $v-left 0 $v-right $v-height;
-    $v-colors: transparent transparent transparent $color;
+    $-dimensions: $-left 0 $-right $-height;
+    $-colors: transparent transparent transparent $color;
   }
   @if $position == bottom-right {
-    $v-dimensions: 0 0 $v-height $v-height;
-    $v-colors: transparent transparent $color;
+    $-dimensions: 0 0 $-height $-height;
+    $-colors: transparent transparent $color;
   }
   @if $position == bottom {
-    $v-dimensions: $v-height $v-left 0 $v-right;
-    $v-colors: $color transparent transparent;
+    $-dimensions: $-height $-left 0 $-right;
+    $-colors: $color transparent transparent;
   }
   @if $position == bottom-left {
-    $v-dimensions: $v-height 0 0 $v-height;
-    $v-colors: transparent transparent transparent $color;
+    $-dimensions: $-height 0 0 $-height;
+    $-colors: transparent transparent transparent $color;
   }
   @if $position == left {
-    $v-dimensions: $v-left $v-height $v-right 0;
-    $v-colors: transparent $color transparent transparent;
+    $-dimensions: $-left $-height $-right 0;
+    $-colors: transparent $color transparent transparent;
   }
   @if $position == top-left {
-    $v-dimensions: $v-height $v-height 0 0;
-    $v-colors: $color transparent transparent transparent;
+    $-dimensions: $-height $-height 0 0;
+    $-colors: $color transparent transparent transparent;
   }
 
-  @if $v-dimensions and $v-colors {
+  @if $-dimensions and $-colors {
     @include box(0px);
     display: inline-block;
     border-style: solid;
-    border-width: $v-dimensions;
-    border-color: $v-colors;
+    border-width: $-dimensions;
+    border-color: $-colors;
   } @else {
     @warn "Unrecognised position '#{$position}'. Use one of: top, top-right, right, bottom-right, bottom, bottom-left, left, top-left";
   }

@@ -30,7 +30,7 @@
     $values: append($values, nth($values, 2));
   }
 
-  $v-pairs:
+  $-pairs:
     top    nth($values, 1),
     right  nth($values, 2),
     bottom nth($values, 3),
@@ -38,11 +38,11 @@
 
   position: $position;
 
-  @each $pair in $v-pairs {
-    $v-pos: nth($pair, 1);
-    $v-val: nth($pair, 2);
-    @if $v-val == auto or ($v-val != none and not unitless($v-val)) {
-      #{$v-pos}: $v-val;
+  @each $pair in $-pairs {
+    $-pos: nth($pair, 1);
+    $-val: nth($pair, 2);
+    @if $-val == auto or ($-val != none and not unitless($-val)) {
+      #{$-pos}: $-val;
     }
   }
 }

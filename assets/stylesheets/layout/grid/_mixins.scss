@@ -42,17 +42,17 @@ $grid-column:         grid-column-width();
 // Grid gutters
 // $element: column | row
 @mixin grid-gutters($type: $grid-type, $element: column) {
-  $v-gutter: 0;
-  $v-modifier: if($element == column, 1, -1);
+  $-gutter: 0;
+  $-modifier: if($element == column, 1, -1);
 
   @if $type == fluid {
-    $v-gutter: grid-percentage($grid-half-gutter * $v-modifier);
+    $-gutter: grid-percentage($grid-half-gutter * $-modifier);
   } @else if $type == pixel {
-    $v-gutter: $grid-half-gutter * $v-modifier;
+    $-gutter: $grid-half-gutter * $-modifier;
   }
 
-  margin-left:  $v-gutter;
-  margin-right: $v-gutter;
+  margin-left:  $-gutter;
+  margin-right: $-gutter;
 }
 
 
@@ -64,15 +64,15 @@ $grid-column:         grid-column-width();
 
 // Offset column
 @mixin grid-column-offset($direction, $span: 1, $grid-type: $grid-type) {
-  $v-offset: grid-columns-width($span, $type: $grid-type);
-  $v-gutter: $grid-gutter;
+  $-offset: grid-columns-width($span, $type: $grid-type);
+  $-gutter: $grid-gutter;
 
   // Fluid grid
   @if $grid-type == fluid {
-    $v-gutter: grid-percentage($v-gutter);
+    $-gutter: grid-percentage($-gutter);
   }
 
-  #{$direction}: -($v-offset + $v-gutter);
+  #{$direction}: -($-offset + $-gutter);
 }
 
 

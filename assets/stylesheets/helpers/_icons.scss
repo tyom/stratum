@@ -43,11 +43,11 @@
       @return null;
     }
 
-    $v-name:  nth($icon, 1);
-    $v-value: nth($icon, 2);
+    $-name:  nth($icon, 1);
+    $-value: nth($icon, 2);
 
-    @if $v-name == $name {
-      @return $v-value;
+    @if $-name == $name {
+      @return $-value;
     }
   }
   @warn "Icon '#{$name}' not found";
@@ -64,19 +64,19 @@
 // ```
 
 @function -icon-font($source) {
-  $v-font-family: null;
+  $-font-family: null;
 
   @if length($source) > 1 {
-    $v-last-pair: nth($source, length($source));
+    $-last-pair: nth($source, length($source));
 
-    @if length($v-last-pair) == 2 and nth($v-last-pair, 1) == "-font" {
-      $v-font-family: nth($v-last-pair, 2);
+    @if length($-last-pair) == 2 and nth($-last-pair, 1) == "-font" {
+      $-font-family: nth($-last-pair, 2);
     } @else {
       @warn "No font speficied";
     }
   }
 
-  @return $v-font-family;
+  @return $-font-family;
 }
 
 // Icon properties mixin
@@ -114,7 +114,7 @@
 // Properties inside braces are optional
 
 @mixin icon($name, $size: inherit, $el: before, $source: $stratum-icons, $hide-text: false) {
-  $v-font-family: -icon-font($source);
+  $-font-family: -icon-font($source);
 
   @if $hide-text {
     @extend %-icon-only;
@@ -123,7 +123,7 @@
   @if $el == before or $el == after {
     // Pseudo element
     &::#{$el} {
-      @include -icon-render($size, $el, $v-font-family, $hide-text);
+      @include -icon-render($size, $el, $-font-family, $hide-text);
       content: quote(-icon-map($name, $source));
 
       @if $hide-text {
@@ -136,7 +136,7 @@
   } @else {
     // HTML element
     > #{$el} {
-      @include -icon-render($size, $el, $v-font-family, $hide-text);
+      @include -icon-render($size, $el, $-font-family, $hide-text);
       font-style: normal;
 
       &::before {
