@@ -1,0 +1,83 @@
+@import "functions";
+
+// Grid initialisation
+// -------------------
+$grid-gutter:         grid-column-gutter();
+$grid-half-gutter:    $grid-gutter / 2;
+$grid-column:         grid-column-width();
+
+
+// Mixins
+// ------
+
+// Grid container to set grid bounds
+@mixin grid-container($width: $grid-size) {
+  @extend %-clearfix;
+  @include box-sizing(content-box);
+  width: $width;
+  margin: {
+    left: auto;
+    right: auto;
+  }
+}
+
+
+// Grid row
+// $type: pixel | fluid
+@mixin grid-row($type: $grid-type) {
+  @extend %-clearfix;
+  @include grid-gutters($type, row);
+  clear: both;
+}
+
+
+// Make grid column
+@mixin grid-column {
+  @include box-sizing(border-box);
+  min-height: 1px;
+  float: left;
+}
+
+
+// Grid gutters
+// $element: column | row
+@mixin grid-gutters($type: $grid-type, $element: column) {
+  $-gutter: 0;
+  $-modifier: if($element == column, 1, -1);
+
+  @if $type == fluid {
+    $-gutter: grid-percentage($grid-half-gutter * $-modifier);
+  } @else if $type == pixel {
+    $-gutter: $grid-half-gutter * $-modifier;
+  }
+
+  margin-left:  $-gutter;
+  margin-right: $-gutter;
+}
+
+
+// Calculate single column width (in pixels) multipled by number of columns it spans (indluding gutters)
+@mixin grid-column-width($span: 1, $type: $grid-type, $gutter: $grid-gutter, $total-columns: $grid-total-columns) {
+  width: grid-columns-width($span, $grid-column, $gutter, $type, $total-columns);
+}
+
+
+// Offset column
+@mixin grid-column-offset($direction, $span: 1, $grid-type: $grid-type) {
+  $-offset: grid-columns-width($span, $type: $grid-type);
+  $-gutter: $grid-gutter;
+
+  // Fluid grid
+  @if $grid-type == fluid {
+    $-gutter: grid-percentage($-gutter);
+  }
+
+  #{$direction}: -($-offset + $-gutter);
+}
+
+
+// INTERNAL
+// Clearfix
+%-clearfix {
+  @include group;
+}

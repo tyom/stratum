@@ -1,0 +1,48 @@
+// Position shorthand
+// ------------------
+
+// Accepts values with units or auto
+// If `0` or `none` is specified, the value is omitted.
+
+// Standard CSS shorthand rules applied, e.g. `0px 20px` resolves to `top: 0px; left: 20px; right: 20px` etc.
+
+// `@include position(absolute, 0px 0 0 auto);`
+
+// Resolves to:
+
+// ```
+//   position: absolute;
+//   top: 0px;
+//   left: auto;
+// ```
+
+@mixin position($position, $values) {
+  // shortcut to fill viewport (0px 0px 0px 0px)
+  $values: if($values == fill, 0px 0px 0px 0px, $values);
+
+  // top/bottom left/right
+  @if length($values) == 2 {
+    $values: append($values, nth($values, 1));
+    $values: append($values, nth($values, 2));
+  }
+  // top left/right bottom
+  @if length($values) == 3 {
+    $values: append($values, nth($values, 2));
+  }
+
+  $-pairs:
+    top    nth($values, 1),
+    right  nth($values, 2),
+    bottom nth($values, 3),
+    left   nth($values, 4);
+
+  position: $position;
+
+  @each $pair in $-pairs {
+    $-pos: nth($pair, 1);
+    $-val: nth($pair, 2);
+    @if $-val == auto or ($-val != none and not unitless($-val)) {
+      #{$-pos}: $-val;
+    }
+  }
+}

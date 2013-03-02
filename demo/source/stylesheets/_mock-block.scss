@@ -1,0 +1,65 @@
+// Mock block
+
+@mixin block($color: #333, $height: 100px, $padding: 0) {
+  $-guides-color: desaturate(darken($color, 10), 40);
+
+  @include transition(box-shadow 300ms, background 500ms);
+  background-color: rgba($color, .3);
+  position: relative;
+  min-height: $height;
+
+  > span {
+    @include transition(200ms);
+    @include position(absolute, 50% 0px none);
+    color: rgba(black, .6);
+    text-align: center;
+    margin: -10px auto 0;
+    z-index: 2;
+    opacity: 0;
+    cursor: default;
+    font-weight: bold;
+    overflow: hidden;
+    text-shadow: 0 0 2px rgba(lighten($color, 60), .4);
+
+    &::before,
+    &::after {
+      @include transition(600ms);
+      @include box(1px);
+      background: $-guides-color;
+      content: "";
+      position: absolute;
+      margin-top: -1px;
+      top: 50%;
+    }
+    &::before {
+      margin-left: -2%;
+    }
+    &::after {
+      margin-left: 2%;
+    }
+  }
+
+  &::before {
+    @include position(absolute, fill);
+    content: "";
+    background: rgba(white, .25);
+    margin: $padding;
+  }
+
+  &:hover {
+    background-color: rgba($color, .6);
+    box-shadow: inset 0 0 0 1px $-guides-color, 0 0 0 3px rgba($-guides-color, .35);
+
+    > span {
+      opacity: 1;
+
+      &::before,
+      &::after {
+        width: 98%;
+      }
+      &::before {
+        margin-left: -100%;
+      }
+    }
+  }
+}

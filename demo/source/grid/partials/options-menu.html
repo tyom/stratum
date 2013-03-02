@@ -1,0 +1,17 @@
+<menu class="options" ng-hide="!options">
+  <li
+    ng-repeat="option in options"
+    ng-click="toggle(option)"
+    ng-class="{'active': option.active, 'p-group': option.group}">
+    {{option.label}}
+
+    <menu ng-show="option.group">
+      <li
+        ng-repeat="groupItem in option.group"
+        ng-click="toggle(groupItem, option.group)"
+        ng-class="{'active': groupItem.active}">
+        {{groupItem.label}}
+      </li>
+    </menu>
+  </li>
+</menu>

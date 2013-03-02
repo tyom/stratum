@@ -1,3 +1,0 @@
-[submodule "tests/vendor/livereload-js"]
-	path = tests/vendor/livereload-js
-	url = git@github.com:tyom/livereload-js.git

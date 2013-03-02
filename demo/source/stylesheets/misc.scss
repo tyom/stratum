@@ -1,0 +1,95 @@
+@import "stratum";
+@import "layout/scaffolding";
+@import "font-awesome";
+
+$stratum-icons: $icons-font-awesome;
+
+.icons {
+  margin-top: 100px;
+}
+
+.m-icon {
+  @include transition(200ms);
+  @include icon-edit {
+    color: #666;
+    text-shadow: 0 1px 1px rgba(black, .1);
+  }
+  text-decoration: none;
+  font-size: 20px;
+  padding: 10px;
+  background: rgba(white, .3);
+
+  &:hover {
+    @include transform(scale(2));
+    background: white;
+  }
+
+  &.m-glass {
+    @include icon-only(glass);
+  }
+  &.m-music {
+    @include icon-only(music);
+  }
+  &.m-search {
+    @include icon-only(search);
+  }
+  &.m-envelope {
+    @include icon-only(envelope);
+  }
+}
+
+.triangles {
+  text-align: center;
+}
+
+.speechbox {
+  @include box(200px, 20px);
+  display: inline-block;
+  margin: 30px;
+  background: #444;
+  color: white;
+  padding: 20px 10px;
+  position: relative;
+  border-radius: 6px;
+
+  &::before {
+    content: '';
+  }
+
+  &.m-top::before {
+    @include triangle(top, #444, 12px);
+    @include position(absolute, -12px 0 0 50%);
+    margin-left: -6px;
+  }
+  &.m-top-right::before {
+    @include triangle(top-right, #444, 18px);
+    @include position(absolute, -5px -5px 0 0);
+  }
+  &.m-right::before {
+    @include triangle(right, #444, 12px);
+    @include position(absolute, 50% -12px 0 0);
+    margin-top: -6px;
+  }
+  &.m-bottom-right::before {
+    @include triangle(bottom-right, #444, 18px);
+    @include position(absolute, 0 -5px -5px 0);
+  }
+  &.m-bottom::before {
+    @include triangle(bottom, #444, 12px);
+    @include position(absolute, 0 50% -12px 0 0);
+    margin-right: -6px;
+  }
+  &.m-bottom-left::before {
+    @include triangle(bottom-left, #444, 18px);
+    @include position(absolute, 0 0 -5px -5px);
+  }
+  &.m-left::before {
+    @include triangle(left, #444, 12px);
+    @include position(absolute, 50% 0 0 -12px);
+    margin-top: -6px;
+  }
+  &.m-top-left::before {
+    @include triangle(top-left, #444, 18px);
+    @include position(absolute, -5px 0 0 -5px);
+  }
+}

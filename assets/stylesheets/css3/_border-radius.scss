@@ -22,8 +22,8 @@
 // values (such as 30px/60px) need to be quoted: "30px/30px"
 
 @mixin border-radius($value...) {
-  $v-value: nth($value, 1);
-  @include vendor-prefix(border-radius, unquote($v-value), webkit spec);
+  $-value: nth($value, 1);
+  @include vendor-prefix(border-radius, unquote($-value), webkit spec);
 
   @if length($value) > 1 and nth($value, 2) == clip {
     @include vendor-prefix(background-clip, padding-box, webkit spec);

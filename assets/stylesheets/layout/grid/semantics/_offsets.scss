@@ -1,0 +1,50 @@
+// Column offsets
+// --------------
+
+// l-col-pull-<$i>        –  Pull column to left by <column size>
+// l-col-push-<$i>        –  Push column to right by <column size>
+
+
+$grid-offsets: true;
+
+
+// Column sizes
+@for $i from 1 through $grid-total-columns {
+  %l-col-push-#{$i} {
+    @extend %-col-positioned;
+
+    %l-container & {
+      @include grid-column-offset(right, $i);
+    }
+  }
+
+  %l-col-pull-#{$i} {
+    @extend %-col-positioned;
+
+    %l-container & {
+      @include grid-column-offset(left, $i);
+    }
+  }
+
+  %l-grid-pixel %l-row %l-col-pull-#{$i} {
+    @include grid-column-offset(left, $i, pixel);
+  }
+
+  %l-grid-pixel %l-row %l-col-push-#{$i} {
+    @include grid-column-offset(right, $i, pixel);
+  }
+
+  %l-grid-fluid %l-row %l-col-pull-#{$i} {
+    @include grid-column-offset(left, $i, fluid);
+  }
+
+  %l-grid-fluid %l-row %l-col-push-#{$i} {
+    @include grid-column-offset(right, $i, fluid);
+  }
+}
+
+
+// INTERNAL
+%-col-positioned {
+  position: relative;
+}

@@ -1,0 +1,12 @@
+// user-select
+// -------------
+
+// Vendor prefixes:
+// - Chrome
+// - Safari
+// - Firefox
+// - IE 10+
+
+@mixin user-select($value...) {
+  @include vendor-prefix(user-select, $value, webkit moz ms spec);
+}

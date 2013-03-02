@@ -1,0 +1,79 @@
+%article(test-case)
+  %header
+    %h2 Typical grid
+
+  .l-row(react-to="guides:m-show-guides gutterless:m-gutterless")
+    .l-col.m-2
+      %span 2 columns
+    .l-col.m-5
+      %span 5 columns
+    .l-col.m-3
+      %span 3 columns
+    .l-col.m-2
+      %span 2 columns
+  .l-row.m-gutterless(react-to="guides:m-show-guides gutterless:m-gutterless")
+    .l-col.m-1
+      %span 1 column
+    .l-col.m-1
+      %span 1 column
+    .l-col.m-1
+      %span 1 column
+    .l-col.m-1
+      %span 1 column
+    .l-col.m-1
+      %span 1 column
+    .l-col.m-1
+      %span 1 column
+    .l-col.m-1
+      %span 1 column
+    .l-col.m-1
+      %span 1 column
+    .l-col.m-1
+      %span 1 column
+    .l-col.m-1
+      %span 1 column
+    .l-col.m-1
+      %span 1 column
+    .l-col.m-1
+      %span 1 column
+
+
+%article(test-case)
+  %header
+    %h2 Offsets
+
+  .l-row(react-to="guides:m-show-guides gutterless:m-gutterless")
+    .l-col.m-4(react-to="offsets:0:m-pull-2 offsets:1:m-pull-4")
+      %span 4 columns
+    .l-col.m-4
+      %span 4 columns
+    .l-col.m-4(react-to="offsets:0:m-push-2 offsets:1:m-push-4")
+      %span 4 columns
+
+
+%article(test-case)
+  %header
+    %h2 No column gutters
+    %code .l-row.m-gutterless
+
+  .l-row.m-gutterless(react-to="guides:m-show-guides gutterless:m-gutterless")
+    .l-col.m-6
+      %span 6 columns
+    .l-col.m-3
+      %span 6 columns
+    .l-col.m-3
+      %span 6 columns
+
+
+%article(test-case)
+  %header
+    %h2 No row
+    equivalent to
+    %code .l-row.m-gutterless
+
+  .l-col.m-6(react-to="offsets:0:m-pull-1 offsets:1:m-pull-3")
+    %span 6 columns
+  .l-col.m-3
+    %span 6 columns
+  .l-col.m-3(react-to="offsets:0:m-push-1 offsets:1:m-push-3")
+    %span 6 columns

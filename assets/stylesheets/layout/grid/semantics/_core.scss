@@ -1,0 +1,96 @@
+// Grid core components
+// --------------------
+
+// These placeholder selectors can be used to convert any element into
+// grid component. To use `@extend` element with appropriate placeholder.
+// It will automatically take care of the parent and descending components
+// as long as the correct grid components are used.
+
+// You should think about this file as an API for grid mixins and functions.
+// As long as correct grid elements are used, defined in this file, building
+// grid-based layout should be a painless process.
+
+// For examples of usage of these components see `layout/scaffolding.scss`
+
+// The structure of the grid is as follows:
+
+// %l-container           –  A grid is always contained in one of these
+//                           They use global grid settings and can be overriden with:
+//
+// %l-row                 –  Grid consists of a number of rows
+//                           They are required for correct column margins, but can be omitted,
+//                           in which case the grid with no `%l-row` becomes gutterless
+// %l-gutterless          –  Convert grid row into gutterless (no column margins)
+//
+// %l-col                 –  Column: unit of the grid
+// %l-col-<$i>            –  Column size (e.g. `%l-col-4` spans four single columns, including three gutters)
+//
+// %l-last-col-right      –  This settings forces last column to float to right, which helps to eliminate
+//                           pixel gap caused by rounding in fluid grids and ensures first and last column
+//                           occupy full width of grid container.
+//                           Applied to grid container (@extend).
+
+
+// Grid anatomy
+%l-container {
+  @include grid-container;
+
+  %l-container { width: auto    }
+
+  %l-row { @include grid-row    }
+  %l-col { @include grid-column }
+}
+
+
+// Float last column to right if `%l-last-col-right` extended
+// Applied to `%l-container`
+%l-col + %l-col:last-child {
+  %l-last-col-right%l-container & {
+    float: right;
+  }
+}
+
+
+// Defines column margins
+// Only applied to descendants of rows
+%l-row %l-col {
+  @include grid-gutters;
+}
+
+
+// Column sizes
+@for $i from 1 through $grid-total-columns {
+  %l-col-#{$i} {
+    // Columns with gutters
+    %l-row & {
+      @include grid-column-width($i, $grid-type);
+    }
+
+    // Columns without gutters
+    %l-container &,
+    %l-gutterless & {
+      @include grid-column-width($i, $grid-type, $gutter: 0);
+    }
+  }
+}
+
+
+%l-container {
+  // Gutterless row
+  %l-gutterless,
+  %l-gutterless %l-row {
+    @extend %-drop-margins;
+  }
+
+  // Gutterless columns
+  %l-gutterless %l-col {
+    @extend %-drop-margins;
+  }
+}
+
+
+// INTERNAL
+// Placeholder for gutterless columns
+%-drop-margins {
+  @include grid-gutters(none);
+}
