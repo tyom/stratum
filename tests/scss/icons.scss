@@ -1,0 +1,39 @@
+@import "stratum";
+@import "layout/scaffolding";
+@import "font-awesome";
+
+$stratum-icons: $icons-font-awesome;
+
+.icons {
+  margin-top: 100px;
+}
+
+.m-icon {
+  @include transition(200ms);
+  @include icon-edit {
+    color: #666;
+    text-shadow: 0 1px 1px rgba(black, .1);
+  }
+  text-decoration: none;
+  font-size: 20px;
+  padding: 10px;
+  background: rgba(white, .3);
+
+  &:hover {
+    @include transform(scale(2));
+    background: white;
+  }
+
+  &.m-glass {
+    @include icon-only(glass);
+  }
+  &.m-music {
+    @include icon-only(music);
+  }
+  &.m-search {
+    @include icon-only(search);
+  }
+  &.m-envelope {
+    @include icon-only(envelope);
+  }
+}

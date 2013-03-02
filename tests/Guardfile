@@ -1,8 +1,13 @@
-guard 'sass',
-	:load_paths => ['../assets/stylesheets'],
+# guard 'sass',
+# 	:load_paths => ['../assets/stylesheets'],
+#   # :debug_info => true,
+#   :input => 'scss',
+#   :output => 'css'
+
+guard 'sass', :load_paths => ['../assets/stylesheets'], :output => 'css' do
   # :debug_info => true,
-  :input => 'scss',
-  :output => 'css'
+  watch(%r{scss/icons\.(scss)})
+end
 
 guard 'livereload' do
   # watch(%r{../assets/stylesheets/.+\.(scss)})
