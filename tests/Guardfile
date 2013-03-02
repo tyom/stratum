@@ -1,13 +1,15 @@
-# guard 'sass',
-# 	:load_paths => ['../assets/stylesheets'],
-#   # :debug_info => true,
-#   :input => 'scss',
-#   :output => 'css'
-
-guard 'sass', :load_paths => ['../assets/stylesheets'], :output => 'css' do
+guard 'sass',
+	:load_paths => ['../assets/stylesheets'],
   # :debug_info => true,
-  watch(%r{scss/icons\.(scss)})
-end
+  :input => 'scss',
+  :output => 'css'
+
+# guard 'sass', :load_paths => ['../assets/stylesheets'], :output => 'css' do
+#   # :debug_info => true,
+#   watch(%r{scss/fluid-grid\.(scss)})
+#   watch(%r{scss/pixel-grid\.(scss)})
+#   watch(%r{scss/bbc\.(scss)})
+# end
 
 guard 'livereload' do
   # watch(%r{../assets/stylesheets/.+\.(scss)})

@@ -3,10 +3,9 @@ $grid-type: pixel;
 
 @import "stratum";
 @import "layout/scaffolding";
-
 @import "mock-block";
 
-// @include GRID-GUIDES;
+@include GRID-GUIDES;
 
 
 .l-container .l-col {

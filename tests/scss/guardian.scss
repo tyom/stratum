@@ -10,7 +10,6 @@ $grid-baseline:             15px;
 
 @import "stratum";
 @import "layout/scaffolding";
-
 @import "mock-block";
 
 // @include GRID-GUIDES;
@@ -79,13 +78,13 @@ body {
         @include block(#c9b480);
         margin-bottom: 25px;
       }
-      .m-1 {
+      .m-i1 {
         min-height: 2940px;
       }
-      .m-2 {
+      .m-i2 {
         min-height: 1592px;
       }
-      .m-3 {
+      .m-i3 {
         min-height: 507px;
       }
     }
@@ -102,19 +101,19 @@ body {
 
       .l-row {
         .m-2 {
-          .m-1 {
+          .m-i1 {
             min-height: 182px;
           }
-          .m-2 {
+          .m-i2 {
             min-height: 218px;
           }
-          .m-3 {
+          .m-i3 {
             min-height: 182px;
           }
-          .m-4 {
+          .m-i4 {
             min-height: 272px;
           }
-          .m-5 {
+          .m-i5 {
             min-height: 216px;
             margin-top: 51px;
           }
@@ -124,28 +123,28 @@ body {
           .item {
             margin-bottom: 30px;
           }
-          .m-1 {
+          .m-i1 {
             min-height: 776px;
           }
-          .m-2 {
+          .m-i2 {
             min-height: 183px;
           }
-          .m-3 {
+          .m-i3 {
             min-height: 1098px;
           }
-          .m-4 {
+          .m-i4 {
             min-height: 603px;
           }
-          .m-5 {
+          .m-i5 {
             min-height: 719px;
           }
-          .m-6 {
+          .m-i6 {
             min-height: 321px;
           }
-          .m-7 {
+          .m-i7 {
             min-height: 378px;
           }
-          .m-8 {
+          .m-i8 {
             min-height: 375px;
           }
         }
@@ -157,43 +156,43 @@ body {
         @include block(#769cbb);
         margin-bottom: 10px;
       }
-      .m-1 {
+      .m-i1 {
         min-height: 172px;
       }
-      .m-2 {
+      .m-i2 {
         min-height: 435px;
       }
-      .m-3 {
+      .m-i3 {
         min-height: 262px;
       }
-      .m-4 {
+      .m-i4 {
         min-height: 230px;
       }
-      .m-5 {
+      .m-i5 {
         min-height: 390px;
       }
-      .m-6 {
+      .m-i6 {
         min-height: 306px;
       }
-      .m-7 {
+      .m-i7 {
         min-height: 62px;
       }
-      .m-8 {
+      .m-i8 {
         min-height: 129px;
       }
-      .m-9 {
+      .m-i9 {
         min-height: 608px;
       }
-      .m-10 {
+      .m-i10 {
         min-height: 191px;
       }
-      .m-11 {
+      .m-i11 {
         min-height: 153px;
       }
-      .m-12 {
+      .m-i12 {
         min-height: 158px;
       }
-      .m-13 {
+      .m-i13 {
         min-height: 140px;
       }
     }

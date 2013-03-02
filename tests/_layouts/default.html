@@ -10,8 +10,11 @@
             <link rel="stylesheet" href="{{site.baseurl}}/css/{{ stylesheet }}.css">
         {% endfor %}
         <script src="{{site.baseurl}}/vendor/livereload-js/dist/livereload.js?host=localhost"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="{{site.baseurl}}/js/app.js"></script>
+        <script src="{{site.baseurl}}/js/test-cases.js"></script>
     </head>
-    <body>
+    <body{% if page.type == 'trace' %} class="trace"{% endif %}>
         {% if page.menu == 'grids' %}
             {% include menu-grids.html %}
         {% endif %}

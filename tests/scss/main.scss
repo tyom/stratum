@@ -8,30 +8,33 @@ body {
   padding: 0;
 }
 
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 h1, h2 {
   margin: ($grid-baseline * 2) 0 $grid-baseline;
 }
 
 .l-container {
-  > h2,
-  > header {
+  margin-top: $grid-baseline * 2;
+  margin-bottom: $grid-baseline * 2;
+
+  .trace & {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  > article {
     border-top: 1px solid rgba(black, .2);
-    padding-top: $grid-baseline;
-    margin-top: $grid-baseline;
+    padding: $grid-baseline 0;
 
-    h2 {
-      margin-top: 0;
-    }
-
-    &:first-child,
-    .l-col & {
+    &:first-child {
       border: none;
     }
   }
-}
-
-#page {
-  padding: 20px 0;
 }
 
 #masthead {
@@ -69,22 +72,73 @@ h1, h2 {
   }
 }
 
-header {
-  font-size: 1.5em;
-  color: #777;
+article {
+  @include group;
 
-  h2 {
-    display: inline-block;
-    font-size: 1em;
-    color: #333;
+  header,
+  h2, h3 {
+    @include group;
+    font-size: 1.5em;
+    color: #777;
+    margin-bottom: $grid-baseline;
+
+    h2 {
+      display: inline-block;
+      font-size: 1em;
+      color: #333;
+      margin: 0;
+    }
+
+    code {
+      border-radius: 4px;
+      margin: 0 5px;
+      padding: 3px;
+      background: rgba(#eee, .5);
+      color: #ba5232;
+      font-size: .9em;
+    }
+  }
+}
+
+.options {
+  @include group;
+  @include user-select(none);
+  float: right;
+  background: rgba(black, 0.4);
+  padding: 3px 3px 3px 0;
+  border-radius: 3px;
+
+  menu {
+    float: left;
+    margin-left: 3px;
+
+    li {
+      margin: 0 0 0 1px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
   }
 
-  code {
-    border-radius: 4px;
-    margin: 0 5px;
-    padding: 3px;
-    background: rgba(#eee, .5);
-    color: #ba5232;
-    font-size: .9em;
+  li {
+    float: left;
+    padding: 3px 10px;
+    font-size: 12px;
+    margin-left: 3px;
+    background: white;
+    cursor: pointer;
+
+    &:hover {
+      background: #eee;
+      color: #555;
+    }
+    &:active {
+      background: #ccc;
+    }
+    &.active {
+      background: #444;
+      color: white;
+    }
   }
 }
