@@ -1,0 +1,66 @@
+// # Calculate column gutter from desired value
+
+// This function will find the nearest round number that
+// fits well with number of columns and total width specified
+
+// All parameters are optional (use grid defaults)
+
+@function grid-column-gutter($grid-size: $grid-size, $desired: $grid-desired-gutter) {
+  $-gutter: 0px;
+  $column: 1;
+
+  // Find a round gutter width
+  @while $column > $-gutter {
+    $column: grid-column-width($grid-size, $grid-total-columns, $-gutter);
+
+    @if $column % 1 == 0 {
+      $range-from:  $desired - 6;
+      $range-to:    $desired + 20;
+      $within-range: $-gutter >= $range-from and $-gutter <= $range-to;
+      // Find gutter within desired range
+      @if $within-range {
+        @return $-gutter;
+      }
+    }
+    $-gutter: $-gutter + 1;
+  }
+  @warn "Couldn't find suitable gutter close to your desired value. Try a different one.";
+}
+
+// # Calcuate the width of a single column
+// All parameters are optional (use grid defaults)
+@function grid-column-width($grid-size: $grid-size, $total-columns: $grid-total-columns, $gutter: auto) {
+  @if $gutter == auto {
+    $gutter: grid-column-gutter($grid-size, $grid-desired-gutter);
+  } @else {
+    $gutter: $gutter;
+  }
+  @return ($grid-size - (($total-columns - 1) * $gutter)) / $total-columns;
+}
+
+// # Calculate the total width of number of columns including gutters
+// `$column-width` & `$gutter` are optional (use grid defaults)
+@function grid-columns-width($column-span, $column-width: auto, $gutter: auto, $type: $grid-type, $total-columns: $grid-total-columns) {
+  $-gutter: grid-column-gutter($grid-size, $grid-desired-gutter);
+
+  @if $gutter == 0 {
+    $-gutter: 0;
+    // Do not round because round values are optimised for grid with gutters
+    $column-width: grid-column-width($total-columns: $total-columns, $gutter: 0) * $column-span;
+  } @else {
+    $column-width: ceil($column-span * grid-column-width($total-columns: $total-columns) + (($column-span - 1) * $-gutter));
+  }
+
+  $-grid-size: $grid-size + $-gutter;
+
+  @if $type == fluid {
+    $column-width: grid-percentage($column-width, $-grid-size);
+  }
+
+  @return $column-width;
+}
+
+// # Convert percentage of width relative to the total width
+@function grid-percentage($width, $grid-size: ($grid-size + $grid-gutter)) {
+  @return percentage($width / $grid-size);
+}

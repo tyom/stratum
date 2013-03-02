@@ -1,0 +1,34 @@
+// Nested grids
+// ------------
+
+
+$grid-nested-grids: true;
+
+%l-container {
+  // Always set nested grids to fluid
+  &%l-container %l-container %l-row {
+    @include grid-row(fluid);
+  }
+}
+
+
+// Column sizes (within columns)
+@for $i from 1 through $grid-total-columns {
+  %l-col-#{$i} {
+    %l-grid-fluid & {
+      @for $n from 1 through $grid-total-columns {
+        %l-row %l-col-#{$n} {
+          @include grid-column-width($n, fluid, $total-columns: $i);
+          @include grid-gutters(fluid);
+        }
+      }
+    }
+    @if $grid-type == fluid {
+      @for $n from 1 through $grid-total-columns {
+        %l-row %l-col-#{$n} {
+          @include grid-column-width($n, fluid, $total-columns: $i);
+        }
+      }
+    }
+  }
+}

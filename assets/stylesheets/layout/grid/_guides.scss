@@ -1,0 +1,123 @@
+// Grid debugging tools: Guides
+// ----------------------------
+
+// ## Usage:
+
+// Apply grid guide to all grids on page
+// [optional] $element:  container | row (default - container)
+// [optional] $position: back | front (default - back)
+// `@include GRID-GUIDES($el, $position);`  // At the root of stylesheet
+
+// Apply grid guide on element
+// [optional] $position: back | front (default - back)
+// ```
+// .row {
+//   @include show-grid-guides($position);`
+// }
+
+// Guides rely on `::before` pseudo element so they will only work on elements
+// that don't already use it (e.g. not `group(true)`)
+
+// Draws grid guides
+@mixin grid-render-guides($grid-size: $grid-size, $grid-type: $grid-type, $column-gutter: grid-column-gutter()) {
+
+  $-block-size: 8;
+
+  // Pixel grid default values
+  $-column-width:  grid-column-width($gutter: $column-gutter);
+  $-column-combined-width: $column-gutter + $-column-width;
+
+  @if $grid-type == fluid {
+    // Calculate gutter to column ratio
+    $-gutter-ratio: $column-gutter / ($-column-width + $column-gutter);
+    // Calculate column to grid width ratio
+    // not entirely sure where $column-gutter/3 magic number comes from, but it's necessary to make it work
+    $-column-ratio: ($-column-width + $column-gutter) / ($grid-size - $column-gutter / 3);
+
+    // Reset column size with percentages
+    $column-gutter: percentage($-gutter-ratio);
+    $-column-width: 100 - percentage($-gutter-ratio);
+    $-column-combined-width: percentage($-column-ratio);
+  }
+
+  $column-gutter:  $-column-width + $column-gutter;
+  $-block-height: (($grid-baseline + 1) * $-block-size) + $grid-baseline;
+
+  position: relative;
+
+  &:before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background:
+      // Baseline (v-rhythm)
+      -webkit-linear-gradient(
+        transparent $grid-baseline,
+        rgba(white, $grid-guides-opacity) $grid-baseline),
+      // Columns
+      -webkit-linear-gradient(left,
+        rgba($grid-guides-color, $grid-guides-opacity),
+        rgba($grid-guides-color, $grid-guides-opacity) $-column-width,
+        transparent $-column-width,
+        transparent $column-gutter),
+      // Blocks
+      -webkit-linear-gradient(
+        transparent ($-block-height - $grid-baseline),
+        rgba(white, $grid-guides-opacity / 1.2) $grid-baseline),
+      // Base colour
+      -webkit-linear-gradient(
+        rgba($grid-guides-color, $grid-guides-opacity),
+        rgba($grid-guides-color, $grid-guides-opacity));
+
+    background-size:
+      $column-gutter $grid-baseline + 1,     // v-rhythm
+      $-column-combined-width 10px,           // column
+      $column-gutter ($-block-height + 1);  // block
+  }
+}
+
+
+// Show grid guides on all grid containers
+@mixin GRID-GUIDES($el: container, $position: back) {
+  %l-#{$el} {
+    @include show-grid-guides($position: $position);
+  }
+}
+
+
+// Show grid guide on element
+@mixin show-grid-guides($position: back) {
+  @include grid-render-guides;
+
+  &::before {
+    &%l-row {
+      $-offset: grid-column-gutter()/2;
+
+      @if $grid-type == fluid {
+        $-offset: grid-percentage($-offset);
+      }
+      margin: 0 $-offset;
+    }
+    &%l-gutterless {
+      margin: 0;
+    }
+
+    // Grid placement (back by default)
+    @if $position == front {
+      z-index: 999;
+    } @else {
+      z-index: -1;
+    }
+  }
+
+  &%l-container %l-container::before {
+    content: none;
+  }
+  &%l-row %l-row::before {
+    content: none;
+  }
+}

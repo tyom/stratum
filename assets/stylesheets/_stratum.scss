@@ -1,28 +1,25 @@
 // Grid settings
-$grid-guides-color:         #8aa8c0   !default;
-$grid-guides-opacity:       .2        !default;
-$grid-guides-position:      front     !default;
 $grid-type:                 fluid     !default;
 $grid-size:                 980px     !default;
 $grid-total-columns:        12        !default;
 $grid-desired-gutter:       20px      !default;
 $grid-baseline:             18px      !default;
 
-@import "addons/vendor-prefix";
-@import "addons/group";
-@import "addons/position";
-@import "addons/dimensions";
+// Grid guides
+$grid-guides-class:         false     !default;   // Adds `.m-show-guides` and `.m-show-guides.m-front` to scaffolding
+$grid-guides-color:         #8aa8c0   !default;
+$grid-guides-opacity:       .2        !default;
+$grid-guides-position:      front     !default;
 
-// CSS3 mixins
-@import "css3/animation";
-@import "css3/border-radius";
-@import "css3/box-sizing";
-@import "css3/transform";
-@import "css3/transition";
+// Scaffolding
+$scaffolding-debug:         true      !default;  // Highlight disabled features that are used
 
-// Layout
+@import "css3";
+@import "helpers";
 @import "layout/grid";
-// @import "layout/responsive";
 
 // Forms
 @import "forms/input-placeholder";
+
+// Icons
+$stratum-icons:             $stratum-dingbats !default;
