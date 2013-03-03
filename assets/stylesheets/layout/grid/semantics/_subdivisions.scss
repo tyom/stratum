@@ -3,14 +3,17 @@
 
 // %l-col-<n>-of-<n>   -  column size of parent total (e.g. 2-of-8 is 2/8 and equals 25%)
 
+$grid-subdivisions: null !default;
 
-$grid-subdivisions: true;
+@if $grid-subdivisions != false {
+  $grid-subdivisions: true;
 
-// Column size ratios
-@for $i from 1 through $grid-total-columns {
-  @for $n from 1 through $grid-total-columns {
-    %l-col-#{$i}-of-#{$n} {
-      @include grid-column-width($i, fluid, $gutter: 0, $total-columns: $n);
+  // Column size ratios
+  @for $i from 1 through $grid-total-columns {
+    @for $n from 1 through $grid-total-columns {
+      %l-col-#{$i}-of-#{$n} {
+        @include grid-column-width($i, fluid, $gutter: 0, $total-columns: $n);
+      }
     }
   }
 }

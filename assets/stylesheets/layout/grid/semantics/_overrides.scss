@@ -4,68 +4,71 @@
 // %l-grid-pixel       –  Force pixel grid (applied to grid container)
 // %l-grid-fluid       –  Force fluid grid (applied to grid container)
 
+$grid-overrides: null !default;
 
-$grid-overrides: true;
+@if $grid-overrides != false {
+  $grid-overrides: true;
 
-// Pixel
-%l-grid-pixel {
-  %l-row {
-    @include grid-gutters(pixel, row);
-
-    %l-col {
-      @include grid-gutters(pixel);
-    }
-
-    &%l-gutterless {
-      @include grid-gutters(none);
+  // Pixel
+  %l-grid-pixel {
+    %l-row {
+      @include grid-gutters(pixel, row);
 
       %l-col {
+        @include grid-gutters(pixel);
+      }
+
+      &%l-gutterless {
         @include grid-gutters(none);
+
+        %l-col {
+          @include grid-gutters(none);
+        }
       }
     }
   }
-}
 
-// Fluid
-%l-grid-fluid {
-  %l-row {
-    @include grid-gutters(fluid, row);
-
-    %l-col {
-      @include grid-gutters(fluid);
-    }
-
-    &%l-gutterless {
-      @include grid-gutters(none);
+  // Fluid
+  %l-grid-fluid {
+    %l-row {
+      @include grid-gutters(fluid, row);
 
       %l-col {
+        @include grid-gutters(fluid);
+      }
+
+      &%l-gutterless {
         @include grid-gutters(none);
+
+        %l-col {
+          @include grid-gutters(none);
+        }
       }
     }
   }
-}
 
-// Column sizes
-@for $i from 1 through $grid-total-columns {
-  %l-col-#{$i} {
-    // Pixel
-    %l-grid-pixel %l-row & {
-      @include grid-column-width($i, pixel);
-    }
-    // Pixel no gutters
-    %l-grid-pixel &,
-    %l-grid-pixel %l-gutterless & {
-      @include grid-column-width($i, pixel, $gutter: 0);
-    }
+  // Column sizes
+  @for $i from 1 through $grid-total-columns {
+    %l-col-#{$i} {
+      // Pixel
+      %l-grid-pixel %l-row & {
+        @include grid-column-width($i, pixel);
+      }
+      // Pixel no gutters
+      %l-grid-pixel &,
+      %l-grid-pixel %l-gutterless & {
+        @include grid-column-width($i, pixel, $gutter: 0);
+      }
 
-    // Fluid
-    %l-grid-fluid %l-row & {
-      @include grid-column-width($i, fluid);
-    }
-    // Fluid no gutters
-    %l-grid-fluid &,
-    %l-grid-fluid %l-gutterless & {
-      @include grid-column-width($i, fluid, $gutter: 0);
+      // Fluid
+      %l-grid-fluid %l-row & {
+        @include grid-column-width($i, fluid);
+      }
+      // Fluid no gutters
+      %l-grid-fluid &,
+      %l-grid-fluid %l-gutterless & {
+        @include grid-column-width($i, fluid, $gutter: 0);
+      }
     }
   }
 }
