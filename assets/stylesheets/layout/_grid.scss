@@ -18,6 +18,17 @@ $grid-guides-color:     #c84e5b     !default;
 $grid-guides-opacity:   .2          !default;
 $grid-guides-position:  back        !default;
 
+
+// Various semantic grid features can be disabled per project by
+// setting the following variables to false. This will result in
+// smaller CSS file and quicker compilation
+
+// $grid-nested-grids: false;
+// $grid-offsets:      false;
+// $grid-overrides:    false;
+// $grid-subdivisions: false;
+
+
 @import "grid/functions";
 @import "grid/mixins";
 @import "grid/guides";
