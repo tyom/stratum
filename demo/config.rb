@@ -38,18 +38,15 @@ set :css_dir, 'stylesheets'
 set :js_dir, 'javascripts'
 set :images_dir, 'images'
 
-# Configure Sass options
-::Compass.configuration do |config|
-  config.sass_options = {
-    # :debug_info => true,
-    :load_paths => ['~/Projects/stratum/assets/stylesheets/']
-  }
-end
+# Sass options
+::Compass.configuration.sass_options = {
+  :load_paths => ['../assets/stylesheets/']
+}
 
 # Build-specific configuration
 configure :build do
   # For example, change the Compass output style for deployment
-  activate :minify_css
+  # activate :minify_css
 
   # Minify Javascript on build
   # activate :minify_javascript
@@ -67,11 +64,15 @@ configure :build do
 
   # Or use a different image path
   # set :http_path, "/Content/images/"
+
+  ::Compass.configuration.sass_options[:line_comments] = false
 end
 
 
 configure :development do
   activate :livereload
+
+  # ::Compass.configuration.sass_options[:debug_info] = true
 end
 
 
