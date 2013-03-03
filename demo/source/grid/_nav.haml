@@ -1,12 +1,12 @@
 %header#masthead
   %ul.nav
     %li(class="#{data.page.css == 'pixel-grid' ? 'active' : nil}")
-      = link_to 'Pixel Grid', '/grid/pixel.html'
+      = link_to 'Pixel Grid', 'pixel.html', :relative => true
     %li(class="#{data.page.css == 'fluid-grid' ? 'active' : nil}")
-      = link_to 'Fluid Grid', '/grid/fluid.html'
+      = link_to 'Fluid Grid', 'fluid.html', :relative => true
     %li(class="#{data.page.css == 'bbc' ? 'active' : nil}")
-      = link_to 'BBC Homepage', '/grid/bbc.html'
+      = link_to 'BBC Homepage', 'bbc.html', :relative => true
     %li(class="#{data.page.css == 'arstechnica' ? 'active' : nil}")
-      = link_to 'Arstechnica Article', '/grid/arstechnica.html'
+      = link_to 'Arstechnica Article', 'arstechnica.html', :relative => true
     %li(class="#{data.page.css == 'guardian' ? 'active' : nil}")
-      = link_to 'Guardian Homepage', '/grid/guardian.html'
+      = link_to 'Guardian Homepage', 'guardian.html', :relative => true

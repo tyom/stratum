@@ -41,7 +41,7 @@ set :images_dir, 'images'
 # Configure Sass options
 ::Compass.configuration do |config|
   config.sass_options = {
-    :debug_info => true,
+    # :debug_info => true,
     :load_paths => ['~/Projects/stratum/assets/stylesheets/']
   }
 end
@@ -49,7 +49,7 @@ end
 # Build-specific configuration
 configure :build do
   # For example, change the Compass output style for deployment
-  # activate :minify_css
+  activate :minify_css
 
   # Minify Javascript on build
   # activate :minify_javascript
@@ -58,7 +58,7 @@ configure :build do
   # activate :cache_buster
 
   # Use relative URLs
-  # activate :relative_assets
+  activate :relative_assets
 
   # Compress PNGs after build
   # First: gem install middleman-smusher
@@ -72,4 +72,14 @@ end
 
 configure :development do
   activate :livereload
+end
+
+
+activate :deploy do |deploy|
+  deploy.method = :git
+
+  # deploy.method = :rsync
+  # deploy.user = "tyom"
+  # deploy.host = "example.com"
+  # deploy.path = "/path/to/www"
 end
