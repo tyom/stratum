@@ -2,7 +2,6 @@ angular.module('controllers', [])
   .controller('TestCases', function($scope, $http) {
     $scope.parseRules = function(string, targetEl, caseOptions) {
       var rules = string.split(/,?\s/);
-      var obj = {};
       var id = _.uniqueId('E-');
 
       targetEl.attr('id', id);
