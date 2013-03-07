@@ -1,52 +1,89 @@
-$grid-responsive: true;
+$responsive-features:
+  smartphone         "(min-device-width: 320px) and (max-device-width: 480px)",
+  tablet             "(min-device-width : 768px) and (max-device-width : 1024px)",
+  // Due to comma in the list should be the last item when combined with other in 'and' sequence
+  retina             "(-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5)",
 
-@mixin smartphone {
-  @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-    @content;
+  landscape          "(orientation: landscape)",
+  portrait           "(orientation: portrait)",
+
+  small-screen       "(min-width: 800px) and (max-width: 1023px)",
+  medium-screen      "(min-width: 1024px) and (max-width: 1299px)",
+  large-screen       "(min-width: 1300px) and (max-width: 1799px)",
+  x-large-screen     "(min-width: 1800px)"
+;
+
+
+// Get the feature from available map and return its query
+
+@function -get-media-feature($requested-feature) {
+  $-result: null;
+
+  @each $feature in $responsive-features {
+    $-name: nth($feature, 1);
+    $-query: nth($feature, 2);
+
+    @if $-name == $requested-feature {
+      $-result: $-query;
+    }
   }
-}
-@mixin smartphone-landscape {
-  @media only screen and (min-width : 321px) {
-    @content;
+
+  @if not $-result {
+    @warn "'#{$requested-feature}'' is not a recognised responsive feature"
   }
+
+  @return $-result;
 }
-@mixin smartphone-portrait {
-  @media only screen and (max-width : 320px) {
-    @content;
+
+// Combine media features frome supplied parameters
+// comma separate for 'or' sequence. To group in 'and' sequence wrap in (braces)
+
+@function -combine-media-features($features...) {
+  $-features: "";
+  @each $or-feature in $features {
+    // 'either/or' features
+    @if type-of($or-feature) == string {
+      $-index: index($features, $or-feature);
+      $-is-last: $-index == length($features);
+      $-features: $-features + -get-media-feature($or-feature) + if(not $-is-last, ", ", "");
+
+    // combined 'and' features
+    } @else {
+      $and-features: $or-feature;
+      $-and-result: "";
+
+      @each $and-feature in $and-features {
+        $-index: index($and-features, $and-feature);
+        $-is-last: $-index == length($and-features);
+        $-and-result: $-and-result + -get-media-feature($and-feature) + if(not $-is-last, " and ", "");
+      }
+
+      $-features: $-features + $-and-result;
+    }
   }
+
+  @return $-features;
 }
-@mixin tablet {
-  @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-    @content;
-  }
-}
-@mixin tablet-landscape {
-  @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation: landscape) {
-    @content;
-  }
-}
-@mixin tablet-portrait {
-  @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation: portrait) {
-    @content;
-  }
-}
-@mixin retina {
-  @media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5) {
-    @content;
-  }
-}
-@mixin medium-screen {
-  @media only screen and (min-width : 1024px) {
-    @content;
-  }
-}
-@mixin large-screen {
-  @media only screen and (min-width : 1300px) {
-    @content;
-  }
-}
-@mixin x-large-screen {
-  @media only screen and (min-width : 1824px) {
+
+
+// Respond to media features mixin
+// -------------------------------
+
+// Usage:
+
+// Comma-separate for either (or) and space-separate for each (and) feature
+
+// ```
+//  @include respond-to(large-screen, medium-screen, smartphone portrait retina) {
+//    background: red;
+//  }
+// ```
+
+// Results in styles targeting either large screens or medium screens or retina smarthphones in portrait orientation only
+
+@mixin respond-to($features...) {
+  // @debug -combine-media-features($features...);
+  @media only screen and #{-combine-media-features($features...)} {
     @content;
   }
 }
