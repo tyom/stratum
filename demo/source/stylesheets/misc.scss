@@ -2,6 +2,8 @@
 @import "layout/scaffolding";
 @import "font-awesome";
 
+$grid-type: fluid;
+
 $stratum-icons: $icons-font-awesome;
 
 .icons {
@@ -91,5 +93,30 @@ $stratum-icons: $icons-font-awesome;
   &.m-top-left::before {
     @include triangle(top-left, #444, 18px);
     @include position(absolute, -5px 0 0 -5px);
+  }
+}
+
+
+
+.columns {
+  @include columns(3);
+  @include column-gap(40px);
+  @include column-rule(1px solid #aaa);
+
+  p:first-child {
+    margin-top: 0;
+  }
+
+  p:nth-child(3) {
+    @include column-span(all);
+    font-size: 1.4em;
+    text-align: center;
+    padding: 20px;
+    margin: 20px 0;
+    background: white;
+  }
+
+  p:nth-child(5) {
+    @include break-before(always);
   }
 }
