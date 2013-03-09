@@ -1,0 +1,80 @@
+// columns
+// -------
+
+// Vendor prefixes:
+// - Firefox: 9+
+// - Chrome
+// - Safari
+
+// No prefixes
+// - IE 10+
+// - Opera 11.1+
+
+// Not supported
+// - IE < 10
+
+@mixin columns($value...) {
+  @include vendor-prefix(columns, $value, webkit moz spec);
+}
+
+@mixin column-width($value...) {
+  @include vendor-prefix(column-width, $value, webkit moz spec);
+}
+
+@mixin column-count($value...) {
+  @include vendor-prefix(column-count, $value, webkit moz spec);
+}
+
+@mixin column-fill($value...) {
+  @include vendor-prefix(column-fill, $value, webkit moz spec);
+}
+
+@mixin column-gap($value...) {
+  @include vendor-prefix(column-gap, $value, webkit moz spec);
+}
+
+@mixin column-rule($value...) {
+  @include vendor-prefix(column-rule, $value, webkit moz spec);
+}
+
+@mixin column-rule-width($value...) {
+  @include vendor-prefix(column-rule-width, $value, webkit moz spec);
+}
+
+@mixin column-rule-style($value...) {
+  @include vendor-prefix(column-rule-style, $value, webkit moz spec);
+}
+
+@mixin column-rule-color($value...) {
+  @include vendor-prefix(column-rule-color, $value, webkit moz spec);
+}
+
+// Not supported
+// - Firefox
+
+@mixin column-span($value...) {
+  @include vendor-prefix(column-span, $value, webkit moz spec);
+}
+
+
+// Vendor prefixes:
+// - Chrome
+// - Safari
+
+// No prefixes
+// - IE 10+
+// - Opera 11.1+
+
+// Not supported
+// - IE < 10
+// - Firefox
+
+@mixin break-before($value...) {
+  @include vendor-prefix(column-break-before, $value, webkit);
+  @include vendor-prefix(break-before, $value, spec);
+}
+
+@mixin break-after($value...) {
+  @include vendor-prefix(column-break-after, $value, webkit);
+  @include vendor-prefix(break-after, $value, spec);
+}
