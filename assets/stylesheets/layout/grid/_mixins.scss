@@ -15,6 +15,7 @@ $grid-column:         grid-column-width();
   @extend %-clearfix;
   @include box-sizing(content-box);
   width: $width;
+  min-width: $grid-min-width;
   margin: {
     left: auto;
     right: auto;
@@ -57,8 +58,12 @@ $grid-column:         grid-column-width();
 
 
 // Calculate single column width (in pixels) multipled by number of columns it spans (indluding gutters)
-@mixin grid-column-width($span: 1, $type: $grid-type, $gutter: $grid-gutter, $total-columns: $grid-total-columns) {
-  width: grid-columns-width($span, $grid-column, $gutter, $type, $total-columns);
+@mixin grid-column-width($span: 1, $type: $grid-type, $gutter: $grid-gutter, $total-columns: $grid-total-columns, $max: null) {
+  $l-width: grid-columns-width($span, $grid-column, $gutter, $type, $total-columns);
+  @if $max and $l-width > $max {
+    $l-width: $max;
+  }
+  width: $l-width;
 }
 
 
