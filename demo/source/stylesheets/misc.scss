@@ -120,3 +120,47 @@ $stratum-icons: $icons-font-awesome;
     @include break-before(always);
   }
 }
+
+
+.flex {
+  .box {
+    @include flex-container;
+    @include flex-direction(row);
+    min-height: 700px;
+    width: 100%;
+  }
+
+  header,
+  nav,
+  article,
+  aside,
+  footer {
+    background: rgba(red, .3);
+    border: 1px solid rgba(red, .5);
+    margin: 5px;
+    padding: 5px;
+  }
+
+  nav {
+    @include order(1);
+  }
+
+  article {
+    @include order(2);
+    width: 60%;
+  }
+
+  aside {
+    @include order(3);
+  }
+
+  nav,
+  aside {
+    @include flex(auto);
+  }
+
+  header,
+  footer, {
+    min-height: 100px;
+  }
+}

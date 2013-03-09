@@ -1,0 +1,54 @@
+// flex
+// ----
+
+// Vendor prefixes:
+// - Firefox: 18+
+// - Chrome 21+
+// - Safari 5.1+
+// - iOS Safari 3.2+
+// - Android 2.1+
+// - Blackberry 7+
+// - IE 10+
+
+// No prefixes
+// - Firefox 20+
+// - Opera 12.1+
+
+@mixin flex-container {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@mixin flex($value...) {
+  @include vendor-prefix(flex, $value, webkit moz ms o spec);
+}
+
+@mixin flex-basis($value...) {
+  @include vendor-prefix(flex-basis, $value, webkit moz ms o spec);
+}
+
+@mixin flex-direction($value...) {
+  @include vendor-prefix(flex-direction, $value, webkit moz ms o spec);
+}
+
+@mixin flex-flow($value...) {
+  @include vendor-prefix(flex-flow, $value, webkit moz ms o spec);
+}
+
+@mixin flex-grow($value...) {
+  @include vendor-prefix(flex-grow, $value, webkit moz ms o spec);
+}
+
+@mixin flex-shrink($value...) {
+  @include vendor-prefix(flex-shrink, $value, webkit moz ms o spec);
+}
+
+@mixin flex-wrap($value...) {
+  @include vendor-prefix(flex-wrap, $value, webkit moz ms o spec);
+}
+
+@mixin order($value...) {
+  @include vendor-prefix(flex-order, $value, ms);
+  @include vendor-prefix(order, $value, webkit moz o spec);
+}
