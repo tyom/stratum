@@ -27,16 +27,38 @@ page "*/partials/*", :layout => false
 # Automatic image dimensions on image_tag helper
 # activate :automatic_image_sizes
 
-# Methods defined in the helpers block are available in templates
-# helpers do
-#   def some_helper
-#     "Helping"
-#   end
-# end
+helpers do
+  def pages_for_section(section_name)
+    section = data.nav.find do |s|
+      s.name == section_name
+    end
+
+    pages = []
+
+    return pages unless section
+
+    if section.directory
+      pages << sitemap.resources.select { |r|
+        r.path.include?(section.directory + "/") && !r.data.hidden && !r.path.include?(section.directory + "/index.html")
+      }.map do |r|
+        ::Middleman::Util.recursively_enhance({
+          :name   => r.data.menu_label || r.data.title,
+          :path   => r.url,
+          :order  => r.data.menu_order
+        })
+      end.sort_by { |p| p.order.to_s || p.path }
+    end
+
+    pages << section.pages if section.pages
+    pages.flatten
+  end
+end
 
 set :css_dir, 'stylesheets'
 set :js_dir, 'javascripts'
 set :images_dir, 'images'
+
+set :relative_links, true
 
 # Sass options
 ::Compass.configuration.sass_options = {

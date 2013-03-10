@@ -4,13 +4,19 @@
     %meta(charset = "utf-8")
     %meta(http-equiv="X-UA-Compatible" content="IE=edge,chrome=1")
     %title= data.page.title
-    = stylesheet_link_tag "main"
-    = stylesheet_link_tag data.page.css
+    = stylesheet_link_tag 'main/site'
+    = stylesheet_link_tag data.page.css if data.page.css
 
   %body(class="#{data.page.type ? 'trace' : nil}")
-    = yield
+    %header#masthead
+      %h1= link_to 'Stratum', '/stratum'
 
-    = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"
-    = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"
-    = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.1/angular.min.js"
-    = javascript_include_tag "all.js"
+      = partial 'layouts/nav'
+
+    #main(role="main")
+      = yield
+
+    = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js'
+    = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js'
+    = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.1/angular.min.js'
+    = javascript_include_tag 'all.js'
