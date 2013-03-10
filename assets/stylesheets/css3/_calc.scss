@@ -19,8 +19,15 @@
 // - Android browser
 
 
-// Usage: `@include calc(100% - 40px)`
+// Usage: `@include calc(width, "100% - 40px", 90%)`
 
-@mixin box-sizing($value) {
-  @include vendor-prefix(calc, $value, webkit spec);
+@mixin calc($property, $expression, $fallback: null) {
+  $-expression: unquote($expression);
+
+  @if($fallback) {
+    #{$property}: $fallback;
+  }
+  #{$property}: -moz-calc(#{$-expression});
+  #{$property}: -webkit-calc(#{$-expression});
+  #{$property}: calc(#{$-expression});
 }
