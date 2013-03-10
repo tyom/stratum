@@ -1,7 +1,7 @@
 // Form related mixins
 // ============================================================================
 
-@mixin input-placeholder {
+@mixin placeholder {
   &::-webkit-input-placeholder {
     @content;
   }

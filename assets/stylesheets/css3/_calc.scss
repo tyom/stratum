@@ -1,0 +1,26 @@
+// Calculate CSS unit values
+// -------------------------
+
+// Vendor prefixes:
+// - Chrome < 26
+// - iOS 6
+// - Safari 6
+// - Blackberry 10
+// - Firefox 4+
+
+// No prefixes
+// - Chrome 26+
+// - Firefox 16+
+// - IE 9+
+
+// Not compatible
+// - Opera
+// - Opera Mini
+// - Android browser
+
+
+// Usage: `@include calc(100% - 40px)`
+
+@mixin box-sizing($value) {
+  @include vendor-prefix(calc, $value, webkit spec);
+}
