@@ -16,20 +16,24 @@ CSS3 animations a quite well supported. Many browsers have been supporting it fo
 
 Define the animation sequence through `keyframes(name)` mixin:
 
-    @include keyframes(reveal) {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
+```scss
+@include keyframes(reveal) {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+```
 
 Then apply that animation on an element with `animation(name)` mixin:
 
-    .notice {
-      @include animation(reveal 1.2s ease-in);
-    }
+```scss
+.notice {
+  @include animation(reveal 1.2s ease-in);
+}
+```
 
 `animation` is a shorthand for `animation-name`, `animation-duration`, `animation-timing-function`, `animation-delay`, `animation-iteration-count` and `animation-direction`. Each of which can be also used separately as a mixin, e.g. `@include animation-duration(200ms)`.
 
@@ -39,7 +43,9 @@ The order is important and as follows:
 
 Individual properties of single animation are separated by space and multiple animations can be defined separated by comma.
 
-`@include animation(reveal 3s, bounce 1s 3s infinite)`
+```scss
+@include animation(reveal 3s, bounce 1s 3s infinite)
+```
 
 Plays "reveal" animation for 3 seconds, and then 1 second "bounce" animation, delayed by 3 seconds and played infinitely.
 
@@ -48,11 +54,15 @@ Plays "reveal" animation for 3 seconds, and then 1 second "bounce" animation, de
 
 Border radius is well supported in modern browsers and in fact does not need a mixin for most use cases. To use two radii value (i.e. 10px/20px) the value should be wrapped in quotes, otherwise Sass will try to calculate the values before passing as one.
 
-`@include border-radius("10px/20px")`
+```scss
+@include border-radius("10px/20px")
+```
 
 This mixin also takes second parameter `clip`. If specified will clip the background around padding area. Which is useful when border colour with opacity needs to not mix with background colour.
 
-`@include border-radius(10px, clip)`
+```scss
+@include border-radius(10px, clip)
+```
 
 
 ### box-sizing
@@ -61,7 +71,9 @@ Used to apply alternative CSS box model on element. `border-box` calculates dime
 
 Margins are always added outside of the box.
 
-`@include box-sizing(border-box)`
+```scss
+@include box-sizing(border-box)
+```
 
 ### calc
 
@@ -72,8 +84,10 @@ Mixin takes three arguments: `property`, `expression` and optional `fallback` va
 The first two are fed into `calc()` function and the third is used to fall back for browsers that don't support it. The expression has to be wrapped in quotes to prevent Sass from processing it.
 
 Usage:
-    
-    @include calc(width, "100% - 40px", 90%)
+
+```scss
+@include calc(width, "100% - 40px", 90%)
+```
 
 
 ### columns
@@ -94,12 +108,13 @@ There are also the following column-break mixing, not supported in IE or Firefox
  - `break-before`
  - `break-after`
  
- Usage:
- 
-     @include columns(3);
-     @include column-gap(40px);
-     @include column-rule(1px solid #ddd);
+Usage:
 
+```scss
+@include columns(3);
+@include column-gap(40px);
+@include column-rule(1px solid #ddd);
+```
 
 ### flex
 
