@@ -8,6 +8,11 @@ $grid-total-columns:        12;
 $grid-desired-gutter:       20px;
 $grid-baseline:             15px;
 
+$grid-nested-grids: false;
+$grid-offsets:      false;
+$grid-overrides:    false;
+$grid-subdivisions: false;
+
 @import "stratum";
 @import "layout/scaffolding";
 @import "mock-block";
