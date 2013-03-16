@@ -52,7 +52,7 @@ article {
   .l-row,
   .l-row::before,
   .l-col {
-    @include transition(160ms);
+    // @include transition(160ms);
   }
 
   .l-row ~ .l-row {
