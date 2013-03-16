@@ -1,22 +1,23 @@
 // Grid defaults settings
 // ----------------------
 
-// Set these settings in `stratum.scss` unless imported directly as `layout/grid`
-
 $grid-responsive:       false       !default;
 
 $grid-size:             980px       !default;
 
 $grid-type:             fluid       !default;
 $grid-total-columns:    12          !default;
-$grid-baseline:         20px        !default;
 $grid-desired-gutter:   20px        !default;
+$grid-baseline:         18px        !default;
 
-// Debug settings
-$grid-guides:           true        !default;
-$grid-guides-color:     #c84e5b     !default;
+// Grid guides
+$grid-guides-class:     false       !default;   // Adds `.m-show-guides` and `.m-show-guides.m-front` to scaffolding
+$grid-guides-color:     #8aa8c0     !default;
 $grid-guides-opacity:   .2          !default;
 $grid-guides-position:  back        !default;
+
+// Scaffolding
+$scaffolding-debug:         true      !default;  // Highlight disabled features that are used
 
 
 // Various semantic grid features can be disabled per project by
@@ -28,6 +29,7 @@ $grid-guides-position:  back        !default;
 // $grid-overrides:    false;
 // $grid-subdivisions: false;
 
+@import "stratum";
 
 @import "grid/functions";
 @import "grid/mixins";

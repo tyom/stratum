@@ -1,25 +1,5 @@
-// Grid settings
-$grid-type:                 fluid     !default;
-$grid-size:                 980px     !default;
-$grid-total-columns:        12        !default;
-$grid-desired-gutter:       20px      !default;
-$grid-baseline:             18px      !default;
-
-// Grid guides
-$grid-guides-class:         false     !default;   // Adds `.m-show-guides` and `.m-show-guides.m-front` to scaffolding
-$grid-guides-color:         #8aa8c0   !default;
-$grid-guides-opacity:       .2        !default;
-$grid-guides-position:      front     !default;
-
-// Scaffolding
-$scaffolding-debug:         true      !default;  // Highlight disabled features that are used
-
 @import "css3";
 @import "helpers";
-@import "layout/grid";
+@import "forms";
 
-// Forms
-@import "forms/placeholder";
-
-// Icons
 $stratum-icons:             $stratum-dingbats !default;
