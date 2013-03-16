@@ -1,0 +1,74 @@
+// Overrides for default grid column definitions
+// ---------------------------------------------
+
+$grid-responsive: null !default;
+
+@if $grid-responsive != false {
+
+  // Small screen
+  @include respond-to(small-screen) {
+
+    @for $i from 1 through $grid-total-columns {
+
+      %l-col-#{$i} {
+        // Columns with gutters
+        %l-row & {
+          $i: if($i % 2 > 0, $i + 1, $i);
+          @include grid-column-width($i * 2, fluid, $max: 100%);
+
+          &:last-child:nth-child(odd) {
+            @include grid-column-width(1, fluid, $total-columns: 1);
+          }
+        }
+
+        // Columns without gutters
+        %l-container &,
+        %l-gutterless & {
+          @include grid-column-width($i * 2, fluid, $gutter: 0, $max: 100%);
+
+          &:last-child:nth-child(odd) {
+            @include grid-column-width(1, fluid, $gutter: 0, $total-columns: 1);
+          }
+        }
+
+      }
+
+    }
+
+  }
+
+
+  // Tiny screen
+  @include respond-to(x-small-screen) {
+
+    @for $i from 1 through $grid-total-columns {
+
+      %l-col-#{$i} {
+        // Columns with gutters
+        %l-row & {
+          @include grid-column-width(1, fluid, $total-columns: 1);
+        }
+
+        // Columns without gutters
+        %l-container &,
+        %l-gutterless & {
+          @include grid-column-width(1, fluid, $gutter: 0, $total-columns: 1);
+        }
+
+      }
+
+      // Subdivisions
+      @if $grid-subdivisions != false {
+        // Column size ratios
+        @for $n from 1 through $grid-total-columns {
+          %l-col-#{$i}-of-#{$n} {
+            @include grid-column-width(1, fluid, $gutter: 0, $total-columns: 1);
+          }
+        }
+      }
+
+    }
+
+  }
+
+}

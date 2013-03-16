@@ -70,4 +70,31 @@ angular.module('directives', [])
         _.extend($scope.options, elOptions);
       }
     };
+  })
+
+  .directive('debugResponsive', function() {
+    return {
+      restrict: 'E',
+      replace: true,
+      templateUrl: 'partials/debug-responsive.html',
+      link: function($scope, $element) {
+        var setDimensions = function() {
+          $scope.viewportWidth = window.innerWidth;
+          $scope.viewportHeight = window.innerHeight;
+          $scope.viewportX = window.innerWidth;
+          $scope.viewportY = window.innerHeight;
+          $scope.windowWidth = window.outerWidth;
+          $scope.windowHeight = window.outerHeight;
+          $scope.deviceWidth = window.screen.width;
+          $scope.deviceHeight = window.screen.height;
+          $scope.orientation = window.orientation;
+        };
+
+        $(window).on('resize', function() {
+          $scope.$apply(setDimensions);
+        });
+
+        setDimensions();
+      }
+    };
   });

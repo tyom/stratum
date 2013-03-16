@@ -1,0 +1,82 @@
+.debug-responsive {
+  @include position(fixed, 0 0px 0px 0px);
+  background: rgba(white, .7);
+  z-index: 10;
+  font-size: 11px;
+  cursor: default;
+  text-align: center;
+  line-height: 1;
+
+  > div {
+    padding: 10px;
+  }
+
+  .p-feature {
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    border-bottom: 1px solid rgba(black, .2);
+  }
+
+  .p-details > div {
+    display: inline-block;
+    border-left: 1px solid rgba(black, .4);
+    margin-left: 10px;
+    padding-left: 10px;
+
+    &:first-child {
+      border: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .p-label {
+    color: #aaa;
+  }
+
+  .p-width {
+    margin-right: 5px;
+  }
+
+  .p-width::before {
+    content: "X: ";
+  }
+  .p-height::before {
+    content: "Y: ";
+  }
+
+  .p-name::before {
+    @include respond-to(x-large-screen) {
+      content: "Very large screen";
+    }
+    @include respond-to(large-screen) {
+      content: "Large screen";
+    }
+    @include respond-to(medium-screen) {
+      content: "Medium screen";
+    }
+    @include respond-to(small-screen) {
+      content: "Small screen";
+    }
+    @include respond-to(x-small-screen) {
+      content: "Extra small screen";
+    }
+  }
+
+  .p-variant::before {
+    content: " : Desktop";
+
+    @include respond-to(tablet) {
+      content: ": Tablet";
+    }
+    @include respond-to(smartphone) {
+      content: " : Smartphone";
+    }
+  }
+  .p-variant::after {
+    @include respond-to(retina) {
+      content: " : Retina";
+    }
+  }
+}

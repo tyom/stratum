@@ -1,0 +1,25 @@
+// Responsive layout helper classes
+// --------------------------------
+
+// Each feature in `$responsive-feature` can be directly controlled
+// with a helper class in the format:
+// `.l-#{feature-name}-hide`
+// `.l-#{feature-name}-show`
+
+// Example:
+// ```
+// <div class="hero l-smartphone-hide">…</div>
+// ```
+
+@each $feature in $responsive-features {
+  $-feature-name: nth($feature, 1);
+
+  @include respond-to($-feature-name) {
+    .l-#{$-feature-name}-hide {
+      display: none !important;
+    }
+    .l-#{$-feature-name}-show {
+      display: inherit !important;
+    }
+  }
+}
