@@ -1,10 +1,5 @@
 @import "stratum";
 
-$grid-nested-grids: false;
-$grid-offsets:      false;
-$grid-overrides:    false;
-$grid-subdivisions: false;
-
 // Colour scheme
 $blue:        #6790c6;
 $pink:        #e494b1;
@@ -43,5 +38,5 @@ menu {
 }
 
 h1, h2 {
-  margin: ($grid-baseline * 2) 0 $grid-baseline;
+  margin: 40px 0 20px;
 }

@@ -1,4 +1,10 @@
+$grid-nested-grids: false;
+$grid-offsets:      false;
+$grid-overrides:    false;
+$grid-subdivisions: false;
+
 @import "stratum";
+@import "layout/grid";
 @import "layout/scaffolding";
 @import "font-awesome";
 
