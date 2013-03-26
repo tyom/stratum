@@ -8,7 +8,7 @@
       - current_section = section.name if page_bare == section.directory
 
       %li{ class: page_bare == section.directory || !section.directory? && page_bare.empty? ? 's-active' : ''}
-        = link_to section.name, "/#{section.directory}"
+        = link_to section.name, "/#{section.directory}/"
 
   - if pages_for_section(current_section).length
     %ul.section-nav
