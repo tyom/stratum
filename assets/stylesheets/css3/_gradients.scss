@@ -1,0 +1,288 @@
+// CSS Gradients
+// -------------
+
+// Vendor prefixes:
+// - Firefox: 3.6+
+// - Chrome 10+
+// - Safari 5.1+
+// - iOS Safari 3.2+
+// - Android 2.1+
+// - Blackberry 7+
+
+// No prefixes
+// - Firefox 16+
+// - Opera 12.1
+// - Chrome 26+
+// - IE 10+
+
+// Not supported
+// - IE < 10
+// - Opera Mini
+
+$vendor-prefixes-background: webkit moz spec !default;
+
+
+// Parse CSS functions
+// -------------------
+// linear-gradient
+@function linear-gradient($values...) {
+  @return append(linear, $values);
+}
+// linear-gradient
+// ---------------
+@function radial-gradient($values...) {
+  @return append(radial, $values);
+}
+
+
+// Reverse direction keyword
+// -------------------------
+// used to convert between standards and pre-standards modes
+@function -gradient-reverse-direction-keywords($-keywords...) {
+  $-direction-keywords: null;
+
+  @if  type-of($-keywords) == arglist {
+    // convert arglist into list
+    @each $-kw in $-keywords { $-keywords: $-kw }
+  }
+
+  @each $-keyword in $-keywords {
+    @if $-keyword == top {
+      $-direction-keywords: #{unquote($-direction-keywords) bottom};
+    }
+    @if $-keyword == bottom {
+      $-direction-keywords: #{unquote($-direction-keywords) top};
+    }
+    @if $-keyword == left {
+      $-direction-keywords: #{unquote($-direction-keywords) right};
+    }
+    @if $-keyword == right {
+      $-direction-keywords: #{unquote($-direction-keywords) left};
+    }
+    @if $-keyword == center {
+      $-direction-keywords: #{unquote($-direction-keywords) center};
+    }
+  }
+
+  @return $-direction-keywords;
+}
+
+
+// Parse gradient directions
+// -------------------------
+@function -parse-direction($-keywords, $-prefix: to, $-mode: standard, $-reverse: true) {
+  $-direction-old-syntax: $-keywords;
+  $-direction-new-syntax: #{$-prefix -gradient-reverse-direction-keywords($-direction-old-syntax)};
+  @if not $-reverse {
+    $-direction-new-syntax: #{$-prefix $-direction-old-syntax};
+  }
+
+  // Convert back to non-standard direction keywords
+  @if index(to at, nth($-keywords, 1)) {
+    $-direction-old-syntax: -gradient-reverse-direction-keywords($-direction-old-syntax);
+    $-direction-new-syntax: $-keywords;
+
+    // get keywords sans standard `at/to` prefix
+    $-non-standard-direction: ();
+    @for $-i from 2 to length($-keywords) + 1 {
+      $-non-standard-direction: append($-non-standard-direction, nth($-keywords, $-i));
+    }
+    // use the same keyword if $-reverse if false
+    @if not $-reverse {
+      $-direction-old-syntax: $-non-standard-direction;
+    }
+  }
+  // Convert to standard direction keywords
+  @else {
+    @if type-of($-keywords) == number {
+      $-direction-new-syntax: $-direction-old-syntax;
+    }
+  }
+
+  @if $-mode == standard {
+    @return $-direction-new-syntax;
+  } @else {
+    @return $-direction-old-syntax;
+  }
+}
+
+
+// Outputs linear gradient value for specific vendor
+// -------------------------------------------------
+@function -linear-gradient($-vendor, $values...) {
+  @if  type-of($values) == arglist {
+    // convert arglist into list
+    @each $-value in $values { $values: $-value }
+  }
+
+  $-direction: top;
+  $-combined-background: ();
+  $-stops: ();
+
+  @each $-value in $values {
+    // Gradient stops
+    @if type-of(nth($-value, 1)) == color
+        or (type-of(nth($-value, 1)) == string and nth($-value, 1) == transparent) {
+      $-stops: append($-stops, $-value, comma);
+    }
+    // Direction provided
+    @else if index(string number list, type-of($-value)) {
+      $-direction: $-value;
+    }
+  }
+
+  $-direction: -parse-direction($-direction, to, if($-vendor == "spec", standard, old));
+  $-prefixed-gradients: vendor-prefix(linear-gradient, #{$-direction, $-stops}, $-vendor);
+  $-combined-background: append($-combined-background, $-prefixed-gradients, comma);
+
+  // background-color: mix(nth($-stops, 1), nth($-stops, length($-stops)));
+  @return $-combined-background;
+}
+
+
+// Outputs radial gradient value for specific vendor
+// -------------------------------------------------
+@function -radial-gradient($-vendor, $values...) {
+  @if type-of($values) == arglist {
+    // convert arglist into list
+    @each $-value in $values { $values: $-value }
+  }
+
+  $-shape: null;
+  $-shape-size: ();
+  $-extend-keyword: null;
+  $-position: center;
+  $-combined-background: ();
+  $-stops: ();
+
+  @each $-value in $values {
+    // Gradient stops
+    @if type-of(nth($-value, 1)) == color
+        or (type-of(nth($-value, 1)) == string and nth($-value, 1) == transparent) {
+      $-stops: append($-stops, $-value, comma);
+    }
+    // Gradient parameters
+    // Simple (one parameter)
+    @else if type-of($-value) == string {
+      // Shape
+      @if index(circle ellipse, $-value) {
+        $-shape: $-value;
+      // Position
+      } @else if index(center top bottom left right, $-value) {
+        $-position: $-value;
+      }
+    }
+    // Complex (list of parameters)
+    @else if type-of($-value) == list {
+      $-pos: ();
+      @each $-v in $-value {
+        // Extend keywords
+        @if index(cover contain closest-side closest-corner farthest-side farthest-corner, $-v) {
+          // Early drafts
+          @if $-v == cover and $-vendor == spec {
+            $-extend-keyword: farthest-corner;
+          } @else if $-v == contain and $-vendor == spec {
+            $-extend-keyword: closest-side;
+          }
+          // Current standard
+          @else {
+            $-extend-keyword: $-v;
+          }
+        }
+        // Position keywords
+        @else if index(center top bottom left right, $-v) {
+          $-pos: append($-v, $-pos);
+        }
+        // Numbers
+        @else if type-of($-v) == number {
+          // Position percentage
+          @if unit($-v) == "%" {
+            $-pos: append($-pos, $-v);
+          }
+          // Shape size
+          @if index(px em ex mm cm, unit($-v)) {
+            $-shape-size: append($-shape-size, $-v);
+          }
+        }
+        // Shape
+        @else if index(ellipse circle, $-v) {
+          $-shape: $-v;
+        }
+      }
+      $-position: if(length($-pos) > 0, $-pos, $-position);
+    }
+  }
+
+  $-gradient-params: #{$-position, $-extend-keyword if($-shape-size, $-shape-size, $-shape)};
+
+  @if $-vendor == spec {
+    $-position: -parse-direction($-position, at, if($-vendor == "spec", standard, old), $-reverse: false);
+    $-gradient-params: #{$-shape-size $-shape $-extend-keyword $-position};
+  }
+
+  $-prefixed-gradients: vendor-prefix(radial-gradient, #{$-gradient-params, $-stops}, $-vendor);
+  $-combined-background: append($-combined-background, $-prefixed-gradients, comma);
+
+  // background-color: mix(nth($-stops, 1), nth($-stops, length($-stops)));
+  @return $-combined-background;
+}
+
+
+// Background shorthand mixin
+// --------------------------
+// Can take comma-separated gradients and background images
+// If one gradient is specified, a colour fallback can be given as the first parameter
+// e.g. `background(#ddd, linear-gradient(#eee, #ccc))`
+// Colour background can also be provided with image e.g. `..., #ddd url(...) no-repeat 50%`
+@mixin background($values...) {
+  @each $-vendor in $vendor-prefixes-background {
+    $-color: null;
+    $-combined-background: ();
+
+    // Extract individual backgrounds from string
+    @each $-value in $values {
+      // Look for colours
+      @if type-of($-value) == color {
+        $-color: $-value;
+      }
+      // Look for linear/radial gradient
+      @if index(linear radial, nth($-value, 1)) {
+        $-type: nth($-value, 1);
+        $-params: nth($-value, 2);
+        @if $-type == linear {
+          $-combined-background: append($-combined-background, -linear-gradient($-vendor, $-params), comma);
+        }
+        @if $-type == radial {
+          $-combined-background: append($-combined-background, -radial-gradient($-vendor, $-params), comma);
+        }
+      }
+      // Look for image URL
+      @else if index(string list, type-of($-value)) {
+        $-combined-background: append($-combined-background, $-value);
+      }
+    }
+
+    // Add fallback colour if only one gradient is specified
+    $-color-fallback: if(length($-combined-background) == 1, $-color, null);
+
+    background: #{unquote($-color-fallback) $-combined-background};
+  }
+}
+
+
+// Linear gradient mixin
+// ---------------------
+@mixin linear-gradient($values...) {
+  @each $-vendor in $vendor-prefixes-background {
+    background-image: -linear-gradient($-vendor, $values);
+  }
+}
+
+
+// Radial gradient mixin
+// ---------------------
+@mixin radial-gradient($values...) {
+  @each $-vendor in $vendor-prefixes-background {
+    background-image: -radial-gradient($-vendor, $values);
+  }
+}
