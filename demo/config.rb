@@ -95,6 +95,7 @@ configure :development do
   activate :livereload
 
   # ::Compass.configuration.sass_options[:debug_info] = true
+  # ::Compass.configuration.sass_options[:line_comments] = false
 end
 
 
