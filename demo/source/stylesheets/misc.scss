@@ -50,11 +50,15 @@ $stratum-icons: $icons-font-awesome;
 }
 
 .speechbox {
+  $l-base: 15px;
+  $l-sides: $l-base / 1.5;
+
   @include box(200px, 20px);
   display: inline-block;
   margin: 30px;
-  background: #444;
-  color: white;
+  border: 3px solid #444;
+  background: #eee;
+  color: #444;
   padding: 20px 10px;
   position: relative;
   border-radius: 6px;
@@ -64,40 +68,40 @@ $stratum-icons: $icons-font-awesome;
   }
 
   &.m-top::before {
-    @include triangle(top, #444, 12px);
-    @include position(absolute, -12px 0 0 50%);
-    margin-left: -6px;
+    @include triangle(top, #444, $l-base);
+    @include position(absolute, (-$l-base) 0 0 50%);
+    margin-left: -$l-sides;
   }
   &.m-top-right::before {
-    @include triangle(top-right, #444, 18px);
-    @include position(absolute, -5px -5px 0 0);
+    @include triangle(top-right, #444, $l-base + 2);
+    @include position(absolute, -7px -7px 0 0);
   }
   &.m-right::before {
-    @include triangle(right, #444, 12px);
-    @include position(absolute, 50% -12px 0 0);
-    margin-top: -6px;
+    @include triangle(right, #444, $l-base);
+    @include position(absolute, 50% (-$l-base) 0 0);
+    margin-top: -$l-sides;
   }
   &.m-bottom-right::before {
-    @include triangle(bottom-right, #444, 18px);
-    @include position(absolute, 0 -5px -5px 0);
+    @include triangle(bottom-right, #444, $l-base + 2);
+    @include position(absolute, 0 -7px -7px 0);
   }
   &.m-bottom::before {
-    @include triangle(bottom, #444, 12px);
-    @include position(absolute, 0 50% -12px 0 0);
-    margin-right: -6px;
+    @include triangle(bottom, #444, $l-base);
+    @include position(absolute, 0 50% (-$l-base) 0 0);
+    margin-right: -$l-sides;
   }
   &.m-bottom-left::before {
-    @include triangle(bottom-left, #444, 18px);
-    @include position(absolute, 0 0 -5px -5px);
+    @include triangle(bottom-left, #444, $l-base + 2);
+    @include position(absolute, 0 0 -7px -7px);
   }
   &.m-left::before {
-    @include triangle(left, #444, 12px);
-    @include position(absolute, 50% 0 0 -12px);
-    margin-top: -6px;
+    @include triangle(left, #444, $l-base);
+    @include position(absolute, 50% 0 0 (-$l-base));
+    margin-top: -$l-sides;
   }
   &.m-top-left::before {
-    @include triangle(top-left, #444, 18px);
-    @include position(absolute, -5px 0 0 -5px);
+    @include triangle(top-left, #444, $l-base + 2);
+    @include position(absolute, -7px 0 0 -7px);
   }
 }
 

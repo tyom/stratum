@@ -1,12 +1,17 @@
 // Generate CSS triangles
 // ----------------------
 
+// $size can be:
+// one value - base; sides are created 2/3 of base length
+// two values - base and two sides (e.g. 12px 10px)
+// three values - base and each side (e.g. 12px 4px 7px; base left right)
+
 @mixin triangle($position: top, $color: black, $size: 16px) {
   $-dimensions: null;
   $-colors: null;
-  $-height: nth($size, 1);
-  $-left: $-height / 1.5;
-  $-right: $-height / 1.5;
+  $-base: nth($size, 1);
+  $-left: $-base / 1.5;
+  $-right: $-base / 1.5;
 
   // sides width specified
   @if length($size) == 2 {
@@ -19,35 +24,35 @@
   }
 
   @if $position == top {
-    $-dimensions: 0 $-right $-height $-left;
+    $-dimensions: 0 $-right $-base $-left;
     $-colors: transparent transparent $color;
   }
   @if $position == top-right {
-    $-dimensions: 0 $-height $-height 0;
+    $-dimensions: 0 $-base $-base 0;
     $-colors: transparent $color transparent transparent;
   }
   @if $position == right {
-    $-dimensions: $-left 0 $-right $-height;
+    $-dimensions: $-left 0 $-right $-base;
     $-colors: transparent transparent transparent $color;
   }
   @if $position == bottom-right {
-    $-dimensions: 0 0 $-height $-height;
+    $-dimensions: 0 0 $-base $-base;
     $-colors: transparent transparent $color;
   }
   @if $position == bottom {
-    $-dimensions: $-height $-left 0 $-right;
+    $-dimensions: $-base $-left 0 $-right;
     $-colors: $color transparent transparent;
   }
   @if $position == bottom-left {
-    $-dimensions: $-height 0 0 $-height;
+    $-dimensions: $-base 0 0 $-base;
     $-colors: transparent transparent transparent $color;
   }
   @if $position == left {
-    $-dimensions: $-left $-height $-right 0;
+    $-dimensions: $-left $-base $-right 0;
     $-colors: transparent $color transparent transparent;
   }
   @if $position == top-left {
-    $-dimensions: $-height $-height 0 0;
+    $-dimensions: $-base $-base 0 0;
     $-colors: $color transparent transparent transparent;
   }
 
