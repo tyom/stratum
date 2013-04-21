@@ -53,25 +53,31 @@
     right: 0;
     bottom: 0;
 
-    background:
+
+    @include background(
       // Baseline (v-rhythm)
-      -webkit-linear-gradient(
+      linear-gradient(
         transparent $grid-baseline,
-        rgba(white, $grid-guides-opacity) $grid-baseline),
+        rgba(white, $grid-guides-opacity) $grid-baseline
+      ),
       // Columns
-      -webkit-linear-gradient(left,
+      linear-gradient(to right,
         rgba($grid-guides-color, $grid-guides-opacity),
         rgba($grid-guides-color, $grid-guides-opacity) $-column-width,
         transparent $-column-width,
-        transparent $column-gutter),
+        transparent $column-gutter
+      ),
       // Blocks
-      -webkit-linear-gradient(
+      linear-gradient(
         transparent ($-block-height - $grid-baseline),
-        rgba(white, $grid-guides-opacity / 1.2) $grid-baseline),
+        rgba(white, $grid-guides-opacity / 1.2) $grid-baseline
+      ),
       // Base colour
-      -webkit-linear-gradient(
+      linear-gradient(
         rgba($grid-guides-color, $grid-guides-opacity),
-        rgba($grid-guides-color, $grid-guides-opacity));
+        rgba($grid-guides-color, $grid-guides-opacity)
+      )
+    );
 
     background-size:
       $column-gutter $grid-baseline + 1,     // v-rhythm
