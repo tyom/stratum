@@ -4,7 +4,6 @@ $grid-overrides:    false;
 $grid-subdivisions: false;
 
 @import "stratum";
-@import "layout/grid";
 @import "layout/scaffolding";
 @import "font-awesome";
 
@@ -168,5 +167,41 @@ $stratum-icons: $icons-font-awesome;
   header,
   footer, {
     min-height: 100px;
+  }
+}
+
+
+
+.gradients {
+  .gradient {
+    height: 200px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+  }
+
+  .m-linear {
+    background-color: rgba(purple, .4);
+    @include linear-gradient(to left,
+      rgba(red, .5) 10%, rgba(blue, .5) 10%, rgba(blue, .5) 20%,
+      transparent 20%, transparent 30%,
+      rgba(yellow, .8) 30%, rgba(green, .5) 50%,
+      rgba(green, .5) 50%, rgba(green, .5)
+    );
+  }
+
+  .m-radial {
+    @include radial-gradient(ellipse cover top left, #fff, yellow, orange);
+    // @include radial-gradient(200px 100px top center, #676573 10%, #26272c 40%, #3d3e43 65%, #cccbdd 90%);
+  }
+
+  .m-complex {
+    @include background(
+      radial-gradient(transparent, rgba(black, .7)),
+      linear-gradient(bottom left, rgba(red, .8), rgba(blue, .5)),
+      linear-gradient(to left, rgba(yellow, .5), rgba(green, .8)),
+      url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAEAQMAAACTPww9AAAABlBMVEUAAAAAAAClZ7nPAAAAAXRSTlMAQObYZgAAABBJREFUCB1jMGAyYDjAdAEABWgB9Sba2g4AAAAASUVORK5CYII=),
+      url(https://www.google.co.uk/images/srpr/logo4w.png) no-repeat 50%
+    );
+    background-size: auto, auto, auto, auto, 20%;
   }
 }

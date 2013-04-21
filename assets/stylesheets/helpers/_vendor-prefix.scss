@@ -16,3 +16,23 @@
     }
   }
 }
+
+
+@function vendor-prefix($property, $value, $prefixes) {
+  $-allowed-prefixes: moz, webkit, ms, o, spec;
+
+  @each $-prefix in $prefixes {
+    $-result: invalid;
+
+    @each $-allowed-prefix in $-allowed-prefixes {
+      @if $-prefix == $-allowed-prefix {
+        $-result: if($-prefix == "spec", "", "-#{$-prefix}-");
+      }
+    }
+    @if($-result != invalid) {
+      @return unquote("#{$-result}#{$property}(#{$value})");
+    } @else {
+      @warn("Prefix '-#{$-prefix}' is invalid");
+    }
+  }
+}
