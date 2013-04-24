@@ -1,0 +1,28 @@
+!!! 5
+%html(ng-app="demos")
+  %head
+    %meta(charset = "utf-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=edge,chrome=1")
+    %meta(name="viewport" content="width=device-width, initial-scale=1")
+    %title= data.page.title
+    = javascript_include_tag '/vendor/angular.min.js'
+    = stylesheet_link_tag 'main/site'
+    = stylesheet_link_tag data.page.css if data.page.css
+
+  - class_name = data.page.bodyClass || ""
+  - class_name += " #{data.page.type}" || class_name
+  - sidebar_state = data.page.bodyClass == "index" ? "hidden" : "visible"
+  %body{ class: class_name, 'ng-controller' => 'sideMenu', 'ng-class' => "{ 's-sidebar-hidden': hidden  }", 'sidebar-state' => "#{sidebar_state}" }
+    %header.masthead
+      %h1= link_to 'Stratum', '/stratum'
+
+      = partial 'layouts/global-nav'
+
+    = partial 'layouts/local-nav', locals: { toggle: true }
+
+    .main(role="main")
+      = yield
+
+    = javascript_include_tag '/vendor/jquery.min.js'
+    = javascript_include_tag '/vendor/underscore-min.js'
+    = javascript_include_tag 'all.js'

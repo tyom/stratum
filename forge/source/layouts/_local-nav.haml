@@ -1,0 +1,11 @@
+- current_section = request.path[/^(\w+)\//, 1]
+
+- if current_section
+  %nav.section-nav
+    - if locals[:toggle]
+      %button.p-toggle{ 'ng-click' => 'toggle()' } {{ toggled && '»' || '«'}}
+    %ul
+      - for page in pages_for_section(current_section)
+        - if page.name && !page.hide_in_nav
+          %li{ class: page.name == current_page.data.title || page.name == current_page.data.menu_label ? 's-active' : '' }
+            = link_to page.name, page.path
