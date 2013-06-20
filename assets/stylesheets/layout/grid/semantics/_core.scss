@@ -38,8 +38,9 @@
   %l-container { width: auto    }
 
   %l-row { @include grid-row    }
-  %l-col { @include grid-column }
 }
+
+%l-col { @include grid-column }
 
 
 // Float last column to right if `%l-last-col-right` extended
