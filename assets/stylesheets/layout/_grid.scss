@@ -36,7 +36,7 @@ $grid-guides-position:  back        !default;
 // Responsiveness
 $grid-responsive:       true        !default;   // Should default grid columns have basic responsive properties (collapsing)
 
-@import "stratum";
+@import "../stratum";
 
 @import "grid/functions";
 @import "grid/mixins";
