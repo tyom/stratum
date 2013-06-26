@@ -1,42 +1,5 @@
-// Grid defaults settings
-// ----------------------
-
-$grid-size:             980px       !default;
-$grid-min-width:        320px       !default;
-$grid-type:             fluid       !default;
-$grid-total-columns:    12          !default;
-$grid-desired-gutter:   20px        !default;
-$grid-baseline:         18px        !default;
-
-// Scaffolding
-$scaffolding-debug:         true      !default;  // Highlight disabled features that are used
-
-// Responsive defaults
-$grid-responsive-screen-small:    480px  !default;
-$grid-responsive-screen-medium:   980px  !default;
-$grid-responsive-screen-large:    1280px !default;
-$grid-responsive-screen-x-large:  1800px !default;
-
-// Grid guides settings
-$grid-guides:           true        !default;
-$grid-guides-class:     false       !default;   // Adds `.m-show-guides` and `.m-show-guides.m-front` to scaffolding
-$grid-guides-color:     #8aa8c0     !default;
-$grid-guides-opacity:   .2          !default;
-$grid-guides-position:  back        !default;
-
-// Various semantic grid features can be disabled per project by
-// setting the following variables to false. This will result in
-// smaller CSS file and quicker compilation
-
-// $grid-nested-grids: false;
-// $grid-offsets:      false;
-// $grid-overrides:    false;
-// $grid-subdivisions: false;
-
-// Responsiveness
-$grid-responsive:       true        !default;   // Should default grid columns have basic responsive properties (collapsing)
-
-@import "../stratum";
+@import "$variables";
+@import "../core";
 
 @import "grid/functions";
 @import "grid/mixins";
