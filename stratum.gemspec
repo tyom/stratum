@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
   s.files         = `git ls-files | grep -v demo`.split("\n")
   s.executables   << 'stratum'
   s.homepage      = 'http://rubygems.org/gems/stratum'
+  s.license       = "MIT"
 
   s.require_paths = ["lib"]
 
