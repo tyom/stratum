@@ -1,0 +1,18 @@
+// background-clip
+
+// Vendor prefixes:
+// - Firefox < 4
+// - Safari < 5
+// - Chrome
+
+// No prefixes
+// - Chrome
+// - Firefox 4+
+// - Opera 10.50+
+// - IE 9+
+// - iOS 4+
+// - Safari 5+
+
+@mixin background-clip($value) {
+  @include vendor-prefix(background-clip, $value, webkit spec);
+}
