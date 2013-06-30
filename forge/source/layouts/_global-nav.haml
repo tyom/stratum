@@ -1,0 +1,11 @@
+- current_section = ''
+
+%nav.site-nav
+  %ul
+    - data.nav.each do |section|
+      - page_bare = request.path[/^(\w+)\//, 1]
+
+      - current_section = section.name if page_bare == section.directory
+
+      %li{ class: page_bare == section.directory || !section.directory? && page_bare.empty? ? 's-active' : ''}
+        = link_to section.name, "/#{section.directory}/"
