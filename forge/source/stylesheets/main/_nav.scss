@@ -1,0 +1,145 @@
+nav {
+  font-size: 1.1rem;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  a,
+  a:hover {
+    display: block;
+    text-decoration: none;
+  }
+}
+
+
+.site-nav {
+  text-transform: uppercase;
+  line-height: $masthead-height;
+  letter-spacing: 1px;
+
+  li {
+    float: left;
+  }
+
+  a {
+    padding: 0 12px;
+    color: lighten($blue, 30);
+
+    &:hover,
+    &:hover {
+      background: desaturate(darken($blue, 3), 7);
+      color: white;
+    }
+    &:active {
+      background: desaturate(darken($blue, 7), 10);
+    }
+  }
+
+  .s-active a {
+    color: white;
+    background: desaturate(darken($blue, 15), 15);
+  }
+}
+
+
+// Collapsable sections nav
+body > .section-nav {
+  @include transition(170ms);
+  @include position(fixed, $masthead-height none 0px 0px);
+  z-index: 2;
+  width: $sidebar-width;
+  background: rgba(black, .1);
+  padding-top: 22px;
+
+
+  .p-toggle {
+    @include transition(background 170ms, width 100ms);
+    @include position(absolute, 0px 0px 0px 0);
+    text-indent: -999em;
+    width: 1em;
+    border: solid rgba(black, .2);
+    border-width: 0 1px;
+    box-shadow: inset 1px 1px 0 rgba(white, .2), inset -1px -1px 0 rgba(black, .03);
+    background: rgba(#bbb, .4);
+    margin: -22px 0 0 0;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+
+    &::before {
+      @include position(absolute, fill);
+      @include box(.2em);
+      border-radius: 50em;
+      border: .1em solid rgba(black, .24);
+      box-shadow: 1px 1px 0 rgba(white, .55);
+      margin: auto;
+      content: '';
+    }
+
+    &:hover {
+      background: rgba(black, .15);
+
+      &::before {
+        box-shadow: 0 0 0 1px rgba(white, .4);
+      }
+    }
+    &:active {
+      background: rgba(black, .3);
+      box-shadow: inset -1px -1px 0 rgba(white, .2), inset 1px 1px 0 rgba(black, .05);
+
+      &::before {
+        box-shadow: none;
+        background: white;
+        border-color: white;
+      }
+    }
+  }
+
+  a {
+    padding: 5px 20px;
+    color: desaturate(darken($blue, 10), 30);
+    background-clip: padding-box;
+  }
+
+  a:hover {
+    color: #555;
+    background: rgba($blue, .1);
+  }
+
+  a:active,
+  .s-active a {
+    color: darken($light-blue, 50);
+    background: rgba($blue, .2);
+  }
+  .s-active a {
+    color: white;
+    text-shadow: none;
+    background: darken(rgba($blue, .3), 15);
+  }
+}
+
+
+// Index page
+.index .main .section-nav {
+  text-align: center;
+  font-size: 1.6em;
+
+  li {
+    display: inline-block;
+    width: 49%;
+    margin: 0 0 10px;
+  }
+
+  a {
+    padding: 40px;
+    border: 1px solid #ccc;
+
+    &:hover {
+      background: white;
+      border-color: #bbb;
+    }
+  }
+}

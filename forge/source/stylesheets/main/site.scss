@@ -1,0 +1,84 @@
+@import "core";
+
+// Colour scheme
+$blue:        #6790c6;
+$pink:        #e494b1;
+$light-pink:  #f4cecb;
+$light-blue:  #e1e4e9;
+$orange:      #fda798;
+$dark-grey:   #444;
+
+$masthead-height:   38px;
+$sidebar-width:     180px;
+
+@import "masthead";
+@import "nav";
+@import "cases";
+@import "options";
+
+* {
+  @include box-sizing(border-box);
+}
+
+html {
+  font: 13px/1.4 "Helvetica Neue", Arial, sans-serif;
+  height: 100%;
+}
+
+body {
+  padding: $masthead-height 0 0;
+  margin: 0;
+  color: $dark-grey;
+  background: $light-blue;
+  height: 100%;
+}
+
+a {
+  color: $blue;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2 {
+  margin: 40px 0 20px;
+}
+
+
+body {
+  > .main {
+    @include transition(170ms);
+    position: relative;
+    margin-left: $sidebar-width;
+    height: 100%;
+    padding: 20px;
+  }
+
+  &.trace > .main {
+    padding: 0;
+  }
+}
+
+body.s-sidebar-hidden {
+  > .main {
+    margin-left: 15px;
+  }
+  > .section-nav {
+    margin-left: -$sidebar-width + 15;
+
+    .m-toggle {
+      margin-right: -22px;
+      box-shadow: 2px 2px 0 rgba(black, .03);
+      background: $pink;
+      color: white;
+    }
+  }
+}

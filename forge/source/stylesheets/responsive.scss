@@ -1,0 +1,67 @@
+// Grid settings
+$grid-guides-color:         #8aa8c0;
+$grid-guides-opacity:       .2;
+
+$grid-type:                 fluid;
+$grid-size:                 976px;
+$grid-total-columns:        8;
+$grid-desired-gutter:       20px;
+$grid-baseline:             19px;
+
+$grid-nested-grids: false;
+$grid-offsets:      false;
+$grid-overrides:    false;
+
+@import "core";
+@import "layout";
+@import "mock-block";
+@import "responsive-debug";
+
+// @include GRID-GUIDES;
+
+// Layout
+
+#page {
+  padding: 10px;
+
+  .l-container {
+    max-width: 100%;
+  }
+
+  .hero {
+    > .head,
+    > .dashboard,
+    > nav {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    > .head .l-col {
+      @include block(green, $height: 75px);
+    }
+
+    > .dashboard {
+      .p-item {
+        @include block(purple, $height: 217px, $padding: 7px);
+      }
+
+      .m-right .p-item {
+        height: 434px;
+      }
+    }
+
+    > nav {
+      @include block($height: 63px);
+      @include box(center);
+    }
+  }
+
+  .content .l-col {
+    @include block(#baaf32, $height: 511px, $padding: $grid-gutter/2);
+  }
+
+  .footer {
+    @include block(#444, $height: 105px, $padding: $grid-gutter/2);
+    margin-top: 10px;
+  }
+}

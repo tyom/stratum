@@ -1,0 +1,58 @@
+// Test case format
+article {
+  @include group;
+
+  header {
+    position: relative;
+  }
+
+  header,
+  h2, h3 {
+    @include group;
+    font-size: 1.5em;
+    color: #777;
+    margin-bottom: 20px;
+
+    h2 {
+      display: inline-block;
+      font-size: 1em;
+      color: #333;
+      margin: 0;
+    }
+
+    code {
+      font-weight: normal;
+      border-radius: 4px;
+      padding: 3px;
+      background: rgba(#eee, .5);
+      color: #ba5232;
+      font-size: .9em;
+    }
+  }
+}
+
+
+.l-container {
+  .trace & {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  > article {
+    padding: 40px 0 20px;
+  }
+}
+
+
+// Global test cases grid overrides
+#page {
+  .l-row,
+  .l-row::before,
+  .l-col {
+    // @include transition(160ms);
+  }
+
+  .l-row ~ .l-row {
+    margin-top: 20px;
+  }
+}

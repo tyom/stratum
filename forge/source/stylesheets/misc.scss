@@ -1,0 +1,211 @@
+$grid-nested-grids: false;
+$grid-offsets:      false;
+$grid-overrides:    false;
+$grid-subdivisions: false;
+
+@import "core";
+@import "layout";
+@import "font-awesome";
+
+$grid-type: fluid;
+
+$stratum-icons: $icons-font-awesome;
+
+.icons {
+  margin-top: 100px;
+}
+
+.m-icon {
+  @include transition(200ms);
+  @include icon-edit {
+    color: #666;
+    text-shadow: 0 1px 1px rgba(black, .1);
+  }
+  text-decoration: none;
+  font-size: 20px;
+  padding: 10px;
+  background: rgba(white, .3);
+
+  &:hover {
+    @include transform(scale(2));
+    background: white;
+  }
+
+  &.m-glass {
+    @include icon-only(glass);
+  }
+  &.m-music {
+    @include icon-only(music);
+  }
+  &.m-search {
+    @include icon-only(search);
+  }
+  &.m-envelope {
+    @include icon-only(envelope);
+  }
+}
+
+.triangles {
+  text-align: center;
+}
+
+.speechbox {
+  $l-base: 15px;
+  $l-sides: $l-base / 1.5;
+
+  width: 200px;
+  display: inline-block;
+  margin: 30px;
+  border: 3px solid #444;
+  background: #eee;
+  color: #444;
+  padding: 20px 10px;
+  position: relative;
+  border-radius: 6px;
+
+  &::before {
+    content: '';
+  }
+
+  &.m-top::before {
+    @include triangle(top, #444, $l-base);
+    @include position(absolute, (-$l-base) 0 0 50%);
+    margin-left: -$l-sides;
+  }
+  &.m-top-right::before {
+    @include triangle(top-right, #444, $l-base + 2);
+    @include position(absolute, -7px -7px 0 0);
+  }
+  &.m-right::before {
+    @include triangle(right, #444, $l-base);
+    @include position(absolute, 50% (-$l-base) 0 0);
+    margin-top: -$l-sides;
+  }
+  &.m-bottom-right::before {
+    @include triangle(bottom-right, #444, $l-base + 2);
+    @include position(absolute, 0 -7px -7px 0);
+  }
+  &.m-bottom::before {
+    @include triangle(bottom, #444, $l-base);
+    @include position(absolute, 0 50% (-$l-base) 0 0);
+    margin-right: -$l-sides;
+  }
+  &.m-bottom-left::before {
+    @include triangle(bottom-left, #444, $l-base + 2);
+    @include position(absolute, 0 0 -7px -7px);
+  }
+  &.m-left::before {
+    @include triangle(left, #444, $l-base);
+    @include position(absolute, 50% 0 0 (-$l-base));
+    margin-top: -$l-sides;
+  }
+  &.m-top-left::before {
+    @include triangle(top-left, #444, $l-base + 2);
+    @include position(absolute, -7px 0 0 -7px);
+  }
+}
+
+
+
+.columns {
+  @include columns(3);
+  @include column-gap(40px);
+  @include column-rule(1px solid #aaa);
+
+  p:first-child {
+    margin-top: 0;
+  }
+
+  p:nth-child(3) {
+    @include column-span(all);
+    font-size: 1.4em;
+    text-align: center;
+    padding: 20px;
+    margin: 20px 0;
+    background: white;
+  }
+
+  p:nth-child(5) {
+    @include break-before(always);
+  }
+}
+
+
+.flex {
+  .box {
+    @include flex-container;
+    @include flex-direction(row);
+    min-height: 700px;
+    width: 100%;
+  }
+
+  header,
+  nav,
+  article,
+  aside,
+  footer {
+    background: rgba(red, .3);
+    border: 1px solid rgba(red, .5);
+    margin: 5px;
+    padding: 5px;
+  }
+
+  nav {
+    @include order(1);
+  }
+
+  article {
+    @include order(2);
+    width: 60%;
+  }
+
+  aside {
+    @include order(3);
+  }
+
+  nav,
+  aside {
+    @include flex(auto);
+  }
+
+  header,
+  footer, {
+    min-height: 100px;
+  }
+}
+
+
+
+.gradients {
+  .gradient {
+    height: 200px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+  }
+
+  .m-linear {
+    background-color: rgba(purple, .4);
+    @include linear-gradient(to left,
+      rgba(red, .5) 10%, rgba(blue, .5) 10%, rgba(blue, .5) 20%,
+      transparent 20%, transparent 30%,
+      rgba(yellow, .8) 30%, rgba(green, .5) 50%,
+      rgba(green, .5) 50%, rgba(green, .5)
+    );
+  }
+
+  .m-radial {
+    @include radial-gradient(ellipse cover top left, #fff, yellow, orange);
+    // @include radial-gradient(200px 100px top center, #676573 10%, #26272c 40%, #3d3e43 65%, #cccbdd 90%);
+  }
+
+  .m-complex {
+    @include background(
+      radial-gradient(transparent, rgba(black, .7)),
+      linear-gradient(bottom left, rgba(red, .8), rgba(blue, .5)),
+      linear-gradient(to left, rgba(yellow, .5), rgba(green, .8)),
+      url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAEAQMAAACTPww9AAAABlBMVEUAAAAAAAClZ7nPAAAAAXRSTlMAQObYZgAAABBJREFUCB1jMGAyYDjAdAEABWgB9Sba2g4AAAAASUVORK5CYII=),
+      url(https://www.google.co.uk/images/srpr/logo4w.png) no-repeat 50%
+    );
+    background-size: auto, auto, auto, auto, 20%;
+  }
+}

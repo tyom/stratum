@@ -1,0 +1,35 @@
+body > .masthead {
+  @include group;
+  @include position(fixed, 0px 0px none 0px);
+  background: $blue;
+  z-index: 10;
+  height: $masthead-height;
+  box-shadow: 0 3px 0 rgba(black, .1);
+
+  h1 {
+    font-weight: 500;
+    font-size: 1.3rem;
+    margin: 0;
+    color: $light-blue;
+    letter-spacing: 8px;
+    line-height: $masthead-height;
+    float: left;
+    text-transform: uppercase;
+    width: $sidebar-width - 5;
+    padding: 0 20px;
+
+    a {
+      @include transition(200ms);
+      color: inherit;
+      text-decoration: none;
+      text-align: center;
+      text-shadow: 0 0 8px rgba(black, .1);
+      display: block;
+
+      &:hover {
+        color: white;
+        text-shadow: 0 0 3px white;
+      }
+    }
+  }
+}
