@@ -67,3 +67,5 @@ Let's try another one, **11** columns in **934px** container.
 |-----------------|----------------|---------------|-------------
 | gutter          | 13px (desired) | 12px (actual) | 7.82241%
 | column width    | --             | 74px          | 1.2685%
+
+![](https://ga-beacon.appspot.com/UA-332655-4/stratum/readme?pixel)
